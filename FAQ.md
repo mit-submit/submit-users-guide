@@ -6,7 +6,6 @@ The [github repository](https://github.com/mit-submit/submit-examples) summarize
 
 The workshop brought up a number of questions which we summarize here and will continue to maintain.
 
-
 ### How to get an account
 
 To make login convenient and secure we allow login to the subMIT pool using ssh keys only. Users of submit can go to our submit portal to upload their ssh key (or a number of keys). Upload of ssh keys is secured through MIT touchstone authentication. This means users need to have an MIT account.
