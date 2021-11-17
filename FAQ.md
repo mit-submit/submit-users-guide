@@ -148,3 +148,9 @@ and use the GPU example “condor_tensorflow.py”. I got “lbgpu0001.cmsaf.mit
 ### Should I set some environments before I use this example?
 
 See examples in GitHub (https://github.com/mit-submit/submit-examples/blob/main/condor_gpu/condor.sub)
+
+### How do I use gfal tools on submit?
+
+Setup gfal tools from CVMFS:
+
+       source /cvmfs/grid.cern.ch/centos7-ui-test/etc/profile.d/setup-c7-ui-example.sh
