@@ -154,3 +154,17 @@ See examples in GitHub (https://github.com/mit-submit/submit-examples/blob/main/
 Setup gfal tools from CVMFS:
 
        source /cvmfs/grid.cern.ch/centos7-ui-test/etc/profile.d/setup-c7-ui-example.sh
+       
+### How to request large storage space in hadoop?
+
+First you need to obtain a grid ceretificate either through your own experiment or collaboration or use the on from OSG described [here](https://opensciencegrid.org/docs/security/user-certs/)
+
+Then when you have created a proxy send an e-mail to maxi@mit.edu including the output of the
+
+       voms-proxy-info -all
+
+command. Max will create the appropriate directory and e-mail back.
+
+To be able to access this directory you have to use gfal tools which are described [here](https://www.systutorials.com/docs/linux/man/1-gfal-copy/).
+
+
