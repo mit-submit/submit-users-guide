@@ -1,6 +1,8 @@
+![Heavy Constructiuon](/img/under_construction.jpg "Construction")
+
 # Users guide to the *subMIT* login pool
 
-users guide can be found here:
+The draft users guide can be found here:
 
 http://t3serv001.mit.edu/~freerc/build/index.html
 
