@@ -159,8 +159,8 @@ Setup gfal tools from CVMFS:
 Users who work on CMS, LHCb, Clas12 experiments are guaranteed space in Tier2 storage as those experiments made contributations to the hardware.
 Other LNS or CTP groups could have space allocated even though it would be limited to a couple of terabytes.
 
-First you need to obtain a grid certificate either through your own experiment/collaboration, or get one from OSG (Open Science Grid) as described [here](https://opensciencegrid.org/docs/security/user-certs/)
-There are only certain authorities that issue grid certificates, but MIT is not one of them. If you see something like this as an output
+First you need to obtain a grid certificate either through your own experiment/collaboration, or get one from OSG (Open Science Grid) as described [here](https://opensciencegrid.org/docs/security/user-certs/).
+There are various authorities that can issue grid certificates, MIT is not one of them. If you see something like this as an output
 of voms-proxy-info command
 
        identity  : /DC=org/DC=cilogon/C=US/O=Massachusetts Institute of Technology/
