@@ -158,9 +158,11 @@ Setup gfal tools from CVMFS:
 ### How to request large storage space on Tier2 cluster?
 
 First you need to obtain a grid ceretificate either through your own experiment or collaboration or use the on from OSG described [here](https://opensciencegrid.org/docs/security/user-certs/)
-There are only certain authorities that issue grid certificate, but MIT is not one of them. If you see something like this as an output
+There are only certain authorities that issue grid certificates, but MIT is not one of them. If you see something like this as an output
 of voms-proxy-info command
-identity  : /DC=org/DC=cilogon/C=US/O=Massachusetts Institute of Technology/,
+
+identity  : /DC=org/DC=cilogon/C=US/O=Massachusetts Institute of Technology/
+
 it means you converted the wrong certificate into the pem format.
 
 After you have created a proxy send an e-mail to maxi@mit.edu including the output of the
