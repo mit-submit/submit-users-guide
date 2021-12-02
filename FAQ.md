@@ -155,7 +155,7 @@ Setup gfal tools from CVMFS:
 
        source /cvmfs/grid.cern.ch/centos7-ui-test/etc/profile.d/setup-c7-ui-example.sh
        
-### How to request large storage space in hadoop?
+### How to request large storage space on Tier2 cluster?
 
 First you need to obtain a grid ceretificate either through your own experiment or collaboration or use the on from OSG described [here](https://opensciencegrid.org/docs/security/user-certs/)
 
