@@ -157,9 +157,9 @@ Setup gfal tools from CVMFS:
        
 ### How to request large storage space on Tier2 cluster?
 Users who work on CMS, LHCb, Clas12 experiments are guaranteed space in Tier2 storage as those experiments made contributations to the hardware.
-Other LNS experiments could have space allocated even though the space would be limited to a couple of terabytes.
+Other LNS or CTP groups could have space allocated even though it would be limited to a couple of terabytes.
 
-First you need to obtain a grid ceretificate either through your own experiment or collaboration or use the on from OSG described [here](https://opensciencegrid.org/docs/security/user-certs/)
+First you need to obtain a grid ceretificate either through your own experiment or collaboration or obtaine one from OSG as described [here](https://opensciencegrid.org/docs/security/user-certs/)
 There are only certain authorities that issue grid certificates, but MIT is not one of them. If you see something like this as an output
 of voms-proxy-info command
 
@@ -175,5 +175,6 @@ command. Please do not forget to cc the leader of your LNS research group. Pleas
 Your request will be handled and the results will be e-mailed back.
 
 To be able to access this directory you have to use gfal tools which are described [here](http://submit04.mit.edu/tips.html#tier2).
-
+There is a low limit on the size of the files that can be written into the storage. Anything below 100 MBs is considered to be bad 
+for storage.
 
