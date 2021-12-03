@@ -1,5 +1,5 @@
 #!/bin/bash
-WEB_LOCATION=/home/tier3/freerc/public_html/submit-users-guide
+WEB_LOCATION=/home/tier3/paus/public_html/submit-users-guide
 
 echo " Installing into: $WEB_LOCATION (hit return)"
 read
