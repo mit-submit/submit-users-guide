@@ -1,8 +1,12 @@
 Running and Batch jobs:
 -----------------------
 
+This section will give you a quick guide on how to submit batch jobs at submit. There will be a couple of simple examples to help get you started.
+
 Running locally:
 ~~~~~~~~~~~~~~~~
+
+The submit machines are powerful servers which can be used for local testing. This allows users to thoroughly test their code before expanding to batch submission. When you are ready to scale up your framework you can start with the examples below to start submitting to HTCondor or Slurm.
 
 HTCondor examples:
 ~~~~~~~~~~~~~~~~~~
@@ -88,28 +92,30 @@ And finally you can also use OSG:
 Condor example 1:
 ~~~~~~~~~~~~~~~~~
 
-Lets look at a full example condor submission for a running a python script on some ROOT file. In this first example we will grab the ROOT file with xrootd and then transfer the file to hadoop scratch space using xrdcp. Lets run the following script in the condor job/ Lets call it script.sh
+Lets look at a full example condor submission for downloading some ROOT file and transfering the output. In this first example we will grab the ROOT file with xrootd and then transfer the file to hadoop scratch space using xrdcp. Lets run the following script in the condor job/ Lets call it script.sh. Make sure to update your username before running the script.
 
 .. code-block:: sh
 
       #!/bin/bash
-
+      
       #if you need cvmfs or a given architecture
       source /cvmfs/cms.cern.ch/cmsset_default.sh
       export SCRAM_ARCH=slc7_amd64_gcc820
-
+      export HOME=.
+      
       echo "hostname"
       hostname
 
-      #if your_script.py reads a ROOT file you can grab it with xrootd like below
-      python3 your_script.py --infile=root://xrootd.cmsaf.mit.edu//store/user/paus/nanosu/A00/QCD_HT1000to1500_TuneCP5_13TeV-madgraphMLM-pythia8+RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1+MINIAODSIM/00A7C4D5-8881-5D47-8E1F-FADDC4B6FA96.root
+      #download the file      
+      xrdcp root://xrootd.cmsaf.mit.edu//store/user/paus/nanosu/A00/QCD_HT1000to1500_TuneCP5_13TeV-madgraphMLM-pythia8+RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1+MINIAODSIM/00A7C4D5-8881-5D47-8E1F-FADDC4B6FA96.root out.root
+      
+      #transfer the file
+      xrdcp out.root root://t3serv017.mit.edu//scratch/<username>/
 
-      #If there is an output file we can transfer that to a scratch space using xrdcp
-      xrdcp out.root root://t3serv017.mit.edu//scratch/username/.
       echo "----- transferring output to scratch :"
       echo " ------ THE END (everyone dies !) ----- "
 
-and the corresponding condor.sub file
+and the corresponding condor.sub file. Make sure to update the uid in the x509 proxy. This will run on the T3 but can be modified to run in other locations.
 
 .. code-block:: sh
 
@@ -122,12 +128,9 @@ and the corresponding condor.sub file
       error                 = $(ClusterId).$(ProcId).err
       log                   = $(ClusterId).$(ProcId).log
       use_x509userproxy     = True
-      x509userproxy         = /tmp/x509up_u206148
+      x509userproxy         = /tmp/x509up_u<uid>
       when_to_transfer_output = ON_EXIT
-      on_exit_remove        = (ExitBySignal == False) && (ExitCode == 0)
-      max_retries           = 3
-      requirements          = (BOSCOCluster == "t3serv008.mit.edu"  && Machine =!= LastRemoteHost && HAS_CVMFS_cms_cern_ch)
-      
+      requirements          = (BOSCOCluster == "t3serv008.mit.edu")
       queue 10
 
 now you can submit your job:
@@ -136,12 +139,49 @@ now you can submit your job:
 
       condor_submit condor.sub
 
+This simple set up can be expanded to suit your needs. Just add your analyzer into the script.sh above and transfer the output in a similar way. 
+
 Condor example 2:
 ~~~~~~~~~~~~~~~~~
 
 If you have smaller output and you want to use the workspace rather than hadoop we can do something similar but instead trasnfer the output from the submit machines through remaps. Similar the above we will use a script.sh
 
+.. code-block:: sh
 
+      #!/bin/bash
+      
+      #if you need cvmfs or a given architecture
+      source /cvmfs/cms.cern.ch/cmsset_default.sh
+      export SCRAM_ARCH=slc7_amd64_gcc820
+      export HOME=.
+      
+      echo "hostname"
+      hostname
+      
+      #download the file
+      xrdcp root://xrootd.cmsaf.mit.edu//store/user/paus/nanosu/A00/QCD_HT1000to1500_TuneCP5_13TeV-madgraphMLM-pythia8+RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1+MINIAODSIM/00A7C4D5-8881-5D47-8E1F-FADDC4B6FA96.root out.root
+      
+      echo "----- transferring output to scratch :"
+      echo " ------ THE END (everyone dies !) ----- "
+
+Similar to above, we will also need a condor.sub. However, this time we will transfer the file here rather than in the script. We will do this through a remap. Do not use this method to transer any files through the fuse mount! 
+
+.. code-block:: sh
+
+      universe              = vanilla
+      request_disk          = 1024
+      executable            = script.sh
+      arguments             = $(ProcId)
+      should_transfer_files = YES
+      output                = $(ClusterId).$(ProcId).out
+      error                 = $(ClusterId).$(ProcId).err
+      log                   = $(ClusterId).$(ProcId).log
+      use_x509userproxy     = True
+      x509userproxy         = /tmp/x509up_u<uid>
+      when_to_transfer_output = ON_EXIT
+      transfer_output_remaps = "out.root = /work/submit/<username>/out.root"
+      requirements          = (BOSCOCluster == "t3serv008.mit.edu")
+      queue 10
 
 
 Slurm examples:
