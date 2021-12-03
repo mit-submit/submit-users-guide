@@ -60,7 +60,3 @@ html_theme = 'groundwork'
 # so a file named "default.css" will overwrite the builtin "default.css".
 html_static_path = []
 html_logo = 'img/submit.png'
-html_theme_options = {
-    'logo_only': True,
-    'display_version': False,
-}
