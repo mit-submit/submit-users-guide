@@ -1,8 +1,8 @@
-Getting started:
-----------------
+Getting started
+---------------
 
-How to get an account:
-~~~~~~~~~~~~~~~~~~~~~~
+How to get an account
+~~~~~~~~~~~~~~~~~~~~~
 
-The rules for an account:
-~~~~~~~~~~~~~~~~~~~~~~~~~
+The rules for an account
+~~~~~~~~~~~~~~~~~~~~~~~~

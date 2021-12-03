@@ -17,12 +17,12 @@
 
 # -- Project information -----------------------------------------------------
 
-project = 'mit-submit'
+project = 'subMIT'
 copyright = '2021, Chad Freer, Christoph Paus'
 author = 'Chad Freer, Christoph Paus'
 
 # The full version, including alpha/beta/rc tags
-release = 'mit-submitv1'
+release = 'v0'
 
 
 # -- General configuration ---------------------------------------------------
@@ -48,9 +48,19 @@ exclude_patterns = []
 # a list of builtin themes.
 #
 #html_theme = 'alabaster'
-html_theme = 'sizzle'
+#html_theme = 'sizzle'
+html_theme = 'groundwork'
+
+#import sphinx_adc_theme
+#html_theme = 'sphinx_adc_theme'
+#html_theme_path = [sphinx_adc_theme.get_html_theme_path()]
 
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
-html_static_path = ['_static']
+html_static_path = []
+html_logo = 'img/submit.png'
+html_theme_options = {
+    'logo_only': True,
+    'display_version': False,
+}

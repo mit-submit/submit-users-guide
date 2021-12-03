@@ -1,8 +1,8 @@
-Things that work and things that don't:
-----------------------
+Things that work and things that do not
+---------------------------------------
 
-Do this:
-~~~~~~~~~~~~
+Do this
+~~~~~~~
 
-Avoid doing this:
-~~~~~~~~~~~~
+Avoid doing this
+~~~~~~~~~~~~~~~~
