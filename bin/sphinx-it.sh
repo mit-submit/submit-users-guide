@@ -8,4 +8,4 @@ sphinx-build -b html source build
 make html
 rsync -Cavz -delete build/ $WEB_LOCATION
 
-exit 0
+#exit 0

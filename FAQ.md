@@ -155,16 +155,26 @@ Setup gfal tools from CVMFS:
 
        source /cvmfs/grid.cern.ch/centos7-ui-test/etc/profile.d/setup-c7-ui-example.sh
        
-### How to request large storage space in hadoop?
+### How to request large storage space on Tier2 cluster?
+Users who work on CMS, LHCb, Clas12 experiments are guaranteed space in Tier2 storage as those experiments made contributations to the hardware.
+Other LNS or CTP groups could have space allocated even though it would be limited to a couple of terabytes.
 
-First you need to obtain a grid ceretificate either through your own experiment or collaboration or use the on from OSG described [here](https://opensciencegrid.org/docs/security/user-certs/)
+First you need to obtain a grid certificate either through your own experiment/collaboration, or get one from OSG (Open Science Grid) as described [here](https://opensciencegrid.org/docs/security/user-certs/).
+There are various authorities that can issue grid certificates, MIT is not one of them. If you see something like this as an output
+of voms-proxy-info command
 
-Then when you have created a proxy send an e-mail to maxi@mit.edu including the output of the
+       identity  : /DC=org/DC=cilogon/C=US/O=Massachusetts Institute of Technology/
+
+it means you converted the wrong certificate into the pem format.
+
+After you have created a proxy send an e-mail to maxi@mit.edu including the output of the
 
        voms-proxy-info -all
 
-command. Max will create the appropriate directory and e-mail back.
+command. Please do not forget to cc the leader of your LNS research group. Please also say what experiment you work on.
+Your request will be handled and the results will be e-mailed back.
 
-To be able to access this directory you have to use gfal tools which are described [here](https://www.systutorials.com/docs/linux/man/1-gfal-copy/).
-
+To be able to access this directory you have to use gfal tools which are described [here](http://submit04.mit.edu/tips.html#tier2).
+There is a low limit on the size of the files that can be written into the storage. Anything below 100 MBs is considered to be bad 
+for storage.
 
