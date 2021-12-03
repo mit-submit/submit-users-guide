@@ -1,6 +1,8 @@
 Available Software:
 -------------------
 
+This section will guide you through the various tools and services that you have access to as soon you connect to submit. This guide should help you set up environments for your applications and allow you the flexibilty to develop your code using modern computing tools.
+
 Native system:
 ~~~~~~~~~~~~~~
 
@@ -20,7 +22,7 @@ All of the submit machines come with several tools to help you get started with 
 
 - GFAL
 
-For more complicated workflows, there are several options on how to proceed. Many environments can be set up through CVFMS provided by CERN. If you need more control of the environment, either conda or dockers are commonly used and well supported. For more information see the sectiosns below.
+For more complicated workflows, there are several options on how to proceed. Many environments can be set up through CVFMS provided by CERN. If you need more control of the environment, either conda or dockers are commonly used and well supported. For more information see the sections below.
 
 CVMFS:
 ~~~~~~
@@ -93,3 +95,39 @@ Install coffea, xrootd, and more. SUEP analysis uses Fastjet with awkward array 
 Containers:
 ~~~~~~~~~~~
 
+Containers are becoming commonplace in scientific workflows. Submit offers access to containers through Singularity images provided through CVMFS. This section will give a short example on how to enter into a singularity container to run your framework. For more information on dockers see the site below:
+
+#. `docker <https://docs.docker.com/engine/reference/commandline/build/>`_
+
+For this example, we will use the coffea-base singularity image based on the following image:
+
+#. `coffea-base <https://github.com/CoffeaTeam/docker-coffea-base>`_
+
+Entering into the singularity environment is easy once you have sourced CVMFS. You can simply do the following command:
+
+.. code-block:: sh
+
+     singularity shell -B ${PWD}:/work /cvmfs/unpacked.cern.ch/registry.hub.docker.com/coffeateam/coffea-dask:latest
+
+Now you should be in a singularity environment. To test you try to import a non-native package like coffea in python:
+
+.. code-block:: sh
+
+     python3 -c "import coffea"
+
+The command above naturally binds the PWD and work directory. If you need to specify another area to bind you can do the following:
+
+.. code-block:: sh
+
+     export SINGULARITY_BIND="/mnt"
+
+Now you can run in many different environments that are available in singularity images through CVMFS.
+
+JupyterHub:
+~~~~~~~~~~~
+
+In addition to the tools above, you have access to Jupyter Notebooks through a JupyterHub set up at submit. You can log in below:
+
+#. `JupyterHub <https://submit00.mit.edu/jupyter>`_
+
+This JupyterHub is set up through the submit machines meaning that you have access to all of your data through jupyter notebooks. You will have access to basic python2 and python3 configurations. In additionif you need a more complex environment, you can run your notebooks in any conda environment that you have set up. This allows you to create the exact environement you need for your projects. An example on how to set up a conda environment is shown above.
