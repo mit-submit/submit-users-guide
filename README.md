@@ -2,7 +2,7 @@
 
 # Users guide to the *subMIT* login pool
 
-The draft users guide can be found `here <http://submit04.mit.edu/submit-users/guide>`_
+The draft users guide can be found [here](http://submit04.mit.edu/submit-users/guide)
 
 
 # For people editing
