@@ -43,8 +43,8 @@ You should now be logged into one of our main submit server machines. By default
    # Some users will also get access to hadoop scratch storage amounting to 1 TB
    /mnt/T3_US_MIT/hadoop/scratch/<username>
 
-Creating a personal webpage:
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Creating a personal webpage
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 In addition to the areas above, you have the ability to create a personal webpage in order to store and share your files. In order to create this site you will need a directory named public_html in your home directory:
 

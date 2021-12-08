@@ -149,8 +149,8 @@ The command above naturally binds the PWD and work directory. If you need to spe
 
 Now you can run in many different environments that are available in singularity images through CVMFS.
 
-JupyterHub:
-~~~~~~~~~~~
+JupyterHub
+~~~~~~~~~~
 
 In addition to the tools above, you have access to Jupyter Notebooks through a JupyterHub set up at submit. You can log in below:
 

@@ -2,21 +2,20 @@
 
 # Users guide to the *subMIT* login pool
 
-The draft users guide can be found here:
+The draft users guide can be found `here <http://submit04.mit.edu/submit-users/guide>`_
 
-http://t3serv001.mit.edu/~freerc/build/index.html
 
-in order to build the code and update the website do the following:
-
-```
-sphinx-build -b html source build
-make html
-cp -r build /home/tier3/freerc/public_html/
-```
+# For people editing
 
 Download the following sphinx packages in order to compile
 
 ```
 python3 -m pip install groundwork-sphinx-theme
 python3 -m pip install sphinx-toolbox
+```
+
+In order to build the code and update the website do the following
+
+```
+./bin/sphinx-it.sh
 ```

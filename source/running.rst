@@ -197,8 +197,8 @@ Similar to above, we will also need a condor.sub. However, this time we will tra
       queue 10
 
 
-Slurm example 1:
-~~~~~~~~~~~~~~~~
+Slurm example 1
+~~~~~~~~~~~~~~~
 
 Slurm can also be used on the submit machines. There is a slurm federation on the submit machines as well as slurm clusters connected through lqcd. Below is a sample about how to submit a slurm job to the submit machines. Here we are doing similar to the condor samples above and copying a file with xrootd and then transferring the output to hadoop scratch space. Like Condor, you will need to export your x509 proxy in order to get access to certain files.
 
@@ -225,8 +225,8 @@ Slurm can also be used on the submit machines. There is a slurm federation on th
       srun hostname
       srun ls -hrlt
 
-Slurm example lqcd:
-~~~~~~~~~~~~~~~~~~~
+Slurm example lqcd
+~~~~~~~~~~~~~~~~~~
 
 THIS SECTION IS UNDER CONSTRUCTION AS THE LQCD CLUSTER IS NOT AVAILABLE TO SUBMIT USERS
 
