@@ -11,6 +11,8 @@ The submit machines are powerful servers which can be used for local testing. Th
 HTCondor examples
 ~~~~~~~~~~~~~~~~~
 
+This section will show you several ways to submit jobs through HTCondor. Here, you can see how to form your condor submission to control your jobs. A very simple example is shown below with several more complex examples afterwards. 
+
 #. `An example condor script <https://github.com/mit-submit/submit-examples/blob/main/test-all/base_sub>`_
 
 .. code-block:: sh
@@ -32,25 +34,25 @@ There are several more examples for different application types at
 
 The different examples are below:
 
-#. `DAGMan <https://github.com/mit-submit/submit-examples/tree/main/DAGMan>`_
+A simple test:
 
-#. `DAGMan2 <https://github.com/mit-submit/submit-examples/tree/main/DAGMan2>`_
+#. `test-all <https://github.com/mit-submit/submit-examples/tree/main/test-all>`_
 
-#. `condor_gpu <https://github.com/mit-submit/submit-examples/tree/main/condor_gpu>`_
+Testing different languages:
 
 #. `julia <https://github.com/mit-submit/submit-examples/tree/main/julia>`_
 
 #. `matlab <https://github.com/mit-submit/submit-examples/tree/main/matlab>`_
 
-#. `pythia <https://github.com/mit-submit/submit-examples/tree/main/pythia>`_
+Submissions through DAGMan. The second example has child processes.
 
-#. `rat <https://github.com/mit-submit/submit-examples/tree/main/rat>`_
+#. `DAGMan <https://github.com/mit-submit/submit-examples/tree/main/DAGMan>`_
 
-#. `rat_python <https://github.com/mit-submit/submit-examples/tree/main/rat_python>`_
+#. `DAGMan2 <https://github.com/mit-submit/submit-examples/tree/main/DAGMan2>`_
 
-#. `test-all <https://github.com/mit-submit/submit-examples/tree/main/test-all>`_
+If you know the gpu machines to run on you can try testing the following by adding those machines in the requirements:
 
-#. `trajector <https://github.com/mit-submit/submit-examples/tree/main/trajector>`_
+#. `condor_gpu <https://github.com/mit-submit/submit-examples/tree/main/condor_gpu>`_
 
 
 Using batch systems
@@ -87,12 +89,19 @@ And finally you can also use OSG:
 
 .. code-block:: sh
 
-      #Condor needs updating first
+      #Coming soon
 
 Condor example 1
 ~~~~~~~~~~~~~~~~
 
-Lets look at a full example condor submission for downloading some ROOT file and transfering the output. In this first example we will grab the ROOT file with xrootd and then transfer the file to hadoop scratch space using xrdcp. Lets run the following script in the condor job/ Lets call it script.sh. Make sure to update your username before running the script.
+Lets look at a full example condor submission for downloading some ROOT file and transfering the output. In order to access files you will need to export your x509 proxy. The easiest way to do this on the submit machines is to first make this proxy available in your /home space and then add export lines in your condor submission. It is often easiest to add an alias commad to your .bashrc like the following:
+
+.. code-block:: sh
+
+      alias proxy='voms-proxy-init -rfc -voms cms; cp /tmp/x509up_u'$(id -u)' ~/'
+
+
+Once the x509 proxy is available, you can use xrootd freely. In this first example we will grab a ROOT file with xrootd and then transfer the file to hadoop scratch space using xrdcp. Lets run the following script in the condor job. Lets call it script.sh. Make sure to update your uid and username before running the script.
 
 .. code-block:: sh
 
@@ -102,6 +111,7 @@ Lets look at a full example condor submission for downloading some ROOT file and
       source /cvmfs/cms.cern.ch/cmsset_default.sh
       export SCRAM_ARCH=slc7_amd64_gcc820
       export HOME=.
+      export X509_USER_PROXY=x509up_u<uid>
       
       echo "hostname"
       hostname
@@ -109,6 +119,8 @@ Lets look at a full example condor submission for downloading some ROOT file and
       #download the file      
       xrdcp root://xrootd.cmsaf.mit.edu//store/user/paus/nanosu/A00/QCD_HT1000to1500_TuneCP5_13TeV-madgraphMLM-pythia8+RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1+MINIAODSIM/00A7C4D5-8881-5D47-8E1F-FADDC4B6FA96.root out.root
       
+      #Your Analyzer goes here
+
       #transfer the file
       xrdcp out.root root://t3serv017.mit.edu//scratch/<username>/
 
@@ -128,7 +140,7 @@ and the corresponding condor.sub file. Make sure to update the uid in the x509 p
       error                 = $(ClusterId).$(ProcId).err
       log                   = $(ClusterId).$(ProcId).log
       use_x509userproxy     = True
-      x509userproxy         = /tmp/x509up_u<uid>
+      x509userproxy         = /home/submit/<username>/x509up_u<uid>
       when_to_transfer_output = ON_EXIT
       requirements          = (BOSCOCluster == "t3serv008.mit.edu")
       queue 10
@@ -152,6 +164,7 @@ If you have smaller output and you want to use the workspace rather than hadoop 
       source /cvmfs/cms.cern.ch/cmsset_default.sh
       export SCRAM_ARCH=slc7_amd64_gcc820
       export HOME=.
+      export X509_USER_PROXY=x509up_u<uid>
       
       echo "hostname"
       hostname
@@ -159,6 +172,8 @@ If you have smaller output and you want to use the workspace rather than hadoop 
       #download the file
       xrdcp root://xrootd.cmsaf.mit.edu//store/user/paus/nanosu/A00/QCD_HT1000to1500_TuneCP5_13TeV-madgraphMLM-pythia8+RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1+MINIAODSIM/00A7C4D5-8881-5D47-8E1F-FADDC4B6FA96.root out.root
       
+      #Your Analyzer goes here
+
       echo "----- transferring output to scratch :"
       echo " ------ THE END (everyone dies !) ----- "
 
@@ -175,24 +190,45 @@ Similar to above, we will also need a condor.sub. However, this time we will tra
       error                 = $(ClusterId).$(ProcId).err
       log                   = $(ClusterId).$(ProcId).log
       use_x509userproxy     = True
-      x509userproxy         = /tmp/x509up_u<uid>
+      x509userproxy         = /home/submit/<username>/x509up_u<uid>
       when_to_transfer_output = ON_EXIT
       transfer_output_remaps = "out.root = /work/submit/<username>/out.root"
       requirements          = (BOSCOCluster == "t3serv008.mit.edu")
       queue 10
 
 
-Slurm examples
-~~~~~~~~~~~~~~
+Slurm example 1:
+~~~~~~~~~~~~~~~~
 
-Slurm can also be used on the submit machines. There is a slurm federation on the submit machines as well as slurm clusters connected through lqcd. Below is a sample about how to submit a slurm job to the submit machines:
+Slurm can also be used on the submit machines. There is a slurm federation on the submit machines as well as slurm clusters connected through lqcd. Below is a sample about how to submit a slurm job to the submit machines. Here we are doing similar to the condor samples above and copying a file with xrootd and then transferring the output to hadoop scratch space. Like Condor, you will need to export your x509 proxy in order to get access to certain files.
 
 
 .. code-block:: sh
 
-     there will be some code here soon!
+      #!/bin/bash
+      #
+      #SBATCH --job-name=test
+      #SBATCH --output=res_%j.txt
+      #SBATCH --error=err_%j.txt
+      #
+      #SBATCH --time=10:00
+      #SBATCH --mem-per-cpu=100
+      
+      export X509_USER_PROXY=~/x509up_u206148
+      
+      xrdcp root://xrootd.cmsaf.mit.edu//store/user/paus/nanosu/A00/QCD_HT1000to1500_TuneCP5_13TeV-madgraphMLM-pythia8+RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1+MINIAODSIM/00A7C4D5-8881-5D47-8E1F-FADDC4B6FA96.root out.root
+      
+      #Your Analyzer goes here
 
+      xrdcp out.root root://t3serv017.mit.edu//scratch/freerc/SUEP/slurm.root
+      
+      srun hostname
+      srun ls -hrlt
 
+Slurm example lqcd:
+~~~~~~~~~~~~~~~~~~~
+
+THIS SECTION IS UNDER CONSTRUCTION AS THE LQCD CLUSTER IS NOT AVAILABLE TO SUBMIT USERS
 
 And now an example for how to submit to the lqcd cluster from the submit machines. Here we need some extra set up and then test some simple srun commands like below:
 
