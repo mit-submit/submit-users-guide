@@ -1,6 +1,8 @@
 Available Software
 ------------------
 
+This section briefly describes several options in which to set up your environment for working on submit. This section is not exhaustive but introduces several tools which can help you set up your code. 
+
 Native system
 ~~~~~~~~~~~~~
 
@@ -29,13 +31,41 @@ The CernVM File System (CVMFS) provides a scalable, reliable and low- maintenanc
 
 More documentation on CVMFS can be found here: `CVMFS <https://cernvm.cern.ch/fs/>`_
 
-In order to initialize CVMFS on submit machines you can simply use the command below:
+A couple examples of using CVMFS are shown below:
+
+To set up ROOT:
+
+.. code-block:: sh
+
+     source /cvmfs/sft.cern.ch/lcg/views/ROOT-latest/x86_64-centos7-gcc7-opt/setup.sh 
+     root
+
+To set up GEANT4:
+
+.. code-block:: sh
+
+     source /cvmfs/sft.cern.ch/lcg/releases/gcc/11.1.0/x86_64-centos7/setup.sh
+     export GEANT4_DIR=/cvmfs/geant4.cern.ch/geant4/10.7.p01/x86_64-centos7-gcc8-optdeb-MT
+     export QT5_HOME=/cvmfs/sft.cern.ch/lcg/releases/LCG_97/qt5/5.12.4/x86_64-centos7-gcc8-opt
+     export Qt5_DIR=$QT5_HOME
+     export QT_QPA_PLATFORM_PLUGIN_PATH=$QT5_HOME/plugins
+     export QT_XKB_CONFIG_ROOT=/usr/share/X11/xkb
+     cd ${GEANT4_DIR}/bin
+     source ./geant4.sh 
+
+Now you can see the geant version:
+
+.. code-block:: sh
+
+     ./geant4-config --version
+
+To set up CMSSW or other cms specific tools:
 
 .. code-block:: sh
 
       source /cvmfs/cms.cern.ch/cmsset_default.sh
 
-Once CVMFS has been sourced you can see the options in /cvmfs. If you want to use ROOT or any other CMS specific tools you can also download CMSSW releases and work within a CMS environment. A simple example is shown below:
+If you want to use ROOT or any other CMSSW specific tools you can also download CMSSW releases and work within a CMS environment. A simple example is shown below:
 
 .. code-block:: sh
 
@@ -127,3 +157,7 @@ In addition to the tools above, you have access to Jupyter Notebooks through a J
 #. `JupyterHub <https://submit00.mit.edu/jupyter>`_
 
 This JupyterHub is set up through the submit machines meaning that you have access to all of your data through jupyter notebooks. You will have access to basic python2 and python3 configurations. In additionif you need a more complex environment, you can run your notebooks in any conda environment that you have set up. This allows you to create the exact environement you need for your projects. An example on how to set up a conda environment is shown above.
+
+If you have any questions about JupyterHub please email at:
+
+JupyterHub help: submit-jupyter@mit.edu

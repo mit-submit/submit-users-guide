@@ -30,6 +30,7 @@ release = 'v0'
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
 extensions = [
+'sphinx_toolbox.collapse',
 ]
 
 # Add any paths that contain templates here, relative to this directory.
