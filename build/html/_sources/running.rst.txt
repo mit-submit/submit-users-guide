@@ -1,15 +1,15 @@
-Running and Batch jobs:
------------------------
+Running and Batch jobs
+----------------------
 
 This section will give you a quick guide on how to submit batch jobs at submit. There will be a couple of simple examples to help get you started.
 
-Running locally:
-~~~~~~~~~~~~~~~~
+Running locally
+~~~~~~~~~~~~~~~
 
 The submit machines are powerful servers which can be used for local testing. This allows users to thoroughly test their code before expanding to batch submission. When you are ready to scale up your framework you can start with the examples below to start submitting to HTCondor or Slurm.
 
-HTCondor examples:
-~~~~~~~~~~~~~~~~~~
+HTCondor examples
+~~~~~~~~~~~~~~~~~
 
 #. `An example condor script <https://github.com/mit-submit/submit-examples/blob/main/test-all/base_sub>`_
 
@@ -53,8 +53,8 @@ The different examples are below:
 #. `trajector <https://github.com/mit-submit/submit-examples/tree/main/trajector>`_
 
 
-Using batch systems to run at a given resource:
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Using batch systems
+~~~~~~~~~~~~~~~~~~~
 
 While using Condor you should be able to specify where you want your hobs to run at. Here we provide a couple of examples on modifying your requirements in order to run at different clusters. For more info see here:
 
@@ -89,8 +89,8 @@ And finally you can also use OSG:
 
       #Condor needs updating first
 
-Condor example 1:
-~~~~~~~~~~~~~~~~~
+Condor example 1
+~~~~~~~~~~~~~~~~
 
 Lets look at a full example condor submission for downloading some ROOT file and transfering the output. In this first example we will grab the ROOT file with xrootd and then transfer the file to hadoop scratch space using xrdcp. Lets run the following script in the condor job/ Lets call it script.sh. Make sure to update your username before running the script.
 
@@ -139,10 +139,8 @@ now you can submit your job:
 
       condor_submit condor.sub
 
-This simple set up can be expanded to suit your needs. Just add your analyzer into the script.sh above and transfer the output in a similar way. 
-
-Condor example 2:
-~~~~~~~~~~~~~~~~~
+Condor example 2
+~~~~~~~~~~~~~~~~
 
 If you have smaller output and you want to use the workspace rather than hadoop we can do something similar but instead trasnfer the output from the submit machines through remaps. Similar the above we will use a script.sh
 
@@ -184,8 +182,8 @@ Similar to above, we will also need a condor.sub. However, this time we will tra
       queue 10
 
 
-Slurm examples:
-~~~~~~~~~~~~~~~
+Slurm examples
+~~~~~~~~~~~~~~
 
 Slurm can also be used on the submit machines. There is a slurm federation on the submit machines as well as slurm clusters connected through lqcd. Below is a sample about how to submit a slurm job to the submit machines:
 

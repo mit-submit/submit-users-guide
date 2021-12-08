@@ -6,6 +6,7 @@ read
 
 sphinx-build -b html source build
 make html
-rsync -Cavz -delete build/ $WEB_LOCATION
+
+rsync -Cavz --delete build/ $WEB_LOCATION
 
 #exit 0
