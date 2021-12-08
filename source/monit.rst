@@ -5,7 +5,7 @@ This sections will detail the monitoring available at submit. Here we will detai
 The main submit page
 ~~~~~~~~~~~~~~~~~~~~
 
-The main submit page can be found `here <http://submit04.mit.edu/>`_, where you can find interesting links useful for monitoring. Most of these links are explained in more detail below.
+On the main `submit page <http://submit04.mit.edu/>`_ you can find interesting links useful for monitoring. Most of these links are explained in more detail below.
 
 Ganglia Monitoring for submit
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -15,7 +15,7 @@ Ganglia is a distributed monitoring system for high-performance computing system
 CondorMon
 ~~~~~~~~~
 
-If you would like to monitor your condor job you can use the condor monitoring `Condormon <http://submit04.mit.edu/condormon/index.html>`_, where you can see how many condor jobs are running, idle or held as well as where they are being submitted to. This site also gives an overview of your recent submissions.
+If you would like to monitor your condor job you can use the condor monitoring `CondorMon <http://submit04.mit.edu/condormon/index.html>`_, where you can see how many condor jobs are running, idle or held as well as where they are being submitted to. This site also gives an overview of your recent submissions.
 
 
 Monitoring for the T3
