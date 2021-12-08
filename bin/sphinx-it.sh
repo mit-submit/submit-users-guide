@@ -1,6 +1,10 @@
 #!/bin/bash
-#WEB_LOCATION=/home/tier3/paus/public_html/submit-users-guide
 WEB_LOCATION=paus@submit04.mit.edu:/var/www/html/submit-users-guide
+
+if [ ".$1" != "." ]
+then
+   WEB_LOCATION="$1"
+fi
 
 echo " Installing into: $WEB_LOCATION (hit return)"
 read
