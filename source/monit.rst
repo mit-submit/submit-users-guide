@@ -21,4 +21,4 @@ If you would like to monitor your condor job you can use the condor monitoring `
 Monitoring for the T3
 ~~~~~~~~~~~~~~~~~~~~~
 
-For those working on the T3 machines, we have similar `monitoring  <http://t3serv001.mit.edu/>`_, including `CondorMon <http://t3serv007.mit.edu/condormon/>`_ and `Ganglia <http://t3serv007.mit.edu/condormon/>`_.
+For those working on the T3 machines, we have similar `monitoring  <http://t3serv001.mit.edu/>`_, including `T3 CondorMon <http://t3serv007.mit.edu/condormon/>`_ and `Ganglia <http://t3serv007.mit.edu/condormon/>`_.
