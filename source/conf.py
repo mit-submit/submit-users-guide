@@ -18,8 +18,8 @@
 # -- Project information -----------------------------------------------------
 
 project = 'subMIT'
-copyright = '2021, Chad Freer, Christoph Paus'
-author = 'Chad Freer, Christoph Paus'
+copyright = '2021, The SubMIT Project Team'
+author = 'The SubMIT Project Team'
 
 # The full version, including alpha/beta/rc tags
 release = 'v0'
