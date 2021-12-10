@@ -121,13 +121,9 @@ Install coffea, xrootd, and more. SUEP analysis uses Fastjet with awkward array 
 Containers
 ~~~~~~~~~~
 
-Containers are becoming commonplace in scientific workflows. Submit offers access to containers through Singularity images provided through CVMFS. This section will give a short example on how to enter into a singularity container to run your framework. For more information on dockers see the site below:
+Containers are becoming commonplace in scientific workflows. Submit offers access to containers through Singularity images provided through CVMFS. This section will give a short example on how to enter into a singularity container to run your framework. For more information on dockers see the `docker engine site <https://docs.docker.com/engine/reference/commandline/build/>`_.
 
-#. `docker <https://docs.docker.com/engine/reference/commandline/build/>`_
-
-For this example, we will use the coffea-base singularity image based on the following image:
-
-#. `coffea-base <https://github.com/CoffeaTeam/docker-coffea-base>`_
+For this example, we will use the coffea-base singularity image based on the following `docker coffea image <https://github.com/CoffeaTeam/docker-coffea-base>`_.
 
 Entering into the singularity environment is easy once you have sourced CVMFS. You can simply do the following command:
 
@@ -152,12 +148,8 @@ Now you can run in many different environments that are available in singularity
 JupyterHub
 ~~~~~~~~~~
 
-In addition to the tools above, you have access to Jupyter Notebooks through a JupyterHub set up at submit. You can log in below:
+In addition to the tools above, you have access to Jupyter Notebooks through a `JupyterHub <https://submit00.mit.edu/jupyter>`_ set up at submit.
 
-#. `JupyterHub <https://submit00.mit.edu/jupyter>`_
+This JupyterHub is set up through the submit machines meaning that you have access to all of your data through jupyter notebooks. You will have access to basic python2 and python3 configurations. In addition if you need a more complex environment, you can run your notebooks in any conda environment that you have set up. This allows you to create the exact environement you need for your projects. An example on how to set up a conda environment is shown above.
 
-This JupyterHub is set up through the submit machines meaning that you have access to all of your data through jupyter notebooks. You will have access to basic python2 and python3 configurations. In additionif you need a more complex environment, you can run your notebooks in any conda environment that you have set up. This allows you to create the exact environement you need for your projects. An example on how to set up a conda environment is shown above.
-
-If you have any questions about JupyterHub please email at:
-
-JupyterHub help: submit-jupyter@mit.edu
+If you have any questions about JupyterHub you can email us (submit-jupyter@mit.edu).

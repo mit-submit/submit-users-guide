@@ -9,7 +9,7 @@ Introduction
 
 The subMIT login pool is designed to let users login safely prepare and tests their research computing tasks and submit them to the large computing resource of their choice. There are for now a limited number of resources connected but we are working on quickly expanding the available resources.
 
-We have HTcondor connection to the Tier-2 computing cluster at Bates, the Tier-2 integration cluster (aka Tier-3) in building 24, the engaging cluster and the OSG. For CMS users the global CMS queue is also seemlesly integrated.
+We have HTcondor connection to the Tier-2 computing cluster at Bates, the Tier-2 integration cluster (aka Tier-3) in building 24, the engaging cluster and the OSG. For CMS users the global CMS queue is also seamlessly integrated.
 
 What do I need for an account
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -21,10 +21,4 @@ It is straightforward to obtain an MIT guest account if you do not have one. A s
 How to get help
 ~~~~~~~~~~~~~~~
 
-If you have any trouble, you can contact submit-help below:
-
-Write to us: submit-help@mit.edu
-
-Our FAQ page can also be found here:
-
-#. `FAQ <https://github.com/mit-submit/submit-users-guide/blob/main/FAQ.md>`_
+If you have any trouble, you can try our `FAQ page <https://github.com/mit-submit/submit-users-guide/blob/main/FAQ.md>`_ or contact submit-help via email (submit-help@mit.edu).

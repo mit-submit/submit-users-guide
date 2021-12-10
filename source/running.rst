@@ -32,35 +32,17 @@ There are several more examples for different application types at
 
 #. `submit-examples <https://github.com/mit-submit/submit-examples>`_
 
-The different examples are below:
+The different examples are below: `simple test <https://github.com/mit-submit/submit-examples/tree/main/test-all>`_, `testing julia <https://github.com/mit-submit/submit-examples/tree/main/julia>`_, `testing matlab <https://github.com/mit-submit/submit-examples/tree/main/matlab>`.
 
-A simple test:
+Submissions can also be done through DAGMan: `DAGMan simple <https://github.com/mit-submit/submit-examples/tree/main/DAGMan>`_, `DAGMan with child process <https://github.com/mit-submit/submit-examples/tree/main/DAGMan2>`_.
 
-#. `test-all <https://github.com/mit-submit/submit-examples/tree/main/test-all>`_
-
-Testing different languages:
-
-#. `julia <https://github.com/mit-submit/submit-examples/tree/main/julia>`_
-
-#. `matlab <https://github.com/mit-submit/submit-examples/tree/main/matlab>`_
-
-Submissions through DAGMan. The second example has child processes.
-
-#. `DAGMan <https://github.com/mit-submit/submit-examples/tree/main/DAGMan>`_
-
-#. `DAGMan2 <https://github.com/mit-submit/submit-examples/tree/main/DAGMan2>`_
-
-If you know the gpu machines to run on you can try testing the following by adding those machines in the requirements:
-
-#. `condor_gpu <https://github.com/mit-submit/submit-examples/tree/main/condor_gpu>`_
+If you know the gpu machines to run on you can try testing the following `condor_gpu ye==test <https://github.com/mit-submit/submit-examples/tree/main/condor_gpu>`_ by adding those machines in the requirements.
 
 
 Using batch systems
 ~~~~~~~~~~~~~~~~~~~
 
-While using Condor you should be able to specify where you want your hobs to run at. Here we provide a couple of examples on modifying your requirements in order to run at different clusters. For more info see here:
-
-#. `Tips <http://submit04.mit.edu/tips.html>`_
+While using Condor you should be able to specify where you want your jobs to run at. Here we provide a couple of examples on modifying your requirements in order to run at different clusters. For more info see `our tips <http://submit04.mit.edu/tips.html>`_.
 
 The condor examople above ran on T2 machines using a regular expression but lets run on the different clusters by modifying the requirements in different ways. Lets start with requirements to run on the T2 machines:
 
