@@ -18,8 +18,8 @@
 # -- Project information -----------------------------------------------------
 
 project = 'subMIT'
-copyright = '2021, The subMIT project team'
-author = 'The subMIT project team'
+copyright = '2021, The SubMIT Project Team'
+author = 'The SubMIT Project Team'
 
 # The full version, including alpha/beta/rc tags
 release = 'v0'
@@ -61,4 +61,4 @@ html_theme = 'groundwork'
 # so a file named "default.css" will overwrite the builtin "default.css".
 html_static_path = []
 html_logo = 'img/under_construction.png'
-#html_logo = 'img/submit-logohtml_logo = 'img/under_construction.png'
+#html_logo = 'img/submit-logo.png'
