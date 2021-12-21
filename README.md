@@ -7,11 +7,12 @@ The draft users guide can be found [here](http://submit04.mit.edu/submit-users-g
 
 # For people editing
 
-Download the following sphinx packages in order to compile
+Download the following sphinx packages in order to compile (use python3)
 
 ```
-python3 -m pip install groundwork-sphinx-theme
-python3 -m pip install sphinx-toolbox
+yum install python-sphinx
+pip install groundwork-sphinx-theme
+pip install sphinx-toolbox
 ```
 
 In order to build the code and update the website do the following
