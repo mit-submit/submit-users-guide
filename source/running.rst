@@ -8,6 +8,8 @@ Running locally
 
 The submit machines are powerful servers which can be used for local testing. This allows users to thoroughly test their code before expanding to batch submission. When you are ready to scale up your framework you can start with the examples below to start submitting to HTCondor or Slurm.
 
+Note: The worker nodes that HTCondor uses does not have access to your home directory, This means that any input files that you need must be passed into the condor submission. Slurm is set up as a federation with all of the submit machines as clusters. This means that Slurm submissions will have access to the home directories. The submit home directories will also be exported to other clusters such as lqcd. 
+
 HTCondor examples
 ~~~~~~~~~~~~~~~~~
 
@@ -64,6 +66,14 @@ If you are a CMS member you can also go through the US CMS global pool:
 
      #You can also control what sites you want to run at. Here is a sample list to use:
      +DESIRED_Sites = "T2_AT_Vienna,T2_BE_IIHE,T2_BE_UCL,T2_BR_SPRACE,T2_BR_UERJ,T2_CH_CERN,T2_CH_CERN_AI,T2_CH_CERN_HLT,T2_CH_CERN_Wigner,T2_CH_CSCS,T2_CH_CSCS_HPC,T2_CN_Beijing,T2_DE_DESY,T2_DE_RWTH,T2_EE_Estonia,T2_ES_CIEMAT,T2_ES_IFCA,T2_FI_HIP,T2_FR_CCIN2P3,T2_FR_GRIF_IRFU,T2_FR_GRIF_LLR,T2_FR_IPHC,T2_GR_Ioannina,T2_HU_Budapest,T2_IN_TIFR,T2_IT_Bari,T2_IT_Legnaro,T2_IT_Pisa,T2_IT_Rome,T2_KR_KISTI,T2_MY_SIFIR,T2_MY_UPM_BIRUNI,T2_PK_NCP,T2_PL_Swierk,T2_PL_Warsaw,T2_PT_NCG_Lisbon,T2_RU_IHEP,T2_RU_INR,T2_RU_ITEP,T2_RU_JINR,T2_RU_PNPI,T2_RU_SINP,T2_TH_CUNSTDA,T2_TR_METU,T2_TW_NCHC,T2_UA_KIPT,T2_UK_London_IC,T2_UK_SGrid_Bristol,T2_UK_SGrid_RALPP,T2_US_Caltech,T2_US_Florida,T2_US_MIT,T2_US_Nebraska,T2_US_Purdue,T2_US_UCSD,T2_US_Vanderbilt,T2_US_Wisconsin,T3_CH_CERN_CAF,T3_CH_CERN_DOMA,T3_CH_CERN_HelixNebula,T3_CH_CERN_HelixNebula_REHA,T3_CH_CMSAtHome,T3_CH_Volunteer,T3_US_HEPCloud,T3_US_NERSC,T3_US_OSG,T3_US_PSC,T3_US_SDSC"
+
+In order to use the CMS global pool, you will need to add a few additional lines to your condor submission. These lines below with the proper id and username (uid and id from submit) are necessary in order to get into the gloabl pool:
+
+.. code-block:: sh
+
+     use_x509userproxy     = True
+     x509userproxy         = /<path>/x509up_u<uid>
+     +AccountingGroup = "analysis.<username>"
 
 
 
@@ -178,6 +188,43 @@ Similar to above, we will also need a condor.sub. However, this time we will tra
       requirements          = (BOSCOCluster == "t3serv008.mit.edu")
       queue 10
 
+How to monitor and control your submitted condor jobs
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+After you have submitted your jobs, it is important to be able to monitor their progress. This section gives a couple of simple examples on how to check on the status of your jobs directly from the submit machines.
+
+The first step in monitoring jobs is to check which jobs are running. This can be done with the command below:
+
+.. code-block:: sh
+
+       #This will show the number of jobs in the Done, Running and Idle states
+       condor_q
+
+       #If you want more information about a job you can look into it here
+       condor_q -l <jobid> 
+
+       #If you are interested in knowing which machines your jobs are running on you can examine that as well
+       condor_q -r <jobid>
+
+Jobs can often stay in the Idle state or be moved into a Hold state. In order to analyze this you can use the analyze of condor.
+
+.. code-block:: sh
+
+       #Check on the status of a job if it is stuck in Idle or moved to Hold
+       condor_q -analyze <jobid>
+
+       #If more information is needed
+       condor_q -better-analyze <jobid> 
+
+If you made a mistake during submission, you can also cancel your jobs. This should be done if any mistakes were made in order to free up the queue.
+
+.. code-block:: sh
+
+       #You can remove a broken job
+       condor_rm <jobid>
+
+       #If you want to remove all of your jobs
+       condor_rm <username>
 
 Slurm example 1
 ~~~~~~~~~~~~~~~
@@ -237,3 +284,57 @@ And now an example for how to submit to the lqcd cluster from the submit machine
      srun hostname
      srun ls -hrlt
      srun sleep 60
+
+How to monitor and control your submitted slurm jobs
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Similar to HTCondor, Slurm has command line options to monitor and control your jobs. This section gives a couple of simple examples on how to monitor your slurm jobs on submit.
+
+The first step in monitoring jobs is to check which jobs are running. This can be done with the command below:
+
+.. code-block:: sh
+
+       #This will show the number of jobs and their states for the submit federation
+       squeue --federation -u <username>
+
+       #You can also ask for the jobs on the different clusters on the federation with the -M option
+       squeue -M all -u <username>
+
+In order to analyze your jobs you can use the scontrol feature of slurm.
+
+.. code-block:: sh
+
+       #Check on the status of a job
+       scontrol show jobid -dd <jobid>
+
+       #If more information is needed
+       sstat --jobs=<jobid> 
+
+       #A more organized way to look at this information is through the format option. In order to see all options use --helpformat. An example is below
+       sstat --jobs=<jobid> --format=jobid,maxrss,ntasks
+
+If you made a mistake during submission, you can also cancel your jobs. This should be done if any mistakes were made in order to free up the queue.
+
+.. code-block:: sh
+
+       #You can remove a broken job
+       scancel <jobid>
+
+       #If you want to remove all of your jobs
+       scancel -u <username>
+
+       #If need be you can also change the state of the job with scontrol to suspend, remove, hold or release
+       scontrol suspend <jobid>
+
+Slurm also has the sacct command to help you to look at information from past jobs. These commands are similar to the sstat commands but are used for jobs that have finished rather than jobs currently running.
+
+.. code-block:: sh
+
+       #Look at information from your hobs after they have finished running. You can use the --long to get the non-abbreviated version
+       sacct --jobs=<jobid> --long
+
+       #Look at all of your recent jobs
+       sacct --user=<username>
+
+       #You can also use the format options to get specific information in the same way that sstat was used above
+       sacct --jobs=<jobid> --format=jobid,maxrss,ntasks
