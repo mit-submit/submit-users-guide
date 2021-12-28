@@ -80,16 +80,16 @@ Conda
 
 Conda is an open source package management system and environment management system. We can use this to set up consistent environments and manage the package dependencies for various applications. Below is an example to set up a python3 environment for working with coffea and dask. 
 
-### Coffea installation with Miniconda
+### Coffea installation with Miniforge
 For installing Miniconda, see also https://hackmd.io/GkiNxag0TUmHnnCiqdND1Q#Local-or-remote
 
 .. code-block:: sh
 
-      wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh
+      wget https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-Linux-x86_64.sh
       # Run and follow instructions on screen
-      bash Miniconda3-latest-Linux-x86_64.sh
+      bash Miniforge3-Linux-x86_64.sh
 
-NOTE: always make sure that conda, python, and pip point to local Miniconda installation (`which conda` etc.).
+NOTE: always make sure that conda, python, and pip point to local Miniforge installation (`which conda` etc.). Another thing to keep in mind is that you should avoid installing packages with pip using --user. The example below shows the correct way to use pip in conjunction with conda. 
 
 You can either use the default environment`base` or create a new one:
 
