@@ -37,7 +37,7 @@ To set up ROOT:
 
 .. code-block:: sh
 
-     source /cvmfs/sft.cern.ch/lcg/views/ROOT-latest/x86_64-centos7-gcc7-opt/setup.sh 
+     source /cvmfs/sft.cern.ch/lcg/views/LCG_101/x86_64-centos7-gcc11-opt/setup.sh
      root
 
 To set up GEANT4:
