@@ -6,13 +6,7 @@ Submit is a shared tool. As such, you are responsible for setting up your work t
 Use batch submission systems to scale up your workflow
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The submit machines are powerful servers. However, if your jobs will take longer than approximately 15 minutes, then it is better to submit them through a batch system. Additionally, if you want to analyze many files, batch systems should be used. On submit, we provide use for both HTCondor and Slurm below.
-
-#. `HTCondor <https://research.cs.wisc.edu/htcondor/>`_
-
-#. `Slurm <https://slurm.schedmd.com/documentation.html>`_ 
-
-Setting up these tools will allow you to scale out your tools and will also prevent clutter on the submit machines. There are simple examples on how to use these batch submission systems later in this guide.
+The submit machines are powerful servers. However, if your jobs will take longer than approximately 15 minutes, then it is better to submit them through a batch system. Additionally, if you want to analyze many files, batch systems should be used. On submit, we provide use for both `HTCondor <https://research.cs.wisc.edu/htcondor/>`_ and `Slurm <https://slurm.schedmd.com/documentation.html>`_. Setting up these tools will allow you to scale out your tools and will also prevent clutter on the submit machines. There are simple examples on how to use these batch submission systems later in this guide.
 
 Avoid accessing files a large number of times
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
