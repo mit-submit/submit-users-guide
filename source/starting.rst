@@ -1318,4 +1318,3 @@ The rules for an account
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
 Remember that these machines are shared. As such, do not max out resources on interactive jobs. As a guideline: If your job takes langer than 15 minutes it makes sense to dispatch it to a batch system. The machines in this login pool are connected to large computing clusters which are accessed by batch programs like HTCondor or Slurm. There are tutorials for these tools later in this guide.  
-

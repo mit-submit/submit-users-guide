@@ -64,7 +64,7 @@ If you are a CMS member you can also go through the US CMS global pool:
 
      Requirements = ( BOSCOCluster =!= "t3serv008.mit.edu" && BOSCOCluster =!= "ce03.cmsaf.mit.edu" )
 
-     #You can also control what sites you want to run at. Here is a sample list to use:
+     # you can also control what sites you want to run at. Here is a sample list to use:
      +DESIRED_Sites = "T2_AT_Vienna,T2_BE_IIHE,T2_BE_UCL,T2_BR_SPRACE,T2_BR_UERJ,T2_CH_CERN,T2_CH_CERN_AI,T2_CH_CERN_HLT,T2_CH_CERN_Wigner,T2_CH_CSCS,T2_CH_CSCS_HPC,T2_CN_Beijing,T2_DE_DESY,T2_DE_RWTH,T2_EE_Estonia,T2_ES_CIEMAT,T2_ES_IFCA,T2_FI_HIP,T2_FR_CCIN2P3,T2_FR_GRIF_IRFU,T2_FR_GRIF_LLR,T2_FR_IPHC,T2_GR_Ioannina,T2_HU_Budapest,T2_IN_TIFR,T2_IT_Bari,T2_IT_Legnaro,T2_IT_Pisa,T2_IT_Rome,T2_KR_KISTI,T2_MY_SIFIR,T2_MY_UPM_BIRUNI,T2_PK_NCP,T2_PL_Swierk,T2_PL_Warsaw,T2_PT_NCG_Lisbon,T2_RU_IHEP,T2_RU_INR,T2_RU_ITEP,T2_RU_JINR,T2_RU_PNPI,T2_RU_SINP,T2_TH_CUNSTDA,T2_TR_METU,T2_TW_NCHC,T2_UA_KIPT,T2_UK_London_IC,T2_UK_SGrid_Bristol,T2_UK_SGrid_RALPP,T2_US_Caltech,T2_US_Florida,T2_US_MIT,T2_US_Nebraska,T2_US_Purdue,T2_US_UCSD,T2_US_Vanderbilt,T2_US_Wisconsin,T3_CH_CERN_CAF,T3_CH_CERN_DOMA,T3_CH_CERN_HelixNebula,T3_CH_CERN_HelixNebula_REHA,T3_CH_CMSAtHome,T3_CH_Volunteer,T3_US_HEPCloud,T3_US_NERSC,T3_US_OSG,T3_US_PSC,T3_US_SDSC"
 
 In order to use the CMS global pool, you will need to add a few additional lines to your condor submission. These lines below with the proper id and username (uid and id from submit) are necessary in order to get into the gloabl pool:
@@ -81,7 +81,7 @@ And finally you can also use OSG:
 
 .. code-block:: sh
 
-      #Coming soon
+      # coming soon
 
 Condor example 1
 ~~~~~~~~~~~~~~~~
@@ -99,7 +99,7 @@ Once the x509 proxy is available, you can use xrootd freely. In this first examp
 
       #!/bin/bash
       
-      #if you need cvmfs or a given architecture
+      # if you need cvmfs or a given architecture
       source /cvmfs/cms.cern.ch/cmsset_default.sh
       export SCRAM_ARCH=slc7_amd64_gcc820
       export HOME=.
@@ -111,9 +111,9 @@ Once the x509 proxy is available, you can use xrootd freely. In this first examp
       #download the file      
       xrdcp root://xrootd.cmsaf.mit.edu//store/user/paus/nanosu/A00/QCD_HT1000to1500_TuneCP5_13TeV-madgraphMLM-pythia8+RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1+MINIAODSIM/00A7C4D5-8881-5D47-8E1F-FADDC4B6FA96.root out.root
       
-      #Your Analyzer goes here
+      # your Analyzer goes here
 
-      #transfer the file
+      # transfer the file
       xrdcp out.root root://t3serv017.mit.edu//scratch/<username>/
 
       echo "----- transferring output to scratch :"
@@ -152,7 +152,7 @@ If you have smaller output and you want to use the workspace rather than hadoop 
 
       #!/bin/bash
       
-      #if you need cvmfs or a given architecture
+      # if you need cvmfs or a given architecture
       source /cvmfs/cms.cern.ch/cmsset_default.sh
       export SCRAM_ARCH=slc7_amd64_gcc820
       export HOME=.
@@ -161,10 +161,10 @@ If you have smaller output and you want to use the workspace rather than hadoop 
       echo "hostname"
       hostname
       
-      #download the file
+      # download the file
       xrdcp root://xrootd.cmsaf.mit.edu//store/user/paus/nanosu/A00/QCD_HT1000to1500_TuneCP5_13TeV-madgraphMLM-pythia8+RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1+MINIAODSIM/00A7C4D5-8881-5D47-8E1F-FADDC4B6FA96.root out.root
       
-      #Your Analyzer goes here
+      # your Analyzer goes here
 
       echo "----- transferring output to scratch :"
       echo " ------ THE END (everyone dies !) ----- "
@@ -197,33 +197,33 @@ The first step in monitoring jobs is to check which jobs are running. This can b
 
 .. code-block:: sh
 
-       #This will show the number of jobs in the Done, Running and Idle states
+       # This will show the number of jobs in the Done, Running and Idle states
        condor_q
 
-       #If you want more information about a job you can look into it here
+       # If you want more information about a job you can look into it here
        condor_q -l <jobid> 
 
-       #If you are interested in knowing which machines your jobs are running on you can examine that as well
+       # If you are interested in knowing which machines your jobs are running on you can examine that as well
        condor_q -r <jobid>
 
 Jobs can often stay in the Idle state or be moved into a Hold state. In order to analyze this you can use the analyze of condor.
 
 .. code-block:: sh
 
-       #Check on the status of a job if it is stuck in Idle or moved to Hold
+       # Check on the status of a job if it is stuck in Idle or moved to Hold
        condor_q -analyze <jobid>
 
-       #If more information is needed
+       # If more information is needed
        condor_q -better-analyze <jobid> 
 
 If you made a mistake during submission, you can also cancel your jobs. This should be done if any mistakes were made in order to free up the queue.
 
 .. code-block:: sh
 
-       #You can remove a broken job
+       # You can remove a broken job
        condor_rm <jobid>
 
-       #If you want to remove all of your jobs
+       # If you want to remove all of your jobs
        condor_rm <username>
 
 Slurm example 1
@@ -247,7 +247,7 @@ Slurm can also be used on the submit machines. There is a slurm federation on th
       
       xrdcp root://xrootd.cmsaf.mit.edu//store/user/paus/nanosu/A00/QCD_HT1000to1500_TuneCP5_13TeV-madgraphMLM-pythia8+RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1+MINIAODSIM/00A7C4D5-8881-5D47-8E1F-FADDC4B6FA96.root out.root
       
-      #Your Analyzer goes here
+      # Your Analyzer goes here
 
       xrdcp out.root root://t3serv017.mit.edu//scratch/freerc/SUEP/slurm.root
       
@@ -294,47 +294,47 @@ The first step in monitoring jobs is to check which jobs are running. This can b
 
 .. code-block:: sh
 
-       #This will show the number of jobs and their states for the submit federation
+       # This will show the number of jobs and their states for the submit federation
        squeue --federation -u <username>
 
-       #You can also ask for the jobs on the different clusters on the federation with the -M option
+       # You can also ask for the jobs on the different clusters on the federation with the -M option
        squeue -M all -u <username>
 
 In order to analyze your jobs you can use the scontrol feature of slurm.
 
 .. code-block:: sh
 
-       #Check on the status of a job
+       # Check on the status of a job
        scontrol show jobid -dd <jobid>
 
-       #If more information is needed
+       # If more information is needed
        sstat --jobs=<jobid> 
 
-       #A more organized way to look at this information is through the format option. In order to see all options use --helpformat. An example is below
+       # A more organized way to look at this information is through the format option. In order to see all options use --helpformat. An example is below
        sstat --jobs=<jobid> --format=jobid,maxrss,ntasks
 
 If you made a mistake during submission, you can also cancel your jobs. This should be done if any mistakes were made in order to free up the queue.
 
 .. code-block:: sh
 
-       #You can remove a broken job
+       # You can remove a broken job
        scancel <jobid>
 
-       #If you want to remove all of your jobs
+       # If you want to remove all of your jobs
        scancel -u <username>
 
-       #If need be you can also change the state of the job with scontrol to suspend, remove, hold or release
+       # If need be you can also change the state of the job with scontrol to suspend, remove, hold or release
        scontrol suspend <jobid>
 
 Slurm also has the sacct command to help you to look at information from past jobs. These commands are similar to the sstat commands but are used for jobs that have finished rather than jobs currently running.
 
 .. code-block:: sh
 
-       #Look at information from your hobs after they have finished running. You can use the --long to get the non-abbreviated version
+       # Look at information from your hobs after they have finished running. You can use the --long to get the non-abbreviated version
        sacct --jobs=<jobid> --long
 
-       #Look at all of your recent jobs
+       # Look at all of your recent jobs
        sacct --user=<username>
 
-       #You can also use the format options to get specific information in the same way that sstat was used above
+       # You can also use the format options to get specific information in the same way that sstat was used above
        sacct --jobs=<jobid> --format=jobid,maxrss,ntasks

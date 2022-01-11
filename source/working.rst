@@ -8,10 +8,12 @@ Use batch submission systems to scale up your workflow
 
 The submit machines are powerful servers. However, if your jobs will take longer than approximately 15 minutes, then it is better to submit them through a batch system. Additionally, if you want to analyze many files, batch systems should be used. On submit, we provide use for both `HTCondor <https://research.cs.wisc.edu/htcondor/>`_ and `Slurm <https://slurm.schedmd.com/documentation.html>`_. Setting up these tools will allow you to scale out your tools and will also prevent clutter on the submit machines. There are simple examples on how to use these batch submission systems later in this guide.
 
-Avoid accessing files a large number of times
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Avoid massive parrallel access of a single file
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-If you try to access a single file many times, there will be issues on the machine hosting that file. Design your workflow to spread your request over several machines or to avoid large number of requests for single files.
+If you try to access a single file from multiple processes at the same time, there will be issues on the machine hosting that file. Design your workflow to spread your requests over several files or simply make the access sequential for each file.
+
+To increase the possible bandwidth to a single file use the mass storage (hadoop) that has some file spreading mechanisms built in.
 
 Do not directly write to hadoop spaces
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -29,7 +31,7 @@ Users will have a significant amount of scratch space available to them through 
      # Or through gfal
      gfal-copy file://`pwd`/out.root davs://t3serv017.mit.edu:1094//scratch/username/out.root
 
-If you are using xrootd for the first time, you will need to be added to the mapping. Please contact submit-help via email (submit-help@mit.edu) to be added.
+If you are using xrootd for the first time, you will need to be added to the mapping. Please, contact submit-help via email (submit-help@mit.edu) to be added.
 
 Be aware of your own data
 ~~~~~~~~~~~~~~~~~~~~~~~~~
