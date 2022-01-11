@@ -8,19 +8,9 @@ Native system
 
 All of the submit machines come with several tools to help you get started with your work. A few examples are shown below:
 
-1. Languages:
+1. Languages: python, c++, Java, etc.
 
-- python
-
-- c++
-
-- Java
-
-2. Tools:
-
-- XRootd
-
-- GFAL
+2. Tools: XRootd, gfal, etc.
 
 For more complicated workflows, there are several options on how to proceed. Many environments can be set up through CVFMS provided by CERN. If you need more control of the environment, either conda or dockers are commonly used and well supported. For more information see the sections below.
 
