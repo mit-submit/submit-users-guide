@@ -37,12 +37,12 @@ Users will have a significant amount of scratch space available to them through 
 
 If you are using xrootd for the first time, you will need to be added to the mapping. Please contact submit-help via email (submit-help@mit.edu) to be added.
 
-Be aware of your own data:
-~~~~~~~~~~~~~~~~~~~~~~~~~~
+Be aware of your own data
+~~~~~~~~~~~~~~~~~~~~~~~~~
 
 You are given storage spaces on submit that you are in charge of. Make sure to keep these areas clean and remove data that is no longer needed. Keep in mind that the hadoop storage is scratch for submit users.
 
-Software environments:
-~~~~~~~~~~~~~~~~~~~~~~
+Software environments
+~~~~~~~~~~~~~~~~~~~~~
 
 Submit provides several tools in order to help you set up and configure your software environments to suit your needs. If possible, it is better to set up your environments through these tools rather than installing things on your own. There is a section later in this guide describing some of these tools.
