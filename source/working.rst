@@ -20,13 +20,13 @@ Users will have a significant amount of scratch space available to them through 
 
 .. code-block:: sh
 
-     #DO NOT COPY FILES DIRECTLY
+     # Do not copy files directly, because the fuse mount point is inefficicent for this operation
      cp out.root /mnt/T3_US_MIT/hadoop/scratch/username/out.root
 
-     #Instead use xrootd
+     # Instead use xrootd directly for fast IO
      xrdcp out.root root://t3serv017.mit.edu://scratch/username/out.root
 
-     #Or through GFAL
+     # Or through gfal
      gfal-copy file://`pwd`/out.root davs://t3serv017.mit.edu:1094//scratch/username/out.root
 
 If you are using xrootd for the first time, you will need to be added to the mapping. Please contact submit-help via email (submit-help@mit.edu) to be added.
