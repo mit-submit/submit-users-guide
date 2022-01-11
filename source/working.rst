@@ -35,6 +35,8 @@ Users will have a significant amount of scratch space available to them through 
      #Or through GFAL
      gfal-copy file://`pwd`/out.root davs://t3serv017.mit.edu:1094//scratch/username/out.root
 
+If you are using xrootd for the first time, you will need to be added to the mapping. Please contact submit-help via email (submit-help@mit.edu) to be added.
+
 Be aware of your own data:
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
