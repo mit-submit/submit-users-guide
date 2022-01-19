@@ -140,6 +140,9 @@ JupyterHub
 
 In addition to the tools above, you have access to Jupyter Notebooks through a `JupyterHub <https://submit00.mit.edu/jupyter>`_ set up at submit.
 
-This JupyterHub is set up through the submit machines meaning that you have access to all of your data through jupyter notebooks. You will have access to basic python2 and python3 configurations. In addition if you need a more complex environment, you can run your notebooks in any conda environment that you have set up. This allows you to create the exact environement you need for your projects. An example on how to set up a conda environment is shown above.
+This JupyterHub is set up through the submit machines meaning that you have access to all of your data through jupyter notebooks. You will have access to basic python2 and python3 configurations. In addition, if you need a more complex environment, you can run your notebooks in any conda environment that you have set up. This allows you to create the exact environement you need for your projects. An example on how to set up a conda environment is shown above. 
+
+A few examples of simple Jupyter noteooks can be found in the submit-examples `jupyter examples <https://github.com/mit-submit/submit-examples/tree/main/jupyter>`_.
+
 
 If you have any questions about JupyterHub you can email us (submit-jupyter@mit.edu).

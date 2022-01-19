@@ -10,10 +10,60 @@ The submit machines are powerful servers which can be used for local testing. Th
 
 Note: The worker nodes that HTCondor uses does not have access to your home directory, This means that any input files that you need must be passed into the condor submission. Slurm is set up as a federation with all of the submit machines as clusters. This means that Slurm submissions will have access to the home directories. The submit home directories will also be exported to other clusters such as lqcd. 
 
+Further documentation on HTCondor and Slurm can be found below:
+
+#. `HTCondor <https://research.cs.wisc.edu/htcondor/>`_
+
+#. `Slurm <https://slurm.schedmd.com/documentation.html>`_
+
+Available Clusters
+~~~~~~~~~~~~~~~~~~
+
+The submit machines have access to several different clusters which can speed up the process of running large numbers of condor jobs. This section overviews which clusters are available to run on with a brief description. The following section will then describe what is needed in your condor submission file in order to send your condor jobs to each cluster. 
+
+
+**OSG:**
+
+The first cluster to consider is the one supported by the Open Science Grid (OSG). The OSG is a consortium of research collaborations, campuses, national laboratories and software providers dedicated to the advancement of all open science via the practice of distributed High Throughput Computing (dHTC). For documentation on OSG and submitting Condor jobs see below:
+
+#. `OSG home <https://opensciencegrid.org/>`_
+
+#. `OSG support <https://support.opensciencegrid.org/support/home>`_
+
+#. `OSG requirements <https://support.opensciencegrid.org/support/solutions/articles/5000633467-steer-your-jobs-with-htcondor-job-requirements#requirements>`_
+
+**EAPS Engaging HPC:**
+
+The next cluster is provided by the Earth, Atmospheric and Planetary Sciences (EAPS) department at MIT. For more information see their homepage below:
+
+#. `EAPS <https://eapsweb.mit.edu/>`_
+
+MIT has both a Tier-2 and Tier-3 computing cluster which will support CERN users. In addition to this, CMS users have access to the Global pool, allowing them to submit their jobs on clusters around the world. Links connecting you to these resources are shown in the following with a brief desctription of the Tier system below:
+
+#. `CERN Tier system <https://home.cern/science/computing/grid-system-tiers#:~:text=The%20Worldwide%20LHC%20Computing%20Grid,Large%20Hadron%20Collider%20(LHC).>`_
+
+**MIT Tier-2 Computing Cluster:**
+
+The MIT Tier-2 computing cluster is hosted at Bates. 
+
+#. `MIT T2 <http://www.cmsaf.mit.edu/>`_
+
+**MIT Tier-3 Computing Cluster:**
+
+The MIT Tier-3 computing cluster is hosted at MIT building 24.
+
+#. `MIT T3 <http://t3serv001.mit.edu/>`_
+
+**CMS Global Pool:**
+
+The CMS global pool is hosted by various Tiers of computing clusters around the world. Jobs submitted by MIT users can be found in the link below:
+
+#. `CMS <https://cms-gwmsmon.cern.ch/institutionalview>`_
+
 HTCondor examples
 ~~~~~~~~~~~~~~~~~
 
-This section will show you several ways to submit jobs through HTCondor. Here, you can see how to form your condor submission to control your jobs. A very simple example is shown below with several more complex examples afterwards. 
+This section will show you several ways to submit jobs through HTCondor. Here, you can see how to form your condor submission to control your jobs. A very simple example is shown below with several more complex examples afterwards.
 
 #. `An example condor script <https://github.com/mit-submit/submit-examples/blob/main/test-all/base_sub>`_
 
@@ -30,7 +80,7 @@ This section will show you several ways to submit jobs through HTCondor. Here, y
       WhenToTransferOutput  = ON_EXIT_OR_EVICT
       Log                   = test-all.log
 
-There are several more examples for different application types at 
+There are several more examples for different application types at
 
 #. `submit-examples <https://github.com/mit-submit/submit-examples>`_
 
@@ -40,9 +90,8 @@ Submissions can also be done through DAGMan: `DAGMan simple <https://github.com/
 
 If you know the gpu machines to run on you can try testing the following `condor_gpu ye==test <https://github.com/mit-submit/submit-examples/tree/main/condor_gpu>`_ by adding those machines in the requirements.
 
-
-Using batch systems
-~~~~~~~~~~~~~~~~~~~
+Condor on the different clusters
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 While using Condor you should be able to specify where you want your jobs to run at. Here we provide a couple of examples on modifying your requirements in order to run at different clusters. For more info see `our tips <http://submit04.mit.edu/tips.html>`_.
 
@@ -76,12 +125,28 @@ In order to use the CMS global pool, you will need to add a few additional lines
      +AccountingGroup = "analysis.<username>"
 
 
+There are resources available through MIT Earth, Atmospheric and Planetary Sciences (EAPS). These are accessed by adding the following requirements.
+
+.. code-block:: sh
+
+     Requirements =  (BOSCOCluster == "eofe8.mit.edu") 
+
 
 And finally you can also use OSG:
 
 .. code-block:: sh
 
-      # coming soon
+      Requirements = (OSGVO_OS_STRING == "RHEL 7")
+      +ProjectName            = "MIT_submit" 
+ 
+Or depending on your workflow you may need RHEL 6 for OSG
+
+
+.. code-block:: sh
+
+      Requirements = (OSGVO_OS_STRING == "RHEL 6      
+      +ProjectName            = "MIT_submit" 
+
 
 Condor example 1
 ~~~~~~~~~~~~~~~~
