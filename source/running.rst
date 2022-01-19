@@ -48,8 +48,6 @@ The MIT Tier-2 computing cluster is hosted at Bates.
 
 #. `MIT T2 <http://www.cmsaf.mit.edu/>`_
 
-#. `CERN Summary <https://cms-gwmsmon.cern.ch/institutionalview/T2_US_MIT>`_
-
 **MIT Tier-3 Computing Cluster:**
 
 The MIT Tier-3 computing cluster is hosted at MIT building 24.
