@@ -41,15 +41,12 @@ To set up GEANT4:
      export QT_QPA_PLATFORM_PLUGIN_PATH=$QT5_HOME/plugins
      export QT_XKB_CONFIG_ROOT=/usr/share/X11/xkb
      cd ${GEANT4_DIR}/bin
-     source ./geant4.sh 
-
-Now you can see the geant version:
-
-.. code-block:: sh
-
+     source ./geant4.sh
+     
+     # show the geant version:
      ./geant4-config --version
 
-To set up CMSSW or other cms specific tools:
+To set up the CMS software (CMSSW) or other cms specific tools:
 
 .. code-block:: sh
 
@@ -63,15 +60,17 @@ If you want to use ROOT or any other CMSSW specific tools you can also download 
       cd CMSSW_10_2_13/src
       cmsenv
 
-Once the cms environment is set up, ROOT is now available to you as well
+Once the CMS environment is set up, the CMS software version specific ROOT release is now available to you as well.
 
 Conda
 ~~~~~
 
-Conda is an open source package management system and environment management system. We can use this to set up consistent environments and manage the package dependencies for various applications. Below is an example to set up a python3 environment for working with coffea and dask. 
+Conda is an open source package management system and environment management system. We can use this to set up consistent environments and manage the package dependencies for various applications. Below is an example to set up a python environment for working with `coffea <https://coffeateam.github.io/coffea/>`_ and `dask <https://docs.dask.org/en/stable/>`_. 
 
-### Coffea installation with Miniforge
-For installing Miniconda, see also https://hackmd.io/GkiNxag0TUmHnnCiqdND1Q#Local-or-remote
+Coffea installation with Miniforge
+..................................
+
+For installing Miniconda (see also https://hackmd.io/GkiNxag0TUmHnnCiqdND1Q#Local-or-remote)
 
 .. code-block:: sh
 

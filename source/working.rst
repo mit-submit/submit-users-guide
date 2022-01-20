@@ -8,8 +8,8 @@ Use batch submission systems to scale up your workflow
 
 The submit machines are powerful servers. However, if your jobs will take longer than approximately 15 minutes, then it is better to submit them through a batch system. Additionally, if you want to analyze many files, batch systems should be used. On submit, we provide use for both `HTCondor <https://research.cs.wisc.edu/htcondor/>`_ and `Slurm <https://slurm.schedmd.com/documentation.html>`_. Setting up these tools will allow you to scale out your tools and will also prevent clutter on the submit machines. There are simple examples on how to use these batch submission systems later in this guide.
 
-Avoid massive parrallel access of a single file
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Avoid massive parallel access of a single file
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 If you try to access a single file from multiple processes at the same time, there will be issues on the machine hosting that file. Design your workflow to spread your requests over several files or simply make the access sequential for each file.
 
@@ -18,14 +18,11 @@ To increase the possible bandwidth to a single file use the mass storage (hadoop
 Do not directly write to hadoop spaces
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Users will have a significant amount of scratch space available to them through hadoop. Users should store large files here rather than in the /home or /work spaces. However, users need to be careful how to transfer files to this space as they should be transferred through gfal or xrootd rather than being transferred directly. Examples are shown below.
+Users will have a significant amount of scratch space available to them through hadoop. Users should store large files here rather than in the /home or /work spaces. However, users need to be careful how to transfer files to this space as they should be transferred through gfal or xrootd rather than being transferred directly using the standard linux *cp* command and the fuxe mount point at */mnt/T3_US_MIT/hadoop/scratch*. Good use examples are shown below.
 
 .. code-block:: sh
 
-     # Do not copy files directly, because the fuse mount point is inefficicent for this operation
-     cp out.root /mnt/T3_US_MIT/hadoop/scratch/username/out.root
-
-     # Instead use xrootd directly for fast IO
+     # Use xrootd directly for fast IO
      xrdcp out.root root://t3serv017.mit.edu://scratch/username/out.root
 
      # Or through gfal

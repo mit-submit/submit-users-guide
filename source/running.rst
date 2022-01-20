@@ -10,55 +10,37 @@ The submit machines are powerful servers which can be used for local testing. Th
 
 Note: The worker nodes that HTCondor uses does not have access to your home directory, This means that any input files that you need must be passed into the condor submission. Slurm is set up as a federation with all of the submit machines as clusters. This means that Slurm submissions will have access to the home directories. The submit home directories will also be exported to other clusters such as lqcd. 
 
-Further documentation on HTCondor and Slurm can be found below:
-
-#. `HTCondor <https://research.cs.wisc.edu/htcondor/>`_
-
-#. `Slurm <https://slurm.schedmd.com/documentation.html>`_
+Further documentation on `HTCondor <https://research.cs.wisc.edu/htcondor/>`_ and `Slurm <https://slurm.schedmd.com/documentation.html>`_ can be found in the links.
 
 Available Clusters
 ~~~~~~~~~~~~~~~~~~
 
 The submit machines have access to several different clusters which can speed up the process of running large numbers of condor jobs. This section overviews which clusters are available to run on with a brief description. The following section will then describe what is needed in your condor submission file in order to send your condor jobs to each cluster. 
 
+**MIT Tier-2 Computing Cluster**
 
-**OSG:**
+The `MIT Tier-2 <http://www.cmsaf.mit.edu/>`_ computing cluster is hosted at Bates. 
 
-The first cluster to consider is the one supported by the Open Science Grid (OSG). The OSG is a consortium of research collaborations, campuses, national laboratories and software providers dedicated to the advancement of all open science via the practice of distributed High Throughput Computing (dHTC). For documentation on OSG and submitting Condor jobs see below:
+**MIT Tier-3 Computing Cluster**
 
-#. `OSG home <https://opensciencegrid.org/>`_
+The `MIT Tier-3 <http://t3serv001.mit.edu/>`_ computing cluster is hosted at MIT in building 24.
+   
+**OSG**
 
-#. `OSG support <https://support.opensciencegrid.org/support/home>`_
+The first external cluster to consider is the one supported by the Open Science Grid (`OSG <https://opensciencegrid.org/>`_). The OSG is a consortium of research collaborations, campuses, national laboratories and software providers dedicated to the advancement of all open science via the practice of distributed High Throughput Computing (dHTC). For `OSG support <https://support.opensciencegrid.org/support/home>`_ and `OSG requirements <https://support.opensciencegrid.org/support/solutions/articles/5000633467-steer-your-jobs-with-htcondor-job-requirements#requirements>`_ on submitting Condor jobs follow the links.
 
-#. `OSG requirements <https://support.opensciencegrid.org/support/solutions/articles/5000633467-steer-your-jobs-with-htcondor-job-requirements#requirements>`_
+**EAPS Engaging HPC**
 
-**EAPS Engaging HPC:**
+The next cluster is provided by the Earth, Atmospheric and Planetary Sciences (EAPS) department at MIT. For more information see their `Engaging home page <https://eapsweb.mit.edu/>`_.
 
-The next cluster is provided by the Earth, Atmospheric and Planetary Sciences (EAPS) department at MIT. For more information see their homepage below:
+   
+**CMS Global Pool**
 
-#. `EAPS <https://eapsweb.mit.edu/>`_
-
-MIT has both a Tier-2 and Tier-3 computing cluster which will support CERN users. In addition to this, CMS users have access to the Global pool, allowing them to submit their jobs on clusters around the world. Links connecting you to these resources are shown in the following with a brief desctription of the Tier system below:
+MIT has both a Tier-2 and Tier-3 computing cluster as discussed above which will support CERN users. In addition to this, CMS users have access to the global pool, allowing them to submit their jobs on clusters around the world. Links connecting you to these resources are shown in the following with a brief desctription of the Tier system below:
 
 #. `CERN Tier system <https://home.cern/science/computing/grid-system-tiers#:~:text=The%20Worldwide%20LHC%20Computing%20Grid,Large%20Hadron%20Collider%20(LHC).>`_
 
-**MIT Tier-2 Computing Cluster:**
-
-The MIT Tier-2 computing cluster is hosted at Bates. 
-
-#. `MIT T2 <http://www.cmsaf.mit.edu/>`_
-
-**MIT Tier-3 Computing Cluster:**
-
-The MIT Tier-3 computing cluster is hosted at MIT building 24.
-
-#. `MIT T3 <http://t3serv001.mit.edu/>`_
-
-**CMS Global Pool:**
-
-The CMS global pool is hosted by various Tiers of computing clusters around the world. Jobs submitted by MIT users can be found in the link below:
-
-#. `CMS <https://cms-gwmsmon.cern.ch/institutionalview>`_
+The CMS global pool is hosted by various Tiers of computing clusters around the world. Jobs submitted by MIT users can be found in the link: `CMS <https://cms-gwmsmon.cern.ch/institutionalview>`_
 
 HTCondor examples
 ~~~~~~~~~~~~~~~~~
