@@ -36,11 +36,9 @@ The next cluster is provided by the Earth, Atmospheric and Planetary Sciences (E
    
 **CMS Global Pool**
 
-MIT has both a Tier-2 and Tier-3 computing cluster as discussed above which will support CERN users. In addition to this, CMS users have access to the global pool, allowing them to submit their jobs on clusters around the world. Links connecting you to these resources are shown in the following with a brief desctription of the Tier system below:
+MIT has both a Tier-2 and Tier-3 computing cluster as discussed above which will support CERN users. In addition to this, CMS users have access to the global pool, allowing them to submit their jobs on clusters around the world. Links connecting you to these resources are shown in the following with a brief desctription of the `CERN Tier system <https://home.cern/science/computing/grid-system-tiers#:~:text=The%20Worldwide%20LHC%20Computing%20Grid,Large%20Hadron%20Collider%20(LHC).>`_.
 
-#. `CERN Tier system <https://home.cern/science/computing/grid-system-tiers#:~:text=The%20Worldwide%20LHC%20Computing%20Grid,Large%20Hadron%20Collider%20(LHC).>`_
-
-The CMS global pool is hosted by various Tiers of computing clusters around the world. Jobs submitted by MIT users can be found in the link: `CMS <https://cms-gwmsmon.cern.ch/institutionalview>`_
+The CMS global pool is hosted by various Tiers of computing clusters around the world. Jobs submitted by MIT users can be found in the link: `CMS <https://cms-gwmsmon.cern.ch/institutionalview>`_.
 
 HTCondor examples
 ~~~~~~~~~~~~~~~~~
