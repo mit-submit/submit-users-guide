@@ -12,8 +12,8 @@ Note: The worker nodes that HTCondor uses does not have access to your home dire
 
 Further documentation on `HTCondor <https://research.cs.wisc.edu/htcondor/>`_ and `Slurm <https://slurm.schedmd.com/documentation.html>`_ can be found in the links.
 
-Available Clusters
-~~~~~~~~~~~~~~~~~~
+HTCondor Available Clusters
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The submit machines have access to several different clusters which can speed up the process of running large numbers of condor jobs. This section overviews which clusters are available to run on with a brief description. The following section will then describe what is needed in your condor submission file in order to send your condor jobs to each cluster. 
 
@@ -64,9 +64,7 @@ There are several more examples for different application types at
 
 #. `submit-examples <https://github.com/mit-submit/submit-examples>`_
 
-The different examples are below: `simple test <https://github.com/mit-submit/submit-examples/tree/main/test-all>`_, `testing julia <https://github.com/mit-submit/submit-examples/tree/main/julia>`_, `testing matlab <https://github.com/mit-submit/submit-examples/tree/main/matlab>`.
-
-Submissions can also be done through DAGMan: `DAGMan simple <https://github.com/mit-submit/submit-examples/tree/main/DAGMan>`_, `DAGMan with child process <https://github.com/mit-submit/submit-examples/tree/main/DAGMan2>`_.
+The different examples are below: `simple test <https://github.com/mit-submit/submit-examples/tree/main/test-all>`_, `testing julia <https://github.com/mit-submit/submit-examples/tree/main/julia>`_, `testing matlab <https://github.com/mit-submit/submit-examples/tree/main/matlab>`_.
 
 If you know the gpu machines to run on you can try testing the following `condor_gpu ye==test <https://github.com/mit-submit/submit-examples/tree/main/condor_gpu>`_ by adding those machines in the requirements.
 
@@ -302,7 +300,7 @@ Slurm can also be used on the submit machines. There is a slurm federation on th
 Slurm example lqcd
 ~~~~~~~~~~~~~~~~~~
 
-THIS SECTION IS UNDER CONSTRUCTION AS THE LQCD CLUSTER IS NOT AVAILABLE TO SUBMIT USERS
+THIS SECTION IS UNDER CONSTRUCTION AS THE LQCD CLUSTER IS NOT YET AVAILABLE TO SUBMIT USERS
 
 And now an example for how to submit to the lqcd cluster from the submit machines. Here we need some extra set up and then test some simple srun commands like below:
 
@@ -339,10 +337,10 @@ The first step in monitoring jobs is to check which jobs are running. This can b
 
 .. code-block:: sh
 
-       # This will show the number of jobs and their states for the submit federation
-       squeue --federation -u <username>
+       # This will show the number of jobs and their states.
+       squeue -u <username>
 
-       # You can also ask for the jobs on the different clusters on the federation with the -M option
+       # You can also ask for the jobs on the different clusters on the federation with the -M option. You can also use a specific cluster (e.g. submit).
        squeue -M all -u <username>
 
 In order to analyze your jobs you can use the scontrol feature of slurm.

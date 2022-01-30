@@ -22,4 +22,4 @@ The submissions that are sent to the CMS global pool can also be monitored throu
 Monitoring for the T3
 ~~~~~~~~~~~~~~~~~~~~~
 
-For those working on the T3 machines, we have similar `monitoring  <http://t3serv001.mit.edu/>`_, including `T3 CondorMon <http://t3serv007.mit.edu/condormon/>`_ and `Ganglia <http://t3serv007.mit.edu/condormon/>`_.
+For those working on the T3 machines, we have similar `monitoring  <http://t3serv001.mit.edu/>`_, including `T3 CondorMon <http://t3serv007.mit.edu/condormon/>`_ and `Ganglia <http://t3serv001.mit.edu/ganglia/>`_.
