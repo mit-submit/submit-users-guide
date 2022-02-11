@@ -102,6 +102,11 @@ In order to use the CMS global pool, you will need to add a few additional lines
      x509userproxy         = /<path>/x509up_u<uid>
      +AccountingGroup = "analysis.<username>"
 
+If you wish to submit jobs to GPU machines, you need to add additonal line in the script:
+
+.. code-block:: sh
+
+     RequestGPus=1
 
 There are resources available through MIT Earth, Atmospheric and Planetary Sciences (EAPS). These are accessed by adding the following requirements.
 
