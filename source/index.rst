@@ -16,7 +16,7 @@ User's Guide - subMIT
    program
    running
    monit
-
+   gpu
 
 Indices and tables
 ==================

@@ -67,6 +67,8 @@ Conda
 
 Conda is an open source package management system and environment management system. We can use this to set up consistent environments and manage the package dependencies for various applications. Below is an example to set up a python environment for working with `coffea <https://coffeateam.github.io/coffea/>`_ and `dask <https://docs.dask.org/en/stable/>`_. 
 
+Please note that downloading many conda packages takes a large amount of space which can very quickly use up the quota in your home. If you plan to use conda heavily it is suggested to download and configure it in your work directory where there is much more space. 
+
 Coffea installation with Miniforge
 ..................................
 
