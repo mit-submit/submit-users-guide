@@ -305,9 +305,7 @@ Slurm can also be used on the submit machines. There is a slurm federation on th
 Slurm example lqcd
 ~~~~~~~~~~~~~~~~~~
 
-THIS SECTION IS UNDER CONSTRUCTION AS THE LQCD CLUSTER IS NOT YET AVAILABLE TO SUBMIT USERS
-
-And now an example for how to submit to the lqcd cluster from the submit machines. Here we need some extra set up and then test some simple srun commands like below:
+An example for how to submit to the lqcd cluster from the submit machines. Here we need some extra set up and then test some simple srun commands like below (this example runs in the devel partition):
 
 .. code-block:: sh
 
@@ -345,7 +343,7 @@ The first step in monitoring jobs is to check which jobs are running. This can b
        # This will show the number of jobs and their states.
        squeue -u <username>
 
-       # You can also ask for the jobs on the different clusters on the federation with the -M option. You can also use a specific cluster (e.g. submit).
+       # You can also ask for the jobs on the different clusters with the -M option. You can also use a specific cluster (e.g. submit, lqcd).
        squeue -M all -u <username>
 
 In order to analyze your jobs you can use the scontrol feature of slurm.
@@ -386,3 +384,6 @@ Slurm also has the sacct command to help you to look at information from past jo
 
        # You can also use the format options to get specific information in the same way that sstat was used above
        sacct --jobs=<jobid> --format=jobid,maxrss,ntasks
+
+       # A nice summary of a job is available through the seff command
+       seff <jobid>

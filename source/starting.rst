@@ -34,10 +34,11 @@ You should now be logged into one of our main submit server machines. By default
    # You will start from home which has a quota of 5 GB of space
    /home/submit/<username>
 
-   # You will also get a workspace in which has a qupta of 50 GB of space
+   # You will also get a workspace in which has a quota of 50 GB of space
    /work/submit/<username>
 
-
+   # For larger files, you will get a data storage space with a quoata of 1 TB of space
+   /data/submit/<username>
 
 Creating a personal webpage
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
