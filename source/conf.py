@@ -22,7 +22,7 @@ copyright = '2021, The SubMIT Project Team'
 author = 'The SubMIT Project Team'
 
 # The full version, including alpha/beta/rc tags
-release = 'v0'
+release = 'v1'
 
 # -- General configuration ---------------------------------------------------
 
@@ -60,5 +60,5 @@ html_theme = 'groundwork'
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
 html_static_path = []
-#html_logo = 'img/under_construction.png'
-html_logo = 'img/submit-logo.png'
+#html_logo = 'img/submit-logo-construction.png'
+html_logo = 'img/submit-nnnext-logo.png'

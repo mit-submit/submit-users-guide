@@ -7,7 +7,7 @@ User's Guide - subMIT
 =====================
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 1
    :caption: Contents:
  
    intro
@@ -17,6 +17,7 @@ User's Guide - subMIT
    running
    monit
    gpu
+   backup
 
 Indices and tables
 ==================

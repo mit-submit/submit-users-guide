@@ -1,4 +1,4 @@
-GPU Resources
+GPU resources
 -------------
 
 SubMIT also has access to several GPUs. In this section we will review how to access these machines and add them to your workflow.

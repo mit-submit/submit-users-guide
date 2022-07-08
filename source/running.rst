@@ -1,5 +1,5 @@
-Running and Batch jobs
-----------------------
+Running interactively and batch jobs
+------------------------------------
 
 This section will give you a quick guide on how to submit batch jobs at submit. There will be a couple of simple examples to help get you started.
 
@@ -12,8 +12,11 @@ Note: The worker nodes that HTCondor uses does not have access to your home dire
 
 Further documentation on `HTCondor <https://research.cs.wisc.edu/htcondor/>`_ and `Slurm <https://slurm.schedmd.com/documentation.html>`_ can be found in the links.
 
-HTCondor Available Clusters
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
+HTCondor
+~~~~~~~~
+
+HTCondor available clusters
+===========================
 
 The submit machines have access to several different clusters which can speed up the process of running large numbers of condor jobs. This section overviews which clusters are available to run on with a brief description. The following section will then describe what is needed in your condor submission file in order to send your condor jobs to each cluster. 
 
@@ -41,7 +44,7 @@ MIT has both a Tier-2 and Tier-3 computing cluster as discussed above which will
 The CMS global pool is hosted by various Tiers of computing clusters around the world. Jobs submitted by MIT users can be found in the link: `CMS <https://cms-gwmsmon.cern.ch/institutionalview>`_.
 
 HTCondor examples
-~~~~~~~~~~~~~~~~~
+=================
 
 This section will show you several ways to submit jobs through HTCondor. Here, you can see how to form your condor submission to control your jobs. A very simple example is shown below with several more complex examples afterwards.
 
@@ -68,8 +71,8 @@ The different examples are below: `simple test <https://github.com/mit-submit/su
 
 If you know the gpu machines to run on you can try testing the following `condor_gpu ye==test <https://github.com/mit-submit/submit-examples/tree/main/condor_gpu>`_ by adding those machines in the requirements.
 
-Condor on the different clusters
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+HTCondor on the different clusters
+==================================
 
 While using Condor you should be able to specify where you want your jobs to run at. Here we provide a couple of examples on modifying your requirements in order to run at different clusters. For more info see `our tips <http://submit04.mit.edu/tips.html>`_.
 
@@ -131,8 +134,8 @@ Or depending on your workflow you may need RHEL 6 for OSG
       +ProjectName            = "MIT_submit" 
 
 
-Condor example 1
-~~~~~~~~~~~~~~~~
+HTCondor example 1
+==================
 
 Lets look at a full example condor submission for downloading some ROOT file and transfering the output. In order to access files you will need to export your x509 proxy. The easiest way to do this on the submit machines is to first make this proxy available in your /home space and then add export lines in your condor submission. It is often easiest to add an alias commad to your .bashrc like the following:
 
@@ -191,8 +194,8 @@ now you can submit your job:
 
       condor_submit condor.sub
 
-Condor example 2
-~~~~~~~~~~~~~~~~
+HTCondor example 2
+==================
 
 If you have smaller output and you want to use the workspace rather than hadoop we can do something similar but instead trasnfer the output from the submit machines through remaps. Similar the above we will use a script.sh
 
@@ -236,8 +239,8 @@ Similar to above, we will also need a condor.sub. However, this time we will tra
       requirements          = (BOSCOCluster == "t3serv008.mit.edu")
       queue 10
 
-How to monitor and control your submitted condor jobs
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+How to monitor and control your submitted HTCondor jobs
+=======================================================
 
 After you have submitted your jobs, it is important to be able to monitor their progress. This section gives a couple of simple examples on how to check on the status of your jobs directly from the submit machines.
 
@@ -274,8 +277,11 @@ If you made a mistake during submission, you can also cancel your jobs. This sho
        # If you want to remove all of your jobs
        condor_rm <username>
 
+Slurm
+~~~~~
+
 Slurm example 1
-~~~~~~~~~~~~~~~
+===============
 
 Slurm can also be used on the submit machines. There is a slurm federation on the submit machines as well as slurm clusters connected through lqcd. Below is a sample about how to submit a slurm job to the submit machines. Here we are doing similar to the condor samples above and copying a file with xrootd and then transferring the output to hadoop scratch space. Like Condor, you will need to export your x509 proxy in order to get access to certain files.
 
@@ -303,7 +309,7 @@ Slurm can also be used on the submit machines. There is a slurm federation on th
       srun ls -hrlt
 
 Slurm example lqcd
-~~~~~~~~~~~~~~~~~~
+==================
 
 THIS SECTION IS UNDER CONSTRUCTION AS THE LQCD CLUSTER IS NOT YET AVAILABLE TO SUBMIT USERS
 
@@ -334,7 +340,7 @@ And now an example for how to submit to the lqcd cluster from the submit machine
      srun sleep 60
 
 How to monitor and control your submitted slurm jobs
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+====================================================
 
 Similar to HTCondor, Slurm has command line options to monitor and control your jobs. This section gives a couple of simple examples on how to monitor your slurm jobs on submit.
 
