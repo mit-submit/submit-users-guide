@@ -94,7 +94,7 @@ You can either use the default environment`base` or create a new one:
       # activate environment `coffea`
       conda activate coffea
 
-Install coffea, xrootd, and more. SUEP analysis uses Fastjet with awkward array input (fastjet>=3.3.4.0rc8) and vector:
+An example of how to install a mix of packages through conda and pip:
 
 
 .. code-block:: sh
@@ -138,6 +138,22 @@ The command above naturally binds the PWD and work directory. If you need to spe
      export SINGULARITY_BIND="/mnt"
 
 Now you can run in many different environments that are available in singularity images through CVMFS.
+
+gcc and systemwide systems
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+SubMIT is a CentOS07 system and as such will have old versions for some compilers and tools. For example, the gcc compiler for CentOS07 is quite old. Rather than trying to install many versions throughout SubMIT it is suggested for users to try and control the versions themselves. The tools listed above can often help with this. A couple of examples of using a newer version of gcc are shown below. 
+
+If newer versions of gcc are needed, they are available through conda `conda gcc <https://anaconda.org/conda-forge/gcc>`_. 
+
+Alternatively, you can also use a gcc version available through CVMFS. An example is shown below:
+
+.. code-block:: sh
+
+     #An example of using a newer version of gcc
+     /cvmfs/cms.cern.ch/el8_amd64_gcc12/external/gcc/12.1.1-bf4aef5069fdf6bb6f77f897bcc8a6ae/bin/gcc
+
+For systemwide tools such as gcc, these options should be considered first in order to solve the issues on the user side. If these options still do not work for your needs then please email <submit-help@mit.edu>.
 
 JupyterHub
 ~~~~~~~~~~
