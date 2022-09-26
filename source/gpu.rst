@@ -52,13 +52,20 @@ A cuda example with slurm can be found here:
 Condor with GPUs
 ~~~~~~~~~~~~~~~~
 
-(SECTION NOT COMPLETED) 
-
 The MIT T2 and T3 both have access to GPU machines through Condor. An example of how to access these resources through Condor is shown below
+
+If you wish to submit jobs to GPU machines in T3/T2, you need to add additonal line in the script (only through glidein submission):
 
 .. code-block:: sh
 
-       some code goes here (COMING SOON)
+       RequestGPus=1
+
+If you wish to submit jobs to GPU machines in CMS global pool, you need to add additional line in the script:
+
+.. code-block:: sh
+
+       RequestGPus=1
+       +RequiresGPU=1
 
 Some example scripts to run GPUs with condor can be found here:
 `condor gpu <https://github.com/mit-submit/submit-examples/gpu/condor_gpu>`_
