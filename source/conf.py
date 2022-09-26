@@ -52,6 +52,16 @@ exclude_patterns = []
 #html_theme = 'sizzle'
 html_theme = 'groundwork'
 
+#Theme options for groundwork: https://github.com/useblocks/groundwork-sphinx-theme
+html_theme_options = {
+#    "sidebar_width": '240px',
+    "stickysidebar": True,
+    "stickysidebarscrollable": True,
+#    "contribute": True,
+#    "github_fork": "useblocks/groundwork",
+#    "github_user": "useblocks",
+}
+
 #import sphinx_adc_theme
 #html_theme = 'sphinx_adc_theme'
 #html_theme_path = [sphinx_adc_theme.get_html_theme_path()]
@@ -62,3 +72,4 @@ html_theme = 'groundwork'
 html_static_path = []
 #html_logo = 'img/submit-logo-construction.png'
 html_logo = 'img/submit-nnnext-logo.png'
+html_favicon = 'img/submit-nnnext-logo.png'

@@ -62,6 +62,13 @@ If you want to use ROOT or any other CMSSW specific tools you can also download 
 
 Once the CMS environment is set up, the CMS software version specific ROOT release is now available to you as well.
 
+In addition to the typical CMVFS environments, MIT hosts its own version of CVMFS where additional software is placed. One such example is Matlab which is given through MIT. This can be accessed like below:
+
+.. code-block:: sh
+       
+      /cvmfs/cvmfs.cmsaf.mit.edu/submit/work/submit/submit-software/matlab/Matlab_install/bin/matlab
+
+
 Conda
 ~~~~~
 
@@ -116,6 +123,38 @@ Containers
 ~~~~~~~~~~
 
 Containers are becoming commonplace in scientific workflows. Submit offers access to containers through Singularity images provided through CVMFS. This section will give a short example on how to enter into a singularity container to run your framework. For more information on dockers see the `docker engine site <https://docs.docker.com/engine/reference/commandline/build/>`_.
+
+Docker
+......
+
+All SubMIT users have access to build dockers. You can start by finidng instructions through your packages dockerhub or by downloading the code and building the docker image.
+
+.. code-block:: sh
+
+     docker build -t local/docker_name .
+
+Additionally, if you want to build a singularity for this as well, this can done with the following:
+
+.. code-block:: sh
+
+      singularity build docker_name.sif docker-daemon://local/docker_name:latest
+
+And start the singularity
+
+.. code-block:: sh
+
+      singularity shell docker_name.sif
+
+If you need this available on worker nodes through HTCondor you can add them to a CVMFS space in your work directory. You will then need to email Max (maxi@mit.edu) to create this CVMFs area for you.
+
+.. code-block:: sh
+
+    #Start singularity from your /work area (email Max with pathway EXAMPLE:/work/submit/freerc/cvmfs/):
+    singularity shell /cvmfs/cvmfs.cmsaf.mit.edu/submit/work/submit/freerc/cvmfs/docker_name.sif
+
+
+Singularity
+...........
 
 For this example, we will use the coffea-base singularity image based on the following `docker coffea image <https://github.com/CoffeaTeam/docker-coffea-base>`_.
 

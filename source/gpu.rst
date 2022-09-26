@@ -49,6 +49,27 @@ The submit-gpu machines are connected to the submit slurm cluster as the "submit
 A cuda example with slurm can be found here:
 `slurm cuda <https://github.com/mit-submit/submit-examples/gpu/slurm_gpu>`_
 
+In addition to the submit-gpu partition, there are additional GPUs available through submit-gpu1080. An example submit file is shown below.
+
+.. code-block:: sh
+
+      #!/bin/bash
+      #
+      #SBATCH --job-name=test
+      #SBATCH --output=res_%j-%a.txt
+      #SBATCH --error=err_%j-%a.txt
+      #
+      #SBATCH --ntasks=1
+      #SBATCH --time=06:50:00
+      #SBATCH --mem-per-cpu=2GB
+      #SBATCH --partition=submit-gpu1080
+      #SBATCH --gres=gpu:1
+      #SBATCH --cpus-per-gpu=1
+
+More info is here:
+`slurm 1080 <https://github.com/mit-submit/submit-examples/tree/main/gpu/slurm_gpu1080>`_
+
+
 Condor with GPUs
 ~~~~~~~~~~~~~~~~
 
