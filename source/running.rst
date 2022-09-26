@@ -3,6 +3,8 @@
     <style> .red {color:red} </style>
 
 .. role:: red
+    
+
 Running interactively and batch jobs
 ------------------------------------
 
@@ -335,8 +337,8 @@ Slurm
 Slurm example 1
 ===============
 
-Slurm can also be used on the submit machines. There is a slurm federation on the submit machines as well as slurm clusters connected through lqcd. Below is a sample about how to submit a slurm job to the submit machines. Here we are doing similar to the condor samples above and copying a file with xrootd and then transferring the output to hadoop scratch space. Like Condor, you will need to export your x509 proxy in order to get access to certain files.
-
+Slurm can also be used on the submit machines. There is a slurm federation on the submit machines as well as slurm clusters connected through lqcd. Below is a sample about how to submit a slurm job to the submit machines. Here we are doing similar to the condor samples above and copying a file with xrootd and then transferring the output to hadoop scratch space. Like Condor, you will need to export your x509 proxy in order to get access to certain files. Additional samples that utilize the GPUs on the submit cluster can be found in the GPU section of the guide.
+`submit GPU <http://submit04.mit.edu/submit-users-guide/gpu.html>`_
 
 .. code-block:: sh
 
