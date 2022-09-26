@@ -1,3 +1,4 @@
+.. role:: red
 Running interactively and batch jobs
 ------------------------------------
 
@@ -76,7 +77,50 @@ HTCondor on the different clusters
 
 While using Condor you should be able to specify where you want your jobs to run at. Here we provide a couple of examples on modifying your requirements in order to run at different clusters. For more info see `our tips <http://submit04.mit.edu/tips.html>`_.
 
-The condor examople above ran on T2 machines using a regular expression but lets run on the different clusters by modifying the requirements in different ways. Lets start with requirements to run on the T2 machines:
+We have two main computing resources on MIT campus: tier2 and tier3 clusters. Users can submit condor jobs through glideinWMS or bosco.
+
+Glidein submission for T2/T3.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+:red:`The Glidein supports GPU and multi-CPU jobs.`
+
+Submit jobs to tier2 clusters by adding following to condor script:
+
+.. code-block:: sh
+
+     Requirements = (BOSCOGroup == "bosco_cms" && BOSCOCluster == "ce03.cmsaf.mit.edu" && BOSCOCluster =!= "eofe8.mit.edu")
+     +DESIRED_Sites = "mit_tier2"
+
+If instead you want to run on the T3 machines you can replace the "DESIRED_Sites" to:
+
+.. code-block:: sh
+
+     +DESIRED_Sites = "mit_tier3"
+
+If you want to submit to both tier2 and tier3, do:
+
+.. code-block:: sh
+
+     +DESIRED_Sites = "mit_tier2,mit_tier3"
+
+To submit GPU jobs, you need to add:
+
+.. code-block:: sh
+
+     RequestGPus=1
+
+To submit multi-core jobs, you need to add (4-core job for example, maximum 8):
+
+.. code-block:: sh
+
+     RequestCpus=4
+
+Note: CMS users are recommanded to submit jobs to T2 through CMS global pool, see "global pool section".
+
+BOSCO submission for T2/T3.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+:red:`This will be deprecated eventually. It does not support GPU or multi-CPU jobs.`
 
 .. code-block:: sh
 
@@ -88,11 +132,14 @@ If instead you want to run on the T3 machines you can change the requirements to
 
      Requirements = (BOSCOCluster == "t3serv008.mit.edu")
 
+Jobs Submission to CMS global pool.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 If you are a CMS member you can also go through the US CMS global pool:
 
 .. code-block:: sh
 
-     Requirements = ( BOSCOCluster =!= "t3serv008.mit.edu" && BOSCOCluster =!= "ce03.cmsaf.mit.edu" )
+     Requirements = ( BOSCOCluster =!= "t3serv008.mit.edu" && BOSCOCluster =!= "ce03.cmsaf.mit.edu" && BOSCOCluster =!= "eofe8.mit.edu")
 
      # you can also control what sites you want to run at. Here is a sample list to use:
      +DESIRED_Sites = "T2_AT_Vienna,T2_BE_IIHE,T2_BE_UCL,T2_BR_SPRACE,T2_BR_UERJ,T2_CH_CERN,T2_CH_CERN_AI,T2_CH_CERN_HLT,T2_CH_CERN_Wigner,T2_CH_CSCS,T2_CH_CSCS_HPC,T2_CN_Beijing,T2_DE_DESY,T2_DE_RWTH,T2_EE_Estonia,T2_ES_CIEMAT,T2_ES_IFCA,T2_FI_HIP,T2_FR_CCIN2P3,T2_FR_GRIF_IRFU,T2_FR_GRIF_LLR,T2_FR_IPHC,T2_GR_Ioannina,T2_HU_Budapest,T2_IN_TIFR,T2_IT_Bari,T2_IT_Legnaro,T2_IT_Pisa,T2_IT_Rome,T2_KR_KISTI,T2_MY_SIFIR,T2_MY_UPM_BIRUNI,T2_PK_NCP,T2_PL_Swierk,T2_PL_Warsaw,T2_PT_NCG_Lisbon,T2_RU_IHEP,T2_RU_INR,T2_RU_ITEP,T2_RU_JINR,T2_RU_PNPI,T2_RU_SINP,T2_TH_CUNSTDA,T2_TR_METU,T2_TW_NCHC,T2_UA_KIPT,T2_UK_London_IC,T2_UK_SGrid_Bristol,T2_UK_SGrid_RALPP,T2_US_Caltech,T2_US_Florida,T2_US_MIT,T2_US_Nebraska,T2_US_Purdue,T2_US_UCSD,T2_US_Vanderbilt,T2_US_Wisconsin,T3_CH_CERN_CAF,T3_CH_CERN_DOMA,T3_CH_CERN_HelixNebula,T3_CH_CERN_HelixNebula_REHA,T3_CH_CMSAtHome,T3_CH_Volunteer,T3_US_HEPCloud,T3_US_NERSC,T3_US_OSG,T3_US_PSC,T3_US_SDSC"
@@ -110,6 +157,7 @@ If you wish to submit jobs to GPU machines, you need to add additonal line in th
 .. code-block:: sh
 
      RequestGPus=1
+     +RequiresGPU=1
 
 There are resources available through MIT Earth, Atmospheric and Planetary Sciences (EAPS). These are accessed by adding the following requirements.
 
@@ -185,7 +233,7 @@ and the corresponding condor.sub file. Make sure to update the uid in the x509 p
       use_x509userproxy     = True
       x509userproxy         = /home/submit/<username>/x509up_u<uid>
       when_to_transfer_output = ON_EXIT
-      requirements          = (BOSCOCluster == "t3serv008.mit.edu")
+      +DESIRED_Sites = "mit_tier3"
       queue 10
 
 now you can submit your job:
@@ -236,7 +284,7 @@ Similar to above, we will also need a condor.sub. However, this time we will tra
       x509userproxy         = /home/submit/<username>/x509up_u<uid>
       when_to_transfer_output = ON_EXIT
       transfer_output_remaps = "out.root = /work/submit/<username>/out.root"
-      requirements          = (BOSCOCluster == "t3serv008.mit.edu")
+      +DESIRED_Sites = "mit_tier3"
       queue 10
 
 How to monitor and control your submitted HTCondor jobs
