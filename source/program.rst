@@ -205,65 +205,69 @@ A few examples of simple Jupyter noteooks can be found in the submit-examples `j
 
 1. Conda
 
-     a.  jupyterhub is set up to automatically load all conda and python environments which are found in the following directories
+a.  jupyterhub is set up to automatically load all conda and python environments which are found in the following directories
           
-          ['/usr/bin/', os.environ['HOME'] + '/miniforge3/', os.environ['HOME'] + '/anaconda3/',os.environ['HOME'] + '/miniconda3/', os.environ['HOME'] + '/.conda/', '/work/submit/'+os.environ['USER']+'/anaconda3/', '/work/submit/'+os.environ['USER']+'/miniconda3/', '/work/submit/'+os.environ['USER']+'/miniforge3/']
+['/usr/bin/', os.environ['HOME'] + '/miniforge3/', os.environ['HOME'] + '/anaconda3/',os.environ['HOME'] + '/miniconda3/', os.environ['HOME'] + '/.conda/', '/work/submit/'+os.environ['USER']+'/anaconda3/', '/work/submit/'+os.environ['USER']+'/miniconda3/', '/work/submit/'+os.environ['USER']+'/miniforge3/']
           
-     b. If you have a different version of conda, or it is located in a different place, or some other problem has come up, please contact us for help.
+b. If you have a different version of conda, or it is located in a different place, or some other problem has come up, please contact us for help.
+
+c. Alternatively, a manual installation can be performed:
+
+1) Switch to the python you want to make available
+
+2) `Pip install --user ipykernel`
+
+3) `Python -m ipykernel install --user --name <name>`; where <name> is what you want it to show up as on jupyter
      
-     c. Alternatively, a manual installation can be performed:
-     
-          1) Switch to the python you want to make available
-          
-          2) `Pip install --user ipykernel`
-          
-          3) `Python -m ipykernel install --user --name <name>`; where <name> is what you want it to show up as on jupyter
-          
-     d. What the manual and automatic installations do is to create a kernel folder in your `/home/submit/<user>/.local/share/jupyter/kernels/`. These are then found by jupyterhub, and can be used as kernels for notebooks.
-     
-     e. N.B.: if relying on the automatic installation, the first time you log in after having created some environment(s), the spawning will be slower than usual, since it has to install them.
+d. What the manual and automatic installations do is to create a kernel folder in your `/home/submit/<user>/.local/share/jupyter/kernels/`. These are then found by jupyterhub, and can be used as kernels for notebooks.
+
+e. N.B.: if relying on the automatic installation, the first time you log in after having created some environment(s), the spawning will be slower than usual, since it has to install them.
      
 2. Singularity
 
-     a. Because singularity environments are not located in standardized locations like anaconda tends to be, there is no automatic installation for these environments to jupyterhub.
-     
-     b. However, we can create a kernel environment by hand, which we can then use in jupyter, just like any other python environment:
-     
-          1) `mkdir /home/submit/$USER/.local/share/jupyter/kernels/<name>/`
-          
-          2) `touch /home/submit/$USER/.local/share/jupyter/kernels/<name>/kernel.json`
-          
-          3) And finally, place the following in the json file
-          
-               {
-                "argv": [
-                 "singularity",
-                 "exec",
-                 "-e",
-                 "</path/to/singularity/image/>",
-                 "python",
-                 "-m",
-                 "ipykernel_launcher",
-                 "-f",
-                 "{connection_file}"
-                ],
-                "display_name": "test",
-                "language": "python",
-                "metadata": {
-                 "debugger": true
-                }
-               }
+a. Because singularity environments are not located in standardized locations like anaconda tends to be, there is no automatic installation for these environments to jupyterhub.
+
+b. However, we can create a kernel environment by hand, which we can then use in jupyter, just like any other python environment:
+
+1) `mkdir /home/submit/$USER/.local/share/jupyter/kernels/<name>/`
+
+2) `touch /home/submit/$USER/.local/share/jupyter/kernels/<name>/kernel.json`
+
+3) And finally, place the following in the json file
+         
+
+.. code-block:: sh
+
+      {
+       "argv": [
+        "singularity",
+        "exec",
+        "-e",
+        "</path/to/singularity/image/>",
+        "python",
+        "-m",
+        "ipykernel_launcher",
+        "-f",
+        "{connection_file}"
+       ],
+       "display_name": "test",
+       "language": "python",
+       "metadata": {
+        "debugger": true
+       }
+      }
+
                
-          4) You can personalize this `singularity exec` command, e.g. if you want to bind a directory, you can just add two lines to the `argv`, "--bind", "<directory>". You can test out this command by something like:
+4) You can personalize this `singularity exec` command, e.g. if you want to bind a directory, you can just add two lines to the `argv`, "--bind", "<directory>". You can test out this command by something like:
           
           `singularity exec -e /path/to/image/ -m python`
           
 3. GPUs
 
-     a. GPUs are available on submit-gpu machines. The GPUs are not used or  reserved by jupyterhub by itself. Rather, just like when you log in those machines through ssh, the GPUs can be used by a notebook or the jupyterhub terminal only if they are available (you can check this with `nvidia-smi`).
+a. GPUs are available on submit-gpu machines. The GPUs are not used or  reserved by jupyterhub by itself. Rather, just like when you log in those machines through ssh, the GPUs can be used by a notebook or the jupyterhub terminal only if they are available (you can check this with `nvidia-smi`).
      
 4. SlurmSpawner
 
-     a. This spawner relies on Slurm to run your server. You can monitor your job just like any other Slurm job, as described in this guide, with commands like `squeue`.
+a. This spawner relies on Slurm to run your server. You can monitor your job just like any other Slurm job, as described in this guide, with commands like `squeue`.
 
 If you have any questions about JupyterHub you can email us (submit-jupyter@mit.edu).
