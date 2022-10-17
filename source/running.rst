@@ -94,7 +94,7 @@ Submit jobs to tier2 clusters by adding following to condor script:
 
 .. code-block:: sh
 
-     Requirements = (BOSCOGroup == "bosco_cms" && BOSCOCluster == "ce03.cmsaf.mit.edu" && BOSCOCluster =!= "eofe8.mit.edu")
+     Requirements = ( BOSCOCluster =!= "t3serv008.mit.edu" && BOSCOCluster =!= "ce03.cmsaf.mit.edu" && BOSCOCluster =!= "eofe8.mit.edu")
      +DESIRED_Sites = "mit_tier2"
 
 If instead you want to run on the T3 machines you can replace the "DESIRED_Sites" to:
