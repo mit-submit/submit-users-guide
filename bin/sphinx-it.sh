@@ -1,4 +1,5 @@
 #!/bin/bash
+#WEB_LOCATION=/var/www/html/submit-users-guide
 WEB_LOCATION=paus@submit04.mit.edu:/var/www/html/submit-users-guide
 
 if [ ".$1" != "." ]
