@@ -345,7 +345,7 @@ Usually the maximum memory usage is 2000 MB for each core. If user's job require
 
 .. code-block:: sh
 
-       RequestMemory = 2000
+       RequestMemory = 4000
        RequestCpus=2
 
 Keep in mind, the more memory user requires, it will be harder to find the slot. 
