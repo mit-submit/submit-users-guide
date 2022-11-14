@@ -331,6 +331,25 @@ If you made a mistake during submission, you can also cancel your jobs. This sho
        # If you want to remove all of your jobs
        condor_rm <username>
 
+Usefull condor set up
+=====================
+
+In the condor submission script, users are define the requirements of slots from the condor pool (conputing resources). 
+The default memory requirement is 1024 MB per core.  If uses job uses more memory then 1024 MB, the job will get killed. To request more memories, users need to add this in the condor script:
+
+.. code-block:: sh
+
+       RequestMemory = 2000
+
+Usually the maximum memory usage is 2000 MB for each core. If user's job requires more memory then 2000, it is recommanded users to request multi-core, for example:
+
+.. code-block:: sh
+
+       RequestMemory = 2000
+       RequestCpus=2
+
+Keep in mind, the more memory user requires, it will be harder to find the slot. 
+
 Slurm
 ~~~~~
 

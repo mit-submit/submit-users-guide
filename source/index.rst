@@ -15,6 +15,7 @@ User's Guide - subMIT
    working
    program
    running
+   storage
    monit
    gpu
    backup
