@@ -1,6 +1,7 @@
 #!/bin/bash
+# make sure to install submit01 and not on submit04!
 WEB_LOCATION=/var/www/html/submit-users-guide
-#WEB_LOCATION=paus@submit04.mit.edu:/var/www/html/submit-users-guide
+#WEB_LOCATION=paus@submit01.mit.edu:/var/www/html/submit-users-guide
 
 if [ ".$1" != "." ]
 then
