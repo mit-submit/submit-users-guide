@@ -341,14 +341,13 @@ The default memory requirement is 1024 MB per core.  If uses job uses more memor
 
        RequestMemory = 2000
 
-Usually the maximum memory usage is 2000 MB for each core. If user's job requires more memory then 2000, it is recommanded users to request multi-core, for example:
+Usually the maximum memory usage is 2000 MB for each core. But condor has a feature to adjust memory usage of a job requirement automatically even if user's job requires more memory then 2000 MB, for example:
 
 .. code-block:: sh
 
        RequestMemory = 4000
-       RequestCpus=2
 
-Keep in mind, the more memory user requires, it will be harder to find the slot. 
+But keep in mind, the more memory user requires, the harder it is to find the slot. 
 
 Slurm
 ~~~~~
