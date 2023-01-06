@@ -89,4 +89,4 @@ If you wish to submit jobs to GPU machines in CMS global pool, you need to add a
        +RequiresGPU=1
 
 Some example scripts to run GPUs with condor can be found here:
-`condor gpu <https://github.com/mit-submit/submit-examples/gpu/condor_gpu>`_
+`condor gpu <https://github.com/mit-submit/submit-examples/tree/main/gpu/condor_gpu>`_
