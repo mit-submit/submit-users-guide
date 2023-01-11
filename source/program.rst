@@ -133,7 +133,36 @@ All SubMIT users have access to build dockers. You can start by finidng instruct
 
      docker build -t local/docker_name .
 
-Additionally, if you want to build a singularity for this as well, this can done with the following:
+You can then run the docker like below.
+
+.. code-block:: sh
+
+     docker run --rm -i -t local/docker_name
+
+Dockerhub:
+..........
+
+Code can be pulled directly from Dockerhub:  `dockerhub <https://hub.docker.com/>`_.
+
+If there is a container that you would like to use on Dockerhub, you can pull the container directly.
+
+.. code-block:: sh
+
+      docker pull <Dockerhub_container>
+
+After this is done downloading we can then enter into the container:
+
+.. code-block:: sh
+
+      docker run --rm -i -t <Dockerhub_container>
+
+
+Singularity and Singularity Image Format (SIF)
+..............................................
+
+Singularity can build containers in several different file formats. The default is to build a SIF (singularity image format) container. SIF files are compressed and immutable making them the best choice for reproducible, production-grade containers. If you are going to be running your singularity through one of the batch systems provided by submit, it is suggested that you create a SIF file. For Slurm, this SIF file can be accessed through any of your mounted directories, while for HTCondor, the best practice is to make this file avialble through CVMFS. This singularity image could then be accessed through both the T2 and T3 resources via MIT's hosted CVMFS.
+
+While Singularity doesn’t support running Docker images directly, it can pull them from Docker Hub and convert them into a suitable format for running via Singularity. This opens up access to a huge number of existing container images available on Docker Hub and other registries. When you pull a Docker image, Singularity pulls the slices or layers that make up the Docker image and converts them into a single-file Singularity SIF image. An example of this was shown below.
 
 .. code-block:: sh
 
@@ -152,13 +181,12 @@ If you need this available on worker nodes through HTCondor you can add them to 
     #Start singularity from your /work area (email Max with pathway EXAMPLE:/work/submit/freerc/cvmfs/):
     singularity shell /cvmfs/cvmfs.cmsaf.mit.edu/submit/work/submit/freerc/cvmfs/docker_name.sif
 
-
-Singularity
-...........
+Singularity container
+.....................
 
 For this example, we will use the coffea-base singularity image based on the following `docker coffea image <https://github.com/CoffeaTeam/docker-coffea-base>`_.
 
-Entering into the singularity environment is easy once you have sourced CVMFS. You can simply do the following command:
+Entering into the singularity container. You can simply do the following command:
 
 .. code-block:: sh
 
@@ -177,6 +205,7 @@ The command above naturally binds the PWD and work directory. If you need to spe
      export SINGULARITY_BIND="/mnt"
 
 Now you can run in many different environments that are available in singularity images through CVMFS.
+
 
 gcc and systemwide systems
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
