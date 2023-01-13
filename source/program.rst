@@ -236,7 +236,16 @@ A few examples of simple Jupyter noteooks can be found in the submit-examples `j
 
 a.  jupyterhub is set up to automatically load all conda and python environments which are found in the following directories
           
-['/usr/bin/', os.environ['HOME'] + '/miniforge3/', os.environ['HOME'] + '/anaconda3/',os.environ['HOME'] + '/miniconda3/', os.environ['HOME'] + '/.conda/', '/work/submit/'+os.environ['USER']+'/anaconda3/', '/work/submit/'+os.environ['USER']+'/miniconda3/', '/work/submit/'+os.environ['USER']+'/miniforge3/']
+.. code-block:: sh
+      [
+		'/usr/bin/',
+		os.environ['HOME'] + '/miniforge3/',
+		 os.environ['HOME'] + '/anaconda3/',
+		os.environ['HOME'] + '/miniconda3/', 
+		os.environ['HOME'] + '/.conda/',
+		 '/work/submit/'+os.environ['USER']+'/anaconda3/', '/work/submit/'+os.environ['USER']+'/miniconda3/', '/work/submit/'+os.environ['USER']+'/miniforge3/',
+		 '/data/submit/'+os.environ['USER']+'/anaconda3/', '/data/submit/'+os.environ['USER']+'/miniconda3/', '/data/submit/'+os.environ['USER']+'/miniforge3/',
+     ]
           
 b. If you have a different version of conda, or it is located in a different place, or some other problem has come up, please contact us for help.
 
