@@ -93,14 +93,18 @@ jupyterhub is set up to automatically load all conda and python environments whi
 
 .. code-block:: sh          
 
-     /usr/bin/
-     /home/submit/<user>/miniforge3/ 
-     /home/submit/<user>/anaconda3/
-     /home/submit/<user>/miniconda3/
-     /home/submit/<user>/.conda/ 
-     /work/submit/<user>/anaconda3/ 
-     /work/submit/<user>/miniconda3/ 
-     /work/submit/<user>/miniforge3/
+      /usr/bin/
+      /home/user/<user>/miniforge3/
+      /home/user/<user>/anaconda3/
+      /home/user/<user>/miniconda3/ 
+      /home/user/<user>/.conda/
+      /work/submit/<user>/anaconda3/
+      /work/submit/<user>/miniconda3/
+      /work/submit/<user>/miniforge3/
+      /data/submit/<user>/anaconda3/
+      /data/submit/<user>/miniconda3/
+      /data/submit/<user>/miniforge3/
+
 
 Example Notebook:
 .................
