@@ -18,15 +18,15 @@ To increase the possible bandwidth to a single file use the mass storage (hadoop
 Do not directly write to hadoop spaces
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Users will have a significant amount of scratch space available to them through hadoop. Users should store large files here rather than in the /home or /work spaces. However, users need to be careful how to transfer files to this space as they should be transferred through gfal or xrootd rather than being transferred directly using the standard linux *cp* command and the fuxe mount point at */mnt/T3_US_MIT/hadoop/scratch*. Good use examples are shown below.
+Users will have a significant amount of scratch space available to them through hadoop. Users should store large files here rather than in the /home or /work spaces. However, users need to be careful how to transfer files to this space as they should be transferred through gfal or xrootd rather than being transferred directly using the standard linux *cp* command and the fuxe mount point at */data/submit/*. Good use examples are shown below.
 
 .. code-block:: sh
 
      # Use xrootd directly for fast IO
-     xrdcp out.root root://t3serv017.mit.edu://scratch/username/out.root
+     xrdcp out.root root://submit50.mit.edu://username/out.root
 
      # Or through gfal
-     gfal-copy file://`pwd`/out.root davs://t3serv017.mit.edu:1094//scratch/username/out.root
+     gfal-copy file://`pwd`/out.root root://submit50.mit.edu:1094/username/out.root
 
 If you are using xrootd for the first time, you will need to be added to the mapping. Please, contact submit-help via email (submit-help@mit.edu) to be added.
 

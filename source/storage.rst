@@ -29,4 +29,22 @@ Once the admin add your DN to the xrootd mapping, you could download or upload y
      Upload: xrdcp <FILE> root://submit50.mit.edu//<USER>/<PATH-TO-SAVE> 
      <PATH-TO-FILE> and <PATH-TO-SAVE> corresponds to the path under /data/submit/<USER>
 
+The xrootd request by default trys both IPV6 and IPV4 protocol. It tries IPV6 first, then tries IPV4. If the xrootd server has IPV6 but not enabled, it may affect the transfer speed. To resolve this, users can just enable IPV4 only by typing command:
+
+.. code-block:: sh
+
+     export XRD_NETWORKSTACK=IPv4
+
+To change is back to default, type:
+
+.. code-block:: sh
+
+     export XRD_NETWORKSTACK=IPAuto
+
+To just enable IPV6, type:
+
+.. code-block:: sh
+
+     export XRD_NETWORKSTACK=IPv6
+
 Keep in mind that filesystem is in favor of large files, therefore it is not recommanded to save large numbers of small files in the filesystem, for example, 100k+ small log files. 

@@ -219,7 +219,7 @@ Once the x509 proxy is available, you can use xrootd freely. In this first examp
       # your Analyzer goes here
 
       # transfer the file
-      xrdcp out.root root://t3serv017.mit.edu//scratch/<username>/
+      xrdcp out.root root://submit50.mit.edu//<username>/
 
       echo "----- transferring output to scratch :"
       echo " ------ THE END (everyone dies !) ----- "
@@ -375,7 +375,7 @@ Slurm can also be used on the submit machines. There is a slurm federation on th
       
       # Your Analyzer goes here
 
-      xrdcp out.root root://t3serv017.mit.edu//scratch/freerc/SUEP/slurm.root
+      xrdcp out.root root://submit50.mit.edu//freerc/SUEP/slurm.root
       
       srun hostname
       srun ls -hrlt
