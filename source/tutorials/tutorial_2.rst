@@ -189,9 +189,9 @@ OSG:
 Slurm:
 ~~~~~~
 
-Slurm works on the Submit machines themselves, or on LQCD machines at MIT. Unlike HTCondor, your home is mounted across all machines available to you on slurm. 
+Slurm works on the Submit machines themselves, or on LQCD machines at MIT. Unlike HTCondor, ``/home/submit``, ``/work/submit``, and ``/data/submit`` are all mounted across all machines available to you on slurm. 
 
-Below is a sample about how to submit a slurm job to the submit machines. Save the following into a file named submit.sh 
+Below is a sample about how to submit a slurm job to the submit machines. Save the following into a file named ``submit.sh``.
 
 .. code-block:: sh
 
