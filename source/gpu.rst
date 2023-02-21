@@ -6,13 +6,24 @@ SubMIT also has access to several GPUs. In this section we will review how to ac
 submit-gpu login
 ~~~~~~~~~~~~~~~~
 
-Submit allows access to several GPUs in different ways. In addition to the submit server pool, you also have access to the submit-gpu server pool which contains four servers, each fitted with 2 GPUs. This allows users to interactively test their GPU applications by simply logging into these machines through ssh
+Submit allows interactive login access to GPUs through slurm. From submit, you have access to the submit-gpu server pool which contains four servers, each fitted with 2 GPUs as well as the submit-gpu1080 server pool which has several machines each fitted with 4 1080 GPUs.. This allows users to interactively test their GPU applications by simply logging into these machines through slurm using the salloc command shown below:
 
 .. code-block:: sh
 
-      ssh <username>@submit-gpu.mit.edu
+      salloc --partition=submit-gpu --cpus-per-gpu=1 --gres=gpu:1
 
-Similar to submit, these machines use the ssh keys that you have already uploaded to the submit-portal and are connected to the same mounted directories meaning that your /home and /work directories can be accessed in the same way. Additionally, these machines have the same applications available on them as the submit machines. If you are having issues with any configuration differences between the submit and submit-gpu machines please email submit-help@mit.edu.
+or to the submit-gpu1080 partition:
+
+.. code-block:: sh
+
+      salloc --partition=submit-gpu1080 --cpus-per-gpu=1 --gres=gpu:1
+
+If you want more than one gpu for an interactive session, you can request more with the following:
+
+.. code-block:: sh
+
+      salloc --partition=submit-gpu1080 --cpus-per-gpu=1 --gres=gpu:4
+
 
 CUDA
 ~~~~
