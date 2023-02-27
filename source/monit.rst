@@ -15,14 +15,14 @@ Ganglia is a distributed monitoring system for high-performance computing system
 CondorMon
 ~~~~~~~~~
 
-If you would like to monitor your condor jobs you can use the condor monitoring `CondorMon <http://submit04.mit.edu/condormon/index.html>`_, where you can see how many condor jobs are running, idle or held as well as where they are being submitted to. This site also gives an overview of your recent submissions.
+If you would like to monitor your condor jobs you can use the condor monitoring `CondorMon <https://submit.mit.edu/condormon/index.html>`_, where you can see how many condor jobs are running, idle or held as well as where they are being submitted to. This site also gives an overview of your recent submissions.
 
 The submissions that are sent to the CMS global pool can also be monitored through the central site `CERN Summary <https://cms-gwmsmon.cern.ch/institutionalview/T2_US_MIT>`_.
 
 SlurmMon
 ~~~~~~~~
 
-To monitor your slurm jobs you can use the slurm monitoring `SlurmMon <http://submit04.mit.edu/slurmmon/index.html>`_, where you can see how many slurm jobs are running, as well as where they are being submitted to. This site also gives an overview of your recent submissions including submissions to the LQCD cluster and submissions to GPU machines.
+To monitor your slurm jobs you can use the slurm monitoring `SlurmMon <https://submit.mit.edu/slurmmon/index.html>`_, where you can see how many slurm jobs are running, as well as where they are being submitted to. This site also gives an overview of your recent submissions including submissions to the LQCD cluster and submissions to GPU machines.
 
 Summary Plots for SubMIT
 ~~~~~~~~~~~~~~~~~~~~~~~~
