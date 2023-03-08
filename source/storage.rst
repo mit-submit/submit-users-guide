@@ -1,3 +1,9 @@
+.. raw:: html
+
+    <style> .red {color:red} </style>
+
+.. role:: red
+
 User quota and storage at submit
 --------------------------------
 This section describes the quota and storage for a user and where the storage areas are located. For the large storage area, submit also allows user to use xrootd to make the remote transfer.
@@ -55,5 +61,5 @@ Keep in mind that filesystem is in favor of large files, therefore it is not rec
 
 The storage on Tier2
 ~~~~~~~~~~~~~~~~~~~~
-Upon request, users may also have some storage on MIT Tier2 sites. Note that tier2 is external computing resources and users can only use xrootd to transfer the files. If other words, to use storage in tier2, users must have x509 certificate. The details of how to get such certificates are above. 
+Upon request, users may also have some storage on MIT Tier2 sites. Note that tier2 is external computing resources and users can only use xrootd to transfer the files. In other words, to use storage in tier2, users must have x509 certificate. The details of how to get such certificates are above. 
  
