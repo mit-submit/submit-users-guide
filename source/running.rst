@@ -76,7 +76,7 @@ There are several more examples for different application types at
 
 The different examples are below: `simple test <https://github.com/mit-submit/submit-examples/tree/main/test-all>`_, `testing julia <https://github.com/mit-submit/submit-examples/tree/main/julia>`_, `testing matlab <https://github.com/mit-submit/submit-examples/tree/main/matlab>`_.
 
-If you know the gpu machines to run on you can try testing the following `condor_gpu ye==test <https://github.com/mit-submit/submit-examples/tree/main/condor_gpu>`_ by adding those machines in the requirements.
+If you know the gpu machines to run on you can try testing the following `condor_gpu <https://github.com/mit-submit/submit-examples/tree/main/condor_gpu>`_ by adding those machines in the requirements.
 
 HTCondor on the different clusters
 ==================================
@@ -87,7 +87,7 @@ We have two main computing resources on MIT campus: tier2 and tier3 clusters. Us
 
 Since condor jobs are running on external computing resouces, your storage area (/home,/work,/data/submit) is not accessable on the worknodes. You either need to transfer the files through condor script, or use xrootd to transfer the files. 
 
-The xrootd transfers is enabled for gluster (/data/submit) storage, how to use it, see `details ye==test <https://submit.mit.edu/submit-users-guide/storage.html>`_ in "storage" section.
+The xrootd transfers is enabled for gluster (/data/submit) storage, how to use it, see `details <https://submit.mit.edu/submit-users-guide/storage.html>`_ in "storage" section.
 
 Glidein submission for T2/T3.
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

@@ -17,7 +17,7 @@ Submit uses the gluster to form the filesystem. Currently users could use xrootd
 
 :red:`Users need x509 certificate to use xrootd transfer.`
 
-For CERN users, they can use their CERN Grid Certificates. For non-CERN users, they can request user certificates from OSG, see `link ye==test <https://osg-htc.org/docs/security/certificate-management/>`_.
+For CERN users, they can use their CERN Grid Certificates. For non-CERN users, they can request user certificates from OSG, see `link <https://osg-htc.org/docs/security/certificate-management/>`_.
 
 The way to extract your DN from your certificate usercert.pem: 
 
