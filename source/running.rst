@@ -81,9 +81,13 @@ If you know the gpu machines to run on you can try testing the following `condor
 HTCondor on the different clusters
 ==================================
 
-While using Condor you should be able to specify where you want your jobs to run at. Here we provide a couple of examples on modifying your requirements in order to run at different clusters. For more info see `our tips <http://submit04.mit.edu/tips.html>`_.
+While using Condor you should be able to specify where you want your jobs to run at. Here we provide a couple of examples on modifying your requirements in order to run at different clusters. 
 
 We have two main computing resources on MIT campus: tier2 and tier3 clusters. Users can submit condor jobs through glideinWMS or bosco.
+
+Since condor jobs are running on external computing resouces, your storage area (/home,/work,/data/submit) is not accessable on the worknodes. You either need to transfer the files through condor script, or use xrootd to transfer the files. 
+
+The xrootd transfers is enabled for gluster (/data/submit) storage, how to use it, see `details ye==test <https://submit.mit.edu/submit-users-guide/storage.html>`_ in "storage" section.
 
 Glidein submission for T2/T3.
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
