@@ -1,8 +1,6 @@
-![Heavy Constructiuon](/source/img/under_construction.jpg "Construction")
-
 # Users guide to the *subMIT* login pool
 
-The draft users guide can be found [here](http://submit04.mit.edu/submit-users-guide).
+The users guide can be found [here](http://submit04.mit.edu/submit-users-guide).
 
 
 # For people editing
