@@ -14,9 +14,11 @@ If you are not familiar with ssh keys, generating keys is a straightforward proc
 
 .. code-block:: sh
 
-   ssh-keygen
+   ssh-keygen -t rsa
 
-This should create both a private and a public key in your .ssh directory. Simply paste the contents of the public key into the submit portal link above and you are ready. The private key is like your password and should never be exposed to anybody.
+This should create both a private and a public key (``id_rsa``, the private key, and ``id_rsa.pub``, the public key) in your ``.ssh`` directory. Simply paste the contents of the public key (``id_rsa.pub``) into the submit portal link above and you are ready. The private key is like your password and should never be exposed to anybody. Please do not paste this into the subMIT website; if you do you should re-create your keys by running the ``ssh-keygen`` command again.
+
+We recommend that you use the standard name (as prompted by ``ssh-keygen``) for the keys, as this will make the process easier. Some advanced users may want to create differently named keys within their ``.ssh`` directory, as they may wish to keep separate keys for separate machines. If you do this, please remember to either create the appropriate configuration within ``.ssh/config``, or log in with ``ssh -i /path/to/identity/file``.
 
 Login and basic areas
 ~~~~~~~~~~~~~~~~~~~~~
