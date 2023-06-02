@@ -33,6 +33,15 @@ Tutorials - subMIT
    tutorials/tutorial_4
    tutorials/tutorial_5
 
+Future Work - subMIT
+====================
+
+.. toctree::
+   :maxdepth: 1
+   :caption: Planned Upgrades:
+ 
+   future/alma
+
 Indices and tables
 ==================
 
