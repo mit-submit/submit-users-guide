@@ -19,7 +19,7 @@ X2GO
 
 X2Go is open source remote desktop software for Linux and is available on submit01. You will need to download the x2goclient on your local machine and then start a session to connect to submit01.mit.edu. 
 
-`x2gocleint <https://wiki.x2go.org/doku.php/doc:installation:x2goclient>`_
+`x2goclient <https://wiki.x2go.org/doku.php/doc:installation:x2goclient>`_
 
 Remember to point to the correct ssh key that you have uploaded to the submit-portal. Use XFCE in the drop down once the x2goclient has started. 
 
