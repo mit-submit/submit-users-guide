@@ -79,8 +79,6 @@ Simply paste the contents of the public key (``id_rsa.pub``) into the submit por
 
 We recommend that you use the standard name (as prompted by ``ssh-keygen``) for the keys, as this will make the process easier. Some advanced users may want to create differently named keys within their ``.ssh`` directory, as they may wish to keep separate keys for separate machines. If you do this, please remember to either create the appropriate configuration within ``.ssh/config``, or log in with ``ssh -i /path/to/identity/file``.
 
-
-
 Login and basic areas
 ~~~~~~~~~~~~~~~~~~~~~
 
@@ -102,6 +100,26 @@ You should now be logged into one of our main submit server machines. By default
 
    # For larger files, you will get a data storage space with a quoata of 1 TB of space
    /data/submit/<username>
+
+Common issues with keys
+~~~~~~~~~~~~~~~~~~~~~~~
+
+A common issue with keys is when you already have a key in your .ssh directory and ssh defaults to a different key than the one uploaded to the submit-portal. For example, GitHub commonly uses id_ed25519 keys which can interfere when you try to login.
+
+There are a few ways to handle this issue. If you prefer, you can simply upload the other key to the submit-portal. If you would like to use the rsa key, log in with a command like ``ssh -i <path>/.ssh/id_rsa <username>@submit.mit.edu`` or create the appropriate configuration within ``.ssh/config`` like below.
+
+
+.. code-block:: sh
+
+   Host submit
+     HostName submit.mit.edu
+     User <username>
+     IdentitiesOnly=yes
+     PreferredAuthentications publickey
+     PasswordAuthentication no
+     IdentityFile <path>/id_rsa
+
+One thing to note, is that if you have already tried this ssh command once and it broke, you will need to modify your known_hosts file in the .ssh directory. In order to fix this you will need to remove lines with ``submit`` in them from the known_hosts. Please note that it is safe to remove the lines from this file. 
 
 Creating a personal webpage
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~

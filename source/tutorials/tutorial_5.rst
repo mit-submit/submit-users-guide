@@ -26,7 +26,7 @@ Submit allows access to several GPUs in different ways. In addition to the submi
 
 .. code-block:: sh
 
-      ssh <username>@submit-gpu.mit.edu
+      salloc --partition=submit-gpu --cpus-per-gpu=1 --gres=gpu:1
 
 Similar to submit, these machines use the ssh keys that you have already uploaded to the submit-portal and are connected to the same mounted directories meaning that your /home and /work directories can be accessed in the same way. Additionally, these machines have the same applications available on them as the submit machines.
 
