@@ -14,6 +14,15 @@ All of the submit machines come with several tools to help you get started with 
 
 For more complicated workflows, there are several options on how to proceed. Many environments can be set up through CVFMS provided by CERN. If you need more control of the environment, either conda or dockers are commonly used and well supported. For more information see the sections below.
 
+X2GO
+~~~~
+
+X2Go is open source remote desktop software for Linux and is available on submit01. You will need to download the x2goclient on your local machine and then start a session to connect to submit01.mit.edu. 
+
+`x2gocleint <https://wiki.x2go.org/doku.php/doc:installation:x2goclient>`_
+
+Remember to point to the correct ssh key that you have uploaded to the submit-portal. Use XFCE in the drop down once the x2goclient has started. 
+
 CVMFS
 ~~~~~
 
