@@ -356,10 +356,13 @@ But keep in mind, the more memory user requires, the harder it is to find the sl
 Slurm
 ~~~~~
 
+Slurm can also be used on the submit machines. There is a main slurm partition on the submit machines as well as GPUs available through submit-gpu and submit-gpu1080 partions. Additionally slurm connects the lqcd cluster(TEMPORARILY OUT OF DATE).
+The slurm partitions on SubMIT are fairly open but jobs are limited to 6 days of running time. In addition, each slurm node is limited to 80 GB of total memory to use.
+
 Slurm example 1
 ===============
 
-Slurm can also be used on the submit machines. There is a slurm federation on the submit machines as well as slurm clusters connected through lqcd. Below is a sample about how to submit a slurm job to the submit machines. Here we are doing similar to the condor samples above and copying a file with xrootd and then transferring the output to hadoop scratch space. Like Condor, you will need to export your x509 proxy in order to get access to certain files. Additional samples that utilize the GPUs on the submit cluster can be found in the GPU section of the guide.
+Below is a sample about how to submit a slurm job to the submit machines. Here we are doing similar to the condor samples above and copying a file with xrootd and then transferring the output to hadoop scratch space. Like Condor, you will need to export your x509 proxy in order to get access to certain files. Additional samples that utilize the GPUs on the submit cluster can be found in the GPU section of the guide.
 `submit GPU <http://submit04.mit.edu/submit-users-guide/gpu.html>`_
 
 .. code-block:: sh
