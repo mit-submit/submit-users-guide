@@ -232,7 +232,31 @@ Alternatively, you can also use a gcc version available through CVMFS. An exampl
 
 For systemwide tools such as gcc, these options should be considered first in order to solve the issues on the user side. If these options still do not work for your needs then please email <submit-help@mit.edu>.
 
-JupyterHub
+Additional Operating Systems (CMS specific)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+For CMS users, there are additional options to operating systems through CMSSW. The following commands will set up CMSSW and then put you into a singularity for Scientific Linux CERN 6 (slc6), CentOS 7(cc7), AlmaLinux 8 (el8) and AlmaLinux 9 (el9). 
+
+.. code-block:: sh
+
+     source /cvmfs/cms.cern.ch/cmsset_default.sh
+
+You can then do any of the following depending on your desired OS.
+
+.. code-block:: sh
+
+     cmssw-slc6
+     cmssw-cc7
+     cmssw-el8
+     cmssw-el9
+
+If you want to check the OS, you caan do the following.
+
+.. code-block:: sh
+
+     cat /etc/os-release
+
+Jupyterhub
 ~~~~~~~~~~
 
 In addition to the tools above, you have access to Jupyter Notebooks through a `JupyterHub <https://submit.mit.edu/jupyter>`_ set up at submit.
