@@ -19,6 +19,7 @@ User's Guide - subMIT
    monit
    gpu
    backup
+   acknowledging
 
 Tutorials - subMIT
 ==================
