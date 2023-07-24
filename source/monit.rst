@@ -5,7 +5,7 @@ This section will detail the monitoring available at submit. Here we will detail
 The main submit page
 ~~~~~~~~~~~~~~~~~~~~
 
-On the main `submit page <http://submit04.mit.edu/>`_ you can find interesting links useful for monitoring. Most of these links are explained in more detail below.
+On the main `submit page <http://submit.mit.edu/>`_ you can find interesting links useful for monitoring. Most of these links are explained in more detail below.
 
 Ganglia Monitoring for submit
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -27,7 +27,7 @@ To monitor your slurm jobs you can use the slurm monitoring `SlurmMon <https://s
 Summary Plots for SubMIT
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-There are additional summary plots to help keep track of the growth and health of the SubMIT system `Submit Monitoring Tools <http://submit04.mit.edu/home_monitor/index.php>`_. 
+There are additional summary plots to help keep track of the growth and health of the SubMIT system `Submit Monitoring Tools <http://submit.mit.edu/home_monitor/index.php>`_. 
 
 Monitoring for the T3
 ~~~~~~~~~~~~~~~~~~~~~
