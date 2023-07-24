@@ -37,11 +37,11 @@ Getting Started with VSCode on subMIT
 
 We plan to provide more detailed instructions and tutorials in the near future, so please check back again later for more info!
 
-Microsoft provides some handy `videos <https://code.visualstudio.com/docs/getstarted/introvideos>`_ for getting started with VSCode.  (As well as a detailed information `here <https://code.visualstudio.com/docs/remote/ssh>`_).
+Microsoft provides some handy `videos <https://code.visualstudio.com/docs/getstarted/introvideos>`_ for getting started with VSCode.  (As well as a detailed information `vsCode <https://code.visualstudio.com/docs/remote/ssh>`_).
 
 First `download and install <https://code.visualstudio.com/docs/setup/setup-overview>`_ VSCode on your laptop/desktop.  
 
-Then, a convenient way to set up VSCode for remote development is to set up an ssh config file as detailed `here <https://submit.mit.edu/submit-users-guide/starting.html#common-issues-with-keys>`_ in the subMIT User's Guide.  
+Then, a convenient way to set up VSCode for remote development is to set up an ssh config file as detailed `vs_config <https://submit.mit.edu/submit-users-guide/starting.html#common-issues-with-keys>`_ in the subMIT User's Guide.  
 
 Then install the `VSCode Remote-SSH extension <https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-ssh>`_.  
 
