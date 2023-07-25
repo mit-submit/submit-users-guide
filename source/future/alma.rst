@@ -13,7 +13,14 @@ Testing on Alma Linux
 
 In order to start testing with AlmaLinux, we have set up a testing slurm partition which has machines with AlmaLinux. This partition is named "submit-alma9"
 
-The easiest way to start working is to start an interactive session through slurm with salloc.
+The easiest way to start working is to start an interactive session with ssh
+
+.. code-block:: sh
+
+     ssh <username>@submit-test.mit.edu 
+
+
+You can also gain access through slurm with salloc.
 
 .. code-block:: sh
 
