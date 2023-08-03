@@ -85,9 +85,9 @@ While using Condor you should be able to specify where you want your jobs to run
 
 We have two main computing resources on MIT campus: tier2 and tier3 clusters. Users can submit condor jobs through glideinWMS or bosco.
 
-Since condor jobs are running on external computing resouces, your storage area (/home,/work,/data/submit) is not accessable on the worknodes. You either need to transfer the files through condor script, or use xrootd to transfer the files. 
+Since condor jobs are running on external computing resouces, your storage area (``/home``, ``/work``, ``/data/``) is not accessable on the worknodes. You either need to transfer the files through condor script, or use xrootd to transfer the files. 
 
-The xrootd transfers is enabled for gluster (/data/submit) storage, how to use it, see `details <https://submit.mit.edu/submit-users-guide/storage.html>`_ in "storage" section.
+The xrootd transfers is enabled for gluster (``/data/submit``) storage, how to use it, see `details <https://submit.mit.edu/submit-users-guide/storage.html>`_ in "storage" section.
 
 Glidein submission for T2/T3.
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -195,14 +195,14 @@ Or depending on your workflow you may need RHEL 6 for OSG
 HTCondor example 1
 ==================
 
-Lets look at a full example condor submission for downloading some ROOT file and transfering the output. In order to access files you will need to export your x509 proxy. The easiest way to do this on the submit machines is to first make this proxy available in your /home space and then add export lines in your condor submission. It is often easiest to add an alias commad to your .bashrc like the following:
+Lets look at a full example condor submission for downloading some ROOT file and transfering the output. In order to access files you will need to export your x509 proxy. The easiest way to do this on the submit machines is to first make this proxy available in your ``/home`` space and then add export lines in your condor submission. It is often easiest to add an alias commad to your ``.bashrc`` like the following:
 
 .. code-block:: sh
 
       alias proxy='voms-proxy-init -rfc -voms cms; cp /tmp/x509up_u'$(id -u)' ~/'
 
 
-Once the x509 proxy is available, you can use xrootd freely. In this first example we will grab a ROOT file with xrootd and then transfer the file to hadoop scratch space using xrdcp. Lets run the following script in the condor job. Lets call it script.sh. Make sure to update your uid and username before running the script.
+Once the x509 proxy is available, you can use xrootd freely. In this first example we will grab a ROOT file with xrootd and then transfer the file to hadoop scratch space using xrdcp. Lets run the following script in the condor job. Lets call it ``script.sh``. Make sure to update your uid and username before running the script.
 
 .. code-block:: sh
 
@@ -228,7 +228,7 @@ Once the x509 proxy is available, you can use xrootd freely. In this first examp
       echo "----- transferring output to scratch :"
       echo " ------ THE END (everyone dies !) ----- "
 
-and the corresponding condor.sub file. Make sure to update the uid in the x509 proxy. This will run on the T3 but can be modified to run in other locations.
+and the corresponding ``condor.sub`` file. Make sure to update the uid in the x509 proxy. This will run on the T3 but can be modified to run in other locations.
 
 .. code-block:: sh
 
@@ -278,7 +278,7 @@ If you have smaller output and you want to use the workspace rather than hadoop 
       echo "----- transferring output to scratch :"
       echo " ------ THE END (everyone dies !) ----- "
 
-Similar to above, we will also need a condor.sub. However, this time we will transfer the file here rather than in the script. We will do this through a remap. Do not use this method to transer any files through the fuse mount! 
+Similar to above, we will also need a ``condor.sub``. However, this time we will transfer the file here rather than in the script. We will do this through a remap. Do not use this method to transer any files through the fuse mount! 
 
 .. code-block:: sh
 
@@ -356,7 +356,7 @@ But keep in mind, the more memory user requires, the harder it is to find the sl
 Slurm
 ~~~~~
 
-Slurm can also be used on the submit machines. There is a main slurm partition on the submit machines as well as GPUs available through submit-gpu and submit-gpu1080 partions. Additionally slurm connects the lqcd cluster(TEMPORARILY OUT OF DATE).
+Slurm can also be used on the submit machines. There is a main slurm partition on the submit machines as well as GPUs available through ``submit-gpu`` and ``submit-gpu1080`` partions. Additionally slurm connects the lqcd cluster(TEMPORARILY OUT OF DATE).
 The slurm partitions on SubMIT are fairly open but jobs are limited to 6 days of running time. In addition, each slurm node is limited to 80 GB of total memory to use.
 
 Slurm example 1
