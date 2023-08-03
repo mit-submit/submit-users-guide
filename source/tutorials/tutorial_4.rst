@@ -9,7 +9,7 @@ Conda:
 
 Conda is an open source package management system and environment management system. We can use this to set up consistent environments and manage the package dependencies for various applications. 
 
-Please note that downloading many conda packages takes a large amount of space which can very quickly use up the quota in your home. If you plan to use conda heavily it is suggested to download and configure it in your work directory where there is much more space. Any new conda environment that you install in your /home/submit or /work/submit will be installed on your jupyterhub only after your server is started up again. If your server is already running, you can stop it by File -> Hub Control Panel -> Stop My Server and then restart it by clicking Start Server. 
+Please note that downloading many conda packages takes a large amount of space which can very quickly use up the quota in your home. If you plan to use conda heavily it is suggested to download and configure it in your work directory where there is much more space. Any new conda environment that you install in your ``/home/submit`` or ``/work/submit`` will be installed on your jupyterhub only after your server is started up again. If your server is already running, you can stop it by File -> Hub Control Panel -> Stop My Server and then restart it by clicking Start Server. 
 
 Recipe:
 .......
@@ -22,15 +22,15 @@ For installing Miniconda (see also https://hackmd.io/GkiNxag0TUmHnnCiqdND1Q#Loca
       # Run and follow instructions on screen
       bash Miniforge3-Linux-x86_64.sh
 
-NOTE: always make sure that conda, python, and pip point to local Miniforge installation (`which conda` etc.). Another thing to keep in mind is that you should avoid installing packages with pip using --user. The example below shows the correct way to use pip in conjunction with conda. 
+NOTE: always make sure that conda, python, and pip point to local Miniforge installation (``which conda`` etc.). Another thing to keep in mind is that you should avoid installing packages with ``pip`` using ``--user``. The example below shows the correct way to use pip in conjunction with conda. 
 
-You can either use the default environment`base` or create a new one:
+You can either use the default environment (``base``) or create a new one:
 
 .. code-block:: sh
 
-      # create new environment with python 3.9, e.g. environment of name `pyenv`
-      conda create --name coffea python=3.9
-      # activate environment `pyenv`
+      # create new environment with python 3.9, e.g. environment of name "pyenv"
+      conda create --name pyenv python=3.9
+      # activate environment "pyenv"
       conda activate pyenv
 
 In this environment, let's check that the right python version is there:
@@ -75,6 +75,10 @@ We can now run the example from tutorial 1 in our new conda environment:
      
      print("The values squared from numpy are:{}".format(y_np))
 
+Conda in Visual Studio Code:
+............................
+
+**Selecting and activating a conda environment in VSCode:** you need to inform VSCode which conda environment to use for your Python workspace. Look at the bottom-left corner (macOS) or bottom-right corner (Windows) of the VSCode window to find the "Select Python Interpreter" button. Click on it and a list of available Python interpreters will appear. Choose the one that suits your needs (e.g., ``myenv``). You can also select the environment using the Command Palette (``Cmd+Shift+P`` in macOS or ``Ctrl+Shift+P`` in Windows) and searching for "Python: Select Interpreter". Note that it may take some time for VSCode to detect the available conda environments.
 
 Jupyterhub:
 ~~~~~~~~~~~
