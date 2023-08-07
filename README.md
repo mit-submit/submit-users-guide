@@ -1,6 +1,6 @@
 # Users guide to the *subMIT* login pool
 
-The users guide can be found [here](http://submit04.mit.edu/submit-users-guide).
+The users guide can be found [here](http://submit.mit.edu/submit-users-guide).
 
 
 # For people editing
