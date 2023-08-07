@@ -61,7 +61,7 @@ Handy Resources
 CVMFS
 ~~~~~
 
-The CernVM File System (CVMFS) provides a scalable, reliable and low- maintenance software distribution service. It was developed to assist High Energy Physics (HEP) collaborations to deploy software on the worldwide- distributed computing infrastructure used to run data processing applications. CernVM-FS is implemented as a POSIX read-only file system in user space (a FUSE module). Files and directories are hosted on standard web servers and mounted in the universal namespace /cvmfs.
+The CernVM File System (CVMFS) provides a scalable, reliable and low- maintenance software distribution service. It was developed to assist High Energy Physics (HEP) collaborations to deploy software on the worldwide- distributed computing infrastructure used to run data processing applications. CernVM-FS is implemented as a POSIX read-only file system in user space (a FUSE module). Files and directories are hosted on standard web servers and mounted in the universal namespace ``/cvmfs``.
 
 More documentation on CVMFS can be found here: `CVMFS <https://cernvm.cern.ch/fs/>`_
 
@@ -121,7 +121,7 @@ Conda is an open source package management system and environment management sys
 Important Note for Using Conda on submit
 ........................................
 
-Please note that downloading many conda packages takes a large amount of space which can very quickly use up the quota in your home. If you plan to use conda heavily it is suggested to download and configure it in your work directory where there is much more space. Any new conda environment that you install in your /home/submit or /work/submit will be installed on your jupyterhub only after your server is started up again. If your server is already running, you can stop it by File -> Hub Control Panel -> Stop My Server and then restart it by clicking Start Server. 
+Please note that downloading many conda packages takes a large amount of space which can very quickly use up the quota in your home. If you plan to use conda heavily it is suggested to download and configure it in your work directory where there is much more space. Any new conda environment that you install in your ``/home/submit`` or ``/work/submit`` will be installed on your jupyterhub only after your server is started up again. If your server is already running, you can stop it by File -> Hub Control Panel -> Stop My Server and then restart it by clicking Start Server. 
 
 Coffea installation with Miniforge
 ..................................
@@ -134,15 +134,15 @@ For installing Miniconda (see also https://hackmd.io/GkiNxag0TUmHnnCiqdND1Q#Loca
       # Run and follow instructions on screen
       bash Miniforge3-Linux-x86_64.sh
 
-NOTE: always make sure that conda, python, and pip point to local Miniforge installation (`which conda` etc.). Another thing to keep in mind is that you should avoid installing packages with pip using --user. The example below shows the correct way to use pip in conjunction with conda. 
+NOTE: always make sure that conda, python, and pip point to local Miniforge installation (``which conda`` etc.). Another thing to keep in mind is that you should avoid installing packages with ``pip`` using ``--user``. The example below shows the correct way to use pip in conjunction with conda. 
 
-You can either use the default environment`base` or create a new one:
+You can either use the default environment (``base``) or create a new one:
 
 .. code-block:: sh
 
-      # create new environment with python 3.7, e.g. environment of name `coffea`
+      # create new environment with python 3.7, e.g. environment of name "coffea"
       conda create --name coffea python=3.7
-      # activate environment `coffea`
+      # activate environment "coffea"
       conda activate coffea
 
 An example of how to install a mix of packages through conda and pip:
@@ -302,82 +302,73 @@ A few examples of simple Jupyter noteooks can be found in the submit-examples `j
 
 1. Conda
 
-a.  jupyterhub is set up to automatically load all conda and python environments which are found in the following directories
+     a. jupyterhub is set up to automatically load all conda and python environments which are found in the following directories
           
-.. code-block:: sh
+     .. code-block:: sh
 
-     '/usr/bin/',
-     '/home/submit/<username>/miniforge3/',
-     '/home/submit/<username>/anaconda3/',
-     '/home/submit/<username>/miniconda3/', 
-     '/home/submit/<username>/.conda/',
-     '/work/submit/<username>/anaconda3/',
-     '/work/submit/<username>/miniconda3/', 
-     '/work/submit/<username>/miniforge3/',
-     '/data/submit/<username>/anaconda3/', 
-     '/data/submit/<username>/miniconda3/',
-     '/data/submit/<username>/miniforge3/',
-     ]
+          '/usr/bin/',
+          '/home/submit/<username>/miniforge3/',
+          '/home/submit/<username>/anaconda3/',
+          '/home/submit/<username>/miniconda3/', 
+          '/home/submit/<username>/.conda/',
+          '/work/submit/<username>/anaconda3/',
+          '/work/submit/<username>/miniconda3/', 
+          '/work/submit/<username>/miniforge3/',
+          '/data/submit/<username>/anaconda3/', 
+          '/data/submit/<username>/miniconda3/',
+          '/data/submit/<username>/miniforge3/',
+          ]
           
-b. If you have a different version of conda, or it is located in a different place, or some other problem has come up, please contact us for help.
+     b. If you have a different version of conda, or it is located in a different place, or some other problem has come up, please contact us for help.
+     c. Alternatively, a manual installation can be performed:
 
-c. Alternatively, a manual installation can be performed:
-
-1) Switch to the python you want to make available
-
-2) `Pip install --user ipykernel`
-
-3) `Python -m ipykernel install --user --name <name>`; where <name> is what you want it to show up as on jupyter
+          1) Switch to the python you want to make available
+          2) ``pip install --user ipykernel``
+          3) ``python -m ipykernel install --user --name <name>``; where ``<name>`` is what you want it to show up as on jupyter
      
-d. What the manual and automatic installations do is to create a kernel folder in your `/home/submit/<user>/.local/share/jupyter/kernels/`. These are then found by jupyterhub, and can be used as kernels for notebooks.
-
-e. N.B.: if relying on the automatic installation, the first time you log in after having created some environment(s), the spawning will be slower than usual, since it has to install them.
+     d. What the manual and automatic installations do is to create a kernel folder in your ``/home/submit/<user>/.local/share/jupyter/kernels/``. These are             then found by jupyterhub, and can be used as kernels for notebooks.
+     e. N.B.: if relying on the automatic installation, the first time you log in after having created some environment(s), the spawning will be slower than             usual, since it has to install them.
      
 2. Singularity
 
-a. Because singularity environments are not located in standardized locations like anaconda tends to be, there is no automatic installation for these environments to jupyterhub.
+     a. Because singularity environments are not located in standardized locations like anaconda tends to be, there is no automatic installation for these               environments to jupyterhub.
+     b. However, we can create a kernel environment by hand, which we can then use in jupyter, just like any other python environment:
 
-b. However, we can create a kernel environment by hand, which we can then use in jupyter, just like any other python environment:
-
-1) `mkdir /home/submit/$USER/.local/share/jupyter/kernels/<name>/`
-
-2) `touch /home/submit/$USER/.local/share/jupyter/kernels/<name>/kernel.json`
-
-3) And finally, place the following in the json file
+          1) ``mkdir /home/submit/$USER/.local/share/jupyter/kernels/<name>/``
+          2) ``touch /home/submit/$USER/.local/share/jupyter/kernels/<name>/kernel.json``
+          3) And finally, place the following in the json file
          
+          .. code-block:: sh
 
-.. code-block:: sh
-
-      {
-       "argv": [
-        "singularity",
-        "exec",
-        "-e",
-        "</path/to/singularity/image/>",
-        "python",
-        "-m",
-        "ipykernel_launcher",
-        "-f",
-        "{connection_file}"
-       ],
-       "display_name": "test",
-       "language": "python",
-       "metadata": {
-        "debugger": true
-       }
-      }
-
-               
-4) You can personalize this `singularity exec` command, e.g. if you want to bind a directory, you can just add two lines to the `argv`, "--bind", "<directory>". You can test out this command by something like:
+               {
+                 "argv": [
+                  "singularity",
+                  "exec",
+                  "-e",
+                  "</path/to/singularity/image/>",
+                  "python",
+                  "-m",
+                  "ipykernel_launcher",
+                  "-f",
+                  "{connection_file}"
+                 ],
+                 "display_name": "test",
+                 "language": "python",
+                 "metadata": {
+                  "debugger": true
+                 }
+                }
           
-          `singularity exec -e /path/to/image/ -m python`
+          4) You can personalize this ``singularity exec`` command, e.g. if you want to bind a directory, you can just add two lines to the ``argv``, "--bind",               "<directory>". You can test out this command by something like:
+          
+          ``singularity exec -e /path/to/image/ -m python``
           
 3. GPUs
 
-a. GPUs are available on submit-gpu machines. The GPUs are not used or  reserved by jupyterhub by itself. Rather, just like when you log in those machines through ssh, the GPUs can be used by a notebook or the jupyterhub terminal only if they are available (you can check this with `nvidia-smi`).
+     a. GPUs are available on submit-gpu machines. The GPUs are not used or  reserved by jupyterhub by itself. Rather, just like when you log in those machines          through ssh, the GPUs can be used by a notebook or the jupyterhub terminal only if they are available (you can check this with ``nvidia-smi``).
      
 4. SlurmSpawner
 
-a. This spawner relies on Slurm to run your server. You can monitor your job just like any other Slurm job, as described in this guide, with commands like `squeue`.
+     a. This spawner relies on Slurm to run your server. You can monitor your job just like any other Slurm job, as described in this guide, with commands like          ``squeue``.
 
 If you have any questions about JupyterHub you can email us (submit-jupyter@mit.edu).
