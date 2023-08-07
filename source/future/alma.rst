@@ -41,6 +41,13 @@ You can also run a testing slurm job with the following submit script.
 
      <your script goes here>
 
+Portability of conda on Alma Linux 9
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Migrating a conda environment from CentOS7 to Alma Linux 9 can typically be done with ease, thanks to conda's general portability between different operating systems. 
+
+**Note:** Conda is in general portable between operating systems, but for compiled code, you may need to recompile. When moving environments that include compiled code, you may encounter compatibility issues related to the underlying system libraries or compilers. This can manifest as unexpected behavior or even runtime errors. In such cases, the solution is often to recompile the code within the new operating system.
+
 Will CentOS still be available
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
