@@ -296,9 +296,11 @@ Jupyterhub
 
 In addition to the tools above, you have access to Jupyter Notebooks through a `JupyterHub <https://submit.mit.edu/jupyter>`_ set up at submit.
 
-This is set up through the submit machines meaning that you have access to all of your data through jupyter notebooks. You will have access to basic python2 and python3 configurations. In addition, if you need a more complex environment, you can run your notebooks in any conda environment that you have set up. This allows you to create the exact environement you need for your projects. An example on how to set up a conda environment is shown above. 
+This is set up through the submit machines meaning that you have access to all of your data through jupyter notebooks. You will have access to basic python2 and python3 configurations. In addition, if you need a more complex environment, you can run your notebooks in any conda environment that you have set up. This allows you to create the exact environement you need for your projects. An example on how to set up a conda environment is shown above, and how it is implemented in jupyter is described below.
 
 A few examples of simple Jupyter noteooks can be found in the submit-examples `jupyter examples <https://github.com/mit-submit/submit-examples/tree/main/jupyter>`_.
+
+Here is how jupyter interacts with: conda, singularity, GPUs, Slurm, and ROOT.
 
 1. Conda
 
@@ -371,4 +373,15 @@ A few examples of simple Jupyter noteooks can be found in the submit-examples `j
 
      a. This spawner relies on Slurm to run your server. You can monitor your job just like any other Slurm job, as described in this guide, with commands like          ``squeue``.
 
-If you have any questions about JupyterHub you can email us (submit-jupyter@mit.edu).
+5. ROOT on python, on jupyter: pyROOT and jupyROOT
+
+     a. If you are trying to use ROOT in an ipython notebook over jupyter, you might have issues, which are related to missing paths, in particular the path to ``x86_64-conda-linux-gnu-c++``.
+     b. To fix this, try adding to the PATH of your kernel the ``bin`` directory of the environment. i.e. modify  ``~/.local/share/jupyter/kernel/<YOUR ENVIRONMENT>/kernel.json`` to include:
+
+          .. code-block:: python
+     
+          "env": {
+            "PATH": "/work/submit/<USER>/miniforge3/envs/<YOUR ENVIRONMENT>/bin:${PATH}" 
+           }
+
+     c. N.B.: if you have conda installed elsewhere, your path might be different.
