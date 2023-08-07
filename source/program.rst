@@ -302,86 +302,89 @@ A few examples of simple Jupyter noteooks can be found in the submit-examples `j
 
 Here is how jupyter interacts with: conda, singularity, GPUs, Slurm, and ROOT.
 
-1. Conda
+#. Conda
 
-     a. jupyterhub is set up to automatically load all conda and python environments which are found in the following directories
-          
-     .. code-block:: sh
-
-          '/usr/bin/',
-          '/home/submit/<username>/miniforge3/',
-          '/home/submit/<username>/anaconda3/',
-          '/home/submit/<username>/miniconda3/', 
-          '/home/submit/<username>/.conda/',
-          '/work/submit/<username>/anaconda3/',
-          '/work/submit/<username>/miniconda3/', 
-          '/work/submit/<username>/miniforge3/',
-          '/data/submit/<username>/anaconda3/', 
-          '/data/submit/<username>/miniconda3/',
-          '/data/submit/<username>/miniforge3/',
-          ]
-          
-     b. If you have a different version of conda, or it is located in a different place, or some other problem has come up, please contact us for help.
-     c. Alternatively, a manual installation can be performed:
-
-          1) Switch to the python you want to make available
-          2) ``pip install --user ipykernel``
-          3) ``python -m ipykernel install --user --name <name>``; where ``<name>`` is what you want it to show up as on jupyter
+    * jupyterhub is set up to automatically load all conda and python environments which are found in the following directories
+              
+    .. code-block:: sh
+    
+         '/usr/bin/',
+        '/home/submit/<username>/miniforge3/',
+        '/home/submit/<username>/anaconda3/',
+        '/home/submit/<username>/miniconda3/', 
+        '/home/submit/<username>/.conda/',
+        '/work/submit/<username>/anaconda3/',
+        '/work/submit/<username>/miniconda3/', 
+        '/work/submit/<username>/miniforge3/',
+        '/data/submit/<username>/anaconda3/', 
+        '/data/submit/<username>/miniconda3/',
+        '/data/submit/<username>/miniforge3/',
+        ]
+              
+    * If you have a different version of conda, or it is located in a different place, or some other problem has come up, please contact us for help.
+    * Alternatively, a manual installation can be performed:
+    
+    
+        1. Switch to the python you want to make available
+        2. ``pip install --user ipykernel``
+        3. ``python -m ipykernel install --user --name <name>``; where ``<name>`` is what you want it to show up as on jupyter
+        
      
-     d. What the manual and automatic installations do is to create a kernel folder in your ``/home/submit/<user>/.local/share/jupyter/kernels/``. These are             then found by jupyterhub, and can be used as kernels for notebooks.
-     e. N.B.: if relying on the automatic installation, the first time you log in after having created some environment(s), the spawning will be slower than             usual, since it has to install them.
+    * What the manual and automatic installations do is to create a kernel folder in your ``/home/submit/<user>/.local/share/jupyter/kernels/``. These are then found by jupyterhub, and can be used as kernels for notebooks.
+    * N.B.: if relying on the automatic installation, the first time you log in after having created some environment(s), the spawning will be slower than usual, since it has to install them.
      
-2. Singularity
+#. Singularity
 
-     a. Because singularity environments are not located in standardized locations like anaconda tends to be, there is no automatic installation for these               environments to jupyterhub.
-     b. However, we can create a kernel environment by hand, which we can then use in jupyter, just like any other python environment:
-
-          1) ``mkdir /home/submit/$USER/.local/share/jupyter/kernels/<name>/``
-          2) ``touch /home/submit/$USER/.local/share/jupyter/kernels/<name>/kernel.json``
-          3) And finally, place the following in the json file
-         
-          .. code-block:: sh
-
-               {
-                 "argv": [
-                  "singularity",
-                  "exec",
-                  "-e",
-                  "</path/to/singularity/image/>",
-                  "python",
-                  "-m",
-                  "ipykernel_launcher",
-                  "-f",
-                  "{connection_file}"
-                 ],
-                 "display_name": "test",
-                 "language": "python",
-                 "metadata": {
-                  "debugger": true
-                 }
-                }
+    * Because singularity environments are not located in standardized locations like anaconda tends to be, there is no automatic installation for these environments to jupyterhub.
+    * However, we can create a kernel environment by hand, which we can then use in jupyter, just like any other python environment:
+    
+    
+        1. ``mkdir /home/submit/$USER/.local/share/jupyter/kernels/<name>/``
+        2. ``touch /home/submit/$USER/.local/share/jupyter/kernels/<name>/kernel.json``
+        3. And finally, place the following in the json file
+    
+        .. code-block:: sh
+        
+             {
+               "argv": [
+                "singularity",
+                "exec",
+                "-e",
+                "</path/to/singularity/image/>",
+                "python",
+                "-m",
+                "ipykernel_launcher",
+                "-f",
+                "{connection_file}"
+               ],
+               "display_name": "test",
+               "language": "python",
+               "metadata": {
+                "debugger": true
+               }
+              }
+        
+        4. You can personalize this ``singularity exec`` command, e.g. if you want to bind a directory, you can just add two lines to the ``argv``, "--bind", "<directory>". You can test out this command by something like:
+              
+              ``singularity exec -e /path/to/image/ -m python``
           
-          4) You can personalize this ``singularity exec`` command, e.g. if you want to bind a directory, you can just add two lines to the ``argv``, "--bind",               "<directory>". You can test out this command by something like:
-          
-          ``singularity exec -e /path/to/image/ -m python``
-          
-3. GPUs
+#. GPUs
 
-     a. GPUs are available on submit-gpu machines. The GPUs are not used or  reserved by jupyterhub by itself. Rather, just like when you log in those machines          through ssh, the GPUs can be used by a notebook or the jupyterhub terminal only if they are available (you can check this with ``nvidia-smi``).
+    * GPUs are available on submit-gpu machines. The GPUs are not used or  reserved by jupyterhub by itself. Rather, just like when you log in those machines through ssh, the GPUs can be used by a notebook or the jupyterhub terminal only if they are available (you can check this with ``nvidia-smi``).
      
-4. SlurmSpawner
+#. SlurmSpawner
 
-     a. This spawner relies on Slurm to run your server. You can monitor your job just like any other Slurm job, as described in this guide, with commands like          ``squeue``.
+    * This spawner relies on Slurm to run your server. You can monitor your job just like any other Slurm job, as described in this guide, with commands such as ``squeue``.
 
-5. ROOT on python, on jupyter: pyROOT and jupyROOT
+#. ROOT on python, on jupyter: pyROOT and jupyROOT
 
-     a. If you are trying to use ROOT in an ipython notebook over jupyter, you might have issues, which are related to missing paths, in particular the path to ``x86_64-conda-linux-gnu-c++``.
-     b. To fix this, try adding to the PATH of your kernel the ``bin`` directory of the environment. i.e. modify  ``~/.local/share/jupyter/kernel/<YOUR ENVIRONMENT>/kernel.json`` to include:
-
-          .. code-block:: python
-     
-          "env": {
-            "PATH": "/work/submit/<USER>/miniforge3/envs/<YOUR ENVIRONMENT>/bin:${PATH}" 
-           }
-
-     c. N.B.: if you have conda installed elsewhere, your path might be different.
+    * If you are trying to use ROOT in an ipython notebook over jupyter, you might have issues, which are related to missing paths, in particular the path to ``x86_64-conda-linux-gnu-c++``.
+    * To fix this, try adding to the PATH of your kernel the ``bin`` directory of the environment. i.e. modify  ``~/.local/share/jupyter/kernel/<YOUR ENVIRONMENT>/kernel.json`` to include:
+    
+    .. code-block:: python
+    
+         "env": {
+           "PATH": "/work/submit/<USER>/miniforge3/envs/<YOUR ENVIRONMENT>/bin:${PATH}" 
+          }
+    
+    * N.B.: if you have conda installed elsewhere, your path might be different.
