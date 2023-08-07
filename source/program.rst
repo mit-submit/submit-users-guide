@@ -371,4 +371,4 @@ A few examples of simple Jupyter noteooks can be found in the submit-examples `j
 
      a. This spawner relies on Slurm to run your server. You can monitor your job just like any other Slurm job, as described in this guide, with commands like          ``squeue``.
 
-If you have any questions about JupyterHub you can email us (submit-jupyter@mit.edu).
+If you have any questions about JupyterHub you can email us (submit-help@mit.edu).
