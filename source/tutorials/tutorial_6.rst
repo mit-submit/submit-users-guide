@@ -51,7 +51,7 @@ Setting up Source Control (with Git)
 
 3.  Copy & paste the following code into that editor window.
 
-    .. code-block:: python
+    .. code-block:: sh
         :linenos:
 
         x = [1.0,2.0,3.0,4.0,5.0,6.0,7.0,8.0,9.0,10.0]
@@ -211,7 +211,7 @@ First we create a *new branch* so we can work on this new feature while maintain
 
     Your code should now look like this:
 
-    .. code-block:: python
+    .. code-block:: sh
         :linenos:
         :emphasize-lines: 2,6
 
@@ -303,7 +303,7 @@ The version of the code where we are adding the 'cubing functionality' is on the
 
     Your code should now look like this:
 
-    .. code-block:: python
+    .. code-block:: sh
         :linenos:
         :emphasize-lines: 9
 
