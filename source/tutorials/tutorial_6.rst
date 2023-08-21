@@ -41,7 +41,7 @@ Setting up Source Control (with Git)
 
 1.  Follow the directions outlined `here <https://submit.mit.edu/submit-users-guide/program.html#getting-started-with-vscode-on-submit>`_ to open a session connecting Visual Studio Code on your laptop (or desktop) to subMIT.  (But do not open a folder yet once connected to subMIT).
 
-2.  From the top menu, select "File" -> "New File ...", then select "Python File" from the drop-down menu that appears at the top of your screen.  
+2.  From the top menu, select "File" -> "New Text File ..."
 
     A new python-editor tab titled "Untitled-1" will appear (it may take a moment).
 
