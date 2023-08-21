@@ -66,6 +66,26 @@ Now let's do the same code as above but use numpy instead:
      
      print("The values squared from numpy are:{}".format(y_np))
 
+Types of Python environments:
+.............................
+
+#. Global: if you run ``python`` or ``python3`` in a terminal window, you are running in a global environment. However, it is a better practice to create a local environment.
+
+#. Local: in a local environment, you can install packages that won't affect your other local environments, nor the global environment. There are two types:
+
+     * conda
+
+     .. code-block:: sh
+
+          conda create -n test_env
+
+     * venv
+
+     .. code-block:: sh
+
+          python -m venv .venv
+
+Both types of local environments can also be created in Visual Studio Code by using the Command Palette (``Cmd+Shift+P`` in macOS or ``Ctrl+Shift+P`` in Windows) and selecting "Python: Create Environment...". You can then choose the version of Python to install in this environment. See `Visual Studio Code documentation <https://code.visualstudio.com/docs/python/python-tutorial#_create-a-virtual-environment>`_ for more information.
 
 Julia:
 ~~~~~~

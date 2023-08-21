@@ -58,6 +58,10 @@ Handy Resources
 
 * `keyboard cheat sheet <https://code.visualstudio.com/docs/getstarted/tips-and-tricks#_keyboard-reference-sheets>`_
 
+* `Creating a local Python environment in VSCode <https://submit.mit.edu/submit-users-guide/tutorials/tutorial_1.html#types-of-python-environments>`_
+
+* `Choosing and activating a Python environment in VSCode <https://submit.mit.edu/submit-users-guide/tutorials/tutorial_4.html#conda-in-visual-studio-code>`_
+
 CVMFS
 ~~~~~
 
