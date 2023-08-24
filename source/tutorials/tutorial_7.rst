@@ -238,7 +238,12 @@ Configuring VSCode to debug Fortran
 
 10. Select "Run" -> "Start Debugging" from the top menu to actually start debugging.
 
-    
+    .. image:: img/fort_debug_4.png
+        :width: 80%
+
+    .. todo: show that it has stopped & mention that you can see the variable, etc and navigate the stack.  You are alls et up to debug!!
+
+    .. then have a more info button which actually steps through and you can see how things change (different screen shots)
 
 .. come back to
 .. ``fortls`` (see notes app)
