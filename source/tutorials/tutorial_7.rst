@@ -11,7 +11,7 @@ This takes a bit more initial configuration (that may be less than obvious) than
 .. admonition:: |ShowMore|
     :class: dropdown
 
-    The instructions below make use of the menus to run commands, but you could alternatively run the commands using keyboard shortcuts, or by pulling up the Command Palette (Command+Shift+P on Mac, or Ctrl+Shift+P on Windows or Linux) and simply typing the command (e.g. Command+Shift+P then type "connect to host").
+    .. The instructions below make use of the menus to run commands, but you could alternatively run the commands using keyboard shortcuts, or by pulling up the Command Palette (Command+Shift+P on Mac, or Ctrl+Shift+P on Windows or Linux) and simply typing the command (e.g. Command+Shift+P then type "connect to host").
 
     .. tip:: 
     
@@ -21,15 +21,14 @@ You will learn to ...
 ~~~~~~~~~~~~~~~~~~~~~
 
 * Configure VSCode for debugging Fortran code
-* Perform basic debugging of Fortrancode in VSCode
-
-In Git terminology (for those familiar), you will learn how to do the following Git actions in VSCode: ``init``, ``stage``, ``commit``, ``branch``, ``checkout``, ``push``
+* Create tasks in VSCode
+* Perform basic debugging of Fortran code in VSCode
 
 Prerequisites
 ~~~~~~~~~~~~~
 
 * The `Modern Fortran extension <https://marketplace.visualstudio.com/items?itemName=fortran-lang.linter-gfortran>`_ for VSCode (This requires and will automatically install the `C/C++ extension <https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools>`_ as well)
-* (As an alternative to the above, we have successfully used the `Fortran Breakpoint Support extension <https://marketplace.visualstudio.com/items?itemName=ekibun.fortranbreaker>`_ with the `C/C++ extension <https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools>`_)
+* (As an alternative to the above, we have also successfully used the `Fortran Breakpoint Support extension <https://marketplace.visualstudio.com/items?itemName=ekibun.fortranbreaker>`_ with the `C/C++ extension <https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools>`_)
 * subMIT already has both ``gfortran`` and ``gdb`` already installed natively, so you don't need to worry about those.  However, if you wish to use a custom version of ``gfortran`` in a conda environment, make sure you install ``gdb`` in that conda environment as well, as these are both necessary (e.g. ``conda create --name gfort_dbg -c conda-forge gfortran gdb``).
 
 .. conda install -c conda-forge fortls
@@ -110,10 +109,17 @@ Configuring VSCode to debug Fortran
                     {
                         "type": "shell",
                         "label": "gfbuild",
-                        "command": "gfortran hello.f90 -g -Wall -Wextra -Warray-temporaries -Wconversion -fimplicit-none -fbacktrace -ffree-line-length-0 -fcheck=all -ffpe-trap=zero,overflow,underflow -finit-real=nan",
+                        "command": "gfortran hello.f90 -g3 -O0 -fbacktrace -fcheck=all -ffpe-trap=zero,overflow,underflow -Wall -Wextra -Warray-temporaries -Wconversion -ffree-line-length-0",
                     }
                 ]
             }
+
+        .. admonition:: |ShowMore|
+            :class: dropdown
+
+            The above is only a recommended set of flags to pass to ``gfortran``; please consult the gfortran manual to check what settings are appropriate for your project.  To open the manual, run ``man gfortran`` on subMIT (this can even be done from the Terminal inside VSCode).
+
+            It is usually also desirable to add ``-fimplicit-none -finit-real=nan`` to the ``gfortran`` line in the "command" entry above.
     
     c.  Select "File" -> "Save" from the menu.
 
@@ -218,13 +224,7 @@ Configuring VSCode to debug Fortran
 
                 More information can be found `here <https://code.visualstudio.com/Docs/editor/debugging#_launchjson-attributes>`_.
 
-9.  Go back to the hello.f90 editor and create a breakpoint by doing the following:
-
-    .. admonition:: |ShowMore|
-            :class: dropdown
-
-            From the top menu, select "View"->"Explorer", then click on "hello.f90"
-
+9.  Go back to the hello.f90 editor ("View"->"Explorer" in top menu, then click on "hello.f90") and create a breakpoint by doing the following:
     
     Left-Click to the left of line 4.  This should create a red dot to the left of line 4.  (This red dot should persist after you move your cursor away).
 
@@ -238,12 +238,75 @@ Configuring VSCode to debug Fortran
 
 10. Select "Run" -> "Start Debugging" from the top menu to actually start debugging.
 
+    Your screen should then look like the screen shot below.
+    
     .. image:: img/fort_debug_4.png
         :width: 80%
 
-    .. todo: show that it has stopped & mention that you can see the variable, etc and navigate the stack.  You are alls et up to debug!!
+    The Debug sidebar will open on the left and a terminal on the bottom of the screen.
 
-    .. then have a more info button which actually steps through and you can see how things change (different screen shots)
+    Note that the yellow arrow to the left of line 4 (and highlighting) indicate that the execution is pause on line 4 (due to the breakpoint we set above).
+
+    In the upper left "Variables" section we can see that, at this point in execution, the variable ``i`` has the value ``0``.  (Hovering the mouse over any instance of the variable ``i`` reveals the same).
+    
+    In the bottom left, we can navigate the call stack (this is helpful when code makes heavy use of functions).  
+
+    The screen output of the program (e.g. ``print`` statements) will be displayed in the Terminal at the bottom.
+
+    The debug navigation bar at the top of the screen (or the "Run" top menu) can be used to control the debug execution (e.g. Step Over/Into/Out, Continue, Stop).
+
+    You are now all set to debug your Fortran application on subMIT!
+
+    (To see an example of stepping throug this program, click the "More Detail" below).
+
+    .. admonition:: |ShowMore|
+            :class: dropdown
+
+            a.  To advance to the next line of the code, click the "Step Over" button at the top of the screen (or select "Run"->"Step Over" from the top menu).
+
+                .. image:: img/fort_step_over.png
+                    :width: 50%
+
+                You will then see the following screen:
+
+                .. image:: img/fort_debug_5.png
+                    :width: 80%
+
+                Note that now the yellow arrow and highlighting indicate that the execution is now halted on line 5.
+
+                Also note that, now that line 4 has been executed, the variable ``i`` now has the value of ``1``
+            
+            b.  Click the "Step Over" button again to advance execution by one line.
+
+                You will then see the following screen:
+
+                .. image:: img/fort_debug_6.png
+                    :width: 80%
+
+                Note that now the yellow arrow and highlighting indicate that the execution is now halted on line 6.
+
+                Also note that, now that line 5 has been executed, the variable ``i`` now has the value of ``2``
+
+            c.  Click the "Step Over" button again to advance execution by one line.
+
+                You will then see the following screen:
+
+                .. image:: img/fort_debug_7.png
+                    :width: 80%
+
+                Note that now the yellow arrow and highlighting indicate that the execution is now halted on line 7.
+
+                Also note that, now that line 6 has been executed, we see "Hello, World!" appear in the Terminal screen at the bottom of the window.
+
+                (Note: "Hi again" does not yet appear because line 7 has not yet been excecuted).
+                
+                The variable ``i`` still has the value of ``2``, since line 6 made no modification to ``i``.
+
+            d.  Click the "Step Over" button again to advance execution by one line.
+
+                You will then see the yellow arrow and highlighting indicate that the execution is now halted on line 8.
+
+                Also, now that line 7 has been executed, you will see "Hi again" appear in the Terminal screen at the bottom of the window.
 
 .. come back to
 .. ``fortls`` (see notes app)
