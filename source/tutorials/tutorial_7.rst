@@ -36,7 +36,7 @@ Prerequisites
 Configuring VSCode to debug Fortran
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-1.  Follow the directions outlined `here <https://submit.mit.edu/submit-users-guide/program.html#getting-started-with-vscode-on-submit>`_ to open a session connecting Visual Studio Code on your laptop (or desktop) to subMIT.  (But do not open a folder yet once connected to subMIT).
+1.  Follow the directions outlined `directions <https://submit.mit.edu/submit-users-guide/program.html#getting-started-with-vscode-on-submit>`_ to open a session connecting Visual Studio Code on your laptop (or desktop) to subMIT.  (But do not open a folder yet once connected to subMIT).
 
 2.  From the top menu, select "File" -> "New Text File ..."  
 
@@ -222,7 +222,7 @@ Configuring VSCode to debug Fortran
 
                 As suggested in the VSCode documentation, it's handy to use IntelliSense to learn available attributes, or hover over an attribute for a description.
 
-                More information can be found `here <https://code.visualstudio.com/Docs/editor/debugging#_launchjson-attributes>`_.
+                More information can be found `vscode <https://code.visualstudio.com/Docs/editor/debugging#_launchjson-attributes>`_.
 
 9.  Go back to the hello.f90 editor ("View"->"Explorer" in top menu, then click on "hello.f90") and create a breakpoint by doing the following:
     
