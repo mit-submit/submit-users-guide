@@ -11,6 +11,8 @@ This tutorial will show you some common commands for a terminal. Most commands h
     cd /home/submit/username
     # move up one directory (e.g. from /home/submit/username to /home/submit)
     cd ..
+    # move up two directories
+    cd ../..
     # move down one directory (e.g. from /home/submit to /home/submit/username)
     cd username
 
@@ -40,6 +42,15 @@ Some common options are
     # create a directory with the name mydir
     mkdir mydir
 
+5. disk usage (``du``). Some common options are
+
+  * sum (``-s``)
+
+6. copy (``cp``). There's also safe copy (``scp``)
+
+7. move (``mv``)
+
+8. tape archive (``tar``). Create and extract archive files. This is especially common when installing packages or downloading datasets.
 
 permissions: write, read, delete
 
