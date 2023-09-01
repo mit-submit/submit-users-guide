@@ -15,7 +15,7 @@ What do I need for an account?
 
 To make login convenient and secure we allow login to the subMIT pool using ssh keys only. Go to our `submit portal <https://submit-portal.mit.edu>`_ to upload your ssh key (or a number of keys). Upload of ssh keys is secured through MIT touchstone authentication. This means users must have an MIT account.
 
-It is straightforward to obtain an MIT guest account if you do not have one. A sponsor---usually a faculty you are working with---can request a guest account for you. The information needed for this sponsoring request is: first, last name and birthday. See the `sponsoring web page <https://ist.mit.edu/guest-accounts>`_. Please note: the process has to be started by the sponsor! The response by MIT IS&T has been very quick in the past, we have so far received all account requests in less than 4 hours.
+It is straightforward to obtain an MIT guest account if you do not have one. A sponsor---usually a faculty you are working with---can request a guest account for you. The information needed for this sponsoring request is: first, last name, birthday, institution, an email and a phone number. See the `sponsoring web page <https://ist.mit.edu/guest-accounts>`_. Please note: the process has to be started by the sponsor! The response by MIT IS&T has been very quick in the past, we have so far received all account requests in less than 4 hours.
 
 How to get help?
 ~~~~~~~~~~~~~~~~
