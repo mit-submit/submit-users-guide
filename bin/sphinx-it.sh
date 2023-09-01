@@ -1,18 +1,28 @@
 #!/bin/bash
-# make sure to install submit01 and not on submit04!
+WEB_SERVER=submit05.mit.edu
 WEB_LOCATION=/var/www/html/submit-users-guide
-#WEB_LOCATION=paus@submit01.mit.edu:/var/www/html/submit-users-guide
-
 if [ ".$1" != "." ]
 then
-   WEB_LOCATION="$1"
+   WEB_SERVER="$1"
 fi
+RSYNC_TARGET=$WEB_SERVER:$WEB_LOCATION
 
-echo " Installing into: $WEB_LOCATION (hit return)"
+echo " Installing into: $RSYNC_TARGET (hit return)"
 read
 
 sphinx-build -b html source build
+if [ ".$?" != ".0" ]
+then
+    echo " Sphinx build failed ... please fix."
+    exit 1
+fi
+
 make html
+if [ ".$?" != ".0" ]
+then
+    echo " Making the html sources failed ... please fix."
+    exit 2
+fi
 
 # hack to get colors right - overwrite theme pygments file.
 echo "\
@@ -20,5 +30,5 @@ cp css/pygments.css build/_static/"
 cp css/pygments.css build/_static/
 
 echo "\
-rsync -Cavz --delete build/ $WEB_LOCATION"
-rsync -Cavz --delete build/ $WEB_LOCATION
+rsync -Cavz --delete build/* $RSYNC_TARGET"
+rsync -Cavz --delete build/* $RSYNC_TARGET
