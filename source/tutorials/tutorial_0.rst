@@ -42,15 +42,11 @@ Some common options are
     # create a directory with the name mydir
     mkdir mydir
 
-5. disk usage (``du``). Some common options are
+5. copy (``cp``). There's also safe copy (``scp``)
 
-  * sum (``-s``)
+6. move (``mv``)
 
-6. copy (``cp``). There's also safe copy (``scp``)
-
-7. move (``mv``)
-
-8. tape archive (``tar``). Create and extract archive files. This is especially common when installing packages or downloading datasets.
+7. tape archive (``tar``). Create and extract archive files. This is especially common when installing packages or downloading datasets.
 
 permissions: write, read, delete
 
