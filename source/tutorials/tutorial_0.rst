@@ -31,7 +31,7 @@ This tutorial will show you some common commands used within the terminal. Most 
     # list the files and sub-directories in a specific directory, e.g. your home directory
     ls /home/submit/username
 
-Some common options are
+  Some common options are
 
   * Long format (``-l``): displays the file type, permissions, owner, size, last-modified date, and name.
 
