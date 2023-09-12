@@ -1,7 +1,7 @@
 Tutorial 0: Introduction to the terminal
 ----------------------------------------
 
-This tutorial will show you some common commands for a terminal. Most commands have options, which you type as ``[command] [options] [file... | directory...]``. Multiple options can be combined together.
+This tutorial will show you some common commands used within the terminal. Most commands have options, which you type as ``[command] [options] [file... | directory...]``. Multiple options can be combined together.
 
 1. change directory (``cd``). You use this command to go into a specific folder or move out of it.
 
