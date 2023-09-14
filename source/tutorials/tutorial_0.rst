@@ -46,7 +46,7 @@ This tutorial will show you some common commands used within the terminal. Most 
     # create a directory with the name mydir
     mkdir mydir
 
-5. copy (``cp``) and safe copy (``scp``) files and directories.
+5. copy (``cp``) and secure copy (``scp``) files and directories.
 
   .. code-block:: sh
 
@@ -57,10 +57,10 @@ This tutorial will show you some common commands used within the terminal. Most 
     cp -r source_directory destination_directory
 
     # copy a file to a remote server
-    scp source_file username@remote_host:destination_directory
+    scp source_file username@submit.mit.edu:destination_directory
 
     # copy a file from a remote server
-    scp username@remote_host:source_file destination_directory
+    scp username@submit.mit.edu:source_file destination_directory
 
 6. move or rename files and directories (``mv``).
 
@@ -97,6 +97,8 @@ This tutorial will show you some common commands used within the terminal. Most 
 
     # remove a directory and its contents recursively
     rm -r directoryname
+
+9. manual (``man``), to display system documentation about a command, used as ``man command``.
 
 Understanding file permissions
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
