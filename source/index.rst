@@ -28,6 +28,7 @@ Tutorials - subMIT
    :maxdepth: 1
    :caption: Tutorials:
  
+   tutorials/tutorial_0
    tutorials/tutorial_1
    tutorials/tutorial_2
    tutorials/tutorial_3
