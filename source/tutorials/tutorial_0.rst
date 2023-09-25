@@ -62,6 +62,8 @@ This tutorial will show you some common commands used within the terminal. Most 
     # copy a file from a remote server
     scp username@submit.mit.edu:source_file destination_directory
 
+Similar tools to ``scp`` are ``rsync`` (to synchronize files/directories between a source and a destination) and ``rclone`` (mostly for cloud storage).
+
 6. move or rename files and directories (``mv``).
 
   .. code-block:: sh
@@ -100,6 +102,11 @@ This tutorial will show you some common commands used within the terminal. Most 
 
 9. manual (``man``), to display system documentation about a command, used as ``man command``.
 
+How to avoid using the terminal
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+If learning to use the terminal sounds daunting, you can do a lot of these actions without using the commands by using `Visual Studio Code <https://submit.mit.edu/submit-users-guide/program.html#vscode>`_, `X2GO <https://submit.mit.edu/submit-users-guide/program.html#x2go>`_, and `JupyterHub <https://submit.mit.edu/submit-users-guide/program.html#jupyterhub>`_.
+
 Understanding file permissions
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -110,5 +117,29 @@ Each file and directory has a set of permissions that define what actions a user
 * **execute** (``x``): allows the file to be executed as a program.
 
 You can view the permissions of files and directories using the ``ls -l`` command, which will display a string of 10 characters representing the file type and permissions (e.g., ``-rwxr-xr-x``)
+
+File Paths
+~~~~~~~~~~
+
+A file path is the route or direction followed by the system to locate a file or directory. Paths can be **absolute** or **relative**:
+
+- **Absolute Path**: Specifies a file or directory location in relation to the root directory. It starts with ``/``. For instance, ``/home/submit/username`` is an absolute path.
+
+- **Relative Path**: Specifies a file or directory location in relation to the current directory. For instance, if you're in ``/home/submit``, then the relative path to reach ``username`` is simply ``username``.
+
+**The PATH**
+
+``PATH`` is an environment variable in Unix-like operating systems, DOS, and Windows. It specifies a set of directories where executable programs are located. In general, each executing process or user session has its own ``PATH`` setting.
+
+When you type a command into the terminal, the system uses the directories listed in ``PATH`` to search for the executable file associated with that command. If it finds the executable, it runs it. If you get the error message ``command not found``, then the ``PATH`` is not properly set.
+
+To view the current ``PATH``, you can use ``echo $PATH``. To add a directory to the ``PATH``, you might modify it like this:
+
+.. code-block:: sh
+
+    export PATH=$PATH:/path/to/the/directory
+
+In this example, ``/path/to/the/directory`` is the directory you're adding. This new directory is appended to the end of the existing ``PATH``.
+
 
 **Note:** online, you may see the command ``sudo`` which is added before another command. You can use it on your own device, but you cannot use it on subMIT.
