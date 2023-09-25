@@ -392,3 +392,12 @@ Here is how jupyter interacts with: conda, singularity, GPUs, Slurm, and ROOT.
           }
     
     * N.B.: if you have conda installed elsewhere, your path might be different.
+
+Wolfram Mathematica
+~~~~~~~~~~~~~~~~~~~
+
+As of now, Mathematica is only installed on ``submit00``. In order to use it for the first time, follow these simple steps:
+
+#. ``ssh`` into ``submit00``: ``ssh username@submit00.mit.edu``
+
+#. type ``wolfram``. You should be prompted to enter an activation key, which you can get by requesting one from MIT, following the instructions `here <https://ist.mit.edu/wolfram/mathematica>`_. Once you have entered the activation key, after a few seconds you should see ``In[1]:=`` and be able to use mathematica.
