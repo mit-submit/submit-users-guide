@@ -362,8 +362,7 @@ The slurm partitions on SubMIT are fairly open but jobs are limited to 6 days of
 Slurm example 1
 ===============
 
-Below is a sample about how to submit a slurm job to the submit machines. Here we are doing similar to the condor samples above and copying a file with xrootd and then transferring the output to hadoop scratch space. Like Condor, you will need to export your x509 proxy in order to get access to certain files. Additional samples that utilize the GPUs on the submit cluster can be found in the GPU section of the guide.
-`submit GPU <http://submit04.mit.edu/submit-users-guide/gpu.html>`_
+Below is a sample about how to submit a slurm job to the submit machines. Here we are doing similar to the condor samples above and copying a file with xrootd and then transferring the output to hadoop scratch space. Like Condor, you will need to export your x509 proxy in order to get access to certain files. Additional samples that utilize the GPUs on the submit cluster can be found in the GPU section of the guide: `submit GPU <http://submit.mit.edu/submit-users-guide/gpu.html>`_
 
 .. code-block:: sh
 
