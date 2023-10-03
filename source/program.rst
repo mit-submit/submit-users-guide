@@ -396,10 +396,21 @@ Here is how jupyter interacts with: conda, singularity, GPUs, Slurm, and ROOT.
 Wolfram Mathematica
 ~~~~~~~~~~~~~~~~~~~
 
-As of now, Mathematica is only installed on ``submit00``. In order to use it for the first time, follow these simple steps:
+Mathematica is easily accessible on ``submit00``. In order to use it for the first time, follow these simple steps:
 
 #. ssh into submit00: ``ssh username@submit00.mit.edu``
 
-#. type ``wolfram``. You should be prompted to enter an activation key, which you can get by requesting one from MIT, following the instructions `here <https://ist.mit.edu/wolfram/mathematica>`_. Once you have entered the activation key, after a few seconds you should see ``In[1]:=`` and be able to use mathematica.
+#. type ``wolfram``. You should be prompted to enter an activation key, which you can get by requesting one from MIT, following the instructions `here <https://ist.mit.edu/wolfram/mathematica>`_. Once you have entered the activation key, after a few seconds you should see ``In[1]:=`` and be able to use Mathematica.
 
 Then, anytime you want to use Mathematica, make sure to ssh into submit00 and type ``wolfram``. 
+
+You can easily run scripts (files with extension ``.wls`` and ``.m``) by using one of the following commands:
+
+.. code-block:: python
+
+     wolfram -script scriptname.wls
+     wolfram -run < scriptname.wls
+     wolfram < scriptname.wls
+     wolfram -noprompt -run "<<scriptname.wls"
+
+When using scripts, you can use ``Print[]`` statements in your file that will directly appear in the terminal, or use ``Export[]`` to generate plots, for example.
