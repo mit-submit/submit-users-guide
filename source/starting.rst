@@ -124,7 +124,7 @@ One thing to note, is that if you have already tried this ssh command once and i
 Creating a personal webpage
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-In addition to the areas above, you have the ability to create a personal webpage in order to store and share your files. In order to create this site you will need a directory named public_html in your home directory:
+In addition to the areas above, you have the ability to create a personal webpage in order to store and share your files. In order to create this site you will need a directory named ``public_html`` in your home directory:
 
 .. code-block:: sh
 
@@ -135,4 +135,4 @@ Once that is created, you can now access your personal webpage after inserting y
 The rules for an account
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-Remember that these machines are shared. As such, do not max out resources on interactive jobs. As a guideline: If your job takes langer than 15 minutes it makes sense to dispatch it to a batch system. The machines in this login pool are connected to large computing clusters which are accessed by batch programs like HTCondor or Slurm. There are tutorials for these tools later in this guide.  
+Remember that these machines are shared. As such, do not max out resources on interactive jobs. As a guideline: If your job takes langer than 15 minutes it makes sense to dispatch it to a batch system. The machines in this login pool are connected to large computing clusters which are accessed by batch programs like `HTCondor <https://submit.mit.edu/submit-users-guide/running.html#id1>`_ or `Slurm <https://submit.mit.edu/submit-users-guide/running.html#id2>`_.
