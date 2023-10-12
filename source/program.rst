@@ -335,6 +335,7 @@ Here is how jupyter interacts with: conda, singularity, GPUs, Slurm, and ROOT.
         
      
     * What the manual and automatic installations do is to create a kernel folder in your ``/home/submit/<user>/.local/share/jupyter/kernels/``. These are then found by jupyterhub, and can be used as kernels for notebooks.
+    * You can list all currently installed kernels with ``jupyter kernelspec list``. Individual kernels can be removed with ``jupyter kernelspec remove <name>``.
     * N.B.: if relying on the automatic installation, the first time you log in after having created some environment(s), the spawning will be slower than usual, since it has to install them.
      
 #. Singularity
