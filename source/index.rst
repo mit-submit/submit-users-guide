@@ -52,3 +52,8 @@ Indices and tables
 * :ref:`genindex`
 * :ref:`modindex`
 * :ref:`search`
+
+Contributing
+============
+
+You can participate in the subMIT project by submitting bugs and feature requests to submit-help@mit.edu. If you see anything missing on our User's Guide, you can make pull requests on our `Github <https://github.com/mit-submit/submit-users-guide>`_ for anything from typos to additional documentation!
