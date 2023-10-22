@@ -59,6 +59,18 @@ To just enable IPV6, type:
 
 Keep in mind that filesystem is in favor of large files, therefore it is not recommanded to save large numbers of small files in the filesystem, for example, 100k+ small log files. The gluster system may unmount your directory if you transfer too many small files in a short time. 
 
+The storage at fast mount space (/scratch/)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+There is a fast mount space mounted as /scratch/ which provides high speed I/O. This speeds up the physics researches which have large input files and require fast accessing speed. The files under /scrach is for short term analyzing and not meant for long term storage. The data under /scratch should have a backup under the storage system if it is important.
+
+The files under /scrach can be accessed both through the mounting point /scratch and xrootd. To use xrootd, the accessing point is 
+
+.. code-block:: sh
+
+     root://submit30.mit.edu//scratch/
+
+It shares the same x509 authentication as the xrootd for the main storage space. We will soon add kerberos authentication (in progress).
+
 The storage on Tier2
 ~~~~~~~~~~~~~~~~~~~~
 Upon request, users may also have some storage on MIT Tier2 sites. Note that tier2 is external computing resources and users can only use xrootd to transfer the files. In other words, to use storage in tier2, users must have x509 certificate. The details of how to get such certificates are above. 
