@@ -1,5 +1,5 @@
-Tutorial 0: Introduction to the terminal
-----------------------------------------
+Tutorial 0: Introduction to the UNIX terminal
+---------------------------------------------
 
 This tutorial will show you some common commands used within the terminal. Most commands have options, which you type as ``[command] [options] [file... | directory...]``. Multiple options can be combined together.
 
