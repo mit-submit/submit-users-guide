@@ -427,7 +427,7 @@ Jupyterhub for Mathematica
 
 If you wish to get an interface similar to a Mathematica notebook (.nb file), you can use WolframLanguageforJupyter. To install, follow these steps:
 
-#. Install the most recent paclet available `here <https://github.com/WolframResearch/WolframLanguageForJupyter/releases>`_.
+#. Download the most recent paclet available `here <https://github.com/WolframResearch/WolframLanguageForJupyter/releases>`_ in your home directory.
 
 #. Make sure you are on submit00 and type ``wolfram`` on the command prompt, then
 
