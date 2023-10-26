@@ -386,7 +386,7 @@ Here is how jupyter interacts with: conda, singularity, GPUs, Slurm, and ROOT.
     * If you are trying to use ROOT in an ipython notebook over jupyter, you might have issues, which are related to missing paths, in particular the path to ``x86_64-conda-linux-gnu-c++``.
     * To fix this, try adding to the PATH of your kernel the ``bin`` directory of the environment. i.e. modify  ``~/.local/share/jupyter/kernel/<YOUR ENVIRONMENT>/kernel.json`` to include:
     
-    .. code-block:: python
+    .. code-block:: sh
     
          "env": {
            "PATH": "/work/submit/<USER>/miniforge3/envs/<YOUR ENVIRONMENT>/bin:${PATH}" 
@@ -403,11 +403,11 @@ Mathematica is easily accessible on ``submit00``. In order to use it for the fir
 
 #. type ``wolfram``. You should be prompted to enter an activation key, which you can get by requesting one from MIT, following the instructions `here <https://ist.mit.edu/wolfram/mathematica>`_. Once you have entered the activation key, after a few seconds you should see ``In[1]:=`` and be able to use Mathematica.
 
-Then, anytime you want to use Mathematica, make sure to ssh into submit00 and type ``wolfram``. 
+Then, anytime you want to use Mathematica, make sure to ssh into submit00 and type ``wolfram`` on the command prompt. When you are done, type ``Quit``, ``Quit[]``, ``Exit``, or ``Exit[]``.
 
 You can easily run scripts (files with extension ``.wls`` and ``.m``) by using one of the following commands:
 
-.. code-block:: python
+.. code-block:: mathematica
 
      wolfram -script scriptname.wls
      wolfram -run < scriptname.wls
@@ -415,3 +415,36 @@ You can easily run scripts (files with extension ``.wls`` and ``.m``) by using o
      wolfram -noprompt -run "<<scriptname.wls"
 
 When using scripts, you can use ``Print[]`` statements in your file that will directly appear in the terminal, or use ``Export[]`` to generate plots, for example.
+
+slurm for Mathematica
+.....................
+
+You can also submit batch jobs via slurm. In your batch file, make sure to include the line ``#SBATCH --nodelist=submit00``.
+
+
+Jupyterhub for Mathematica
+..........................
+
+If you wish to get an interface similar to a Mathematica notebook (.nb file), you can use WolframLanguageforJupyter. To install, follow these steps:
+
+#. Install the most recent paclet available `here <https://github.com/WolframResearch/WolframLanguageForJupyter/releases>`_.
+
+#. Make sure you are on submit00 and type ``wolfram`` on the command prompt, then
+
+.. code-block:: mathematica
+
+     (* replace x.y.z by the correct values, e.g. 0.9.3 *)
+     PacletInstall["WolframLanguageForJupyter-x.y.z.paclet"] 
+     Needs["WolframLanguageForJupyter`"]
+     ConfigureJupyter["Add"]
+     Quit
+
+#. To test that the installation worked, check whether wolfram has been added to your list of jupyter kernels by typing ``jupyter kernelspec list`` in the command prompt. You should see
+
+.. code-block:: sh
+
+     wolframlanguage13.2    /home/submit/username/.local/share/jupyter/kernels/wolframlanguage13.2
+
+Now that the kernel is installed, you want to use jupyterhub on submit00. Make sure you have installed jupyterlab (e.g. through ``conda install -c conda-forge jupyterlab``) and are on submit00. Open two terminal windows. In the first, connect to submit00 and type ``jupyter lab --no-browser --port 8888``. Copy the token that it gives you (a long list of letters and numbers). In the second, without ssh'ing into submit, type ``ssh -N -L localhost:8000:localhost:8888 username@submit00.mit.edu``. 
+
+Open a browser and enter the address ``http://localhost:8000/lab``. Paste the token. It should now open jupyterhub. You can make sure that you are on submit00 by opening a terminal within the webpage, which should show ``username@submit00.mit.edu``. You can now open a jupyter notebook (.ipynb file), make sure you are using the Wolfram kernel (choose the kernel in the top right of the screen), and use wolfram syntax as you would in a wolfram notebook. The outputs will even have the wolfram fonts!
