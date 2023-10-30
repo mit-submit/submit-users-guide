@@ -445,10 +445,10 @@ If you wish to get an interface similar to a Mathematica notebook (.nb file), yo
 
      wolframlanguage13.2    /home/submit/username/.local/share/jupyter/kernels/wolframlanguage13.2
 
-Now that the kernel is installed, you want to use jupyterhub on ``submit00``. There is an easy and a hard way to do this:
+Now that the kernel is installed, you want to use jupyterhub on ``submit00``. There is an easy and a harder way to do this:
 
 #. **Easy**: Go to the submit website and open jupyterhub. Choose the job profile to "Slurm for Wolfram Mathematica - submit00 - 1 CPU, 500 MB". The server should start. If you get the error message "Spawn failed: Timeout", it means the CPUs are already busy with other jobs and cannot be used at the moment. You can still use the method below.
 
-#. **Harder**: Make sure you have installed jupyterlab (e.g. through ``conda install -c conda-forge jupyterlab``) and are on submit00. Open two terminal windows. In the first, connect to submit00 and type ``jupyter lab --no-browser --port 8888``. Copy the token that it gives you (a long list of letters and numbers). In the second, without ssh'ing into submit, type ``ssh -N -L localhost:8000:localhost:8888 username@submit00.mit.edu``. Open a browser and enter the address ``http://localhost:8000/lab``. You may have to paste the token. It should now open jupyterhub. You can make sure that you are on submit00 by opening a terminal within the webpage, which should show ``username@submit00.mit.edu``. 
+#. **Harder**: Make sure you have installed jupyterlab (e.g. through ``conda install -c conda-forge jupyterlab``) and are on submit00. Open two terminal windows. In the first, connect to submit00 and type ``jupyter lab --no-browser --port 8888``. Copy the token that it gives you (a long list of letters and numbers). In the second, without ssh'ing into submit, type ``ssh -N -L localhost:8000:localhost:8888 username@submit00.mit.edu``. Open a browser and enter the address ``http://localhost:8000/lab``. You may have to paste the token. It should now open jupyterhub. 
 
-You can now open a jupyter notebook (.ipynb file), make sure you are using the Wolfram kernel (choose the kernel in the top right of the screen), and use wolfram syntax as you would in a Wolfram notebook. The outputs will even have the wolfram fonts!
+You can make sure that you are on submit00 by opening a terminal within the webpage, which should show ``username@submit00.mit.edu``. You can now open a jupyter notebook (.ipynb file), make sure you are using the Wolfram kernel (choose the kernel in the top right of the screen), and use Wolfram syntax as you would in a Wolfram notebook. The outputs will even have the Wolfram fonts!
