@@ -174,7 +174,7 @@ After you have created a proxy send an e-mail to maxi@mit.edu including the outp
 command. Please do not forget to cc the leader of your LNS research group. Please also say what experiment you work on.
 Your request will be handled and the results will be e-mailed back.
 
-To be able to access this directory you have to use gfal tools which are described [here](http://submit04.mit.edu/tips.html#tier2).
+To be able to access this directory you have to use gfal tools which are described [here](http://submit.mit.edu/tips.html#tier2).
 There is a low limit on the size of the files that can be written into the storage. Anything below 100 MBs is considered to be bad 
 for storage.
 
