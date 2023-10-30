@@ -401,7 +401,7 @@ Mathematica is easily accessible on ``submit00``. In order to use it for the fir
 
 #. ssh into submit00: ``ssh username@submit00.mit.edu``
 
-#. type ``wolfram``. You should be prompted to enter an activation key, which you can get by requesting one from MIT, following the instructions `Wolfram <https://ist.mit.edu/wolfram/mathematica>`_. Once you have entered the activation key, after a few seconds you should see ``In[1]:=`` and be able to use Mathematica.
+#. type ``wolfram``. You should be prompted to enter an activation key, which you can get by requesting one from MIT, following the instructions on the MIT website here: `MIT_Wolfram <https://ist.mit.edu/wolfram/mathematica>`_. Once you have entered the activation key, after a few seconds you should see ``In[1]:=`` and be able to use Mathematica.
 
 Then, anytime you want to use Mathematica, make sure to ssh into submit00 and type ``wolfram`` on the command prompt. When you are done, type ``Quit``, ``Quit[]``, ``Exit``, or ``Exit[]``.
 
@@ -427,7 +427,7 @@ Jupyterhub for Mathematica
 
 If you wish to get an interface similar to a Mathematica notebook (.nb file), you can use WolframLanguageforJupyter. To install, follow these steps:
 
-#. Download the most recent paclet available `Worfram_Jupyter <https://github.com/WolframResearch/WolframLanguageForJupyter/releases>`_ in your home directory.
+#. Download the most recent paclet available from `WolframLanguageForJupyter <https://github.com/WolframResearch/WolframLanguageForJupyter/releases>`_ in your home directory.
 
 #. Make sure you are on submit00 and type ``wolfram`` on the command prompt, then
 
