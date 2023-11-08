@@ -401,6 +401,13 @@ Here is how jupyter interacts with: conda, singularity, GPUs, Slurm, and ROOT.
           ] # this enters pkg mode
           add IJulia # it will take a few minutes to install the required packages
 
+     Now, if you type ``jupyter kernelspec list`` in a terminal window, you will see
+
+     .. code-block:: sh
+
+          julia-1.6     /home/submit/username/.local/share/jupyter/kernels/julia-1.6
+
+
 Wolfram Mathematica
 ~~~~~~~~~~~~~~~~~~~
 
