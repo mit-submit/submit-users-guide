@@ -394,6 +394,13 @@ Here is how jupyter interacts with: conda, singularity, GPUs, Slurm, and ROOT.
     
     * N.B.: if you have conda installed elsewhere, your path might be different.
 
+#. IJulia: IJulia is a Julia-language backend combined with the Jupyter interactive environment. Once installed, you can open Jupyterhub and select the Julia 1.6.5 kernel. To install it, in a terminal window, type ``julia``, then
+
+     .. code-block:: julia
+
+          ] # this enters pkg mode
+          add IJulia # it will take a few minutes to install the required packages
+
 Wolfram Mathematica
 ~~~~~~~~~~~~~~~~~~~
 
