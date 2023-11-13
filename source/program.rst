@@ -407,6 +407,8 @@ Here is how jupyter interacts with: conda, singularity, GPUs, Slurm, and ROOT.
 
           julia-1.6     /home/submit/username/.local/share/jupyter/kernels/julia-1.6
 
+     if it doesn't work, in Julia type ``using Pkg``, then ``Pkg.build("IJulia")``. You should now have the Julia kernel for Jupyterhub.
+
 
 Wolfram Mathematica
 ~~~~~~~~~~~~~~~~~~~
