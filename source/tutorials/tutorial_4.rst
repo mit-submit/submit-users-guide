@@ -76,39 +76,3 @@ Conda in Visual Studio Code:
 ............................
 
 **Selecting and activating a conda environment in VSCode:** you need to inform VSCode which conda environment to use for your Python workspace. Look at the bottom-left corner (macOS) or bottom-right corner (Windows) of the VSCode window to find the "Select Python Interpreter" button. Click on it and a list of available Python interpreters will appear. Choose the one that suits your needs (e.g., ``myenv``). You can also select the environment using the Command Palette (``Cmd+Shift+P`` in macOS or ``Ctrl+Shift+P`` in Windows) and searching for "Python: Select Interpreter". Note that it may take some time for VSCode to detect the available conda environments.
-
-Jupyterhub:
-~~~~~~~~~~~
-
-On submit, you have access to Jupyter Notebooks through a `JupyterHub <https://submit.mit.edu/jupyter>`_ set up at submit.
-
-This is set up through the submit machines meaning that you have access to all of your data through jupyter notebooks. 
-You will have access to basic python2 and python3 configurations. 
-In addition, if you need a more complex environment, you can run your notebooks in any conda environment that you have set up. 
-This allows you to create the exact environement you need for your projects. 
-
-Getting your Conda Environment:
-...............................
-
-jupyterhub is set up to automatically load all conda and python environments which are found in the following directories
-
-.. code-block:: sh          
-
-      /usr/bin/
-      /home/user/<user>/miniforge3/
-      /home/user/<user>/anaconda3/
-      /home/user/<user>/miniconda3/ 
-      /home/user/<user>/.conda/
-      /work/submit/<user>/anaconda3/
-      /work/submit/<user>/miniconda3/
-      /work/submit/<user>/miniforge3/
-      /data/submit/<user>/anaconda3/
-      /data/submit/<user>/miniconda3/
-      /data/submit/<user>/miniforge3/
-
-
-Example Notebook:
-.................
-
-Several intro notebooks can be found in the link below:
-`JupyterHub_examples <https://github.com/CpResearch/PythonDataAnalysisTutorial/tree/main/jupyter>`_
