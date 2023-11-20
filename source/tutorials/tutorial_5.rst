@@ -10,15 +10,6 @@ SubMIT also has access to several GPUs. In this section we will review how to ac
 
 At SubMIT, you can access GPUs either through logging into submit-gpu, through slurm using the submit-gpu or submit-gpu1080 partitions and  through HTCondor.
 
-CUDA
-....
-
-Compute Unified Device Architecture (CUDA) is a parallel computing platform and application programming interface (API) that allows software to use certain types of graphics processing unit (GPU) for general purpose processing. CUDA is available on the submit-gpu machines inherently. In order to check which CUDA version is installed you can use the command below. Make sure this version fits your workflow.
-
-.. code-block:: sh
-
-      nvcc --version
-
 submit-gpu:
 ...........
 
