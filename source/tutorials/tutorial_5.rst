@@ -76,26 +76,8 @@ In addition to the submit-gpu partition, there are additional GPUs available thr
       srun hostname
       nvidia-smi
 
-GPUs with Condor:
-~~~~~~~~~~~~~~~~~
-
-The MIT T2 and T3 both have access to GPU machines through Condor. An example of how to access these resources through Condor is shown below
-
-If you wish to submit jobs to GPU machines in T3/T2, you need to add additonal line in the script (only through glidein submission):
-
-.. code-block:: sh
-
-       RequestGPus=1
-
-If you wish to submit jobs to GPU machines in CMS global pool, you need to add additional line in the script:
-
-.. code-block:: sh
-
-       RequestGPus=1
-       +RequiresGPU=1
-
-pytorch example:
-................
+Condor pytorch example:
+~~~~~~~~~~~~~~~~~~~~~~~
 
 Lets create a simple python code to test pytorch and name it condor_torch.py:
 
