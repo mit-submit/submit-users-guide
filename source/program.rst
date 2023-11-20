@@ -130,16 +130,6 @@ Please note that downloading many conda packages takes a large amount of space w
 Coffea installation with Miniforge
 ..................................
 
-For installing Miniconda (see also https://hackmd.io/GkiNxag0TUmHnnCiqdND1Q#Local-or-remote)
-
-.. code-block:: sh
-
-      wget https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-Linux-x86_64.sh
-      # Run and follow instructions on screen
-      bash Miniforge3-Linux-x86_64.sh
-
-NOTE: always make sure that conda, python, and pip point to local Miniforge installation (``which conda`` etc.). Another thing to keep in mind is that you should avoid installing packages with ``pip`` using ``--user``. The example below shows the correct way to use pip in conjunction with conda. 
-
 You can either use the default environment (``base``) or create a new one:
 
 .. code-block:: sh
