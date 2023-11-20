@@ -20,4 +20,4 @@ It is straightforward to obtain an MIT guest account if you do not have one. A s
 How to get help?
 ~~~~~~~~~~~~~~~~
 
-If you have any trouble, you can try our `FAQ page <https://github.com/mit-submit/submit-users-guide/blob/main/FAQ.md>`_ or contact submit-help via email (submit-help@mit.edu).
+If you have any trouble, you can contact submit-help via email (submit-help@mit.edu).
