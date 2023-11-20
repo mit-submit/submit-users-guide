@@ -7,11 +7,8 @@ This section briefly describes several options in which to set up your environme
 Conda:
 ~~~~~~
 
-Conda is an open source package management system and environment management system. We can use this to set up consistent environments and manage the package dependencies for various applications. 
 
-Please note that downloading many conda packages takes a large amount of space which can very quickly use up the quota in your home. If you plan to use conda heavily it is suggested to download and configure it in your work directory where there is much more space. Any new conda environment that you install in your ``/home/submit`` or ``/work/submit`` will be installed on your jupyterhub only after your server is started up again. If your server is already running, you can stop it by File -> Hub Control Panel -> Stop My Server and then restart it by clicking Start Server. 
-
-Recipe:
+Install Miniconda:
 .......
 
 For installing Miniconda (see also https://hackmd.io/GkiNxag0TUmHnnCiqdND1Q#Local-or-remote)
@@ -56,7 +53,7 @@ This should print a path with your conda path.
 Python Example:
 ...............
 
-We can now run the example from tutorial 1 in our new conda environment:
+We can now run the example from `tutorial 1 <https://submit.mit.edu/submit-users-guide/tutorials/tutorial_1.html>`_ in our new conda environment:
 
 .. code-block:: sh
 
