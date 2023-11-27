@@ -1,7 +1,7 @@
 GPU resources
 -------------
 
-SubMIT provides access to several GPUs. This section outlines how to utilize these GPUs in your workflow. Access to GPUs is available via the `submit-gpu` and `submit-gpu1080` partitions through slurm, Jupyterhub, and HTCondor. Direct SSH access is not permitted to `submit-gpu` or `submit-gpu1080`. This ensures a controlled and secure environment for utilizing GPU capabilities. Keep in mind that these are shared resources so use these machines responsibly.
+SubMIT provides access to several GPUs. This section outlines how to utilize these GPUs in your workflow. Access to GPUs is available via the ``submit-gpu`` and ``submit-gpu1080`` partitions through slurm, Jupyterhub, and HTCondor. Direct SSH access is not permitted to ``submit-gpu`` or ``submit-gpu1080``. This ensures a controlled and secure environment for utilizing GPU capabilities. Keep in mind that these are shared resources so use these machines responsibly.
 
 There are two server pools available:
 
@@ -14,15 +14,15 @@ Slurm with GPUs
 Interactive access (salloc)
 ...........................
 
-Submit allows interactive login access to GPUs through the `salloc` command. This allows users to interactively test their GPU applications. 
+Submit allows interactive login access to GPUs through the ``salloc`` command. This allows users to interactively test their GPU applications. 
 
-Accessing the `submit-gpu` partition:
+Accessing the ``submit-gpu`` partition:
 
 .. code-block:: sh
 
       salloc --partition=submit-gpu --cpus-per-gpu=1 --gres=gpu:1
 
-Accessing the `submit-gpu1080` partition:
+Accessing the ``submit-gpu1080`` partition:
 
 .. code-block:: sh
 
@@ -39,7 +39,7 @@ Batch jobs and script execution
 
 The GPUs resources are also available through batch scripts.
 
-Example with the `submit-gpu` partition:
+Example with the ``submit-gpu`` partition:
 
 .. code-block:: sh
 
@@ -62,7 +62,7 @@ Example with the `submit-gpu` partition:
 For a CUDA example with Slurm, visit `slurm cuda <https://github.com/mit-submit/submit-examples/tree/main/gpu/slurm_gpu>`_.
 
 
-Example with the `submit-gpu1080` partition:
+Example with the ``submit-gpu1080`` partition:
 
 
 .. code-block:: sh
