@@ -35,9 +35,7 @@ In other words, for `most languages <https://code.visualstudio.com/docs/language
 Getting Started with VSCode on subMIT
 .....................................
 
-We plan to provide more detailed instructions and tutorials in the near future, so please check back again later for more info!
-
-Microsoft provides some handy `videos <https://code.visualstudio.com/docs/getstarted/introvideos>`_ for getting started with VSCode.  (As well as a detailed information `vsCode <https://code.visualstudio.com/docs/remote/ssh>`_).
+Microsoft provides some handy `videos <https://code.visualstudio.com/docs/getstarted/introvideos>`_ for getting started with VSCode, as well as detailed information on `remote connection <https://code.visualstudio.com/docs/remote/ssh>`_.
 
 First `download and install <https://code.visualstudio.com/docs/setup/setup-overview>`_ VSCode on your laptop/desktop.  
 
@@ -54,13 +52,13 @@ Then, after VSCode establishes the connection, simply "Open" a folder or workspa
 Handy Resources
 ...............
 
-* `intro videos <https://code.visualstudio.com/docs/getstarted/introvideos>`_
+* `intro videos <https://code.visualstudio.com/docs/getstarted/introvideos>`_ (external)
 
-* `keyboard cheat sheet <https://code.visualstudio.com/docs/getstarted/tips-and-tricks#_keyboard-reference-sheets>`_
+* `keyboard cheat sheet <https://code.visualstudio.com/docs/getstarted/tips-and-tricks#_keyboard-reference-sheets>`_ (external)
 
-* `Creating a local Python environment in VSCode <https://submit.mit.edu/submit-users-guide/tutorials/tutorial_1.html#types-of-python-environments>`_
+* `Tutorial to creating a local Python environment in VSCode <https://submit.mit.edu/submit-users-guide/tutorials/tutorial_1.html#types-of-python-environments>`_ (internal)
 
-* `Choosing and activating a Python environment in VSCode <https://submit.mit.edu/submit-users-guide/tutorials/tutorial_4.html#conda-in-visual-studio-code>`_
+* `Tutorial to choosing and activating a Python environment in VSCode <https://submit.mit.edu/submit-users-guide/tutorials/tutorial_4.html#conda-in-visual-studio-code>`_ (internal)
 
 CVMFS
 ~~~~~
@@ -125,10 +123,24 @@ Conda is an open source package management system and environment management sys
 Important Note for Using Conda on submit
 ........................................
 
-Please note that downloading many conda packages takes a large amount of space which can very quickly use up the quota in your home. If you plan to use conda heavily it is suggested to download and configure it in your work directory where there is much more space. Any new conda environment that you install in your ``/home/submit`` or ``/work/submit`` will be installed on your jupyterhub only after your server is started up again. If your server is already running, you can stop it by File -> Hub Control Panel -> Stop My Server and then restart it by clicking Start Server. 
+Please note that downloading many conda packages takes a large amount of space which can very quickly use up the quota in your home. If you plan to use conda heavily it is suggested to download and configure it in your work directory where there is much more space. Any new conda environment that you install in your ``/home/submit`` or ``/work/submit`` will be installed on your Jupyterhub only after your server is started up again. If your server is already running, you can stop it by File -> Hub Control Panel -> Stop My Server and then restart it by clicking Start Server. 
 
-Coffea installation with Miniforge
-..................................
+Installing Conda
+................
+
+.. code-block:: sh
+
+      wget https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-Linux-x86_64.sh
+      # Run and follow instructions on screen
+      bash Miniforge3-Linux-x86_64.sh
+
+NOTE: always make sure that conda, python, and pip point to local Miniforge installation (``which conda`` etc.). Another thing to keep in mind is that you should avoid installing packages with ``pip`` using ``--user``. The example in the next subsection shows the correct way to use pip in conjunction with conda. 
+
+See also https://hackmd.io/GkiNxag0TUmHnnCiqdND1Q#Local-or-remote
+
+
+Coffea installation
+...................
 
 You can either use the default environment (``base``) or create a new one:
 
