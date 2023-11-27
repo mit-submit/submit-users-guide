@@ -139,8 +139,8 @@ NOTE: always make sure that conda, python, and pip point to local Miniforge inst
 See also https://hackmd.io/GkiNxag0TUmHnnCiqdND1Q#Local-or-remote
 
 
-Coffea installation
-...................
+Example: coffea installation
+............................
 
 You can either use the default environment (``base``) or create a new one:
 
@@ -150,6 +150,8 @@ You can either use the default environment (``base``) or create a new one:
       conda create --name coffea python=3.7
       # activate environment "coffea"
       conda activate coffea
+
+To check that the right python version is there, run ``python --version``. This should show ``Python 3.7.XX``.
 
 An example of how to install a mix of packages through conda and pip:
 
