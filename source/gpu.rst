@@ -37,10 +37,47 @@ Compute Unified Device Architecture (CUDA) is a parallel computing platform and 
 Slurm with GPUs
 ~~~~~~~~~~~~~~~
 
-The submit-gpu machines are connected to the submit slurm cluster as the "submit-gpu" partition. This means that you can also scale up GPU applications through the use of slurm in order to access all of the GPUs available. Keep in mind that these are shared resources so use these machines responsibly. In addition to the submit-gpu partition, there are additional GPUs available through submit-gpu1080. A sample slurm job designed to run on the submit-gpu machines is available in our `GPU tutorial <https://submit.mit.edu/submit-users-guide/tutorials/tutorial_5.html>`_, and more info is available in our Githup `slurm 1080 <https://github.com/mit-submit/submit-examples/tree/main/gpu/slurm_gpu1080>`_ example.
+The submit-gpu machines are connected to the submit slurm cluster as the "submit-gpu" partition. This means that you can also scale up GPU applications through the use of slurm in order to access all of the GPUs available. Keep in mind that these are shared resources so use these machines responsibly. A sample slurm job designed to run on the submit-gpu machines is shown below. Notice the specifications in the beginning and make sure you tailor them to your use in order to optimize your jobs.
+
+.. code-block:: sh
+
+      #!/bin/bash
+      #
+      #SBATCH --job-name=test
+      #SBATCH --output=res_%j.txt
+      #SBATCH --error=err_%j.txt
+      #
+      #SBATCH --time=10:00
+      #SBATCH --mem-per-cpu=100
+      #SBATCH --partition=submit-gpu
+      #SBATCH --gres=gpu:2  
+      #SBATCH --cpus-per-gpu=4
+      
+      srun hostname
+      nvidia-smi
+
 
 A cuda example with slurm can be found here:
 `slurm cuda <https://github.com/mit-submit/submit-examples/gpu/slurm_gpu>`_
+
+In addition to the submit-gpu partition, there are additional GPUs available through submit-gpu1080. An example submit file is shown below.
+
+.. code-block:: sh
+
+      #!/bin/bash
+      #
+      #SBATCH --job-name=test
+      #SBATCH --output=res_%j-%a.txt
+      #SBATCH --error=err_%j-%a.txt
+      #
+      #SBATCH --ntasks=1
+      #SBATCH --time=06:50:00
+      #SBATCH --mem-per-cpu=2GB
+      #SBATCH --partition=submit-gpu1080
+      #SBATCH --gres=gpu:1
+      #SBATCH --cpus-per-gpu=1
+
+More info is available in our Github `slurm 1080 <https://github.com/mit-submit/submit-examples/tree/main/gpu/slurm_gpu1080>`_ example.
 
 
 Condor with GPUs
