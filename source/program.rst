@@ -28,37 +28,41 @@ VSCode
 
 Please note: Not all of the following features are supported for all programming languages.
 
-Visual Studio Code (VSCode) is a free, versatile and user-friendly source-code editor which supports a variety of programming languages (Python, C/C++, Java, Julia, Fortran, ...) as well as markup languages and beyond (HTML/CSS, Markdown, reStructuredText, LaTex, JSON, ...).  It contains `debugging <https://code.visualstudio.com/docs/editor/debugging>`_ and `source control <https://code.visualstudio.com/docs/sourcecontrol/overview>`_ (e.g. git/GitHub) features as well as an integrated file browser.  VSCode can be easily run in a client-server mode for `remote development <https://code.visualstudio.com/docs/remote/ssh>`_ on subMIT.  This means that, in most cases, you can open VSCode on your own laptop/desktop computer to edit, run, & debug code on the subMIT servers.  This way you work in the convenience & comfort of a GUI-based integrated development environement in your native OS on your laptop, while behind the scenes, your code is actually being run on the subMIT machines using the software & environments on subMIT.
+Visual Studio Code (VSCode) is a free, versatile source-code editor that supports a wide range of programming languages, including Python, C/C++, Java, Julia, Fortran, and others. It also supports various markup languages like HTML/CSS, Markdown, reStructuredText, LaTeX, and JSON. Key features of VSCode include:
 
-In other words, for `most languages <https://code.visualstudio.com/docs/languages/overview>`_, you can `edit <https://code.visualstudio.com/docs/editor/codebasics>`_ (including code highlighting, easy `code navigation <https://code.visualstudio.com/docs/editor/editingevolved>`_, code completion, parameter info, quick info and other `IntelliSense <https://code.visualstudio.com/docs/editor/intellisense>`_ features) and `debug <https://code.visualstudio.com/docs/editor/debugging>`_ (breakpoints, variable inspection, stack navigation, etc.) code easily on subMIT, as well as use advanced time-saving features like `AI-assisted code development <https://code.visualstudio.com/docs/editor/artificial-intelligence>`_, `snippets <https://code.visualstudio.com/docs/editor/userdefinedsnippets>`_, and `tasks <https://code.visualstudio.com/docs/editor/tasks>`_.  VSCode also supports many `accessibility features <https://code.visualstudio.com/docs/editor/accessibility>`_.
+* **Debugging:** `simplify your troubleshooting process <https://code.visualstudio.com/docs/editor/debugging>`_.
+
+* **Source control:** `manage your code with git/GitHub <https://code.visualstudio.com/docs/sourcecontrol/overview>`_.
+
+* **Integrated file browser:** easily navigate and manage your files within the editor.
+
+One of the capabilities of VSCode is its client-server mode for `remote development <https://code.visualstudio.com/docs/remote/ssh>`_ on subMIT. This functionality allows you to edit, run, and debug code on the subMIT servers directly from your personal computer. This setup provides the ease of a GUI-based development environment on your local machine while executing the code on subMIT's infrastructure.
+
+For `most languages <https://code.visualstudio.com/docs/languages/overview>`_, you can `edit <https://code.visualstudio.com/docs/editor/codebasics>`_ (including code highlighting, easy `code navigation <https://code.visualstudio.com/docs/editor/editingevolved>`_, code completion, parameter info, quick info and other `IntelliSense <https://code.visualstudio.com/docs/editor/intellisense>`_ features) and `debug <https://code.visualstudio.com/docs/editor/debugging>`_ (breakpoints, variable inspection, stack navigation, etc.) code easily on subMIT, as well as use advanced time-saving features like `AI-assisted code development <https://code.visualstudio.com/docs/editor/artificial-intelligence>`_, `snippets <https://code.visualstudio.com/docs/editor/userdefinedsnippets>`_, and `tasks <https://code.visualstudio.com/docs/editor/tasks>`_.  VSCode also supports many `accessibility features <https://code.visualstudio.com/docs/editor/accessibility>`_.
 
 Getting Started with VSCode on subMIT
 .....................................
 
 Microsoft provides some handy `videos <https://code.visualstudio.com/docs/getstarted/introvideos>`_ for getting started with VSCode, as well as detailed information on `remote connection <https://code.visualstudio.com/docs/remote/ssh>`_.
 
-First `download and install <https://code.visualstudio.com/docs/setup/setup-overview>`_ VSCode on your laptop/desktop.  
+#. **Install VSCode:** `download and install instructions <https://code.visualstudio.com/docs/setup/setup-overview>`_
 
-Then, a convenient way to set up VSCode for remote development is to set up an ssh config file as detailed `vs_config <https://submit.mit.edu/submit-users-guide/starting.html#common-issues-with-keys>`_ in the subMIT User's Guide.  
+#. **SSH Configuration:** Follow the `vs_config guide <https://submit.mit.edu/submit-users-guide/starting.html#common-issues-with-keys>`_ in the subMIT User's Guide.
 
-Then install the `VSCode Remote-SSH extension <https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-ssh>`_.  
+#. **Remote-SSH Extension:** Available in the VSCode Extensions tab or on the `VSCode website <https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-ssh>`_.
 
-Open VSCode on your laptop/desktop and click the green "Open a Remote Window" button in the extreme lower-left of the VSCode window.  (Alternatively, open the Command Palette by hitting F1 or Shift+Command+P and type "Remote-SSH: Connect to Host...".  A "Connect to" link also appears on the VSCode Welcome Page.)
-
-Select "submit" from the menu (VSCode automatically reads your ssh config file).
-
-Then, after VSCode establishes the connection, simply "Open" a folder or workspace.  Opening a folder is typically more convenient than opening a single code file.  Remember: VSCode is now connected to subMIT, so you are looking at and navigating your files on the subMIT servers, not your laptop/desktop.
+#. **Connect to subMIT:** Click the green "Open a Remote Window" button in the lower-left of the VSCode window. Select "submit" from the menu (VSCode automatically reads your ssh config file). Then, simply "open" a folder or workspace. Opening a folder is typically more convenient than opening a single code file.  Remember: VSCode is now connected to subMIT, so you are looking at and navigating your files on the subMIT servers, not on your laptop/desktop.
 
 Handy Resources
 ...............
 
-* `intro videos <https://code.visualstudio.com/docs/getstarted/introvideos>`_ (external)
+* `Intro videos <https://code.visualstudio.com/docs/getstarted/introvideos>`_ (external)
 
-* `keyboard cheat sheet <https://code.visualstudio.com/docs/getstarted/tips-and-tricks#_keyboard-reference-sheets>`_ (external)
+* `Keyboard cheat sheet <https://code.visualstudio.com/docs/getstarted/tips-and-tricks#_keyboard-reference-sheets>`_ (external)
 
-* `Tutorial to creating a local Python environment in VSCode <https://submit.mit.edu/submit-users-guide/tutorials/tutorial_1.html#types-of-python-environments>`_ (internal)
+* `Local Python environment tutorial <https://submit.mit.edu/submit-users-guide/tutorials/tutorial_1.html#types-of-python-environments>`_ (internal)
 
-* `Tutorial to choosing and activating a Python environment in VSCode <https://submit.mit.edu/submit-users-guide/tutorials/tutorial_4.html#conda-in-visual-studio-code>`_ (internal)
+* `Activating a Python environment tutorial <https://submit.mit.edu/submit-users-guide/tutorials/tutorial_4.html#conda-in-visual-studio-code>`_ (internal)
 
 CVMFS
 ~~~~~
@@ -138,6 +142,17 @@ NOTE: always make sure that conda, python, and pip point to local Miniforge inst
 
 See also https://hackmd.io/GkiNxag0TUmHnnCiqdND1Q#Local-or-remote
 
+Quick commands to know about
+............................
+
+.. code-block:: sh
+
+     conda activate env_name # To activate the environment called env_name
+     conda deactivate # To deactivate an environment
+     conda info --envs # To list of your environments. You can also use "conda env list"
+     conda list # To list the packages of an environment. Use after activating the environment. Otherwise, add "-n env_name"
+     conda env export > environment.yml # To export your environment with all its packages. Use after activating the environment
+     conda remove --name env_name --all # To remove the environment env_name
 
 Example: coffea installation
 ............................
