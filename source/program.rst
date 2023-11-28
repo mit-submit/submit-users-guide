@@ -210,7 +210,7 @@ Containers are becoming commonplace in scientific workflows. Submit offers acces
 Docker
 ......
 
-All SubMIT users have access to build dockers. You can start by finidng instructions through your packages dockerhub or by downloading the code and building the docker image.
+All SubMIT users have access to build dockers. You can start by finding instructions through your packages dockerhub or by downloading the code and building the docker image.
 
 .. code-block:: sh
 
