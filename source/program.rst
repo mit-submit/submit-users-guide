@@ -38,7 +38,19 @@ Visual Studio Code (VSCode) is a free, versatile source-code editor that support
 
 One of the capabilities of VSCode is its client-server mode for `remote development <https://code.visualstudio.com/docs/remote/ssh>`_ on subMIT. This functionality allows you to edit, run, and debug code on the subMIT servers directly from your personal computer. This setup provides the ease of a GUI-based development environment on your local machine while executing the code on subMIT's infrastructure.
 
-For `most languages <https://code.visualstudio.com/docs/languages/overview>`_, you can `edit <https://code.visualstudio.com/docs/editor/codebasics>`_ (including code highlighting, easy `code navigation <https://code.visualstudio.com/docs/editor/editingevolved>`_, code completion, parameter info, quick info and other `IntelliSense <https://code.visualstudio.com/docs/editor/intellisense>`_ features) and `debug <https://code.visualstudio.com/docs/editor/debugging>`_ (breakpoints, variable inspection, stack navigation, etc.) code easily on subMIT, as well as use advanced time-saving features like `AI-assisted code development <https://code.visualstudio.com/docs/editor/artificial-intelligence>`_, `snippets <https://code.visualstudio.com/docs/editor/userdefinedsnippets>`_, and `tasks <https://code.visualstudio.com/docs/editor/tasks>`_.  VSCode also supports many `accessibility features <https://code.visualstudio.com/docs/editor/accessibility>`_.
+For `most languages <https://code.visualstudio.com/docs/languages/overview>`_, VScode enhances your coding experience with features like:
+
+* **Edit code:** including code highlighting and easy `code navigation <https://code.visualstudio.com/docs/editor/editingevolved>`_. `More about code basics <https://code.visualstudio.com/docs/editor/codebasics>`_.
+
+* **Advanced debugging:** use breakpoints, inspect variables, stack navigation. `Debugging guide <https://code.visualstudio.com/docs/editor/debugging>`_.
+
+* **IntelliSense:** code completion, parameter info, quick info, and more. `Discover IntelliSense <https://code.visualstudio.com/docs/editor/intellisense>`_.
+
+* **Time-saving features:** benefit from `AI-assisted code development <https://code.visualstudio.com/docs/editor/artificial-intelligence>`_, `user-defined snippets <https://code.visualstudio.com/docs/editor/userdefinedsnippets>`_, and `task automation <https://code.visualstudio.com/docs/editor/tasks>`_.
+
+* **Accessibility features:** `learn about accessibility in VSCode <https://code.visualstudio.com/docs/editor/accessibility>`_.
+
+
 
 Getting Started with VSCode on subMIT
 .....................................
@@ -142,16 +154,16 @@ NOTE: always make sure that conda, python, and pip point to local Miniforge inst
 
 See also https://hackmd.io/GkiNxag0TUmHnnCiqdND1Q#Local-or-remote
 
-Quick commands to know about
-............................
+Quick commands to know
+......................
 
 .. code-block:: sh
 
      conda activate env_name # To activate the environment called env_name
      conda deactivate # To deactivate an environment
      conda info --envs # To list of your environments. You can also use "conda env list"
-     conda list # To list the packages of an environment. Use after activating the environment. Otherwise, add "-n env_name"
-     conda env export > environment.yml # To export your environment with all its packages. Use after activating the environment
+     conda list # To list the packages of an environment. Use after activating the environment or add "-n env_name"
+     conda env export > environment.yml # To export your environment with its packages. Use after activating the environment
      conda remove --name env_name --all # To remove the environment env_name
 
 Example: coffea installation
