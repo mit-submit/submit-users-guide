@@ -150,7 +150,7 @@ Installing Conda
       # Run and follow instructions on screen
       bash Miniforge3-Linux-x86_64.sh
 
-NOTE: always make sure that conda, python, and pip point to local Miniforge installation (``which conda`` etc.). Another thing to keep in mind is that you should avoid installing packages with ``pip`` using ``--user``. The example in the next subsection shows the correct way to use pip in conjunction with conda. 
+NOTE: always make sure that conda, python, and pip point to local Miniforge installation (``which conda`` etc.). Another thing to keep in mind is that you should avoid installing packages with ``pip`` using ``--user``. The coffea example below shows the correct way to use pip in conjunction with conda. 
 
 See also https://hackmd.io/GkiNxag0TUmHnnCiqdND1Q#Local-or-remote
 
@@ -197,6 +197,10 @@ An example of how to install a mix of packages through conda and pip:
       pip install --pre fastjet
       pip install vector
 
+Conda in Visual Studio Code:
+............................
+
+**Selecting and activating a conda environment in VSCode:** you need to inform VSCode which conda environment to use for your Python workspace. Look at the bottom-left corner (macOS) or bottom-right corner (Windows) of the VSCode window to find the "Select Python Interpreter" button. Click on it and a list of available Python interpreters will appear. Choose the one that suits your needs (e.g., ``myenv``). You can also select the environment using the Command Palette (``Cmd+Shift+P`` in macOS or ``Ctrl+Shift+P`` in Windows) and searching for "Python: Select Interpreter". Note that it may take some time for VSCode to detect the available conda environments.
 
 Containers
 ~~~~~~~~~~
