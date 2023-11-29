@@ -1,4 +1,4 @@
-Tutorial 6: Source Control (Git/Github) with Visual Studio Code (VSCode)
+Tutorial 4: Source Control (Git/Github) with Visual Studio Code (VSCode)
 ------------------------------------------------------------------------
 
 .. |ShowMore| replace:: More Detail (click here to show/hide)
