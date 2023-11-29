@@ -74,7 +74,7 @@ Handy Resources
 
 * `Local Python environment tutorial <https://submit.mit.edu/submit-users-guide/tutorials/tutorial_1.html#types-of-python-environments>`_ (internal)
 
-* `Activating a Python environment tutorial <https://submit.mit.edu/submit-users-guide/tutorials/tutorial_4.html#conda-in-visual-studio-code>`_ (internal)
+* `Activating a Python environment tutorial <https://submit.mit.edu/submit-users-guide/program.html#conda-in-visual-studio-code>`_ (internal) 
 
 CVMFS
 ~~~~~
