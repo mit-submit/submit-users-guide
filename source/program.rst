@@ -8,7 +8,7 @@ Native system
 
 All of the submit machines come with several tools to help you get started with your work. A few examples are shown below:
 
-1. Languages: python, c++, Java, etc.
+1. Languages: python, c++, Julia, Java, etc.
 
 2. Tools: XRootd, gfal, etc.
 
@@ -28,39 +28,53 @@ VSCode
 
 Please note: Not all of the following features are supported for all programming languages.
 
-Visual Studio Code (VSCode) is a free, versatile and user-friendly source-code editor which supports a variety of programming languages (Python, C/C++, Java, Julia, Fortran, ...) as well as markup languages and beyond (HTML/CSS, Markdown, reStructuredText, LaTex, JSON, ...).  It contains `debugging <https://code.visualstudio.com/docs/editor/debugging>`_ and `source control <https://code.visualstudio.com/docs/sourcecontrol/overview>`_ (e.g. git/GitHub) features as well as an integrated file browser.  VSCode can be easily run in a client-server mode for `remote development <https://code.visualstudio.com/docs/remote/ssh>`_ on subMIT.  This means that, in most cases, you can open VSCode on your own laptop/desktop computer to edit, run, & debug code on the subMIT servers.  This way you work in the convenience & comfort of a GUI-based integrated development environement in your native OS on your laptop, while behind the scenes, your code is actually being run on the subMIT machines using the software & environments on subMIT.
+Visual Studio Code (VSCode) is a free, versatile source-code editor that supports a wide range of programming languages, including Python, C/C++, Java, Julia, Fortran, and others. It also supports various markup languages like HTML/CSS, Markdown, reStructuredText, LaTeX, and JSON. Key features of VSCode include:
 
-In other words, for `most languages <https://code.visualstudio.com/docs/languages/overview>`_, you can `edit <https://code.visualstudio.com/docs/editor/codebasics>`_ (including code highlighting, easy `code navigation <https://code.visualstudio.com/docs/editor/editingevolved>`_, code completion, parameter info, quick info and other `IntelliSense <https://code.visualstudio.com/docs/editor/intellisense>`_ features) and `debug <https://code.visualstudio.com/docs/editor/debugging>`_ (breakpoints, variable inspection, stack navigation, etc.) code easily on subMIT, as well as use advanced time-saving features like `AI-assisted code development <https://code.visualstudio.com/docs/editor/artificial-intelligence>`_, `snippets <https://code.visualstudio.com/docs/editor/userdefinedsnippets>`_, and `tasks <https://code.visualstudio.com/docs/editor/tasks>`_.  VSCode also supports many `accessibility features <https://code.visualstudio.com/docs/editor/accessibility>`_.
+* **Debugging:** `simplify your troubleshooting process <https://code.visualstudio.com/docs/editor/debugging>`_.
+
+* **Source control:** `manage your code with git/GitHub <https://code.visualstudio.com/docs/sourcecontrol/overview>`_.
+
+* **Integrated file browser:** easily navigate and manage your files within the editor.
+
+One of the capabilities of VSCode is its client-server mode for `remote development <https://code.visualstudio.com/docs/remote/ssh>`_ on subMIT. This functionality allows you to edit, run, and debug code on the subMIT servers directly from your personal computer. This setup provides the ease of a GUI-based development environment on your local machine while executing the code on subMIT's infrastructure.
+
+For `most languages <https://code.visualstudio.com/docs/languages/overview>`_, VScode enhances your coding experience with features like:
+
+* **Edit code:** including code highlighting and easy `code navigation <https://code.visualstudio.com/docs/editor/editingevolved>`_. `More about code basics <https://code.visualstudio.com/docs/editor/codebasics>`_.
+
+* **Advanced debugging:** use breakpoints, inspect variables, stack navigation. `Debugging guide <https://code.visualstudio.com/docs/editor/debugging>`_.
+
+* **IntelliSense:** code completion, parameter info, quick info, and more. `Discover IntelliSense <https://code.visualstudio.com/docs/editor/intellisense>`_.
+
+* **Time-saving features:** benefit from `AI-assisted code development <https://code.visualstudio.com/docs/editor/artificial-intelligence>`_, `user-defined snippets <https://code.visualstudio.com/docs/editor/userdefinedsnippets>`_, and `task automation <https://code.visualstudio.com/docs/editor/tasks>`_.
+
+* **Accessibility features:** `learn about accessibility in VSCode <https://code.visualstudio.com/docs/editor/accessibility>`_.
+
+
 
 Getting Started with VSCode on subMIT
 .....................................
 
-We plan to provide more detailed instructions and tutorials in the near future, so please check back again later for more info!
+Microsoft provides some handy `videos <https://code.visualstudio.com/docs/getstarted/introvideos>`_ for getting started with VSCode, as well as detailed information on `remote connection <https://code.visualstudio.com/docs/remote/ssh>`_.
 
-Microsoft provides some handy `videos <https://code.visualstudio.com/docs/getstarted/introvideos>`_ for getting started with VSCode.  (As well as a detailed information `vsCode <https://code.visualstudio.com/docs/remote/ssh>`_).
+#. **Install VSCode:** `download and install instructions <https://code.visualstudio.com/docs/setup/setup-overview>`_
 
-First `download and install <https://code.visualstudio.com/docs/setup/setup-overview>`_ VSCode on your laptop/desktop.  
+#. **SSH Configuration:** Follow the `vs_config guide <https://submit.mit.edu/submit-users-guide/starting.html#common-issues-with-keys>`_ in the subMIT User's Guide.
 
-Then, a convenient way to set up VSCode for remote development is to set up an ssh config file as detailed `vs_config <https://submit.mit.edu/submit-users-guide/starting.html#common-issues-with-keys>`_ in the subMIT User's Guide.  
+#. **Remote-SSH Extension:** Available in the VSCode Extensions tab or on the `VSCode website <https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-ssh>`_.
 
-Then install the `VSCode Remote-SSH extension <https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-ssh>`_.  
-
-Open VSCode on your laptop/desktop and click the green "Open a Remote Window" button in the extreme lower-left of the VSCode window.  (Alternatively, open the Command Palette by hitting F1 or Shift+Command+P and type "Remote-SSH: Connect to Host...".  A "Connect to" link also appears on the VSCode Welcome Page.)
-
-Select "submit" from the menu (VSCode automatically reads your ssh config file).
-
-Then, after VSCode establishes the connection, simply "Open" a folder or workspace.  Opening a folder is typically more convenient than opening a single code file.  Remember: VSCode is now connected to subMIT, so you are looking at and navigating your files on the subMIT servers, not your laptop/desktop.
+#. **Connect to subMIT:** Click the green "Open a Remote Window" button in the lower-left of the VSCode window. Select "submit" from the menu (VSCode automatically reads your ssh config file). Then, simply "open" a folder or workspace. Opening a folder is typically more convenient than opening a single code file.  Remember: VSCode is now connected to subMIT, so you are looking at and navigating your files on the subMIT servers, not on your laptop/desktop.
 
 Handy Resources
 ...............
 
-* `intro videos <https://code.visualstudio.com/docs/getstarted/introvideos>`_
+* `Intro videos <https://code.visualstudio.com/docs/getstarted/introvideos>`_ (external)
 
-* `keyboard cheat sheet <https://code.visualstudio.com/docs/getstarted/tips-and-tricks#_keyboard-reference-sheets>`_
+* `Keyboard cheat sheet <https://code.visualstudio.com/docs/getstarted/tips-and-tricks#_keyboard-reference-sheets>`_ (external)
 
-* `Creating a local Python environment in VSCode <https://submit.mit.edu/submit-users-guide/tutorials/tutorial_1.html#types-of-python-environments>`_
+* `Local Python environment tutorial <https://submit.mit.edu/submit-users-guide/tutorials/tutorial_1.html#types-of-python-environments>`_ (internal)
 
-* `Choosing and activating a Python environment in VSCode <https://submit.mit.edu/submit-users-guide/tutorials/tutorial_4.html#conda-in-visual-studio-code>`_
+* `Activating a Python environment tutorial <https://submit.mit.edu/submit-users-guide/program.html#conda-in-visual-studio-code>`_ (internal) 
 
 CVMFS
 ~~~~~
@@ -125,12 +139,10 @@ Conda is an open source package management system and environment management sys
 Important Note for Using Conda on submit
 ........................................
 
-Please note that downloading many conda packages takes a large amount of space which can very quickly use up the quota in your home. If you plan to use conda heavily it is suggested to download and configure it in your work directory where there is much more space. Any new conda environment that you install in your ``/home/submit`` or ``/work/submit`` will be installed on your jupyterhub only after your server is started up again. If your server is already running, you can stop it by File -> Hub Control Panel -> Stop My Server and then restart it by clicking Start Server. 
+Please note that downloading many conda packages takes a large amount of space which can very quickly use up the quota in your home. If you plan to use conda heavily it is suggested to download and configure it in your work directory where there is much more space. Any new conda environment that you install in your ``/home/submit`` or ``/work/submit`` will be installed on your Jupyterhub only after your server is started up again. If your server is already running, you can stop it by File -> Hub Control Panel -> Stop My Server and then restart it by clicking Start Server. 
 
-Coffea installation with Miniforge
-..................................
-
-For installing Miniconda (see also https://hackmd.io/GkiNxag0TUmHnnCiqdND1Q#Local-or-remote)
+Installing Conda
+................
 
 .. code-block:: sh
 
@@ -138,7 +150,24 @@ For installing Miniconda (see also https://hackmd.io/GkiNxag0TUmHnnCiqdND1Q#Loca
       # Run and follow instructions on screen
       bash Miniforge3-Linux-x86_64.sh
 
-NOTE: always make sure that conda, python, and pip point to local Miniforge installation (``which conda`` etc.). Another thing to keep in mind is that you should avoid installing packages with ``pip`` using ``--user``. The example below shows the correct way to use pip in conjunction with conda. 
+NOTE: always make sure that conda, python, and pip point to local Miniforge installation (``which conda`` etc.). Another thing to keep in mind is that you should avoid installing packages with ``pip`` using ``--user``. The coffea example below shows the correct way to use pip in conjunction with conda. 
+
+See also https://hackmd.io/GkiNxag0TUmHnnCiqdND1Q#Local-or-remote
+
+Quick commands to know
+......................
+
+.. code-block:: sh
+
+     conda activate env_name # To activate the environment called env_name
+     conda deactivate # To deactivate an environment
+     conda info --envs # To list of your environments. You can also use "conda env list"
+     conda list # To list the packages of an environment. Use after activating the environment or add "-n env_name"
+     conda env export > environment.yml # To export your environment with its packages. Use after activating the environment
+     conda remove --name env_name --all # To remove the environment env_name
+
+Example: coffea installation
+............................
 
 You can either use the default environment (``base``) or create a new one:
 
@@ -148,6 +177,8 @@ You can either use the default environment (``base``) or create a new one:
       conda create --name coffea python=3.7
       # activate environment "coffea"
       conda activate coffea
+
+To check that the right python version is there, run ``python --version``. This should show ``Python 3.7.XX``.
 
 An example of how to install a mix of packages through conda and pip:
 
@@ -166,6 +197,10 @@ An example of how to install a mix of packages through conda and pip:
       pip install --pre fastjet
       pip install vector
 
+Conda in Visual Studio Code:
+............................
+
+**Selecting and activating a conda environment in VSCode:** you need to inform VSCode which conda environment to use for your Python workspace. Look at the bottom-left corner (macOS) or bottom-right corner (Windows) of the VSCode window to find the "Select Python Interpreter" button. Click on it and a list of available Python interpreters will appear. Choose the one that suits your needs (e.g., ``myenv``). You can also select the environment using the Command Palette (``Cmd+Shift+P`` in macOS or ``Ctrl+Shift+P`` in Windows) and searching for "Python: Select Interpreter". Note that it may take some time for VSCode to detect the available conda environments.
 
 Containers
 ~~~~~~~~~~
@@ -175,7 +210,7 @@ Containers are becoming commonplace in scientific workflows. Submit offers acces
 Docker
 ......
 
-All SubMIT users have access to build dockers. You can start by finidng instructions through your packages dockerhub or by downloading the code and building the docker image.
+All SubMIT users have access to build dockers. You can start by finding instructions through your packages dockerhub or by downloading the code and building the docker image.
 
 .. code-block:: sh
 
@@ -302,7 +337,8 @@ In addition to the tools above, you have access to Jupyter Notebooks through a `
 
 This is set up through the submit machines meaning that you have access to all of your data through jupyter notebooks. You will have access to basic python2 and python3 configurations. In addition, if you need a more complex environment, you can run your notebooks in any conda environment that you have set up. This allows you to create the exact environement you need for your projects. An example on how to set up a conda environment is shown above, and how it is implemented in jupyter is described below.
 
-A few examples of simple Jupyter noteooks can be found in the submit-examples `jupyter examples <https://github.com/mit-submit/submit-examples/tree/main/jupyter>`_.
+A few examples of simple Jupyter notebooks can be found in the `Github jupyter examples <https://github.com/mit-submit/submit-examples/tree/main/jupyter>`_. Several other intro notebooks can be found in the link below:
+`JupyterHub_examples <https://github.com/CpResearch/PythonDataAnalysisTutorial/tree/main/jupyter>`_
 
 Here is how jupyter interacts with: conda, singularity, GPUs, Slurm, and ROOT.
 
@@ -393,6 +429,22 @@ Here is how jupyter interacts with: conda, singularity, GPUs, Slurm, and ROOT.
           }
     
     * N.B.: if you have conda installed elsewhere, your path might be different.
+
+#. IJulia: IJulia is a Julia-language backend combined with the Jupyter interactive environment. Once installed, you can open Jupyterhub and select the Julia 1.6.5 kernel. To install it, in a terminal window, type ``julia``, then
+
+     .. code-block:: julia
+
+          ] # this enters pkg mode
+          add IJulia # it will take a few minutes to install the required packages
+
+     Now, if you type ``jupyter kernelspec list`` in a terminal window, you will see
+
+     .. code-block:: sh
+
+          julia-1.6     /home/submit/username/.local/share/jupyter/kernels/julia-1.6
+
+     if it doesn't work, in Julia type ``using Pkg``, then ``Pkg.build("IJulia")``. You should now have the Julia kernel for Jupyterhub.
+
 
 Wolfram Mathematica
 ~~~~~~~~~~~~~~~~~~~

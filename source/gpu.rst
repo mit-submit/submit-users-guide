@@ -1,49 +1,51 @@
 GPU resources
 -------------
 
-SubMIT also has access to several GPUs. In this section we will review how to access these machines and add them to your workflow.
+SubMIT provides access to several GPUs. This section outlines how to utilize these GPUs in your workflow. Access to GPUs is available via the ``submit-gpu`` and ``submit-gpu1080`` partitions through slurm, Jupyterhub, and HTCondor. Direct SSH access is not permitted to ``submit-gpu`` or ``submit-gpu1080``. This ensures a controlled and secure environment for utilizing GPU capabilities. Keep in mind that these are shared resources so use these machines responsibly.
 
-submit-gpu login
-~~~~~~~~~~~~~~~~
+There are two server pools available:
 
-Submit allows interactive login access to GPUs through slurm. From submit, you have access to the submit-gpu server pool which contains four servers, each fitted with 2 GPUs as well as the submit-gpu1080 server pool which has several machines each fitted with 4 1080 GPUs.. This allows users to interactively test their GPU applications by simply logging into these machines through slurm using the salloc command shown below:
+#. **submit-gpu server pool:** machines submit20 through submit 23, each equipped with 2 NVIDIA A30 GPUs.
+#. **submit-gpu1080 server pool:** machines submit60 through submit 74, each with 4 NVIDIA GeForce GTX 1080 GPUs.
+
+Slurm with GPUs
+~~~~~~~~~~~~~~~
+
+Interactive access (salloc)
+...........................
+
+Submit allows interactive login access to GPUs through the ``salloc`` command. This allows users to interactively test their GPU applications. 
+
+Accessing the ``submit-gpu`` partition:
 
 .. code-block:: sh
 
       salloc --partition=submit-gpu --cpus-per-gpu=1 --gres=gpu:1
 
-or to the submit-gpu1080 partition:
+Accessing the ``submit-gpu1080`` partition:
 
 .. code-block:: sh
 
       salloc --partition=submit-gpu1080 --cpus-per-gpu=1 --gres=gpu:1
 
-If you want more than one gpu for an interactive session, you can request more with the following:
+To request more than one GPU, adjust the ``--gres=gpu:<number>`` option.
 
 .. code-block:: sh
 
       salloc --partition=submit-gpu1080 --cpus-per-gpu=1 --gres=gpu:4
 
+Batch jobs and script execution
+...............................
 
-CUDA
-~~~~
+The GPUs resources are also available through batch scripts.
 
-Compute Unified Device Architecture (CUDA) is a parallel computing platform and application programming interface (API) that allows software to use certain types of graphics processing unit (GPU) for general purpose processing. CUDA is available on the submit-gpu machines inherently. In order to check which CUDA version is installed you can use the command below. Make sure this version fits your workflow.
-
-.. code-block:: sh
-
-      nvcc --version
-
-Slurm with GPUs
-~~~~~~~~~~~~~~~
-
-The submit-gpu machines are connected to the submit slurm cluster as the "submit-gpu" partition. This means that you can also scale up GPU applications through the use of slurm in order to access all of the GPUs available. Keep in mind that these are shared resources so use these machines responsibly. A sample slurm job designed to run on the submit-gpu machines is shown below. Notice the specifications in the beginning and make sure you tailor them to your use in order to optimize your jobs.
+Example with the ``submit-gpu`` partition:
 
 .. code-block:: sh
 
       #!/bin/bash
       #
-      #SBATCH --job-name=test
+      #SBATCH --job-name=test_gpu
       #SBATCH --output=res_%j.txt
       #SBATCH --error=err_%j.txt
       #
@@ -57,16 +59,17 @@ The submit-gpu machines are connected to the submit slurm cluster as the "submit
       nvidia-smi
 
 
-A cuda example with slurm can be found here:
-`slurm cuda <https://github.com/mit-submit/submit-examples/gpu/slurm_gpu>`_
+For a CUDA example with Slurm, visit `slurm cuda <https://github.com/mit-submit/submit-examples/tree/main/gpu/slurm_gpu>`_.
 
-In addition to the submit-gpu partition, there are additional GPUs available through submit-gpu1080. An example submit file is shown below.
+
+Example with the ``submit-gpu1080`` partition:
+
 
 .. code-block:: sh
 
       #!/bin/bash
       #
-      #SBATCH --job-name=test
+      #SBATCH --job-name=test_gpu1080
       #SBATCH --output=res_%j-%a.txt
       #SBATCH --error=err_%j-%a.txt
       #
@@ -77,14 +80,29 @@ In addition to the submit-gpu partition, there are additional GPUs available thr
       #SBATCH --gres=gpu:1
       #SBATCH --cpus-per-gpu=1
 
-More info is here:
-`slurm 1080 <https://github.com/mit-submit/submit-examples/tree/main/gpu/slurm_gpu1080>`_
+More info is available in the `slurm 1080 <https://github.com/mit-submit/submit-examples/tree/main/gpu/slurm_gpu1080>`_ Github repository.
+
+
+CUDA
+~~~~
+
+Compute Unified Device Architecture (CUDA) is a parallel computing platform and application programming interface (API) that allows software to use certain types of graphics processing unit (GPU) for general purpose processing. CUDA is available on the submit-gpu machines inherently. In order to check which CUDA version is installed you can use the command below. Make sure this version fits your workflow.
+
+.. code-block:: sh
+
+      nvcc --version
+
+
+Jupyterhub
+~~~~~~~~~~~
+
+You can also get to the submit-gpu machines through Jupyterhub. On the main page select submit-gpu in the dropdown menu. `JupyterHub <https://submit.mit.edu/jupyter>`_.
 
 
 Condor with GPUs
 ~~~~~~~~~~~~~~~~
 
-The MIT T2 and T3 both have access to GPU machines through Condor. An example of how to access these resources through Condor is shown below
+The MIT T2 and T3 both have access to GPU machines through Condor. An example of how to access these resources through Condor is shown below.
 
 If you wish to submit jobs to GPU machines in T3/T2, you need to add additonal line in the script (only through glidein submission):
 
@@ -100,4 +118,58 @@ If you wish to submit jobs to GPU machines in CMS global pool, you need to add a
        +RequiresGPU=1
 
 Some example scripts to run GPUs with condor can be found here:
-`condor gpu <https://github.com/mit-submit/submit-examples/tree/main/gpu/condor_gpu>`_
+`condor gpu <https://github.com/mit-submit/submit-examples/tree/main/gpu/condor_gpu>`_.
+
+
+pytorch example
+...............
+
+Lets create a simple python code to test pytorch and name it condor_torch.py:
+
+.. code-block:: sh
+
+       #!/usr/bin/python
+
+       import torch
+       print(torch.cuda.device_count())
+
+       # Your pytorch code
+       # ...
+
+In order to execute this we will make an executable that calls a cvmfs setup and then run the python file above. Name the file exec.sh
+
+.. code-block:: sh
+
+       echo `hostname`
+       whoami
+       id
+       source /cvmfs/sft-nightlies.cern.ch/lcg/views/dev4cuda/latest/x86_64-centos7-gcc8-opt/setup.sh
+       python condor_torch.py
+       echo ">>>>>>>>>>\n"
+       echo ""
+       ls -a
+       echo "<<<<<<<<<<\n"
+       echo ""
+
+We can then make a condor submission file to run this. As usual, name this condor.sub:
+
+.. code-block:: sh
+
+       universe              = vanilla
+       request_disk          = 1024
+       executable            = exec.sh
+       arguments             = $(ProcId)
+       should_transfer_files = YES
+       output                = $(ClusterId).$(ProcId).out
+       error                 = $(ClusterId).$(ProcId).err
+       log                   = $(ClusterId).$(ProcId).log
+       when_to_transfer_output = ON_EXIT
+       RequestGPus=1
+       +DESIRED_Sites = "mit_tier3,mit_tier2"
+       queue 1
+
+You can then submit this test with the followinf similar to what was shown in the Batch tutorial:
+
+.. code-block:: sh
+
+       condor_submit condor.sub

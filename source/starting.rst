@@ -101,6 +101,8 @@ You should now be logged into one of our main submit server machines. By default
    # For larger files, you will get a data storage space with a quoata of 1 TB of space
    /data/submit/<username>
 
+Note that storing and editing code located in /data is discouraged.
+
 Common issues with keys
 ~~~~~~~~~~~~~~~~~~~~~~~
 
