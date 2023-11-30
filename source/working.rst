@@ -1,5 +1,5 @@
-Things that work and things that do not
----------------------------------------
+Best practices
+--------------
 
 Submit is a shared tool. As such, you are responsible for setting up your work to properly use the resources available to you through submit. This section covers a few examples of avoidable problems. 
 
