@@ -5,8 +5,8 @@
 .. role:: red
     
 
-Running interactively and batch jobs
-------------------------------------
+Batch computing
+---------------
 
 This section will give you a quick guide on how to submit batch jobs at submit. There will be a couple of simple examples to help get you started.
 
