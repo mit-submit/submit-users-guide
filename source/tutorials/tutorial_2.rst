@@ -80,6 +80,7 @@ and the corresponding condor.sub file to run it on the T3.
       log                   = $(ClusterId).$(ProcId).log
       when_to_transfer_output = ON_EXIT
       +DESIRED_Sites = "mit_tier3"
+      queue 1
 
 now you can submit your job:
 
@@ -87,12 +88,14 @@ now you can submit your job:
 
       condor_submit condor.sub
 
-If you ran the previous tutorial, you can run the code you created in addition to hostname. I
-n scipt.sh you can add the line to execute the code. In the condor.sun you can add the following line adding in the script Condor will execute.
+If you ran the previous tutorial, you can run the code you created in addition to hostname. 
+In scipt.sh you can add the line to execute the code. In the condor.sub you can add the following line adding in the script Condor will execute.
+This line will transfer the example python script into the condor job so that it can be executed. If your job needs many files, they will all need to be trannsferred in.
 
 .. code-block:: sh
 
       transfer_input_files  = <example_script.py>
+
 
 
 Controlling/Analyzing Jobs:
@@ -122,6 +125,24 @@ Jobs can often stay in the Idle state or be moved into a Hold state. In order to
 
        # If more information is needed
        condor_q -better-analyze <jobid> 
+
+If the jobs have been run you can check the output wherever you copied them to. This is usually done via xrootd but can also be done through transfer_output_remaps. An example for the T3 is shown below:
+
+.. code-block:: sh
+
+      universe              = vanilla
+      request_disk          = 1024
+      executable            = script.sh
+      arguments             = $(ProcId)
+      should_transfer_files = YES
+      output                = $(ClusterId).$(ProcId).out
+      error                 = $(ClusterId).$(ProcId).err
+      log                   = $(ClusterId).$(ProcId).log
+      when_to_transfer_output = ON_EXIT
+      transfer_output_remaps = "out.out = /work/submit/<username>/out.out"
+      +DESIRED_Sites = "mit_tier3"
+      queue 1
+
 
 If you made a mistake during submission, you can also cancel your jobs. This should be done if any mistakes were made in order to free up the queue.
 
@@ -294,30 +315,3 @@ Soe older 1080 GPUs are available. These are kept separate from submit-gpu but i
 
      #SBATCH --partition=submit-gpu1080
 
-LQCD:
-.....
-
-If you have access to the LQCD clusters, you can run the following script to set up and use slurm on those machines:
-
-.. code-block:: sh
-
-     #!/bin/bash
-     #
-     #SBATCH --job-name=test
-     #SBATCH --output=res_%j.txt
-     #SBATCH --error=err_%j.txt
-     #
-     #SBATCH --ntasks=1
-     #SBATCH --time=10:00
-     #SBATCH --mem-per-cpu=100
-     #SBATCH --cluster=lqcd
-     #SBATCH --partition=devel
-     
-     unset MODULEPATH
-     unset MODULESHOME
-     export SLURM_CONF=/opt/lqcd/etc/slurm.conf
-     . /opt/software/modules-4.4.0/init/bash
-     module add slurm
-     
-     srun hostname
-     srun ls -hrlt
