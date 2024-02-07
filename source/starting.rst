@@ -123,6 +123,24 @@ There are a few ways to handle this issue. If you prefer, you can simply upload 
 
 One thing to note, is that if you have already tried this ssh command once and it broke, you will need to modify your known_hosts file in the .ssh directory. In order to fix this you will need to remove lines with ``submit`` in them from the known_hosts. Please note that it is safe to remove the lines from this file. 
 
+Connecting to submit through VSCode
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The latest version of Visual Studio Code (1.86) from January 2024 does not support anymore connecting to CentOS 7, and thus accessing all the machines we have that use this operating system (`list of VSCode-supported operating systems <https://code.visualstudio.com/docs/remote/linux>`_). For now, a workaround is to connect to submit06 since this login node has already been upgraded to AlmaLinux 9. To do so, you can add another entry in your ``.ssh/config`` file:
+
+.. code-block:: sh
+
+   Host submit06
+     HostName submit06.mit.edu
+     User <username>
+     IdentitiesOnly=yes
+     PreferredAuthentications publickey
+     PasswordAuthentication no
+     IdentityFile <path>/id_rsa
+     ProxyJump submit
+
+Then you should select submit06 when you connect in VSCode.
+
 Creating a personal webpage
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
