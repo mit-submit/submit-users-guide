@@ -207,8 +207,14 @@ Containers
 
 Containers are becoming commonplace in scientific workflows. Submit offers access to containers through Singularity images provided through CVMFS. This section will give a short example on how to enter into a singularity container to run your framework. For more information on dockers see the `docker engine site <https://docs.docker.com/engine/reference/commandline/build/>`_.
 
-Docker
+Podman
 ......
+
+SubMIT will be using Podman instead of Docker on all upgraded machines. For users who have been using Docker, you can run on Podman images created with Docker. You can run familiar commands, such as ``pull``, ``push``, ``build``, ``commit``, ``tag``, etc. with Podman
+
+
+Docker (only on CentOS machines)
+................................
 
 All SubMIT users have access to build dockers. You can start by finding instructions through your packages dockerhub or by downloading the code and building the docker image.
 
