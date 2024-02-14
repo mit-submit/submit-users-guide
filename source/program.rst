@@ -346,6 +346,14 @@ This is set up through the submit machines meaning that you have access to all o
 A few examples of simple Jupyter notebooks can be found in the `Github jupyter examples <https://github.com/mit-submit/submit-examples/tree/main/jupyter>`_. Several other intro notebooks can be found in the link below:
 `JupyterHub_examples <https://github.com/CpResearch/PythonDataAnalysisTutorial/tree/main/jupyter>`_
 
+You have access to a few job profiles. Make sure to use the one that fits your needs. Here are some of the available options:
+
+* **Slurm - Submit - 1/2 CPU(s), 500/1000 MB:** spawns a server on the submit slurm partition, requesting either 1 CPU with 500 MB or 2 CPUs with 1000MB.
+
+* **Slurm - SubmitGPU - 1 GPU:** spawns a server on a submit-gpu1080 submit slurm partition, requesting 1 GPU.
+
+* **Local server - Submit01 - 1 CPU, 500 MB - /home or /work:** spawns on submit01 in your /home or /work directory. Do not use this if you plan to run moderate or heavy code!
+
 Here is how jupyter interacts with: conda, singularity, GPUs, Slurm, and ROOT.
 
 #. Conda
