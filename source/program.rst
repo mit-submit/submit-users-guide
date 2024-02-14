@@ -352,7 +352,7 @@ You have access to a few job profiles. Make sure to use the one that fits your n
 
 * **Slurm - SubmitGPU - 1 GPU:** spawns a server on a submit-gpu1080 submit slurm partition, requesting 1 GPU.
 
-* **Local server - Submit01 - 1 CPU, 500 MB - /home or /work:** spawns on submit01 in your /home or /work directory. Do not use this if you plan to run moderate or heavy code!
+* **Local server - Submit01 - 1 CPU, 500 MB - /home or /work:** spawns on submit01 in your /home or /work directory. These local server options are meant as "only if all else fails" fallback options. Please only use these if you cannot connect via any of the other job profiles!
 
 Here is how jupyter interacts with: conda, singularity, GPUs, Slurm, and ROOT.
 
