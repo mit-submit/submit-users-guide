@@ -116,7 +116,7 @@ Each file and directory has a set of permissions that define what actions a user
 * **write** (``w``): allows the file to be edited, deleted, or renamed.
 * **execute** (``x``): allows the file to be executed as a program.
 
-You can view the permissions of files and directories using the ``ls -l`` command, which will display a string of 10 characters representing the file type and permissions (e.g., ``-rwxr-xr-x``)
+You can view the permissions of files and directories using the ``ls -l`` command, which will display a string of 10 characters representing the file type and permissions (e.g., ``-rwxr-xr-x``). By default, your directories ``/home/submit`` and ``/work/submit`` are ``drwxr-xr-x``, so nobody else than you can modify (write) your files, but they are still able to execute them. Files you create within are ``-rw-rw-r--``. This means that other users can read your files.
 
 File Paths
 ~~~~~~~~~~
