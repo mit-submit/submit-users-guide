@@ -92,11 +92,11 @@ To set up ROOT:
      source /cvmfs/sft.cern.ch/lcg/views/LCG_101/x86_64-centos7-gcc11-opt/setup.sh
      root
 
-To set up GEANT4:
+To set up GEANT4 (make sure to use one of the AlmaLinux9 machines):
 
 .. code-block:: sh
 
-     source /cvmfs/sft.cern.ch/lcg/releases/gcc/11.1.0/x86_64-centos7/setup.sh
+     source /cvmfs/sft.cern.ch/lcg/releases/gcc/11.3.1/x86_64-centos9/setup.sh
      export GEANT4_DIR=/cvmfs/geant4.cern.ch/geant4/10.7.p01/x86_64-centos7-gcc8-optdeb-MT
      export QT5_HOME=/cvmfs/sft.cern.ch/lcg/releases/LCG_97/qt5/5.12.4/x86_64-centos7-gcc8-opt
      export Qt5_DIR=$QT5_HOME
@@ -207,8 +207,14 @@ Containers
 
 Containers are becoming commonplace in scientific workflows. Submit offers access to containers through Singularity images provided through CVMFS. This section will give a short example on how to enter into a singularity container to run your framework. For more information on dockers see the `docker engine site <https://docs.docker.com/engine/reference/commandline/build/>`_.
 
-Docker
+Podman
 ......
+
+SubMIT will be using Podman instead of Docker on all upgraded machines. For users who have been using Docker, you can run on Podman images created with Docker. You can run familiar commands, such as ``pull``, ``push``, ``build``, ``commit``, ``tag``, etc. with Podman
+
+
+Docker (only on CentOS machines)
+................................
 
 All SubMIT users have access to build dockers. You can start by finding instructions through your packages dockerhub or by downloading the code and building the docker image.
 
@@ -339,6 +345,14 @@ This is set up through the submit machines meaning that you have access to all o
 
 A few examples of simple Jupyter notebooks can be found in the `Github jupyter examples <https://github.com/mit-submit/submit-examples/tree/main/jupyter>`_. Several other intro notebooks can be found in the link below:
 `JupyterHub_examples <https://github.com/CpResearch/PythonDataAnalysisTutorial/tree/main/jupyter>`_
+
+You have access to a few job profiles. Make sure to use the one that fits your needs. Here are some of the available options:
+
+* **Slurm - Submit - 1/2 CPU(s), 500/1000 MB:** spawns a server on the submit slurm partition, requesting either 1 CPU with 500 MB or 2 CPUs with 1000MB.
+
+* **Slurm - SubmitGPU - 1 GPU:** spawns a server on a submit-gpu1080 submit slurm partition, requesting 1 GPU.
+
+* **Local server - Submit01 - 1 CPU, 500 MB - /home or /work:** spawns on submit01 in your /home or /work directory. These local server options are meant as "only if all else fails" fallback options. Please only use these if you cannot connect via any of the other job profiles!
 
 Here is how jupyter interacts with: conda, singularity, GPUs, Slurm, and ROOT.
 
