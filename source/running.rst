@@ -415,6 +415,27 @@ An example for how to submit to the lqcd cluster from the submit machines. Here 
      srun ls -hrlt
      srun sleep 60
 
+How to see the available resources
+====================================================
+
+The `sinfo` command can give information about the Slurm partitions and nodes.  For detailed information about this command, view its manual page by typing `man sinfo`.
+
+In particular, to view the resources in the subMIT Slurm cluster, the following command can be handy
+
+.. code-block:: sh
+     sinfo -Ne -O "PARTITION:.20,NodeHost:.10,StateLong:.11,NodeAIOT:.15,CPUsState:.15,Memory:.9,AllocMem:.9"
+
+This will list each node on a separate line.  As described in `man sinfo`, the CPUS columns gives the count of the node's CPUs in each state: "A/I/O/T" ("Allocated/Idle/Other/Total").  The MEMORY column gives the total memory for each node, while the ALLOCMEM gives the amount of memory which is currently allocated on that node.  Thus, with this command, you can see the total inventory of resources on each node, as well as what happens to be available at the moment.
+
+Requesting memory
+=================
+
+On subMIT, Slurm treats both **CPUs** *and* **memory** as consumable resources.  This means that it's important to provide accurate requests of these resources in your slurm job submissions.  If you request more resources than you need (CPUs or memory), then you can unnecessarily block other users' as well as your own jobs from running.  For example, a job which requests a single CPU and all the memory of a node will block any other job from running on that node even though the remaining CPUs will be sitting idle.  If you request too little memory, you job will fail.  This leads to the common question: how do I know how much memory to request?
+
+In general it is recommanded to request a bit more memory than you actually need so as to allow for variations in your jobs (so a job is not killed if your estimate was a little too low).  One way to estimate your actual memory requirement is to run the command `seff <jobnumber>` to see memory usage information for a *completed* slurm job.  This can be either a batch job (e.g. submitted with `sbatch`) or an interactive session started with `salloc`.  Another method is to prepend `/usr/bin/time -v ` to a command to get detailed memory and timing information.  For instance, run `/usr/bin/time -v <script>` 
+
+
+
 How to monitor and control your submitted slurm jobs
 ====================================================
 
