@@ -1,12 +1,12 @@
 GPU resources
 -------------
 
-SubMIT provides access to several GPUs. This section outlines how to utilize these GPUs in your workflow. Access to GPUs is available via the ``submit-gpu`` and ``submit-gpu1080`` partitions through slurm, Jupyterhub, and HTCondor. Direct SSH access is not permitted to ``submit-gpu`` or ``submit-gpu1080``. This ensures a controlled and secure environment for utilizing GPU capabilities. Keep in mind that these are shared resources so use these machines responsibly.
+SubMIT provides access to several GPUs. This section outlines how to utilize these GPUs in your workflow. Access to GPUs is available via the ``submit-gpu`` and ``submit-gpu-a30`` partitions through slurm, Jupyterhub, and HTCondor. Direct SSH access is not permitted to ``submit-gpu`` or ``submit-gpu-a30``. This ensures a controlled and secure environment for utilizing GPU capabilities. Keep in mind that these are shared resources so use these machines responsibly.
 
 There are two server pools available:
 
-#. **submit-gpu server pool:** machines submit20 through submit 23, each equipped with 2 NVIDIA A30 GPUs.
-#. **submit-gpu1080 server pool:** machines submit60 through submit 74, each with 4 NVIDIA GeForce GTX 1080 GPUs.
+#. **submit-gpu server pool:** machines submit60 through submit 74, each with 4 NVIDIA GeForce GTX 1080 GPUs.
+#. **submit-gpu-a30 server pool:** machines submit20 through submit 23, each equipped with 2 NVIDIA A30 GPUs.
 
 Slurm with GPUs
 ~~~~~~~~~~~~~~~
@@ -22,17 +22,17 @@ Accessing the ``submit-gpu`` partition:
 
       salloc --partition=submit-gpu --cpus-per-gpu=1 --gres=gpu:1
 
-Accessing the ``submit-gpu1080`` partition:
+Accessing the ``submit-gpu-a30`` partition:
 
 .. code-block:: sh
 
-      salloc --partition=submit-gpu1080 --cpus-per-gpu=1 --gres=gpu:1
+      salloc --partition=submit-gpu --cpus-per-gpu=1 --gres=gpu:1
 
 To request more than one GPU, adjust the ``--gres=gpu:<number>`` option.
 
 .. code-block:: sh
 
-      salloc --partition=submit-gpu1080 --cpus-per-gpu=1 --gres=gpu:4
+      salloc --partition=submit-gpu --cpus-per-gpu=1 --gres=gpu:4
 
 Batch jobs and script execution
 ...............................

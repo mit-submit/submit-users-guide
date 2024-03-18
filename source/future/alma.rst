@@ -6,12 +6,10 @@ In December 2020, Red Hat announced that development of CentOS, a free-of-cost d
 How we plan to upgrade submit
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Because it is hard to predict how an operating system upgrade will affect everyone's work, we will upgrade the system in stages and encourage users to test their workflows on AlmaLinux. For now, the submit system uses CentOS 7 with AlmaLinux machines available only through slurm using a test partition. For the future upgrades, the submit machines will get upgraded with anouncements in the submit-users email group.
+Because it is hard to predict how an operating system upgrade will affect everyone's work, we will upgrade the system in stages and encourage users to test their workflows on AlmaLinux. For now, the submit system uses CentOS 7 with AlmaLinux machines available only through slurm using a test partition. For the future upgrades, the submit machines will get upgraded with anouncements in the submit-users email group. **Update:** the default submit.mit.edu ssh address now points to AlmaLinux 9. A small number of Centos7 nodes are still available at submit-test.mit.edu for the time being.
 
-Testing on Alma Linux
-~~~~~~~~~~~~~~~~~~~~~
-
-In order to start testing with AlmaLinux, we have set up a testing slurm partition which has machines with AlmaLinux. This partition is named "submit-alma9"
+Work on CentOS 7
+~~~~~~~~~~~~~~~~
 
 The easiest way to start working is to start an interactive session with ssh
 
@@ -19,39 +17,38 @@ The easiest way to start working is to start an interactive session with ssh
 
      ssh <username>@submit-test.mit.edu 
 
-
 You can also gain access through slurm with salloc.
 
 .. code-block:: sh
 
-     salloc --partition=submit-alma9
+     salloc --partition=submit-test
 
-You can also run a testing slurm job with the following submit script.
+You can also run a slurm job with the following submit script.
 
 .. code-block:: sh
 
      #!/bin/bash
      #
-     #SBATCH --job-name=test_alma9
+     #SBATCH --job-name=test_centos7
      #SBATCH --output=res.txt
      #
      #SBATCH --time=10:00
      #SBATCH --mem-per-cpu=100
-     #SBATCH --partition=submit-alma9
+     #SBATCH --partition=submit-test
 
      <your script goes here>
 
 Portability of conda on Alma Linux 9
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Migrating a conda environment from CentOS7 to Alma Linux 9 can typically be done with ease, thanks to conda's general portability between different operating systems. 
+Migrating a conda environment from CentOS 7 to AlmaLinux 9 can typically be done with ease, thanks to conda's general portability between different operating systems. 
 
 **Note:** Conda is in general portable between operating systems, but for compiled code, you may need to recompile. When moving environments that include compiled code, you may encounter compatibility issues related to the underlying system libraries or compilers. This can manifest as unexpected behavior or even runtime errors. In such cases, the solution is often to recompile the code within the new operating system.
 
 Will CentOS still be available
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-If your workflow is constrained to CentOS, submit will provide a cenbtrally available singularity of CentOS7.9. You can test this singularity below.
+If your workflow is constrained to CentOS, submit will provide a centrally available singularity of CentOS7.9. You can test this singularity below.
 
 .. code-block:: sh
 
