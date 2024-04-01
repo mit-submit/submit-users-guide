@@ -46,36 +46,36 @@ To generate keys on your machine use the following command (chose the defaults w
 
 .. code-block:: sh
 
-   ssh-keygen -t rsa
+   ssh-keygen -t ed25519
 
-This should create both a private and a public key (``id_rsa``, the private key, and ``id_rsa.pub``, the public key) in your ``.ssh`` directory. 
+This should create both a private and a public key (``id_ed25519``, the private key, and ``id_ed25519.pub``, the public key) in your ``.ssh`` directory. 
 
 .. tabs::
 
    .. group-tab:: :gold:`Mac OS`
 
-      :black:`In the output on your screen you will see a line specifying the path to your public key, such as "Your public key has been saved in /Users/[username]/.ssh/id_rsa.pub".`
+      :black:`In the output on your screen you will see a line specifying the path to your public key, such as "Your public key has been saved in /Users/[username]/.ssh/id_ed25519.pub".`
       :black:`To copy your public key, run the following command using the path to your public key`
 
       .. code-block:: console
 
-         cat /Users/[username]/.ssh/id_rsa.pub | pbcopy
+         cat /Users/[username]/.ssh/id_ed25519.pub | pbcopy
       
       :black:`Or simply open the public key file in your favorite text editor and highlight & copy the text.`
 
    .. group-tab:: :gold:`Windows`
 
-      :black:`In the output on your screen you will see a line specifying the path to your public key, such as "Your public key has been saved in C:\\Users\\[username]/.ssh/id_rsa.pub"`
+      :black:`In the output on your screen you will see a line specifying the path to your public key, such as "Your public key has been saved in C:\\Users\\[username]/.ssh/id_ed25519.pub"`
       :black:`To copy your public key, run the following command using the path to your public key`
       
       .. code-block:: console
 
-         clip < C:\Users\[username]/.ssh/id_rsa.pub
+         clip < C:\Users\[username]/.ssh/id_ed25519.pub
       
       :black:`Or simply open the public key file in your favorite text editor and highlight & copy the text.`
 
 
-Simply paste the contents of the public key (``id_rsa.pub``) into the submit portal link above and you are ready. The private key is like your password and should never be exposed to anybody. Please do not paste this into the subMIT website; if you do you should re-create your keys by running the ``ssh-keygen`` command again.
+Simply paste the contents of the public key (``id_ed25519.pub``) into the submit portal link above and you are ready. The private key is like your password and should never be exposed to anybody. Please do not paste this into the subMIT website; if you do you should re-create your keys by running the ``ssh-keygen`` command again.
 
 We recommend that you use the standard name (as prompted by ``ssh-keygen``) for the keys, as this will make the process easier. Some advanced users may want to create differently named keys within their ``.ssh`` directory, as they may wish to keep separate keys for separate machines. If you do this, please remember to either create the appropriate configuration within ``.ssh/config``, or log in with ``ssh -i /path/to/identity/file``.
 
@@ -108,7 +108,7 @@ Common issues with keys
 
 A common issue with keys is when you already have a key in your .ssh directory and ssh defaults to a different key than the one uploaded to the submit-portal. For example, GitHub commonly uses id_ed25519 keys which can interfere when you try to login.
 
-There are a few ways to handle this issue. If you prefer, you can simply upload the other key to the submit-portal. If you would like to use the rsa key, log in with a command like ``ssh -i <path>/.ssh/id_rsa <username>@submit.mit.edu`` or create the appropriate configuration within ``.ssh/config`` like below.
+There are a few ways to handle this issue. If you prefer, you can simply upload the other key to the submit-portal. If you would like to use the ed25519 key, log in with a command like ``ssh -i <path>/.ssh/id_ed25519 <username>@submit.mit.edu`` or create the appropriate configuration within ``.ssh/config`` like below.
 
 
 .. code-block:: sh
@@ -119,7 +119,7 @@ There are a few ways to handle this issue. If you prefer, you can simply upload 
      IdentitiesOnly=yes
      PreferredAuthentications publickey
      PasswordAuthentication no
-     IdentityFile <path>/id_rsa
+     IdentityFile <path>/id_ed25519
 
 One thing to note, is that if you have already tried this ssh command once and it broke, you will need to modify your known_hosts file in the .ssh directory. In order to fix this you will need to remove lines with ``submit`` in them from the known_hosts. Please note that it is safe to remove the lines from this file. 
 
@@ -136,7 +136,7 @@ The latest version of Visual Studio Code (1.86) from January 2024 does not suppo
      IdentitiesOnly=yes
      PreferredAuthentications publickey
      PasswordAuthentication no
-     IdentityFile <path>/id_rsa
+     IdentityFile <path>/id_red25519
      ProxyJump submit
 
 Then you should select submit06 when you connect in VSCode.
