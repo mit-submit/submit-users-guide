@@ -21,7 +21,7 @@ You can also gain access through slurm with salloc.
 
 .. code-block:: sh
 
-     salloc --partition=submit-test
+     salloc --partition=submit-centos07
 
 You can also run a slurm job with the following submit script.
 
@@ -34,7 +34,7 @@ You can also run a slurm job with the following submit script.
      #
      #SBATCH --time=10:00
      #SBATCH --mem-per-cpu=100
-     #SBATCH --partition=submit-test
+     #SBATCH --partition=submit-centos07
 
      <your script goes here>
 
