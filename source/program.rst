@@ -89,7 +89,7 @@ To set up ROOT:
 
 .. code-block:: sh
 
-     source /cvmfs/sft.cern.ch/lcg/views/LCG_101/x86_64-centos7-gcc11-opt/setup.sh
+     source /cvmfs/sft.cern.ch/lcg/views/LCG_105/x86_64-el9-gcc11-opt/setup.sh
      root
 
 To set up GEANT4 (make sure to use one of the AlmaLinux9 machines):
