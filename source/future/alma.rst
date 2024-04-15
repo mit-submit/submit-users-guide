@@ -1,3 +1,9 @@
+.. raw:: html
+
+    <style> .red {color:red} </style>
+
+.. role:: red
+
 Move to AlmaLinux
 -----------------
 
@@ -53,6 +59,14 @@ If your workflow is constrained to CentOS, submit will provide a centrally avail
 .. code-block:: sh
 
      singularity shell /cvmfs/cvmfs.cmsaf.mit.edu/submit/work/submit/submit-software/centos/centos7p9
+
+:red:`Here is the recommanded command to use centos 7 singularity`
+
+.. code-block:: sh
+
+     singularity shell --bind /cvmfs:/cvmfs --bind /work/submit:/work/submit --bind /data/submit:/data/submit  /cvmfs/singularity.opensciencegrid.org/opensciencegrid/osgvo-el7:latest
+
+You can add any additionaly binding (with whatever you are using). Then use "bash" command to load your personal bash setup. 
 
 If you need something specific besides this singularity, please email us at submit-help@mit.edu
 
