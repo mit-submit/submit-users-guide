@@ -1,5 +1,5 @@
 #!/bin/bash
-WEB_SERVER=submit05.mit.edu
+WEB_SERVER=submit06.mit.edu
 WEB_LOCATION=/var/www/html/submit-users-guide
 if [ ".$1" != "." ]
 then
