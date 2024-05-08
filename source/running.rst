@@ -127,6 +127,8 @@ To submit multi-core jobs, you need to add (4-core job for example, maximum 8):
 
 Note: CMS users are recommanded to submit jobs to T2 through CMS global pool, see "global pool section".
 
+:red:`The Glidein will set a default X509_USER_KEY, which may affect the xrootd copy, therefore need to add command "unset X509_USER_KEY" before the xrootd copy .`
+
 BOSCO submission for T2/T3.
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
