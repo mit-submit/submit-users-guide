@@ -341,7 +341,7 @@ Jupyterhub
 
 In addition to the tools above, you have access to Jupyter Notebooks through a `JupyterHub <https://submit06.mit.edu/jupyter>`_ set up at submit.
 
-This is set up through the submit machines meaning that you have access to all of your data through jupyter notebooks. You will have access to basic python3 configurations. In addition, if you need a more complex environment, you can run your notebooks in any conda environment that you have set up. You can check the name and location of your environments using the command ``jupyter kernelspec list''. This allows you to create the exact environment you need for your projects. An example on how to set up a conda environment is shown above, and how it is implemented in jupyter is described below.
+This is set up through the submit machines meaning that you have access to all of your data through jupyter notebooks. You will have access to basic python3 configurations. In addition, if you need a more complex environment, you can run your notebooks in any conda environment that you have set up. You can check the name and location of your environments using the command ``jupyter kernelspec list``. This allows you to create the exact environment you need for your projects. An example on how to set up a conda environment is shown above, and how it is implemented in jupyter is described below.
 
 A few examples of simple Jupyter notebooks can be found in the `Github jupyter examples <https://github.com/mit-submit/submit-examples/tree/main/jupyter>`_. Several other intro notebooks can be found in the link below:
 `JupyterHub_examples <https://github.com/CpResearch/PythonDataAnalysisTutorial/tree/main/jupyter>`_
@@ -354,7 +354,16 @@ You have access to a few job profiles. Make sure to use the one that fits your n
 
 * **Slurm - Submit-GPU-A30 - 1 GPU:** spawns a server on a submit-gpu-a30 submit slurm partition, requesting 1 GPU.
 
-By default, Jupyterhub shows the files located in ``/home/submit/<username>''. If you store jupyter notebooks in ``/work'' and they are small, consider moving them to your ``/home'' directory. Otherwise, you should be able to access a notebook in ``/work'' by selecting "File > Open from Path..." in the top menu of Jupyter, then type the full path to your notebook.
+By default, Jupyterhub shows the files located in ``/home/submit/<username>``. If you store jupyter notebooks in ``/work`` and they are small, consider moving them to your ``/home`` directory. Otherwise, you should be able to access a notebook in ``/work`` by selecting "``File > Open from Path...``" in the top menu of Jupyter, then type the full path to your notebook.
+
+When you are finished using Jupyter, please select ``File -> Hub Control Panel -> Stop My Server`` from the top menu to stop your server.
+
+.. admonition:: If your session repeatedly terminates unexpectedly ... (click here to show/hide)
+   :class: dropdown
+
+   A common reason for a session terminating unexpectedly (besides an unstable internet connection) is overruning memory.  If this happens, please apply the following memory best practices first and then if still necessary, use a spawn option with a larger memory allocation.
+
+   Memory best practices: *all* open notebooks/kernels contribute towards your memory budget.  If you have multiple notebooks open only to read (not to run), please set their kernel to "``No Kernel``".  Please close unused notebooks by selecting ``File --> Close and Shutdown Notebook`` from the top menu.  (When you close a tab, the kernel generally remains open, but closing it this way shuts down the kernel as well, freeing memory).
 
 Here is how jupyter interacts with: conda, singularity, GPUs, Slurm, and ROOT.
 
