@@ -358,6 +358,13 @@ By default, Jupyterhub shows the files located in ``/home/submit/<username>``. I
 
 When you are finished using Jupyter, please select ``File -> Hub Control Panel -> Stop My Server`` from the top menu to stop your server.
 
+.. admonition:: If your session repeatedly terminates unexpectedly ... (click here to show/hide)
+   :class: dropdown
+
+   A common reason for a session terminating unexpectedly (besides an unstable internet connection) is overruning memory.  If this happens, please apply the following memory best practices first and then if still necessary, use a spawn option with a larger memory allocation.
+
+   Memory best practices: *all* open notebooks/kernels contribute towards your memory budget.  If you have multiple notebooks open only to read (not to run), please set their kernel to "``No Kernel``".  Please close unused notebooks by selecting ``File --> Close and Shutdown Notebook`` from the top menu.  (When you close a tab, the kernel generally remains open, but closing it this way shuts down the kernel as well, freeing memory).
+
 Here is how jupyter interacts with: conda, singularity, GPUs, Slurm, and ROOT.
 
 #. Conda
