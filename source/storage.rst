@@ -8,7 +8,7 @@ User quota and storage at submit
 --------------------------------
 This section describes the quota and storage for a user and where the storage areas are located. For the large storage area, submit also allows user to use xrootd to make the remote transfer.
 
-Due to the recent updates on the xrootd worldwide, the authentication changes a bit, the copy will fail if X509_USER_KEY is not set up correctly. In the x509proxy authentication mentioned below, X509_USER_KEY value can be null, it is recommanded to run command "unset X509_USER_KEY" if user encounters the problem about "couldn't find hostkey.pem". 
+Due to the recent updates on the xrootd worldwide, the copy will fail if X509_USER_KEY is not set up correctly. In the x509proxy authentication mentioned below, X509_USER_KEY value can be null, it is recommanded to run command "unset X509_USER_KEY" if user encounters the problem about "couldn't find hostkey.pem". 
 
 The quota of home and work area
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
