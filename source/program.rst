@@ -356,6 +356,8 @@ You have access to a few job profiles. Make sure to use the one that fits your n
 
 By default, Jupyterhub shows the files located in ``/home/submit/<username>``. If you store jupyter notebooks in ``/work`` and they are small, consider moving them to your ``/home`` directory. Otherwise, you should be able to access a notebook in ``/work`` by selecting "``File > Open from Path...``" in the top menu of Jupyter, then type the full path to your notebook.
 
+When you are finished using Jupyter, please select ``File -> Hub Control Panel -> Stop My Server`` from the top menu to stop your server.
+
 Here is how jupyter interacts with: conda, singularity, GPUs, Slurm, and ROOT.
 
 #. Conda
