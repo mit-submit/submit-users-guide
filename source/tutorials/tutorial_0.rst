@@ -116,7 +116,7 @@ Each file and directory has a set of permissions that define what actions a user
 * **write** (``w``): allows the file to be edited, deleted, or renamed.
 * **execute** (``x``): allows the file to be executed as a program.
 
-You can view the permissions of files and directories using the ``ls -l`` command, which will display a string of 10 characters representing the file type and permissions (e.g., ``-rwxr-xr-x``). By default, other users can see your files. If you do not want other users to read your files, you can look into the `chmod command <https://www.howtogeek.com/437958/how-to-use-the-chmod-command-on-linux/>`_ to change file permissions.
+You can view the permissions of files and directories using the ``ls -l`` command, which will display a string of 10 characters representing the file type and permissions (e.g., ``-rwxr-xr-x``). By default, your directories are public, which means other users can see your files. If you do not want other users to read your files, you can look into the `chmod command <https://www.howtogeek.com/437958/how-to-use-the-chmod-command-on-linux/>`_ to change file permissions.
 
 File Paths
 ~~~~~~~~~~
