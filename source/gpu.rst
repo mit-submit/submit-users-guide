@@ -96,7 +96,7 @@ Compute Unified Device Architecture (CUDA) is a parallel computing platform and 
 Jupyterhub
 ~~~~~~~~~~~
 
-You can also get to the submit-gpu machines through Jupyterhub. On the main page select submit-gpu in the dropdown menu. `JupyterHub <https://submit06.mit.edu/jupyter>`_.
+You can also get to the submit-gpu machines through Jupyterhub. On the main page select submit-gpu in the dropdown menu. `JupyterHub <http://submit.mit.edu/jupyter>`_.
 
 
 Condor with GPUs
