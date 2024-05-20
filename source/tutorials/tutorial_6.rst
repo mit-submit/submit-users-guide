@@ -130,7 +130,7 @@ A More In-depth Example of PyTorch Lightning
 This example demonstrates linear regression using likelihood-free inference using both `Pytorch-Lightning <https://lightning.ai/>`_ and `Pyro <https://pyro.ai/>`_. 
 This example is originally written by Deep Chatterjee, adapted by Xuejian Shen.
 
-A `jupyter notebook <https://github.com/mit-submit/submit-examples/pytorch_lightning/linear-regression-pytorch-lightning.ipynb>`_ is provided 
+A `jupyter notebook <https://github.com/mit-submit/submit-examples/blob/main/pytorch_lightning/linear-regression-pytorch-lightning.ipynb>`_ is provided
 that walks through the bayesian inference on the slope and intercept of a line by deriving the exact answer of the posterior, 
 followed by re-doing the analysis using stochastic sampling, and eventually using a normalizing flow. 
 
