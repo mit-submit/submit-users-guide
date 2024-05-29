@@ -65,6 +65,8 @@ Microsoft provides some handy `videos <https://code.visualstudio.com/docs/getsta
 
 #. **Connect to subMIT:** Click the green "Open a Remote Window" button in the lower-left of the VSCode window. Select "submit" from the menu (VSCode automatically reads your ssh config file). Then, simply "open" a folder or workspace. Opening a folder is typically more convenient than opening a single code file.  Remember: VSCode is now connected to subMIT, so you are looking at and navigating your files on the subMIT servers, not on your laptop/desktop.
 
+#. **Note:** Only run *light* calculations in VSCode; VSCode is intended for editing/debugging, not prodcuction runs.  If the execution of your code will consume signficant resources (time, memory, processors, ...) then please run it outside VSCode using `Slurm or HTCondor <https://submit.mit.edu/submit-users-guide/running.html>`_.  For example, you can debug using a smaller subset of data than a production run.
+
 Handy Resources
 ...............
 
