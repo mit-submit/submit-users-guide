@@ -202,7 +202,7 @@ An example of how to install a mix of packages through conda and pip:
 Conda in Visual Studio Code:
 ............................
 
-**Selecting and activating a conda environment in VSCode:** you need to inform VSCode which conda environment to use for your Python workspace. Look at the bottom-left corner (macOS) or bottom-right corner (Windows) of the VSCode window to find the "Select Python Interpreter" button. Click on it and a list of available Python interpreters will appear. Choose the one that suits your needs (e.g., ``myenv``). You can also select the environment using the Command Palette (``Cmd+Shift+P`` in macOS or ``Ctrl+Shift+P`` in Windows) and searching for "Python: Select Interpreter". Note that it may take some time for VSCode to detect the available conda environments.
+**Selecting and activating a conda environment in VSCode:** you need to inform VSCode which conda environment to use for your Python workspace. First, make sure you have the Python extension in VSCode, which you can install by searching for ''Python'' in the Extensions section of VSCode. Then, look at the bottom-left corner (macOS) or bottom-right corner (Windows) of the VSCode window to find the "Select Python Interpreter" button. Click on it and a list of available Python interpreters will appear. Choose the one that suits your needs (e.g., ``myenv``). You can also select the environment using the Command Palette (``Cmd+Shift+P`` in macOS or ``Ctrl+Shift+P`` in Windows) and searching for "Python: Select Interpreter". Note that it may take some time for VSCode to detect the available conda environments. Also, you may have to specifically install the Python extension for connections over SSH with submit.mit.edu.
 
 Containers
 ~~~~~~~~~~
