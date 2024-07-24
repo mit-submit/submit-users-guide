@@ -14,6 +14,28 @@ All of the submit machines come with several tools to help you get started with 
 
 For more complicated workflows, there are several options on how to proceed. Many environments can be set up through CVFMS provided by CERN. If you need more control of the environment, either conda or dockers are commonly used and well supported. For more information see the sections below.
 
+Julia
+~~~~~
+
+As of right now, Julia is not available to download through dnf. As such, to install Julia, please do the following:
+
+.. code-block:: sh
+
+      wget https://julialang-s3.julialang.org/bin/linux/x64/1.10/julia-1.10.4-linux-x86_64.tar.gz
+      tar zxvf julia-1.10.4-linux-x86_64.tar.gz
+
+Then open your bashrc and add:
+
+.. code-block:: sh
+
+      export PATH="$PATH:/path/to/<Julia directory>/bin"
+
+Source your bashrc and then you should be able to use Julia from now on.
+
+.. code-block:: sh
+
+      source ~/.bashrc
+
 X2GO
 ~~~~
 
