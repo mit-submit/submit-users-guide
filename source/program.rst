@@ -17,7 +17,7 @@ For more complicated workflows, there are several options on how to proceed. Man
 Julia
 ~~~~~
 
-As of right now, Julia is not available to download through dnf. As such, to install Julia, please do the following:
+As of right now, Julia is not available to download through dnf. As such, to install Julia, please do the following (instructions from the `Julia language website <https://julialang.org/downloads/platform/#linux_and_freebsd>`_):
 
 .. code-block:: sh
 
