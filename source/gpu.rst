@@ -26,7 +26,7 @@ Accessing the ``submit-gpu-a30`` partition:
 
 .. code-block:: sh
 
-      salloc --partition=submit-gpu --cpus-per-gpu=1 --gres=gpu:1
+      salloc --partition=submit-gpu-a30 --cpus-per-gpu=1 --gres=gpu:1
 
 To request more than one GPU, adjust the ``--gres=gpu:<number>`` option.
 
@@ -86,7 +86,19 @@ More info is available in the `slurm 1080 <https://github.com/mit-submit/submit-
 CUDA
 ~~~~
 
-Compute Unified Device Architecture (CUDA) is a parallel computing platform and application programming interface (API) that allows software to use certain types of graphics processing unit (GPU) for general purpose processing. CUDA is available on the submit-gpu machines inherently. In order to check which CUDA version is installed you can use the command below. Make sure this version fits your workflow.
+Compute Unified Device Architecture (CUDA) is a parallel computing platform and application programming interface (API) that allows software to use certain types of graphics processing unit (GPU) for general purpose processing. CUDA is available on the submit-gpu machines inherently, but you need to properly set the path. Open your ``.bashrc`` file in your /home directory and add:
+
+.. code-block:: sh
+      export CUDA_ROOT=/usr/local/cuda
+      export LD_LIBRARY_PATH=/usr/local/cuda/lib:/usr/local/cuda/lib:/usr/local/cuda/lib:
+      export DYLD_LIBRARY_PATH=/usr/local/cuda/lib:
+
+Once you source your bashrc file, you should be able to use CUDA.
+
+.. code-block:: sh
+      source ~/.bashrc
+
+In order to check which CUDA version is installed you can use the command below; note that this command will not work if you are not on a GPU (e.g. access a GPU through `salloc <https://submit.mit.edu/submit-users-guide/gpu.html#interactive-access-salloc>`_). Make sure this version fits your workflow.
 
 .. code-block:: sh
 
@@ -94,7 +106,7 @@ Compute Unified Device Architecture (CUDA) is a parallel computing platform and 
 
 
 Jupyterhub
-~~~~~~~~~~~
+~~~~~~~~~~
 
 You can also get to the submit-gpu machines through Jupyterhub. On the main page select submit-gpu in the dropdown menu. `JupyterHub <http://submit.mit.edu/jupyter>`_.
 
