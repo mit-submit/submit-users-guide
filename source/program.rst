@@ -8,7 +8,7 @@ Native system
 
 All of the submit machines come with several tools to help you get started with your work. A few examples are shown below:
 
-1. Languages: python, c++, Julia, Java, etc.
+1. Languages: python, c++, Java, `MATLAB <https://submit.mit.edu/submit-users-guide/tutorials/tutorial_1.html#matlab>`_, `Wolfram Mathematica <https://submit.mit.edu/submit-users-guide/program.html#wolfram-mathematica>`_, etc.
 
 2. Tools: XRootd, gfal, etc.
 
