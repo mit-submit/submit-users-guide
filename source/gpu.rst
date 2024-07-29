@@ -89,6 +89,7 @@ CUDA
 Compute Unified Device Architecture (CUDA) is a parallel computing platform and application programming interface (API) that allows software to use certain types of graphics processing unit (GPU) for general purpose processing. CUDA is available on the submit-gpu machines inherently, but you need to properly set the path. Open your ``.bashrc`` file in your /home directory and add:
 
 .. code-block:: sh
+
       export CUDA_ROOT=/usr/local/cuda
       export LD_LIBRARY_PATH=/usr/local/cuda/lib:/usr/local/cuda/lib:/usr/local/cuda/lib:
       export DYLD_LIBRARY_PATH=/usr/local/cuda/lib:
@@ -96,6 +97,7 @@ Compute Unified Device Architecture (CUDA) is a parallel computing platform and 
 Once you source your bashrc file, you should be able to use CUDA.
 
 .. code-block:: sh
+
       source ~/.bashrc
 
 In order to check which CUDA version is installed you can use the command below; note that this command will not work if you are not on a GPU (e.g. access a GPU through `salloc <https://submit.mit.edu/submit-users-guide/gpu.html#interactive-access-salloc>`_). Make sure this version fits your workflow.
