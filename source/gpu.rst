@@ -39,7 +39,7 @@ Batch jobs and script execution
 
 The GPUs resources are also available through batch scripts.
 
-Example with the ``submit-gpu`` partition:
+Example with the ``submit-gpu`` partition, using GTX 1080 GPUs:
 
 .. code-block:: sh
 
@@ -58,29 +58,27 @@ Example with the ``submit-gpu`` partition:
       srun hostname
       nvidia-smi
 
+More info is available in the `slurm 1080 <https://github.com/mit-submit/submit-examples/tree/main/gpu/slurm_gpu1080>`_ Github repository.
 
-For a CUDA example with Slurm, visit `slurm cuda <https://github.com/mit-submit/submit-examples/tree/main/gpu/slurm_gpu>`_.
-
-
-Example with the ``submit-gpu1080`` partition:
+Example with the ``submit-gpu-a30`` partition, using NVIDIA A30 GPUs:
 
 
 .. code-block:: sh
 
       #!/bin/bash
       #
-      #SBATCH --job-name=test_gpu1080
+      #SBATCH --job-name=test_gpu_a30
       #SBATCH --output=res_%j-%a.txt
       #SBATCH --error=err_%j-%a.txt
       #
       #SBATCH --ntasks=1
       #SBATCH --time=06:50:00
       #SBATCH --mem-per-cpu=2GB
-      #SBATCH --partition=submit-gpu1080
+      #SBATCH --partition=submit-gpu-a30
       #SBATCH --gres=gpu:1
       #SBATCH --cpus-per-gpu=1
 
-More info is available in the `slurm 1080 <https://github.com/mit-submit/submit-examples/tree/main/gpu/slurm_gpu1080>`_ Github repository.
+For a CUDA example with Slurm, visit `slurm cuda <https://github.com/mit-submit/submit-examples/tree/main/gpu/slurm_gpu>`_.
 
 
 CUDA
@@ -110,7 +108,7 @@ In order to check which CUDA version is installed you can use the command below;
 Jupyterhub
 ~~~~~~~~~~
 
-You can also get to the submit-gpu machines through Jupyterhub. On the main page select submit-gpu in the dropdown menu. `JupyterHub <http://submit.mit.edu/jupyter>`_.
+You can also get to the submit-gpu machines through Jupyterhub. On the main `JupyterHub <http://submit.mit.edu/jupyter>`_ page, select submit-gpu in the dropdown menu.
 
 
 Condor with GPUs
