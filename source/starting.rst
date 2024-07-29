@@ -123,6 +123,46 @@ There are a few ways to handle this issue. If you prefer, you can simply upload 
 
 One thing to note, is that if you have already tried this ssh command once and it broke, you will need to modify your known_hosts file in the .ssh directory. In order to fix this you will need to remove lines with ``submit`` in them from the known_hosts. Please note that it is safe to remove the lines from this file. 
 
+Connecting directly to a specific node
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+For most use cases, a user will not need to ssh into a specific node.  Rather one will typically ssh into submit.mit.edu as described above and then offload significant computational work to `HTCondor or Slurm <https://submit.mit.edu/submit-users-guide/running.html>`_ as batch jobs or interactive sessions.  There are, however, a few use cases where one legitimately desires access to a specific node.  For these cases, please use ProxyJump.  For instance, to ssh to submit37 from your laptop, type:
+
+.. code-block:: sh
+
+   ssh -J <username>@submit.mit.edu <username>@submit37.mit.edu
+
+Include any other flags you may ordinarily use such as ``-i``.  (Replace ``submit37`` with the desired hostname).  You can verify that you are indeed on the desired node by running the command: ``hostname``
+
+.. admonition:: If you use a ssh/config file ... (click here to show/hide more info)
+   :class: dropdown
+
+   If you use a ``.ssh/config`` file as described above, you can instead use the command 
+   
+   .. code-block:: sh
+   
+      ssh -J submit <username>@submit37.mit.edu
+
+   or, if you plan to access this node frequently, you can add it as a separate entry to your ``.ssh/config`` file below your ``submit`` entry: 
+
+   .. code-block:: sh
+
+      Host submit37
+         HostName submit37.mit.edu
+         User <username>
+         IdentitiesOnly=yes
+         PreferredAuthentications publickey
+         PasswordAuthentication no
+         IdentityFile <path>/id_ed25519
+         ProxyJump submit
+
+   then you can simply access it from your laptop by typing
+
+   .. code-block:: sh
+   
+      ssh submit37
+   
+
 Creating a personal webpage
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
