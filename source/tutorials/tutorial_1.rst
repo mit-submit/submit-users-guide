@@ -1,7 +1,7 @@
-Tutorial 1: Native System (python, Julia, matlab)
+Tutorial 1: Native System (python, Julia, MATLAB)
 -------------------------------------------------
 
-This tutorial will show a few examples of code that you can run on submit immediately after logging in. This are scripts that use the local installations of python, julia or matlab to run simple coding examples. 
+This tutorial will show a few examples of code that you can run on submit immediately after logging in. This are scripts that use the local installations of python, Julia or MATLAB to run simple coding examples. 
 For more info on what is immediately available to you on submit, see the User's Guide here: `Native System <https://submit.mit.edu/submit-users-guide/program.html#native-system>`_
 
 
