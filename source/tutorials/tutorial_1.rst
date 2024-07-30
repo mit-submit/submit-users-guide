@@ -1,7 +1,7 @@
-Tutorial 1: Native System (python, Julia, matlab)
+Tutorial 1: Native System (python, Julia, MATLAB)
 -------------------------------------------------
 
-This tutorial will show a few examples of code that you can run on submit immediately after logging in. This are scripts that use the local installations of python, julia or matlab to run simple coding examples. 
+This tutorial will show a few examples of code that you can run on submit immediately after logging in. This are scripts that use the local installations of python, Julia or MATLAB to run simple coding examples. 
 For more info on what is immediately available to you on submit, see the User's Guide here: `Native System <https://submit.mit.edu/submit-users-guide/program.html#native-system>`_
 
 
@@ -90,7 +90,7 @@ Both types of local environments can also be created in Visual Studio Code by us
 Julia:
 ~~~~~~
 
-Here we can try running a simple julia example:
+Once you have installed Julia (see the `Available software page <https://submit.mit.edu/submit-users-guide/program.html#julia>`_), you can try running a simple Julia example:
 
 .. code-block:: sh
 
@@ -133,10 +133,10 @@ Save this into a file named julia_test.jl and this can be run with the following
 
      julia julia_test.jl
 
-Matlab:
+MATLAB:
 ~~~~~~~
 
-Here we can try running a simple matlab example:
+Here we can try running a simple MATLAB example:
 
 .. code-block:: sh
 
@@ -155,17 +155,17 @@ Save this into a file named matlab_example.m and this can be run with the follow
      matlab -nodisplay -nodesktop -r "run matlab_example.m"
 
 
-Matlab GUI:
+MATLAB GUI:
 ...........
 
-In order to enter into the GUI mode of matlab on submit you need to log into submit with the -X option:
+In order to enter into the GUI mode of MATLAB on submit you need to log into submit with the -X option:
 
 
 .. code-block:: sh
 
      ssh -X <username>@submit.mit.edu
 
-Then you can enter the matlab GUI:
+Then you can enter the MATLAB GUI:
 
 .. code-block:: sh
 

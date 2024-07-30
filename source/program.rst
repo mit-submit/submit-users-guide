@@ -8,7 +8,7 @@ Native system
 
 All of the submit machines come with several tools to help you get started with your work. A few examples are shown below:
 
-1. Languages: python, c++, Julia, Java, etc.
+1. Languages: python, c++, Java, `MATLAB <https://submit.mit.edu/submit-users-guide/tutorials/tutorial_1.html#matlab>`_, `Wolfram Mathematica <https://submit.mit.edu/submit-users-guide/program.html#wolfram-mathematica>`_, etc.
 
 2. Tools: XRootd, gfal, etc.
 
@@ -17,7 +17,7 @@ For more complicated workflows, there are several options on how to proceed. Man
 Julia
 ~~~~~
 
-As of right now, Julia is not available to download through dnf. As such, to install Julia, please do the following:
+As of right now, Julia is not available to download through dnf. As such, to install Julia, please do the following (instructions from the `Julia language website <https://julialang.org/downloads/platform/#linux_and_freebsd>`_):
 
 .. code-block:: sh
 
