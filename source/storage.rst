@@ -37,10 +37,11 @@ Once the admin add your DN to the xrootd mapping, you could download or upload y
 
 .. code-block:: sh
 
-     Download: xrdcp root://submit50.mit.edu//<USER>/<PATH-TO-FILE> .
-     Upload: xrdcp <FILE> root://submit50.mit.edu//<USER>/<PATH-TO-SAVE> 
-     <PATH-TO-FILE> and <PATH-TO-SAVE> corresponds to the path under /data/submit/<USER>
-
+     Download: xrdcp root://submit50.mit.edu//data/<PATH-TO-FILE> .
+     Upload: xrdcp <FILE> root://submit50.mit.edu//data/<PATH-TO-SAVE> 
+     <PATH-TO-FILE> and <PATH-TO-SAVE> corresponds to the path under /ceph/submit/data/<PATH-TO-SAVE>
+     For example: root://submit50.mit.edu//data/user/w/wangzqe/test.txt refers /ceph/submit/data/user/w/wangzqe/test.txt 
+  
 The xrootd request by default trys both IPV6 and IPV4 protocol. It tries IPV6 first, then tries IPV4. If the xrootd server has IPV6 but not enabled, it may affect the transfer speed. To resolve this, users can just enable IPV4 only by typing command:
 
 .. code-block:: sh
