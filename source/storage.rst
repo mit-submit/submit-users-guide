@@ -19,9 +19,9 @@ It is recommanded to keep larger files or softwares in work directory. If there 
 
 The storage filesystem
 ~~~~~~~~~~~~~~~~~~~~~~
-Users also have a larger quota in storage filesystem, under the directory /data/submit/<USER> with quota 1TB.
+Users also have a larger quota in storage filesystem, under the directory /ceph/submit/data/user/<first letter>/<USER> with quota 1TB.
 
-Submit uses the gluster to form the filesystem. Currently users could use xrootd to transfer the files to/from the gluster through the GSI authentication (with x509 proxy). If users have demands to upload/download files to their personal filesystem (/data/submit/<USER>) remotely, you can send request to submit-help@mit.edu togethor with your DN. DN is the subject of your certificate.
+Submit uses the ceph to form the filesystem. Currently users could use xrootd to transfer the files to/from ceph through the GSI authentication (with x509 proxy). If users have demands to upload/download files to their personal filesystem (/ceph/submit/data/user/<first letter>/<USER>) remotely, you can send request to submit-help@mit.edu togethor with your DN. DN is the subject of your certificate.
 
 :red:`Users need x509 certificate to use xrootd transfer.`
 
@@ -60,7 +60,8 @@ To just enable IPV6, type:
 
      export XRD_NETWORKSTACK=IPv6
 
-Keep in mind that filesystem is in favor of large files, therefore it is not recommanded to save large numbers of small files in the filesystem, for example, 100k+ small log files. The gluster system may unmount your directory if you transfer too many small files in a short time. 
+Keep in mind that filesystem is in favor of large files, therefore it is not recommanded to save large numbers of small files in the filesystem, for example, 100k+ small log files. 
+
 
 The storage at fast mount space (/scratch/)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

@@ -1,7 +1,7 @@
 Data backup
 -----------
 
-In this section we will to discuss the backup policy of subMIT. In short, the only space that has a conventional backup is the home directory for users (/home/submit). The directories under work (/work/submit) and data (/data/submit) have intrinsic resilience by raiding and erasure coding but are not backed up. The subMIT team is making its best effort to keep data safe but due to the size a full backup is not feasible.
+In this section we will to discuss the backup policy of subMIT. In short, the only space that has a conventional backup is the home directory for users (/home/submit). The directories under work (/work/submit) and data (/ceph/submit/data) have intrinsic resilience by raiding and erasure coding but are not backed up. The subMIT team is making its best effort to keep data safe but due to the size a full backup is not feasible.
 
 If there is a particular emergency situation involving backups please contact submit-help@mit.edu.
 
