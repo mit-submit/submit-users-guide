@@ -99,9 +99,9 @@ You should now be logged into one of our main submit server machines. By default
    /work/submit/<username>
 
    # For larger files, you will get a data storage space with a quoata of 1 TB of space
-   /data/submit/<username>
+   /ceph/submit/data/user/<first letter>/<username>
 
-Note that storing and editing code located in /data is discouraged.
+Note that storing and editing code located in /ceph is discouraged.
 
 Common issues with keys
 ~~~~~~~~~~~~~~~~~~~~~~~

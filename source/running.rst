@@ -85,9 +85,9 @@ While using Condor you should be able to specify where you want your jobs to run
 
 We have two main computing resources on MIT campus: tier2 and tier3 clusters. Users can submit condor jobs through glideinWMS or bosco.
 
-Since condor jobs are running on external computing resouces, your storage area (``/home``, ``/work``, ``/data/``) is not accessable on the worknodes. You either need to transfer the files through condor script, or use xrootd to transfer the files. 
+Since condor jobs are running on external computing resouces, your storage area (``/home``, ``/work``, ``/ceph``) is not accessable on the worknodes. You either need to transfer the files through condor script, or use xrootd to transfer the files. 
 
-The xrootd transfers is enabled for gluster (``/data/submit``) storage, how to use it, see `details <https://submit.mit.edu/submit-users-guide/storage.html>`_ in "storage" section.
+The xrootd transfers is enabled for ceph (``/ceph/submit/data``) storage, how to use it, see `details <https://submit.mit.edu/submit-users-guide/storage.html>`_ in "storage" section.
 
 Glidein submission for T2/T3.
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -190,7 +190,7 @@ Or depending on your workflow you may need RHEL 6 for OSG
 
 .. code-block:: sh
 
-      Requirements = (OSGVO_OS_STRING == "RHEL 6      
+      Requirements = (OSGVO_OS_STRING == "RHEL 6"      
       +ProjectName            = "MIT_submit" 
 
 
@@ -347,7 +347,7 @@ The default memory requirement is 1024 MB per core.  If uses job uses more memor
 
        RequestMemory = 2000
 
-Usually the maximum memory usage is 2000 MB for each core. But condor has a feature to adjust memory usage of a job requirement automatically even if user's job requires more memory then 2000 MB, for example:
+Usually the maximum memory usage is 2000 MB for each core. But condor has a feature to adjust memory usage of a job requirement automatically even if users job requires more memory then 2000 MB, for example:
 
 .. code-block:: sh
 
@@ -428,12 +428,12 @@ In particular, to view the resources in the subMIT Slurm cluster, the following 
 
      sinfo -Ne -O "PARTITION:.20,NodeHost:.10,StateLong:.11,NodeAIOT:.15,CPUsState:.15,Memory:.9,AllocMem:.9"
 
-This will list each node on a separate line.  As described in `man sinfo`, the CPUS columns gives the count of the node's CPUs in each state: "A/I/O/T" ("Allocated/Idle/Other/Total").  The MEMORY column gives the total memory for each node, while the ALLOCMEM gives the amount of memory which is currently allocated on that node.  Thus, with this command, you can see the total inventory of resources on each node, as well as what happens to be available at the moment.
+This will list each node on a separate line.  As described in `man sinfo`, the CPUS columns gives the count of the nodes CPUs in each state: "A/I/O/T" ("Allocated/Idle/Other/Total").  The MEMORY column gives the total memory for each node, while the ALLOCMEM gives the amount of memory which is currently allocated on that node.  Thus, with this command, you can see the total inventory of resources on each node, as well as what happens to be available at the moment.
 
 Requesting memory
 =================
 
-On subMIT, Slurm treats both **CPUs** *and* **memory** as consumable resources.  This means that it's important to provide accurate requests of these resources in your slurm job submissions.  If you request more resources than you need (CPUs or memory), then you can unnecessarily block other users' as well as your own jobs from running.  For example, a job which requests a single CPU and all the memory of a node will block any other job from running on that node even though the remaining CPUs will be sitting idle.  If, on the other hand, you request too little memory, you job will fail.  This leads to the common question: how do I know how much memory to request?
+On subMIT, Slurm treats both **CPUs** *and* **memory** as consumable resources.  This means that it is important to provide accurate requests of these resources in your slurm job submissions.  If you request more resources than you need (CPUs or memory), then you can unnecessarily block other users as well as your own jobs from running.  For example, a job which requests a single CPU and all the memory of a node will block any other job from running on that node even though the remaining CPUs will be sitting idle.  If, on the other hand, you request too little memory, you job will fail.  This leads to the common question: how do I know how much memory to request?
 
 In general it is recommanded to request a bit more memory than you actually need so as to allow a "safety cushion" for variations in your jobs (so a job is not killed if your estimate was a little too low).  
 
