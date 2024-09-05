@@ -60,7 +60,8 @@ To just enable IPV6, type:
 
      export XRD_NETWORKSTACK=IPv6
 
-Keep in mind that filesystem is in favor of large files, therefore it is not recommanded to save large numbers of small files in the filesystem, for example, 100k+ small log files. The gluster system may unmount your directory if you transfer too many small files in a short time. 
+Keep in mind that filesystem is in favor of large files, therefore it is not recommanded to save large numbers of small files in the filesystem, for example, 100k+ small log files. 
+
 
 The storage at fast mount space (/scratch/)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
