@@ -142,8 +142,8 @@ If you want to use ROOT or any other CMSSW specific tools you can also download 
 
 .. code-block:: sh
 
-      cmsrel CMSSW_10_2_13
-      cd CMSSW_10_2_13/src
+      cmsrel CMSSW_13_3_2
+      cd CMSSW_13_3_2/src
       cmsenv
 
 Once the CMS environment is set up, the CMS software version specific ROOT release is now available to you as well.
