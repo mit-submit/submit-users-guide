@@ -7,8 +7,7 @@ then
 fi
 RSYNC_TARGET=$WEB_SERVER:$WEB_LOCATION
 
-echo " Installing into: $RSYNC_TARGET (hit return)"
-read
+echo " Installing into: $RSYNC_TARGET"
 
 sphinx-build -b html source build
 if [ ".$?" != ".0" ]
