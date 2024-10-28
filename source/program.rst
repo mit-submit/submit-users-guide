@@ -323,7 +323,9 @@ Now you can run in many different environments that are available in singularity
 gcc and systemwide systems
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-SubMIT is a CentOS07 system and as such will have old versions for some compilers and tools. For example, the gcc compiler for CentOS07 is quite old. Rather than trying to install many versions throughout SubMIT it is suggested for users to try and control the versions themselves. The tools listed above can often help with this. A couple of examples of using a newer version of gcc are shown below. 
+The default gcc installed on the system is found in `/usr/bin/gcc`, which is version 11.4.
+
+It is suggested for users to try and control the gcc versions themselves, the tools listed above can often help with this. A couple of examples of using a newer version of gcc are shown below. 
 
 If newer versions of gcc are needed, they are available through conda `conda gcc <https://anaconda.org/conda-forge/gcc>`_. 
 
