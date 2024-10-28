@@ -1,17 +1,17 @@
-Tutorial 1: Native System (python, Julia, MATLAB)
--------------------------------------------------
+Tutorial 1: Common software packages (python, Julia, MATLAB)
+------------------------------------------------------------
 
-This tutorial will show a few examples of code that you can run on submit immediately after logging in. This are scripts that use the local installations of python, Julia or MATLAB to run simple coding examples. 
-For more info on what is immediately available to you on submit, see the User's Guide here: `Native System <https://submit.mit.edu/submit-users-guide/program.html#native-system>`_
+This tutorial will show a few examples of code that you can run on submit immediately after logging in (python, MATLAB), or after some simple setups (Julia). 
+For more info on what is immediately available to you on subMIT, see the User's Guide here: `Native System <https://submit.mit.edu/submit-users-guide/program.html#native-system>`_
 
 
 Python Example:
 ~~~~~~~~~~~~~~~
 
-Submit has several languages available in the native system. For this example, we will create a very simple python code to run. Then we can exapand on this code by adding in additional packages using pip.
+subMIT has several languages available in the native system. For this example, we will create a very simple python code to run. Then we can expand on this code by adding in additional packages using pip.
 
 
-Let's run a simple code. Here is an example of a sime python code:
+Let's run a simple code. Here is an example:
 
 .. code-block:: sh
 
@@ -33,7 +33,7 @@ Copy this chunk of code into a file called tutorial_1.py and run it with:
 pip installations:
 ..................
 
-Obviously, the code above is very inefficient. let's use numpy and see if we can make this a bit easier to code and faster.
+Obviously, the code above is very inefficient. Let's use numpy and see if we can make this a bit easier to code and faster.
 
 We want to download numpy to our local directory using pip. Use the command below:
 
@@ -41,7 +41,7 @@ We want to download numpy to our local directory using pip. Use the command belo
 
      python -m pip install numpy --user
 
-You should now see numpy installed in your local direcrory. You can check that with the command below:
+You should now see numpy installed in your local directory. You can check that with the command below:
 
 .. code-block:: sh
 
