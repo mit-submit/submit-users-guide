@@ -355,6 +355,8 @@ Usually the maximum memory usage is 2000 MB for each core. But condor has a feat
 
 But keep in mind, the more memory user requires, the harder it is to find the slot. 
 
+There is a hard limit on the size of input files that you can transfer with `transfer_input_files` at 250MB. In general, you should strive to have as few and small files as possible be transferred this way, in order to avoid overloading the condor scheduler. You can always read from `cvmfs` or with `xrootd` in case you need to get access to larger or more files.
+
 Slurm
 ~~~~~
 
