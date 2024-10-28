@@ -334,7 +334,7 @@ Alternatively, you can also use a gcc version available through CVMFS. An exampl
 .. code-block:: sh
 
      #An example of using a newer version of gcc
-     /cvmfs/cms.cern.ch/el8_amd64_gcc12/external/gcc/12.1.1-bf4aef5069fdf6bb6f77f897bcc8a6ae/bin/gcc
+ /cvmfs/cms.cern.ch/el9_amd64_gcc12/external/gcc/12.3.1-40d504be6370b5a30e3947a6e575ca28/bin/gcc
 
 For systemwide tools such as gcc, these options should be considered first in order to solve the issues on the user side. If these options still do not work for your needs then please email <submit-help@mit.edu>.
 
