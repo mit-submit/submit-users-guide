@@ -72,7 +72,7 @@ Then, anytime you want to use Mathematica, make sure to ssh into submit00 and ty
 
 You can easily run scripts (files with extension ``.wls`` and ``.m``) by using one of the following commands, directly into the terminal:
 
-.. code-block:: mathematica
+.. code-block:: sh
 
      wolfram -script scriptname.wls
      wolfram -run < scriptname.wls
@@ -96,13 +96,13 @@ If you wish to get an interface similar to a Mathematica notebook (.nb file), yo
 
 #. Make sure you are on submit00 and type ``wolfram`` on the command prompt, then
 
-     .. code-block:: mathematica
+.. code-block:: mathematica
 
-          (* replace x.y.z by the correct values, e.g. 0.9.3 *)
-          PacletInstall["WolframLanguageForJupyter-x.y.z.paclet"] 
-          Needs["WolframLanguageForJupyter`"]
-          ConfigureJupyter["Add"]
-          Quit
+     (* replace x.y.z by the correct values, e.g. 0.9.3 *)
+     PacletInstall["WolframLanguageForJupyter-x.y.z.paclet"] 
+     Needs["WolframLanguageForJupyter`"]
+     ConfigureJupyter["Add"]
+     Quit
 
 #. To test that the installation worked, check whether Wolfram has been added to your list of jupyter kernels by typing ``jupyter kernelspec list`` in the command prompt. You should see
 
@@ -294,7 +294,7 @@ And start the singularity
 
       singularity shell docker_name.sif
 
-If you need this available on worker nodes on the MIT T3 and T2 through HTCondor you can add them to a space in your work directory. You will then need to email Max (maxi@mit.edu) to create this CVMFs area for you.
+If you need this available on worker nodes on the MIT T3 and T2 through HTCondor you can add them to a space in your work directory. You will then need to email Max (Kerberos ID: maxi) or submit-help@mit.edu to create this CVMFs area for you.
 
 .. code-block:: sh
 
