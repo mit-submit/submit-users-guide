@@ -4,7 +4,7 @@ Access to subMIT
 You have several options to connect to subMIT, view and edit your files, and do your work.
 
 1. **ssh** is the simplest way to connect to the login nodes, see `the starting guide <https://submit.mit.edu/submit-users-guide/starting.html>`_.
-2. **`JupyterHub <https://submit.mit.edu/jupyter/hub/spawn>_**  provides another easy alternative to connect to the cluster. You can log in using your Kerberos ID, and get access to an interative graphical interface, terminal, text editor, and more.
+2. **`JupyterHub <https://submit.mit.edu/jupyter/hub/spawn>_`**  provides another easy alternative to connect to the cluster. You can log in using your Kerberos ID, and get access to an interative graphical interface, terminal, text editor, and more.
 3. **VS Code** is a powerful code editor that supports remote access through SSH, as well as many languages and extensions. 
 4. **X2GO** is a remote desktop software. 
 
@@ -13,7 +13,7 @@ You can find details and suggestions for these options below.
 Jupyterhub
 ~~~~~~~~~~
 
-SubMIT has a custom installation of `JupyterHub <http://submit.mit.edu/jupyter>`_.
+SubMIT has a `custom installation of JupyterHub <http://submit.mit.edu/jupyter>`_.
 
 This is set up through the subMIT machines meaning that you have access to all of your files and data. You will have access to basic python3 configurations. In addition, if you need a more complex environment, you can run your notebooks in any conda environment that you have set up. You can check the name and location of your environments using the command ``jupyter kernelspec list``. This allows you to create the exact environment you need for your projects. An example on how to set up a conda environment is shown above, and how it is implemented in jupyter is described below.
 
