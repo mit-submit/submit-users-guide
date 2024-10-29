@@ -5,11 +5,11 @@ This section briefly describes several options in which to set up your environme
 
 You have several options available for either using installed software, or installing your own:
 
-1. **Native system**: basic sofwtare is installed on subMIT meachines by default, or easily installable via our suggested methods.
-     - This includes: python, c++, Java, `MATLAB <https://submit.mit.edu/submit-users-guide/tutorials/tutorial_1.html#matlab>`_, `Wolfram Mathematica <https://submit.mit.edu/submit-users-guide/program.html#wolfram-mathematica>`_, XRootD, gfal.
+1. **Native system**: basic sofwtare is installed on SubMIT meachines by default, or easily installable via our suggested methods.
+     - This includes: python, c++, Java, `MATLAB <https://submit.mit.edu/submit-users-guide/tutorials/tutorial_1.html#matlab>`_, `Wolfram Mathematica <https://submit.mit.edu/submit-users-guide/program.html#wolfram-mathematica>`_, XRootD, gfal, gcc, hdf5.
 2. **conda** is a package and environment manager through which you can install software (not just python!).
 3. **containers**:
-     - **singularity** is an open source platform to create containers, which can be used to set up more complicated environements.
+     - **singularity** is an open source platform to create containers, which can be used to set up more complicated environments.
      - **podman** is an alternative to Docker (which can run in "rootless" mode), and gives more control, particularly for networking, than singularity.
 5. **CVFMS** is provided by CERN, and has many environments.
 
@@ -41,20 +41,20 @@ As of right now, Julia is not available to download through dnf. As such, to ins
 
 .. code-block:: sh
 
-      wget https://julialang-s3.julialang.org/bin/linux/x64/1.10/julia-1.10.4-linux-x86_64.tar.gz
-      tar zxvf julia-1.10.4-linux-x86_64.tar.gz
+     wget https://julialang-s3.julialang.org/bin/linux/x64/1.10/julia-1.10.4-linux-x86_64.tar.gz
+     tar zxvf julia-1.10.4-linux-x86_64.tar.gz
 
 Then open your bashrc and add:
 
 .. code-block:: sh
 
-      export PATH="$PATH:/path/to/<Julia directory>/bin"
+     export PATH="$PATH:/path/to/<Julia directory>/bin"
 
 Source your bashrc and then you should be able to use Julia from now on.
 
 .. code-block:: sh
 
-      source ~/.bashrc
+     source ~/.bashrc
 
 
 Wolfram Mathematica
@@ -117,7 +117,7 @@ You can make sure that you are on submit00 by opening a terminal within the webp
 gcc and systemwide systems
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The default gcc installed on the system is found in `/usr/bin/gcc`, which is version 11.4.
+The default gcc installed on the system is found in ``/usr/bin/gcc``, which is version 11.4.
 
 If newer versions of gcc are needed, they are available through conda `conda gcc <https://anaconda.org/conda-forge/gcc>`_. 
 
@@ -133,23 +133,23 @@ For systemwide tools such as gcc, these options should be considered first in or
 Conda
 -----
 
-Conda is an open source package management system and environment management system. We can use this to set up consistent environments and manage the package dependencies for various applications. Below is an example to set up a python environment for working with `coffea <https://coffeateam.github.io/coffea/>`_ and `dask <https://docs.dask.org/en/stable/>`_. 
+Conda is an open source package management system and environment management system. We can use this to set up consistent environments and manage the package dependencies for various applications. Below is an example to set up a python environment as well as a different gcc compiler.
 
 Important Notes for Using Conda on submit
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Please note that downloading many conda packages takes a large amount of space which can very quickly use up the quota in your home. If you plan to use conda heavily **it is suggested to download and configure it in your work directory** where there is much more space. 
 
-Any new conda environment that you install in your ``/home/submit`` or ``/work/submit`` will be installed on your JupyterHub **only after your server** is started up again. If your server is already running, you can stop it by File -> Hub Control Panel -> Stop My Server and then restart it by clicking Start Server. 
+Any new conda environment that you install in your ``/home/submit`` or ``/work/submit`` will be installed on your JupyterHub **only after your server is started up again**. If your server is already running, you can stop it by File -> Hub Control Panel -> Stop My Server and then restart it by clicking Start Server. 
 
 Installing Conda
 ~~~~~~~~~~~~~~~~
 
 .. code-block:: sh
 
-      wget https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-Linux-x86_64.sh
-      # Run and follow instructions on screen
-      bash Miniforge3-Linux-x86_64.sh
+     wget https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-Linux-x86_64.sh
+     # Run and follow instructions on screen
+     bash Miniforge3-Linux-x86_64.sh
 
 NOTE: always make sure that conda, python, and pip point to local Miniforge installation (``which conda`` etc.). Another thing to keep in mind is that you should avoid installing packages with ``pip`` using ``--user``. The coffea example below shows the correct way to use pip in conjunction with conda. 
 
@@ -170,7 +170,7 @@ Quick commands to know
 Example: python environment installation
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Always create a new environment, don't use the `base` one:
+Always create a new environment, don't use the ``base`` one:
 
 .. code-block:: sh
 
@@ -200,7 +200,7 @@ An example of how to install a mix of packages through conda and pip:
 Example: gcc installation
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-You can find many compilers, and a lot of other software, conda channels. Here is an example for installting the latest gcc.
+You can find many compilers, and a lot of other software, conda channels. Here is an example for installing the latest gcc.
 
 .. code-block:: sh
 
@@ -225,11 +225,15 @@ Containers
 
 Containers are becoming commonplace in scientific workflows. SubMIT offers access to containers through Singularity and Podman (an alternative to Docker). This section will give a short example on how to enter into a singularity container to run your framework. For more information on dockers see the `docker engine site <https://docs.docker.com/engine/reference/commandline/build/>`_.
 
+A comprehensive tutorial on how to set up containers and singularity images is presented `here <https://submit.mit.edu/submit-users-guide/tutorials/tutorial_3.html>`_. Here, only general information and overview is presented.
+
+
+# TODO continue from here
+
 Podman
 ~~~~~~
 
 SubMIT will be using Podman instead of Docker on all machines. For users who have been using Docker, you can run on Podman images created with Docker. You can run familiar commands, such as ``pull``, ``push``, ``build``, ``commit``, ``tag``, etc. with Podman
-
 
 All SubMIT users have access to build containers. You can start by finding instructions through your packages dockerhub or by downloading the code and building the image.
 
@@ -246,9 +250,7 @@ You can then run the docker like below.
 Dockerhub:
 ..........
 
-Code can be pulled directly from Dockerhub:  `dockerhub <https://hub.docker.com/>`_.
-
-If there is a container that you would like to use on Dockerhub, you can pull the container directly.
+Containers can be pulled directly from Dockerhub:  `dockerhub <https://hub.docker.com/>`_.
 
 .. code-block:: sh
 
@@ -260,13 +262,19 @@ After this is done downloading we can then enter into the container:
 
      podman run --rm -i -t <Dockerhub_container>
 
+To get access to local files, you have to mount them when you run the container:
+
+.. code-block:: sh
+
+     podman run --rm -v  -i -t <Dockerhub_container>
+
 
 Singularity and Singularity Image Format (SIF)
-..............................................
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Singularity can build containers in several different file formats. The default is to build a SIF (singularity image format) container. SIF files are compressed and immutable making them the best choice for reproducible, production-grade containers. If you are going to be running your singularity through one of the batch systems provided by submit, it is suggested that you create a SIF file. For Slurm, this SIF file can be accessed through any of your mounted directories, while for HTCondor, the best practice is to make this file avialble through CVMFS. This singularity image could then be accessed through both the T2 and T3 resources via MIT's hosted CVMFS.
+Singularity can build containers in several different file formats. The default is to build a SIF (singularity image format) container. SIF files are compressed and immutable making them the best choice for reproducible, production-grade containers. If you are going to be running your singularity through one of the batch systems provided by subMIT, it is suggested that you create a SIF file. For Slurm, this SIF file can be accessed through any of your mounted directories, while for HTCondor, the best practice is to make this file avialble through CVMFS. This singularity image could then be accessed through both the T2 and T3 resources via MIT's hosted CVMFS.
 
-While Singularity doesn’t support running Docker images directly, it can pull them from Docker Hub and convert them into a suitable format for running via Singularity. This opens up access to a huge number of existing container images available on Docker Hub and other registries. When you pull a Docker image, Singularity pulls the slices or layers that make up the Docker image and converts them into a single-file Singularity SIF image. An example of this was shown below.
+While Singularity doesn’t support running Docker images directly, it can pull them from Docker Hub and convert them into a suitable format for running via Singularity. This opens up access to a huge number of existing container images available on Docker Hub and other registries. When you pull a Docker image, Singularity pulls the slices or layers that make up the Docker image and converts them into a single-file Singularity SIF image. An example of this is shown below.
 
 .. code-block:: sh
 

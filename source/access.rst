@@ -13,9 +13,9 @@ You can find details and suggestions for these options below.
 Jupyterhub
 ~~~~~~~~~~
 
-In addition to the tools above, you have access to Jupyter Notebooks through a `JupyterHub <http://submit.mit.edu/jupyter>`_ set up at submit.
+SubMIT has a custom installation of `JupyterHub <http://submit.mit.edu/jupyter>`_.
 
-This is set up through the submit machines meaning that you have access to all of your data through jupyter notebooks. You will have access to basic python3 configurations. In addition, if you need a more complex environment, you can run your notebooks in any conda environment that you have set up. You can check the name and location of your environments using the command ``jupyter kernelspec list``. This allows you to create the exact environment you need for your projects. An example on how to set up a conda environment is shown above, and how it is implemented in jupyter is described below.
+This is set up through the subMIT machines meaning that you have access to all of your files and data. You will have access to basic python3 configurations. In addition, if you need a more complex environment, you can run your notebooks in any conda environment that you have set up. You can check the name and location of your environments using the command ``jupyter kernelspec list``. This allows you to create the exact environment you need for your projects. An example on how to set up a conda environment is shown above, and how it is implemented in jupyter is described below.
 
 A few examples of simple Jupyter notebooks can be found in the `Github jupyter examples <https://github.com/mit-submit/submit-examples/tree/main/jupyter>`_. Several other intro notebooks can be found in the link below:
 `JupyterHub_examples <https://github.com/CpResearch/PythonDataAnalysisTutorial/tree/main/jupyter>`_
@@ -28,7 +28,7 @@ You have access to a few job profiles. Make sure to use the one that fits your n
 
 * **Slurm - Submit-GPU-A30 - 1 GPU:** spawns a server on a submit-gpu-a30 submit slurm partition, requesting 1 GPU.
 
-By default, Jupyterhub shows the files located in ``/home/submit/<username>``. If you store jupyter notebooks in ``/work`` and they are small, consider moving them to your ``/home`` directory. Otherwise, you should be able to access a notebook in ``/work`` by selecting "``File > Open from Path...``" in the top menu of Jupyter, then type the full path to your notebook.
+By default, Jupyterhub shows the files located in ``/home/submit/<username>``. If you store jupyter notebooks in ``/work`` and they are small, consider moving them to your ``/home`` directory. Otherwise, you should be able to access a notebook in ``/work`` by selecting "``File > Open from Path...``" in the top menu of Jupyter, then type the full path to your notebook. You can also set up a symlink in your ``/home`` to your ``/work`` space.
 
 When you are finished using Jupyter, please select ``File -> Hub Control Panel -> Stop My Server`` from the top menu to stop your server.
 
@@ -45,20 +45,20 @@ Here is how jupyter interacts with: conda, singularity, GPUs, Slurm, and ROOT.
 
     * jupyterhub is set up to automatically load all conda and python environments which are found in the following directories
               
-    .. code-block:: sh
-    
-         '/usr/bin/',
-        '/home/submit/<username>/miniforge3/',
-        '/home/submit/<username>/anaconda3/',
-        '/home/submit/<username>/miniconda3/', 
-        '/home/submit/<username>/.conda/',
-        '/work/submit/<username>/anaconda3/',
-        '/work/submit/<username>/miniconda3/', 
-        '/work/submit/<username>/miniforge3/',
-        '/data/submit/<username>/anaconda3/', 
-        '/data/submit/<username>/miniconda3/',
-        '/data/submit/<username>/miniforge3/',
-        ]
+        .. code-block:: sh
+        
+            '/usr/bin/',
+            '/home/submit/<username>/miniforge3/',
+            '/home/submit/<username>/anaconda3/',
+            '/home/submit/<username>/miniconda3/', 
+            '/home/submit/<username>/.conda/',
+            '/work/submit/<username>/anaconda3/',
+            '/work/submit/<username>/miniconda3/', 
+            '/work/submit/<username>/miniforge3/',
+            '/data/submit/<username>/anaconda3/', 
+            '/data/submit/<username>/miniconda3/',
+            '/data/submit/<username>/miniforge3/',
+            ]
               
     * If you have a different version of conda, or it is located in a different place, or some other problem has come up, please contact us for help.
     * Alternatively, a manual installation can be performed:
@@ -75,34 +75,33 @@ Here is how jupyter interacts with: conda, singularity, GPUs, Slurm, and ROOT.
      
 #. Singularity
 
-    * Because singularity environments are not located in standardized locations like anaconda tends to be, there is no automatic installation for these environments to jupyterhub.
-    * However, we can create a kernel environment by hand, which we can then use in jupyter, just like any other python environment:
+    Because singularity environments are not located in standardized locations like anaconda tends to be, there is no automatic installation for these environments to jupyterhub. However, we can create a kernel environment by hand, which we can then use in jupyter, just like any other python environment:
     
     
         1. ``mkdir /home/submit/$USER/.local/share/jupyter/kernels/<name>/``
         2. ``touch /home/submit/$USER/.local/share/jupyter/kernels/<name>/kernel.json``
         3. And finally, place the following in the json file
     
-        .. code-block:: sh
-        
-             {
-               "argv": [
-                "singularity",
-                "exec",
-                "-e",
-                "</path/to/singularity/image/>",
-                "python",
-                "-m",
-                "ipykernel_launcher",
-                "-f",
-                "{connection_file}"
-               ],
-               "display_name": "test",
-               "language": "python",
-               "metadata": {
-                "debugger": true
-               }
-              }
+            .. code-block:: sh
+            
+                {
+                "argv": [
+                    "singularity",
+                    "exec",
+                    "-e",
+                    "</path/to/singularity/image/>",
+                    "python",
+                    "-m",
+                    "ipykernel_launcher",
+                    "-f",
+                    "{connection_file}"
+                ],
+                "display_name": "test",
+                "language": "python",
+                "metadata": {
+                    "debugger": true
+                }
+                }
         
         4. You can personalize this ``singularity exec`` command, e.g. if you want to bind a directory, you can just add two lines to the ``argv``, "--bind", "<directory>". You can test out this command by something like:
               
@@ -110,16 +109,15 @@ Here is how jupyter interacts with: conda, singularity, GPUs, Slurm, and ROOT.
           
 #. GPUs
 
-    * GPUs are available on submit-gpu machines. The GPUs are not used or  reserved by jupyterhub by itself. Rather, just like when you log in those machines through ssh, the GPUs can be used by a notebook or the jupyterhub terminal only if they are available (you can check this with ``nvidia-smi``).
+    GPUs are available on submit-gpu machines. The GPUs are not used or  reserved by jupyterhub by itself. Rather, just like when you log in those machines through ssh, the GPUs can be used by a notebook or the jupyterhub terminal only if they are available (you can check this with ``nvidia-smi``).
      
 #. SlurmSpawner
 
-    * This spawner relies on Slurm to run your server. You can monitor your job just like any other Slurm job, as described in this guide, with commands such as ``squeue``.
+    This spawner relies on Slurm to run your server. You can monitor your job just like any other Slurm job, as described in this guide, with commands such as ``squeue``.
 
 #. ROOT on python, on jupyter: pyROOT and jupyROOT
 
-    * If you are trying to use ROOT in an ipython notebook over jupyter, you might have issues, which are related to missing paths, in particular the path to ``x86_64-conda-linux-gnu-c++``.
-    * To fix this, try adding to the PATH of your kernel the ``bin`` directory of the environment. i.e. modify  ``~/.local/share/jupyter/kernel/<YOUR ENVIRONMENT>/kernel.json`` to include:
+    If you are trying to use ROOT in an ipython notebook over jupyter, you might have issues, which are related to missing paths, in particular the path to ``x86_64-conda-linux-gnu-c++``. To fix this, try adding to the PATH of your kernel the ``bin`` directory of the environment. i.e. modify  ``~/.local/share/jupyter/kernel/<YOUR ENVIRONMENT>/kernel.json`` to include:
     
     .. code-block:: sh
     
@@ -129,20 +127,22 @@ Here is how jupyter interacts with: conda, singularity, GPUs, Slurm, and ROOT.
     
     * N.B.: if you have conda installed elsewhere, your path might be different.
 
-#. IJulia: IJulia is a Julia-language backend combined with the Jupyter interactive environment. Once installed, you can open Jupyterhub and select the Julia 1.6.5 kernel. To install it, in a terminal window, type ``julia``, then
+#. IJulia
 
-     .. code-block:: julia
+    IJulia is a Julia-language backend combined with the Jupyter interactive environment. Once installed, you can open Jupyterhub and select the Julia 1.6.5 kernel. To install it, in a terminal window, type ``julia``, then
 
-          ] # this enters pkg mode
-          add IJulia # it will take a few minutes to install the required packages
+    .. code-block:: julia
 
-     Now, if you type ``jupyter kernelspec list`` in a terminal window, you will see
+        ] # this enters pkg mode
+        add IJulia # it will take a few minutes to install the required packages
 
-     .. code-block:: sh
+    Now, if you type ``jupyter kernelspec list`` in a terminal window, you will see
 
-          julia-1.6     /home/submit/username/.local/share/jupyter/kernels/julia-1.6
+    .. code-block:: sh
 
-     if it doesn't work, in Julia type ``using Pkg``, then ``Pkg.build("IJulia")``. You should now have the Julia kernel for Jupyterhub.
+        julia-1.6     /home/submit/username/.local/share/jupyter/kernels/julia-1.6
+
+    if it doesn't work, in Julia type ``using Pkg``, then ``Pkg.build("IJulia")``. You should now have the Julia kernel for Jupyterhub.
 
 
 VSCode
