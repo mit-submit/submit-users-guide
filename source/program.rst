@@ -7,8 +7,10 @@ You have several options available for either using installed software, or insta
 
 1. **Native system**: basic sofwtare is installed on SubMIT meachines by default, or easily installable via our suggested methods.
      - This includes: python, c++, Java, `MATLAB <https://submit.mit.edu/submit-users-guide/tutorials/tutorial_1.html#matlab>`_, `Wolfram Mathematica <https://submit.mit.edu/submit-users-guide/program.html#wolfram-mathematica>`_, XRootD, gfal, gcc, hdf5.
-2. **conda** is a package and environment manager through which you can install software (not just python!).
-3. **containers**:
+2. **Package and Environment Managers**: 
+     - **conda** is a package and environment manager through which you can install software (not just python!).
+     - **spack**
+3. **Containers**:
      - **singularity** is an open source platform to create containers, which can be used to set up more complicated environments.
      - **podman** is an alternative to Docker (which can run in "rootless" mode), and gives more control, particularly for networking, than singularity.
 5. **CVFMS** is provided by CERN, and has many environments.
@@ -130,20 +132,23 @@ Alternatively, you can also use a gcc version available through CVMFS. An exampl
 
 For systemwide tools such as gcc, these options should be considered first in order to solve the issues on the user side. If these options still do not work for your needs then please email <submit-help@mit.edu>.
 
+Package and Environment Managers
+--------------------------------
+
 Conda
------
+~~~~~
 
 Conda is an open source package management system and environment management system. We can use this to set up consistent environments and manage the package dependencies for various applications. Below is an example to set up a python environment as well as a different gcc compiler.
 
 Important Notes for Using Conda on submit
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.........................................
 
 Please note that downloading many conda packages takes a large amount of space which can very quickly use up the quota in your home. If you plan to use conda heavily **it is suggested to download and configure it in your work directory** where there is much more space. 
 
 Any new conda environment that you install in your ``/home/submit`` or ``/work/submit`` will be installed on your JupyterHub **only after your server is started up again**. If your server is already running, you can stop it by File -> Hub Control Panel -> Stop My Server and then restart it by clicking Start Server. 
 
 Installing Conda
-~~~~~~~~~~~~~~~~
+................
 
 .. code-block:: sh
 
@@ -156,7 +161,7 @@ NOTE: always make sure that conda, python, and pip point to local Miniforge inst
 See also https://hackmd.io/GkiNxag0TUmHnnCiqdND1Q#Local-or-remote
 
 Quick commands to know
-~~~~~~~~~~~~~~~~~~~~~~
+......................
 
 .. code-block:: sh
 
@@ -168,7 +173,7 @@ Quick commands to know
      conda remove --name env_name --all # To remove the environment env_name
 
 Example: python environment installation
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+........................................
 
 Always create a new environment, don't use the ``base`` one:
 
@@ -198,7 +203,7 @@ An example of how to install a mix of packages through conda and pip:
       pip install vector
 
 Example: gcc installation
-~~~~~~~~~~~~~~~~~~~~~~~~~~
+.........................
 
 You can find many compilers, and a lot of other software, conda channels. Here is an example for installing the latest gcc.
 
@@ -215,9 +220,14 @@ You can find many compilers, and a lot of other software, conda channels. Here i
 
 
 Conda in Visual Studio Code
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
+...........................
 
 **Selecting and activating a conda environment in VSCode:** you need to inform VSCode which conda environment to use for your Python workspace. First, make sure you have the Python extension in VSCode, which you can install by searching for ''Python'' in the Extensions section of VSCode. Then, look at the bottom-left corner (macOS) or bottom-right corner (Windows) of the VSCode window to find the "Select Python Interpreter" button. Click on it and a list of available Python interpreters will appear. Choose the one that suits your needs (e.g., ``myenv``). You can also select the environment using the Command Palette (``Cmd+Shift+P`` in macOS or ``Ctrl+Shift+P`` in Windows) and searching for "Python: Select Interpreter". Note that it may take some time for VSCode to detect the available conda environments. Also, you may have to specifically install the Python extension for connections over SSH with submit.mit.edu.
+
+Spack
+~~~~~
+
+Docs coming soon...
 
 
 Containers
@@ -225,23 +235,21 @@ Containers
 
 Containers are becoming commonplace in scientific workflows. SubMIT offers access to containers through Singularity and Podman (an alternative to Docker). This section will give a short example on how to enter into a singularity container to run your framework. For more information on dockers see the `docker engine site <https://docs.docker.com/engine/reference/commandline/build/>`_.
 
-A comprehensive tutorial on how to set up containers and singularity images is presented `here <https://submit.mit.edu/submit-users-guide/tutorials/tutorial_3.html>`_. Here, only general information and overview is presented.
+A comprehensive tutorial on how to set up containers and singularity images is presented `here <https://submit.mit.edu/submit-users-guide/tutorials/tutorial_3.html>`_. Here, only general information and an overview are presented.
 
-
-# TODO continue from here
 
 Podman
 ~~~~~~
 
-SubMIT will be using Podman instead of Docker on all machines. For users who have been using Docker, you can run on Podman images created with Docker. You can run familiar commands, such as ``pull``, ``push``, ``build``, ``commit``, ``tag``, etc. with Podman
+SubMIT uses Podman on all machines. For users who have been using or are familiar with Docker, you can run on Podman images created with Docker. You can also run familiar Docker commands, such as ``pull``, ``push``, ``build``, ``commit``, ``tag``, etc. with Podman.
 
-All SubMIT users have access to build containers. You can start by finding instructions through your packages dockerhub or by downloading the code and building the image.
+All SubMIT users have access to build containers. You can start by finding instructions through your package's DockerHub or by downloading the code and building the image.
 
 .. code-block:: sh
 
      podman build -t local/docker_name .
 
-You can then run the docker like below.
+You can then run the docker,
 
 .. code-block:: sh
 
@@ -250,7 +258,7 @@ You can then run the docker like below.
 Dockerhub:
 ..........
 
-Containers can be pulled directly from Dockerhub:  `dockerhub <https://hub.docker.com/>`_.
+Containers can be pulled directly from DockerHub:  `dockerhub <https://hub.docker.com/>`_.
 
 .. code-block:: sh
 
@@ -274,7 +282,7 @@ Singularity and Singularity Image Format (SIF)
 
 Singularity can build containers in several different file formats. The default is to build a SIF (singularity image format) container. SIF files are compressed and immutable making them the best choice for reproducible, production-grade containers. If you are going to be running your singularity through one of the batch systems provided by subMIT, it is suggested that you create a SIF file. For Slurm, this SIF file can be accessed through any of your mounted directories, while for HTCondor, the best practice is to make this file avialble through CVMFS. This singularity image could then be accessed through both the T2 and T3 resources via MIT's hosted CVMFS.
 
-While Singularity doesn’t support running Docker images directly, it can pull them from Docker Hub and convert them into a suitable format for running via Singularity. This opens up access to a huge number of existing container images available on Docker Hub and other registries. When you pull a Docker image, Singularity pulls the slices or layers that make up the Docker image and converts them into a single-file Singularity SIF image. An example of this is shown below.
+While Singularity doesn’t support running Docker images directly, it can convert them into a suitable format for running via Singularity. This opens up access to a huge number of existing container images available on DockerHub and other registries. When you pull a Docker image, Singularity pulls the slices or layers that make up the Docker image and converts them into a single-file Singularity SIF image. An example of this is shown below.
 
 .. code-block:: sh
 
@@ -286,7 +294,7 @@ And start the singularity
 
       singularity shell docker_name.sif
 
-If you need this available on worker nodes through HTCondor you can add them to a CVMFS space in your work directory. You will then need to email Max (maxi@mit.edu) to create this CVMFs area for you.
+If you need this available on worker nodes on the MIT T3 and T2 through HTCondor you can add them to a space in your work directory. You will then need to email Max (maxi@mit.edu) to create this CVMFs area for you.
 
 .. code-block:: sh
 
@@ -318,38 +326,17 @@ The command above naturally binds the PWD and work directory. If you need to spe
 
 Now you can run in many different environments that are available in singularity images through CVMFS.
 
-Additional Operating Systems (CMS specific)
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-For CMS users, there are additional options to operating systems through CMSSW. The following commands will set up CMSSW and then put you into a singularity for Scientific Linux CERN 6 (slc6), CentOS 7(cc7), AlmaLinux 8 (el8) and AlmaLinux 9 (el9). 
-
-.. code-block:: sh
-
-     source /cvmfs/cms.cern.ch/cmsset_default.sh
-
-You can then do any of the following depending on your desired OS.
-
-.. code-block:: sh
-
-     cmssw-slc6
-     cmssw-cc7
-     cmssw-el8
-     cmssw-el9
-
-If you want to check the OS, you caan do the following.
-
-.. code-block:: sh
-
-     cat /etc/os-release
-
 CVMFS
-~~~~~
+-----
 
-The CernVM File System (CVMFS) provides a scalable, reliable and low- maintenance software distribution service. It was developed to assist High Energy Physics (HEP) collaborations to deploy software on the worldwide- distributed computing infrastructure used to run data processing applications. CernVM-FS is implemented as a POSIX read-only file system in user space (a FUSE module). Files and directories are hosted on standard web servers and mounted in the universal namespace ``/cvmfs``.
+The CernVM File System (CVMFS) provides a scalable, reliable and low- maintenance software distribution service. It was developed to assist High Energy Physics (HEP) collaborations to deploy software on the worldwide-distributed computing infrastructure used to run data processing applications. CernVM-FS is implemented as a POSIX read-only file system in user space (a FUSE module). Files and directories are hosted on standard web servers and mounted in the universal namespace ``/cvmfs``.
 
 More documentation on CVMFS can be found here: `CVMFS <https://cernvm.cern.ch/fs/>`_
 
-A couple examples of using CVMFS are shown below:
+A couple examples of using CVMFS are shown below.
+
+ROOT
+~~~~
 
 To set up ROOT:
 
@@ -357,6 +344,9 @@ To set up ROOT:
 
      source /cvmfs/sft.cern.ch/lcg/views/LCG_105/x86_64-el9-gcc11-opt/setup.sh
      root
+
+GEANT4
+~~~~~~
 
 To set up GEANT4 (make sure to use one of the AlmaLinux9 machines):
 
@@ -373,6 +363,9 @@ To set up GEANT4 (make sure to use one of the AlmaLinux9 machines):
      
      # show the geant version:
      ./geant4-config --version
+
+CMSSW
+~~~~~
 
 To set up the CMS software (CMSSW) or other cms specific tools:
 
@@ -397,3 +390,26 @@ In addition to the typical CMVFS environments, MIT hosts its own version of CVMF
       /cvmfs/cvmfs.cmsaf.mit.edu/submit/work/submit/submit-software/matlab/Matlab_install/bin/matlab
 
 
+Additional Operating Systems (CMS specific)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+For CMS users, there are additional options to operating systems through CMSSW. The following commands will set up CMSSW and then put you into a singularity for Scientific Linux CERN 6 (slc6), CentOS 7 (cc7), AlmaLinux 8 (el8) and AlmaLinux 9 (el9). 
+
+.. code-block:: sh
+
+     source /cvmfs/cms.cern.ch/cmsset_default.sh
+
+You can then do any of the following depending on your desired OS.
+
+.. code-block:: sh
+
+     cmssw-slc6
+     cmssw-cc7
+     cmssw-el8
+     cmssw-el9
+
+If you want to check the OS, you caan do the following.
+
+.. code-block:: sh
+
+     cat /etc/os-release
