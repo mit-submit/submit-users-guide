@@ -5,6 +5,7 @@ This section briefly describes several options in which to set up your environme
 We support the use of Podman, which serves as an alternative to Docker, and Singularity.All subMIT users have access to build containers.
 
 This tutorial will guide you through:
+
 1. Basic Podman commands
 2. Creating a Dockerfile
 3. Creating a Docker image from a Dockerfile
