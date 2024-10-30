@@ -413,3 +413,5 @@ If you want to check the OS, you caan do the following.
 .. code-block:: sh
 
      cat /etc/os-release
+
+>>>>>>> 129b44ec3365bf355c3aecd44e0dac40ef582c44

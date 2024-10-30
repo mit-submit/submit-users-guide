@@ -1,88 +1,368 @@
-Tutorial 3: Containers (Docker and Singularity)
+Tutorial 3: Containers (Podman and Singularity)
 -----------------------------------------------
 
-This section briefly describes several options in which to set up your environment for working on submit. This section is not exhaustive but introduces several tools which can help you set up your code. 
+This section briefly describes several options in which to set up your environment for working on subMIT using containers.
+We support the use of Podman, which serves as an alternative to Docker, and Singularity.
 
-Docker:
-~~~~~~~
+All subMIT users have access to build containers. This tutorial will guide you through:
+1. Basic Podman commands
+2. Creating a Dockerfile
+3. Creating a Docker image from a Dockerfile
+4. Manage and run containers
+5. Using DockerHub to download and use an existing container
+6. Basic Singularity commands
+7. Converting your Docker/Pdoman container to a Singularity image
+8. CVMFS for singularity
 
-All SubMIT users have access to build dockers. This tutorial will guide you through creating a docker image from a dockerfile or through dockerhub. It will also introduce singularity and give an example of cvms.
+Podman
+~~~~~~
 
-We will start by downloading a Dockerfile and creating a docker image.
+Note: unsure whether containers are the right option for you? See other options for how to install software and environments on `our docs <https://submit.mit.edu/submit-users-guide/program.html>`_.
+
+Basic Podman Commands 
+.....................
+
+This section covers some essential `podman` commands to help you manage and interact with containers on the cluster.
+
+To view all running containers, use:
+
+.. code-block:: bash
+
+    podman ps
+
+This command shows an overview of running containers, displaying useful information such as container ID, image, status, and command. To see all containers (including stopped ones), add the `-a` flag:
+
+.. code-block:: bash
+
+    podman ps -a
+
+To start or stop a container, use:
+
+.. code-block:: bash
+
+    podman start <container_id_or_name>
+    podman stop <container_id_or_name>
+
+Replace `<container_id_or_name>` with the specific container’s ID or name.
+
+To delete a stopped container:
+
+.. code-block:: bash
+
+    podman rm <container_id_or_name>
+
+If you need to forcefully remove a running container, add the `-f` flag:
+
+.. code-block:: bash
+
+    podman rm -f <container_id_or_name>
+
+To download container images from a registry, use:
+
+.. code-block:: bash
+
+    podman pull <image_name>
+
+For example:
+
+.. code-block:: bash
+
+    podman pull almalinux:9
+
+To start a container interactively, allowing you to run commands directly within it, use:
+
+.. code-block:: bash
+
+    podman run -it --rm <image_name> /bin/bash
+
+- `-i` keeps stdin open, and `-t` allocates a terminal.
+- `--rm` removes the container when it exits.
+
+To check the logs for a specific container:
+
+.. code-block:: bash
+
+    podman logs <container_id_or_name>
+
+This command helps in troubleshooting or checking the output of a containerized application.
+
+Creating a Dockerfile
+.....................
+
+There exists `extensive documentation <https://docs.docker.com/get-started/docker-concepts/building-images/writing-a-dockerfile/>`_ on this topic from Docker.
+
+Dockerfiles are text documents that provide a set of instructions to Docker/Podman to create a container. This is where you specify the software you want to download, the environment you want to be in, and even the operating system you want to use.
+
+... if you know what you want
+.............................
+
+If you know the software you want, you can set up your Dockerfile to install exactly what you need.
+
+Suppose, for example, you want to install a simple stack consisting of: your favorite version of python with some packages, sitting on a Fedora distribution. The Dockerfile might look something like the following.
 
 .. code-block:: sh
 
-    wget https://raw.githubusercontent.com/docker-library/python/master/3.11/bullseye/Dockerfile 
-    docker build -t docker_python . 
+      # Dockerfile
 
-You can check that the new python is avaiable with:
+      # Specify the base image that we're building the image on top of
+      FROM fedora:latest
+
+      # need at least 6.32.04
+      # full list of RPMS https://src.fedoraproject.org/rpms/root/
+      RUN dnf install -y python
+
+      RUN dnf install -y pip
+      RUN python -m pip install --upgrade pip
+      RUN python -m pip install <your favorite packages>
+
+      USER $USER
+      WORKDIR $PWD
+      CMD ["/bin/bash"]
+
+
+... if you don't know what you want
+...................................
+
+If you don't know exactly the software you need, want to debug your configuration, or just could use to play around, you can enter a "blank" container, and install whatever you need interactively, to then use as a testbed for writing your Dockerfile.
+
+Suppose, for example, you are happy with AlmaLinux9 as your OS. You can then open a "blank" container,
 
 .. code-block:: sh
 
-      docker run --rm -i -t docker_python:latest python --version
+      podman run -it --rm almalinux:9 /bin/bash
 
-or enter python through the docker image
+Now, you should be in a command line operating as "root" inside your container. You can install things 
+via ``dnf install``, and figure out what you software you need.
+
+Building and Running a Container from a Dockerfile
+..................................................
+
+Once you have a `Dockerfile` specifying your container’s setup, you can use Podman to build and run the container.
+
+
+To create a container image from your `Dockerfile`, use the following command from the directory where your `Dockerfile` is located:
+
+.. code-block:: bash
+
+    podman build -t <image_name> .
+
+- `-t <image_name>` assigns a name to your container image for easier reference.
+- `.` specifies the current directory, where Podman expects to find the `Dockerfile`.
+
+Once your image is built, you can run a container from it:
+
+.. code-block:: bash
+
+    podman run -it --rm <image_name> /bin/bash
+
+- `-i` keeps stdin open, allowing interaction.
+- `-t` allocates a terminal.
+- `--rm` automatically removes the container after it stops.
+
+Managing Containers
+...................
+
+To start the container in the background, you can use the `-d` flag:
+
+.. code-block:: bash
+
+    podman run -d --name my_container <image_name>
+
+This runs the container in detached mode (`-d`), allowing it to run in the background. You can check its status with `podman ps` and bring up logs if needed with:
+
+.. code-block:: bash
+
+    podman logs my_container
+
+To access a running container’s shell, use:
+
+.. code-block:: bash
+
+    podman exec -it <container_id_or_name> /bin/bash
+
+Replace `<container_id_or_name>` with the actual ID or name of your running container.
+
+To stop a container:
+
+.. code-block:: bash
+
+    podman stop <container_id_or_name>
+
+To remove a container after stopping it:
+
+.. code-block:: bash
+
+    podman rm <container_id_or_name>
+
+This section should guide you through the basic steps for building, running, and managing a container from a Dockerfile using Podman.
+
+Acessing Local Data Inside a Container
+......................................
+
+The `-v` option in Podman allows you to mount a host directory or file inside the container. This is especially useful for sharing data between your host system and the container, or for persisting data generated by the container.
+
+Basic syntax:
+
+.. code-block:: bash
+
+    podman run -v /host/path:/container/path <image_name>
+
+- `/host/path` is the directory or file path on your local machine.
+- `/container/path` is where you want it to appear inside the container.
+
+For example:
+
+.. code-block:: bash
+
+    podman run -v /home/user/data:/app/data my_image
+
+This mounts the `data` folder from your host machine at `/app/data` inside the container, allowing both the container and host to read and write to it.
+
+The `-v` option can also include additional flags to control access:
+
+- `:ro` for read-only access.
+- `:rw` (default) for read and write access.
+
+Example with read-only:
+
+.. code-block:: bash
+
+    podman run -v /home/user/data:/app/data:ro my_image
+
+DockerHub
+.........
+
+`DockerHub <https://hub.docker.com/>`_ is an extensive platform that allows you to host or download containers.
+
+For this example, we will do a build directly from a a repository on DockerHub.
+
+We can grab the basic python distribution from DockerhHub `dockerhub python <https://hub.docker.com/_/python>`_.
 
 .. code-block:: sh
 
-      docker run --rm -i -t docker_python:latest
-
-Dockerhub:
-..........
-
-For this example, we will do a docker build directly from a a repository on dockerhub. In the following sections we will use that example to run in docker and Singularity
-
-Running:
-........
-
-We can grab the basic python distribution from dockerhub `dockerhub python <https://hub.docker.com/_/python>`_.
-
-.. code-block:: sh
-
-      docker pull python
+      podman pull python
 
 After this is done downloading we can then enter into a python environment:
 
 .. code-block:: sh
 
-      docker run --rm -i -t python
+      podman run --rm -i -t python
 
-You can run python commands through the docker as well. For example you can see the new python version from the docker:
+You can run python commands through the container as well. For example you can see the new python version from the container:
 
 .. code-block:: sh
 
-      docker run --rm -i -t python python --version
+      podman run --rm -i -t python python --version
 
 
-Singularity:
-~~~~~~~~~~~~
+Singularity
+~~~~~~~~~~~
 
 In high-performance computing (HPC) it is often convenient to create singularity images from containers. This section will guide you on how to create a Singularity Image Format (SIF) file to access your container.
 
-Creating a Singularity:
-.......................
+Basic Singularity Commands
+..........................
 
-We can create a .SIF file from the python docker we made above from dockerhub (you can also create from the Dockerfile instead if you would like):
+This section provides an overview of essential `singularity` commands for managing and running Singularity containers.
+
+To run a Singularity container interactively:
+
+.. code-block:: bash
+
+      singularity shell <image_name>.sif
+
+You can also achieve this by:
+
+.. code-block:: bash
+
+    singularity exec <image_name>.sif /bin/bash
+
+This command opens a bash shell in the container.
+
+To run a specific command within the container without opening an interactive shell:
+
+.. code-block:: bash
+
+    singularity exec <image_name>.sif <command>
+
+For example:
+
+.. code-block:: bash
+
+    singularity exec my_image.sif python script.py
+
+To inspect the contents and metadata of a Singularity image:
+
+.. code-block:: bash
+
+    singularity inspect <image_name>.sif
+
+This command displays metadata such as environment variables and labels defined in the image.
+
+To get shell access to a running Singularity container:
+
+.. code-block:: bash
+
+    singularity shell <image_name>.sif
+
+This command opens an interactive shell within the container environment.
+
+To mount host files and directories into a Singularity container, you can use the `--bind` option. This allows you to specify paths on the host that should be accessible within the container. 
+
+Basic syntax:
+
+.. code-block:: bash
+
+    singularity exec --bind /host/path:/container/path <image_name>.sif /bin/bash
+
+In this example, `/host/path` is the directory or file on the host, while `/container/path` is where it will be accessible inside the container. 
+
+For example, to mount a data directory:
+
+.. code-block:: bash
+
+    singularity exec --bind /home/submit/$USER:/app/data my_image.sif /bin/bash
+
+This command mounts the `data` directory from the host into the container at `/app/data`, allowing both the host and the container to read and write to it. 
+
+You can also specify multiple bind mounts by separating them with commas:
+
+.. code-block:: bash
+
+    singularity exec --bind /path1:/path1,/path2:/path2 my_image.sif /bin/bash
+
+
+Creating a Singularity from a Container
+.......................................
+
+We can create a .SIF file from any container. It's best to first compress your container,
 
 .. code-block:: sh
 
-      singularity build docker_name.sif docker://python
+      podman save -o <your_compressed_container>.tar <your_container>
 
-And start the singularity
-
-.. code-block:: sh
-
-      singularity shell docker_name.sif
-
-You can also execute directly with singularity exec:
+We can then use the compressed contained to build the singularity image,
 
 .. code-block:: sh
 
-      singularity exec docker_name.sif python --version
+      singularity build <singularity_image_name>.sif docker-arhive://<your_compressed_container>
 
+The singularity image is now built! It is just a file that will be created in the directory you are working in. We start a shell using the singularity image,
 
-CVMFS:
-......
+.. code-block:: sh
+
+      singularity shell <singularity_image_name>.sif
+
+Inside of which you will have access to the software you have set up.
+
+You can also execute code directly with ``singularity exec``,
+
+.. code-block:: sh
+
+      singularity exec <singularity_image_name>.sif python <your_python_script>.py
+
+CVMFS
+.....
 
 The CernVM File System (CVMFS) provides a scalable, reliable and low- maintenance software distribution service. It was developed to assist High Energy Physics (HEP) collaborations to deploy software on the worldwide- distributed computing infrastructure used to run data processing applications. CernVM-FS is implemented as a POSIX read-only file system in user space (a FUSE module). Files and directories are hosted on standard web servers and mounted in the universal namespace /cvmfs.
 
