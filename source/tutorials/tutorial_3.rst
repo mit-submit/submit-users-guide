@@ -1,9 +1,6 @@
 Tutorial 3: Containers (Podman and Singularity)
 -----------------------------------------------
 
-This section briefly describes several options in which to set up your environment for working on subMIT using containers, giving several examples.
-We support the use of Podman, which serves as an alternative to Docker, and Singularity.All subMIT users have access to build containers.
-
 This tutorial will guide you through:
 
 1. Basic Podman commands
@@ -13,13 +10,11 @@ This tutorial will guide you through:
 5. Using DockerHub to download and use an existing container
 6. Basic Singularity commands
 7. Converting your Docker/Pdoman container to a Singularity image
-8. How to use your container in your jobs
-9. CVMFS for singularity
+
+Note: unsure whether containers are the right option for you? See other options for how to install software and environments on `our docs <https://submit.mit.edu/submit-users-guide/program.html>`_.
 
 Podman
 ~~~~~~
-
-Note: unsure whether containers are the right option for you? See other options for how to install software and environments on `our docs <https://submit.mit.edu/submit-users-guide/program.html>`_.
 
 Basic Podman Commands 
 .....................
@@ -326,34 +321,3 @@ You can also execute code directly with ``singularity exec``,
 .. code-block:: sh
 
       singularity exec <singularity_image_name>.sif python <your_python_script>.py
-
-How to use your container in your jobs
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-There are a couple of options for this.
-
-If your jobs are running only on subMIT and you have a singularity image built, your singularity image can be placed on some commonly-readable directory from any of the compute nodes (/ceph), so you can access it directly from any of your jobs.
-
-If your jobs are running on subMIT, MIT T3, MIT T2, OSG, or anywhere on the grid, you can mirror your Docker container as a Singularity container to CVMFS. You can upload it to DockerHub with ``podman push`` and then add it to /cvmfs/singularity.opensciencegrid.org/.  This can be done by making a pull request to add the container to the following file which controls the sychrhonization
-https://github.com/opensciencegrid/cvmfs-singularity-sync/blob/master/docker_images.txt. Your container will then appear as a singularity image in ``/cvmfs/singularity.opensciencegrid.org/``, which is mounted on all the machines of the aforementioned systems.
-
-CVMFS
-.....
-
-The CernVM File System (CVMFS) provides a scalable, reliable and low- maintenance software distribution service. It was developed to assist High Energy Physics (HEP) collaborations to deploy software on the worldwide- distributed computing infrastructure used to run data processing applications. CernVM-FS is implemented as a POSIX read-only file system in user space (a FUSE module). Files and directories are hosted on standard web servers and mounted in the universal namespace /cvmfs.
-
-More documentation on CVMFS can be found here: `CVMFS <https://cernvm.cern.ch/fs/>`_
-
-We can access python on any machine through CVMFS. Lets checkt a python out through CVMFS:
-
-.. code-block:: sh
-
-      singularity exec /cvmfs/unpacked.cern.ch/registry.hub.docker.com/library/python:3.9/ python --version
-
-We can also enter the singularity:
-
-.. code-block:: sh
-
-      singularity shell -B ${PWD}:/work /cvmfs/unpacked.cern.ch/registry.hub.docker.com/library/python:3.9/
-
-Once in the singularity, you can run code with the python of that singularity. In the command above, the current directory is binded so that you can write a python script and run it here.

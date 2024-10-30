@@ -245,42 +245,12 @@ SubMIT uses Podman on all machines. For users who have been using or are familia
 
 All SubMIT users have access to build containers. You can start by finding instructions through your package's DockerHub or by downloading the code and building the image.
 
-.. code-block:: sh
-
-     podman build -t local/docker_name .
-
-You can then run the docker,
-
-.. code-block:: sh
-
-     podman run --rm -i -t local/docker_name
-
-Dockerhub:
-..........
-
-Containers can be pulled directly from DockerHub:  `dockerhub <https://hub.docker.com/>`_.
-
-.. code-block:: sh
-
-     podman pull <Dockerhub_container>
-
-After this is done downloading we can then enter into the container:
-
-.. code-block:: sh
-
-     podman run --rm -i -t <Dockerhub_container>
-
-To get access to local files, you have to mount them when you run the container:
-
-.. code-block:: sh
-
-     podman run --rm -v  -i -t <Dockerhub_container>
-
+A tutorial for Podman is provided `here <https://submit.mit.edu/submit-users-guide/tutorials/tutorial_3.html>`_.
 
 Singularity and Singularity Image Format (SIF)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Singularity can build containers in several different file formats. The default is to build a SIF (singularity image format) container. SIF files are compressed and immutable making them the best choice for reproducible, production-grade containers. If you are going to be running your singularity through one of the batch systems provided by subMIT, it is suggested that you create a SIF file. For Slurm, this SIF file can be accessed through any of your mounted directories, while for HTCondor, the best practice is to make this file avialble through CVMFS. This singularity image could then be accessed through both the T2 and T3 resources via MIT's hosted CVMFS.
+Singularity can build containers in several different file formats. The default is to build a SIF (singularity image format) container. SIF files are compressed and immutable making them the best choice for reproducible, production-grade containers.
 
 While Singularity doesn’t support running Docker images directly, it can convert them into a suitable format for running via Singularity. This opens up access to a huge number of existing container images available on DockerHub and other registries. When you pull a Docker image, Singularity pulls the slices or layers that make up the Docker image and converts them into a single-file Singularity SIF image. An example of this is shown below.
 
@@ -294,37 +264,26 @@ And start the singularity
 
       singularity shell docker_name.sif
 
-If you need this available on worker nodes on the MIT T3 and T2 through HTCondor you can add them to a space in your work directory. You will then need to email Max (Kerberos ID: maxi) or submit-help@mit.edu to create this CVMFs area for you.
+A tutorial for Singularity is provided `here <https://submit.mit.edu/submit-users-guide/tutorials/tutorial_3.html>`_.
+
+
+How to use your container in your jobs
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+There are a couple of options for this.
+
+**If your jobs are running only on subMIT and you have a singularity image built**, your singularity image can be placed on some commonly-readable directory from any of the compute nodes (/ceph), so you can access it directly from any of your jobs.
+
+**If your jobs are running on subMIT, MIT T3, MIT T2, OSG, or anywhere on the grid**, you can mirror your Docker container as a Singularity container to CVMFS. You can upload it to DockerHub with ``podman push`` and then add it to /cvmfs/singularity.opensciencegrid.org/.  This can be done by making a pull request to add the container to the following file which controls the sychrhonization
+https://github.com/opensciencegrid/cvmfs-singularity-sync/blob/master/docker_images.txt. Your container will then appear as a singularity image in ``/cvmfs/singularity.opensciencegrid.org/``, which is mounted on all the machines of the aforementioned systems.
+
+**If you need this available on worker nodes on the MIT T3 and T2**, you can add them to a space in your work directory. You will then need to email Max (Kerberos ID: maxi) or submit-help@mit.edu to create this CVMFs area for you.
 
 .. code-block:: sh
 
     # Start singularity from your /work area (email Max with pathway EXAMPLE:/work/submit/freerc/cvmfs/):
     singularity shell /cvmfs/cvmfs.cmsaf.mit.edu/submit/work/submit/freerc/cvmfs/docker_name.sif
 
-Singularity container
-.....................
-
-For this example, we will use the coffea-base singularity image based on the following `docker coffea image <https://github.com/CoffeaTeam/docker-coffea-base>`_.
-
-Entering into the singularity container. You can simply do the following command:
-
-.. code-block:: sh
-
-     singularity shell -B ${PWD}:/work /cvmfs/unpacked.cern.ch/registry.hub.docker.com/coffeateam/coffea-dask:latest
-
-Now you should be in a singularity environment. To test you try to import a non-native package like coffea in python:
-
-.. code-block:: sh
-
-     python3 -c "import coffea"
-
-The command above naturally binds the PWD and work directory. If you need to specify another area to bind you can do the following:
-
-.. code-block:: sh
-
-     export SINGULARITY_BIND="/mnt"
-
-Now you can run in many different environments that are available in singularity images through CVMFS.
 
 CVMFS
 -----
