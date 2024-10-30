@@ -19,7 +19,7 @@ Find below more details about each of your choices.
 Feel free to reach out to us for how to best set up your software or environments on subMIT!
 
 Native system
--------------
+~~~~~~~~~~~~~
 
 All of the subMIT machines come with several tools to help you get started with your work. Under `/usr/bin` you will find:
 
@@ -37,7 +37,7 @@ The following software is also avaiable, but needs particular instructions, whic
 - Other versions of gcc
 
 Julia
-~~~~~
+.....
 
 As of right now, Julia is not available to download through dnf. As such, to install Julia, please do the following (instructions from the `Julia language website <https://julialang.org/downloads/platform/#linux_and_freebsd>`_):
 
@@ -60,7 +60,7 @@ Source your bashrc and then you should be able to use Julia from now on.
 
 
 Wolfram Mathematica
-~~~~~~~~~~~~~~~~~~~
+...................
 
 Mathematica is easily accessible on ``submit00``. In order to use it for the first time, follow these simple steps:
 
@@ -81,13 +81,13 @@ You can easily run scripts (files with extension ``.wls`` and ``.m``) by using o
 
 When using scripts, you can use ``Print[]`` statements in your file that will directly appear in the terminal, or use ``Export[]`` to generate plots, for example.
 
-slurm for Mathematica
+Slurm for Mathematica
 .....................
 
 You can also submit batch jobs via slurm. In your batch file, make sure to include the line ``#SBATCH --nodelist=submit00``.
 
 
-Jupyterhub for Mathematica
+JupyterHub for Mathematica
 ..........................
 
 If you wish to get an interface similar to a Mathematica notebook (.nb file), you can use WolframLanguageforJupyter. To install, follow these steps:
@@ -117,7 +117,7 @@ Go to the submit website and open jupyterhub. Choose the job profile to "Slurm f
 You can make sure that you are on submit00 by opening a terminal within the webpage, which should show ``username@submit00.mit.edu``. You can now open a jupyter notebook (.ipynb file), make sure you are using the Wolfram kernel (choose the kernel in the top right of the screen), and use Wolfram syntax as you would in a Wolfram notebook. The outputs will even have the Wolfram fonts!
 
 gcc and systemwide systems
-~~~~~~~~~~~~~~~~~~~~~~~~~~
+..........................
 
 The default gcc installed on the system is found in ``/usr/bin/gcc``, which is version 11.4.
 
@@ -133,10 +133,10 @@ Alternatively, you can also use a gcc version available through CVMFS. An exampl
 For systemwide tools such as gcc, these options should be considered first in order to solve the issues on the user side. If these options still do not work for your needs then please email <submit-help@mit.edu>.
 
 Package and Environment Managers
---------------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Conda
-~~~~~
+.....
 
 Conda is an open source package management system and environment management system. We can use this to set up consistent environments and manage the package dependencies for various applications. Below is an example to set up a python environment as well as a different gcc compiler.
 
@@ -225,13 +225,13 @@ Conda in Visual Studio Code
 **Selecting and activating a conda environment in VSCode:** you need to inform VSCode which conda environment to use for your Python workspace. First, make sure you have the Python extension in VSCode, which you can install by searching for ''Python'' in the Extensions section of VSCode. Then, look at the bottom-left corner (macOS) or bottom-right corner (Windows) of the VSCode window to find the "Select Python Interpreter" button. Click on it and a list of available Python interpreters will appear. Choose the one that suits your needs (e.g., ``myenv``). You can also select the environment using the Command Palette (``Cmd+Shift+P`` in macOS or ``Ctrl+Shift+P`` in Windows) and searching for "Python: Select Interpreter". Note that it may take some time for VSCode to detect the available conda environments. Also, you may have to specifically install the Python extension for connections over SSH with submit.mit.edu.
 
 Spack
-~~~~~
+.....
 
 Docs coming soon...
 
 
 Containers
-----------
+~~~~~~~~~~
 
 Containers are becoming commonplace in scientific workflows. SubMIT offers access to containers through Singularity and Podman (an alternative to Docker). This section will give a short example on how to enter into a singularity container to run your framework. For more information on dockers see the `docker engine site <https://docs.docker.com/engine/reference/commandline/build/>`_.
 
@@ -239,7 +239,7 @@ A comprehensive tutorial on how to set up containers and singularity images is p
 
 
 Podman
-~~~~~~
+......
 
 SubMIT uses Podman on all machines. For users who have been using or are familiar with Docker, you can run on Podman images created with Docker. You can also run familiar Docker commands, such as ``pull``, ``push``, ``build``, ``commit``, ``tag``, etc. with Podman.
 
@@ -248,7 +248,7 @@ All SubMIT users have access to build containers. You can start by finding instr
 A tutorial for Podman is provided `here <https://submit.mit.edu/submit-users-guide/tutorials/tutorial_3.html>`_.
 
 Singularity and Singularity Image Format (SIF)
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+..............................................
 
 Singularity can build containers in several different file formats. The default is to build a SIF (singularity image format) container. SIF files are compressed and immutable making them the best choice for reproducible, production-grade containers.
 
@@ -268,7 +268,7 @@ A tutorial for Singularity is provided `here <https://submit.mit.edu/submit-user
 
 
 How to use your container in your jobs
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+......................................
 
 There are a couple of options for this.
 
@@ -286,7 +286,7 @@ https://github.com/opensciencegrid/cvmfs-singularity-sync/blob/master/docker_ima
 
 
 CVMFS
------
+~~~~~
 
 The CernVM File System (CVMFS) provides a scalable, reliable and low- maintenance software distribution service. It was developed to assist High Energy Physics (HEP) collaborations to deploy software on the worldwide-distributed computing infrastructure used to run data processing applications. CernVM-FS is implemented as a POSIX read-only file system in user space (a FUSE module). Files and directories are hosted on standard web servers and mounted in the universal namespace ``/cvmfs``.
 
@@ -295,7 +295,7 @@ More documentation on CVMFS can be found here: `CVMFS <https://cernvm.cern.ch/fs
 A couple examples of using CVMFS are shown below.
 
 ROOT
-~~~~
+....
 
 To set up ROOT:
 
@@ -305,7 +305,7 @@ To set up ROOT:
      root
 
 GEANT4
-~~~~~~
+......
 
 To set up GEANT4 (make sure to use one of the AlmaLinux9 machines):
 
@@ -324,7 +324,7 @@ To set up GEANT4 (make sure to use one of the AlmaLinux9 machines):
      ./geant4-config --version
 
 CMSSW
-~~~~~
+.....
 
 To set up the CMS software (CMSSW) or other cms specific tools:
 
@@ -350,7 +350,7 @@ In addition to the typical CMVFS environments, MIT hosts its own version of CVMF
 
 
 Additional Operating Systems (CMS specific)
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+...........................................
 
 For CMS users, there are additional options to operating systems through CMSSW. The following commands will set up CMSSW and then put you into a singularity for Scientific Linux CERN 6 (slc6), CentOS 7 (cc7), AlmaLinux 8 (el8) and AlmaLinux 9 (el9). 
 
