@@ -1,10 +1,10 @@
 Tutorial 3: Containers (Podman and Singularity)
 -----------------------------------------------
 
-This section briefly describes several options in which to set up your environment for working on subMIT using containers.
-We support the use of Podman, which serves as an alternative to Docker, and Singularity.
+This section briefly describes several options in which to set up your environment for working on subMIT using containers, giving several examples.
+We support the use of Podman, which serves as an alternative to Docker, and Singularity.All subMIT users have access to build containers.
 
-All subMIT users have access to build containers. This tutorial will guide you through:
+This tutorial will guide you through:
 1. Basic Podman commands
 2. Creating a Dockerfile
 3. Creating a Docker image from a Dockerfile
@@ -12,7 +12,8 @@ All subMIT users have access to build containers. This tutorial will guide you t
 5. Using DockerHub to download and use an existing container
 6. Basic Singularity commands
 7. Converting your Docker/Pdoman container to a Singularity image
-8. CVMFS for singularity
+8. How to use your container in your jobs
+9. CVMFS for singularity
 
 Podman
 ~~~~~~
@@ -88,8 +89,6 @@ This command helps in troubleshooting or checking the output of a containerized 
 
 Creating a Dockerfile
 .....................
-
-There exists `extensive documentation <https://docs.docker.com/get-started/docker-concepts/building-images/writing-a-dockerfile/>`_ on this topic from Docker.
 
 Dockerfiles are text documents that provide a set of instructions to Docker/Podman to create a container. This is where you specify the software you want to download, the environment you want to be in, and even the operating system you want to use.
 
@@ -360,6 +359,16 @@ You can also execute code directly with ``singularity exec``,
 .. code-block:: sh
 
       singularity exec <singularity_image_name>.sif python <your_python_script>.py
+
+How to use your container in your jobs
+......................................
+
+There are a couple of options for this.
+
+If your jobs are running only on subMIT and you have a singularity image built, your singularity image can be placed on some commonly-readable directory from any of the compute nodes (/ceph), so you can access it directly from any of your jobs.
+
+If your jobs are running on subMIT, MIT T3, MIT T2, OSG, or anywhere on the grid, you can mirror your Docker container as a Singularity container to CVMFS. You can upload it to DockerHub with ``podman push`` and then add it to /cvmfs/singularity.opensciencegrid.org/.  This can be done by making a pull request to add the container to the following file which controls the sychrhonization
+https://github.com/opensciencegrid/cvmfs-singularity-sync/blob/master/docker_images.txt. Your container will then appear as a singularity image in ``/cvmfs/singularity.opensciencegrid.org/``, which is mounted on all the machines of the aforementioned systems.
 
 CVMFS
 .....
