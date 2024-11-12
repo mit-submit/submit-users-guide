@@ -1,6 +1,8 @@
 Best practices
 --------------
 
+.. tags:: Slurm
+
 Submit is a shared tool. As such, you are responsible for setting up your work to properly use the resources available to you through submit. This section covers a few examples of avoidable problems. 
 
 Use batch submission systems to scale up your workflow

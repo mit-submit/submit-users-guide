@@ -47,12 +47,16 @@ Future Work - subMIT
  
    future/alma
 
-Indices and tables
-==================
+Search tool and tags
+====================
 
-* :ref:`genindex`
-* :ref:`modindex`
 * :ref:`search`
+
+.. toctree::
+   :maxdepth: 2
+   :titlesonly:
+
+   _tags/tagsindex
 
 Contributing
 ============

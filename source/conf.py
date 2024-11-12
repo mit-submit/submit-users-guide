@@ -14,6 +14,13 @@
 # import sys
 # sys.path.insert(0, os.path.abspath('.'))
 
+import warnings
+from sphinx.deprecation import RemovedInSphinx90Warning
+
+warnings.filterwarnings("ignore", category=RemovedInSphinx90Warning)
+
+
+
 
 # -- Project information -----------------------------------------------------
 
@@ -30,8 +37,36 @@ release = 'v1'
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
 extensions = [
-'sphinx_toolbox.collapse','sphinx_tabs.tabs','sphinx_togglebutton'
+    'sphinx_toolbox.collapse',
+    'sphinx_tabs.tabs',
+    'sphinx_togglebutton',
+    'sphinx_design',
+    'sphinx_tags'
 ]
+
+
+
+
+tags_create_tags = True
+tags_create_badges = True
+tags_badge_colors = {
+        "Julia": "primary",
+        "Mathematica": "secondary",
+        "Conda": "success",
+        "Slurm": "info",
+        "Condor": "warning",
+        "Containers": "danger",
+        "VSCode": "light",
+        "JupyterHub": "dark"
+}
+
+tags_page_title = "All tags"
+tags_page_header = "Tags in this site"
+tags_overview_title = "User's Guide Tags"
+tags_page_path = '_tags'
+tags_index_page = 'tagsindex'
+tags_index_head = "Click on a word to see the pages referring to this tag. The number in parenthesis is the number of pages with this tag."
+tags_create_tags_index = True
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']

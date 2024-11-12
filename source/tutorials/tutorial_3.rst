@@ -1,6 +1,8 @@
 Tutorial 3: Containers (Podman and Singularity)
 -----------------------------------------------
 
+.. tags:: Containers
+
 This tutorial will guide you through:
 
 1. Basic Podman commands

@@ -3,10 +3,11 @@
     <style> .red {color:red} </style>
 
 .. role:: red
-    
 
 Batch computing
 ---------------
+
+.. tags:: Slurm, Condor, GPU
 
 This section will give you a quick guide on how to submit batch jobs at submit. There will be a couple of simple examples to help get you started.
 

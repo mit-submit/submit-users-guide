@@ -1,6 +1,8 @@
 Available software
 ------------------
 
+.. tags:: Julia, Mathematica, Conda, Slurm, VSCode, Containers, JupyterHub
+
 This section briefly describes several options in which to set up your environment for working on subMIT. This section is not exhaustive but introduces several tools which can help you set up your code. 
 
 You have several options available for either using installed software, or installing your own:
@@ -13,7 +15,7 @@ You have several options available for either using installed software, or insta
 3. **Containers**:
      - **singularity** is an open source platform to create containers, which can be used to set up more complicated environments.
      - **podman** is an alternative to Docker (which can run in "rootless" mode), and gives more control, particularly for networking, than singularity.
-5. **CVFMS** is provided by CERN, and has many environments.
+4. **CVFMS** is provided by CERN, and has many environments.
 
 Find below more details about each of your choices.
 Feel free to reach out to us for how to best set up your software or environments on subMIT!
@@ -39,6 +41,8 @@ The following software is also avaiable, but needs particular instructions, whic
 Julia
 .....
 
+
+
 As of right now, Julia is not available to download through dnf. As such, to install Julia, please do the following (instructions from the `Julia language website <https://julialang.org/downloads/platform/#linux_and_freebsd>`_):
 
 .. code-block:: sh
@@ -62,6 +66,8 @@ Source your bashrc and then you should be able to use Julia from now on.
 Wolfram Mathematica
 ...................
 
+
+
 Mathematica is easily accessible on ``submit00``. In order to use it for the first time, follow these simple steps:
 
 #. ssh into submit00: ``ssh username@submit00.mit.edu``
@@ -83,6 +89,8 @@ When using scripts, you can use ``Print[]`` statements in your file that will di
 
 Slurm for Mathematica
 .....................
+
+
 
 You can also submit batch jobs via slurm. In your batch file, make sure to include the line ``#SBATCH --nodelist=submit00``.
 
@@ -119,6 +127,7 @@ You can make sure that you are on submit00 by opening a terminal within the webp
 gcc and systemwide systems
 ..........................
 
+
 The default gcc installed on the system is found in ``/usr/bin/gcc``, which is version 11.4.
 
 If newer versions of gcc are needed, they are available through conda `conda gcc <https://anaconda.org/conda-forge/gcc>`_. 
@@ -137,6 +146,8 @@ Package and Environment Managers
 
 Conda
 .....
+
+
 
 Conda is an open source package management system and environment management system. We can use this to set up consistent environments and manage the package dependencies for various applications. Below is an example to set up a python environment as well as a different gcc compiler.
 
@@ -222,6 +233,8 @@ You can find many compilers, and a lot of other software, conda channels. Here i
 Conda in Visual Studio Code
 ...........................
 
+
+
 **Selecting and activating a conda environment in VSCode:** you need to inform VSCode which conda environment to use for your Python workspace. First, make sure you have the Python extension in VSCode, which you can install by searching for ''Python'' in the Extensions section of VSCode. Then, look at the bottom-left corner (macOS) or bottom-right corner (Windows) of the VSCode window to find the "Select Python Interpreter" button. Click on it and a list of available Python interpreters will appear. Choose the one that suits your needs (e.g., ``myenv``). You can also select the environment using the Command Palette (``Cmd+Shift+P`` in macOS or ``Ctrl+Shift+P`` in Windows) and searching for "Python: Select Interpreter". Note that it may take some time for VSCode to detect the available conda environments. Also, you may have to specifically install the Python extension for connections over SSH with submit.mit.edu.
 
 Spack
@@ -233,6 +246,8 @@ Docs coming soon...
 Containers
 ~~~~~~~~~~
 
+
+
 Containers are becoming commonplace in scientific workflows. SubMIT offers access to containers through Singularity and Podman (an alternative to Docker). This section will give a short example on how to enter into a singularity container to run your framework. For more information on dockers see the `docker engine site <https://docs.docker.com/engine/reference/commandline/build/>`_.
 
 A comprehensive tutorial on how to set up containers and singularity images is presented `here <https://submit.mit.edu/submit-users-guide/tutorials/tutorial_3.html>`_. Here, only general information and an overview are presented.
@@ -240,6 +255,8 @@ A comprehensive tutorial on how to set up containers and singularity images is p
 
 Podman
 ......
+
+
 
 SubMIT uses Podman on all machines. For users who have been using or are familiar with Docker, you can run on Podman images created with Docker. You can also run familiar Docker commands, such as ``pull``, ``push``, ``build``, ``commit``, ``tag``, etc. with Podman.
 
@@ -249,6 +266,8 @@ A tutorial for Podman is provided `here <https://submit.mit.edu/submit-users-gui
 
 Singularity and Singularity Image Format (SIF)
 ..............................................
+
+
 
 Singularity can build containers in several different file formats. The default is to build a SIF (singularity image format) container. SIF files are compressed and immutable making them the best choice for reproducible, production-grade containers.
 
@@ -288,6 +307,7 @@ https://github.com/opensciencegrid/cvmfs-singularity-sync/blob/master/docker_ima
 CVMFS
 ~~~~~
 
+
 The CernVM File System (CVMFS) provides a scalable, reliable and low- maintenance software distribution service. It was developed to assist High Energy Physics (HEP) collaborations to deploy software on the worldwide-distributed computing infrastructure used to run data processing applications. CernVM-FS is implemented as a POSIX read-only file system in user space (a FUSE module). Files and directories are hosted on standard web servers and mounted in the universal namespace ``/cvmfs``.
 
 More documentation on CVMFS can be found here: `CVMFS <https://cernvm.cern.ch/fs/>`_
@@ -296,6 +316,8 @@ A couple examples of using CVMFS are shown below.
 
 ROOT
 ....
+
+
 
 To set up ROOT:
 
@@ -306,6 +328,8 @@ To set up ROOT:
 
 GEANT4
 ......
+
+
 
 To set up GEANT4 (make sure to use one of the AlmaLinux9 machines):
 
@@ -325,6 +349,7 @@ To set up GEANT4 (make sure to use one of the AlmaLinux9 machines):
 
 CMSSW
 .....
+
 
 To set up the CMS software (CMSSW) or other cms specific tools:
 
