@@ -1,6 +1,8 @@
 Tutorial 5: Debugging Fortran code with Visual Studio Code (VSCode)
 -------------------------------------------------------------------
 
+.. tags:: VSCode
+
 This takes a bit more initial configuration (that may be less than obvious) than some other languages, so we'll walk you through this.
 
 .. |ShowMore| replace:: More Detail (click here to show/hide)

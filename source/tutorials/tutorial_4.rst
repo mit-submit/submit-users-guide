@@ -1,6 +1,8 @@
 Tutorial 4: Source Control (Git/Github) with Visual Studio Code (VSCode)
 ------------------------------------------------------------------------
 
+.. tags:: VSCode
+
 .. |ShowMore| replace:: More Detail (click here to show/hide)
 
 .. tip:: 

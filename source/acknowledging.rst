@@ -1,6 +1,7 @@
 Acknowledging subMIT
 --------------------
 
+
 It is very helpful for us to have a record of publications that made use
 of subMIT resources (be those the physical hardware, or the human support
 that we provide).

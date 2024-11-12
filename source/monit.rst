@@ -1,5 +1,8 @@
 Monitoring at submit
 --------------------
+
+.. tags:: Slurm, Condor
+
 This section will detail the monitoring available at submit. Here we will detail how you can keep track of the submit machines as you work as well as monitor your condor jobs.
 
 The main submit page

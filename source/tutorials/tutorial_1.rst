@@ -1,6 +1,8 @@
 Tutorial 1: Common software packages (python, Julia, MATLAB)
 ------------------------------------------------------------
 
+.. tags:: Julia
+
 This tutorial will show a few examples of code that you can run on submit immediately after logging in (python, MATLAB), or after some simple setups (Julia). 
 For more info on what is immediately available to you on subMIT, see the User's Guide here: `Native System <https://submit.mit.edu/submit-users-guide/program.html#native-system>`_
 
@@ -69,6 +71,8 @@ Now let's do the same code as above but use numpy instead:
 Types of Python environments:
 .............................
 
+
+
 #. Global: if you run ``python`` or ``python3`` in a terminal window, you are running in a global environment. However, it is a better practice to create a local environment.
 
 #. Local: in a local environment, you can install packages that won't affect your other local environments, nor the global environment. There are two types:
@@ -89,6 +93,8 @@ Both types of local environments can also be created in Visual Studio Code by us
 
 Julia:
 ~~~~~~
+
+
 
 Once you have installed Julia (see the `Available software page <https://submit.mit.edu/submit-users-guide/program.html#julia>`_), you can try running a simple Julia example:
 

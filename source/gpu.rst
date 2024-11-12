@@ -1,6 +1,8 @@
 GPU resources
 -------------
 
+.. tags:: Slurm, Condor, JupyterHub, GPU
+
 SubMIT provides access to several GPUs. This section outlines how to utilize these GPUs in your workflow. Access to GPUs is available via the ``submit-gpu`` and ``submit-gpu-a30`` partitions through slurm, Jupyterhub, and HTCondor. Direct SSH access is not permitted to ``submit-gpu`` or ``submit-gpu-a30``. This ensures a controlled and secure environment for utilizing GPU capabilities. Keep in mind that these are shared resources so use these machines responsibly.
 
 There are two server pools available:

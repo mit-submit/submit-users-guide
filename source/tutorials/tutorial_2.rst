@@ -1,11 +1,7 @@
-.. raw:: html
-
-    <style> .red {color:red} </style>
-
-.. role:: red
-
 Tutorial 2: Batch Job (HTCondor and Slurm)
 ------------------------------------------
+
+.. tags:: Slurm, Condor, GPU
 
 This section briefly describes several options in which to set up your environment for working on submit. This section is not exhaustive but introduces several tools which can help you set up your code. 
 

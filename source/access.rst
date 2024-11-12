@@ -1,6 +1,8 @@
 Access to subMIT
 ----------------
 
+.. tags:: JupyterHub, VSCode, GPU
+
 You have several options to connect to subMIT, view and edit your files, and do your work.
 
 1. **ssh** is the simplest way to connect to the login nodes, see `the starting guide <https://submit.mit.edu/submit-users-guide/starting.html>`_.
