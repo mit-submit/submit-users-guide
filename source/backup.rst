@@ -15,7 +15,7 @@ Every other day than Sunday an incremental backup of only files newer than the l
 
 There is also one more complete backup from longer ago which is occasionally reset.
 
-The backup is stored on submit03.mit.edu and thus best retrieved from that machine. Users can access the files normally because they are created with the permissions based on the users permission.
+The backup is stored on submit07.mit.edu and thus best retrieved from that machine. Users can access the files normally because they are created with the permissions based on the users permission.
 
 Restoring files
 ~~~~~~~~~~~~~~~
@@ -26,8 +26,8 @@ Generally speaking if you have a major issue of accidental file deletions or suc
 
 **WARNING**
 
-Use the following syntax to restore the latest version of the given file from the backup
+Use the following syntax to restore the latest version of the given file from the backup after you have logged in to **submit07.mit.edu**:
 
-   /mnt/submit03/d00/backup/submit/bin/retrieve_backup.sh <user>/<myFile>
+   retrieve_backup.sh <user>/<myFile>
 
-If <myFile> is a directory the complete directory is restored. Be careful that there is enough space in /tmp because the backup is restored into /tmp/<user>.
+If <myFile> is a directory the complete directory is restored. Be careful that there is enough space in /tmp because the backup is restored into /tmp/....

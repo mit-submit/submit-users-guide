@@ -6,14 +6,14 @@ Tutorial 7: Introduction to Snakemake
    :target: img/snakemake.png
    :alt: logo
 
-This Snakemake tutorial was originally delivered by Blaise Delaney at the Workshop on Basic Computing Services in the Physics Department - subMIT at MIT in January 2024. 
-The relevant code examples for this tutorial is provide at https://github.com/mit-submit/submit-examples/blob/main/snakemake/ (including the Snakefile, source codes, and slurm examples).
+This Snakemake tutorial was originally delivered by Blaise Delaney at the Workshop on Basic Computing Services in the Physics Department - subMIT at MIT in January 2024. The version on the current page was adapted from the `original one <https://github.com/reallyblaised/snakemake-tutorial>`_ prepared by Blaise.
+The relevant code examples for this tutorial is provided at https://github.com/mit-submit/submit-examples/blob/main/snakemake/ (including the Snakefile, source codes, and slurm examples).
 
 Table of Contents
 -----------------
 
-* `Setup <#setup>`_
 * `Introduction <#introduction>`_
+* `Setup <#setup>`_
 * `A basic pipeline <#a-basic-pipeline>`_
 
   * `Global-scope config <#global-scope-config>`_
@@ -44,6 +44,22 @@ Table of Contents
   * `Accessing EOS <#accessing-eos>`_
 
 * `Addendum: topics not covered but likely of interest <#topics-not-covered-here-but-likely-of-interest>`_
+
+
+The Snakemake workflow management system is a tool to create reproducible and scalable data analyses. It allows users to describe complex workflows with a hybrid of Python and shell scripting. Snakemake will automatically determine how to structure the workflow based on the input/output files specified for each job step. This can then be seamlessly scaled to server, cluster, grid and cloud environments without the need to modify the workflow definition.
+
+Introduction
+------------
+
+The power of Snakemake lies in processing several files via independent jobs. These, in turn, are regulated by user-defined *rules*\ , which can accommodate bash and Python commands for I/O, file processing, logging, benchmarking and alike. 
+
+We'll develop a prototypical LHCb analysis workflow, using dummy empty ``.root`` files, which we'll simply ``touch`` at each analysis stage for simplicity. Realistically, in your amazing project, you will replace these simplistic I/O steps with bash commands and Python executables. 
+
+The key point is that Snakemake orchestrates the job dependency, *irrespectively of the exact command executed in each job*. The full pipeline is specified by the ``Snakefile`` file, where rules are declared. In this tutorial we enforce a one-to-one correspondence between the stages of this dummy analysis and the rules of the workflow. That is, each rule specifies a stage (selection, postprocessing, fitting, etc.) in the analysis.
+
+The rule execution order is set by string pattern matching the respective per-rule ``input`` and ``output`` directives. You can read more about this design on the Snakemake `\ *Getting Started* <https://snakemake.github.io>`_ page. In the interest of time, let's dive in; certain tools are best learnt by getting your hands dirty.
+
+The tutorial is divided into several sections. First, we'll start with a basic implementation. I'll provide you with commands I typically use to ascertain the correctness of the implementation. We'll cover how to deploy Snakemake pipelines on the SubMIT cluster (on both CPU and GPU machines). Finally, I'll a few snippets that might come in handy in thornier scenarios.
 
 Setup
 -----
@@ -92,19 +108,6 @@ Assuming you have a `conda <https://conda.io/projects/conda/en/latest/user-guide
    .. code-block:: bash
 
       $ snakemake --help
-
-Introduction
-------------
-
-The power of Snakemake lies in processing several files via independent jobs. These, in turn, are regulated by user-defined *rules*\ , which can accommodate bash and Python commands for I/O, file processing, logging, benchmarking and alike. 
-
-We'll develop a prototypical LHCb analysis workflow, using dummy empty ``.root`` files, which we'll simply ``touch`` at each analysis stage for simplicity. Realistically, in your amazing project, you will replace these simplistic I/O steps with bash commands and Python executables. 
-
-The key point is that Snakemake orchestrates the job dependency, *irrespectively of the exact command executed in each job*. The full pipeline is specified by the ``Snakefile`` file, where rules are declared. In this tutorial we enforce a one-to-one correspondence between the stages of this dummy analysis and the rules of the workflow. That is, each rule specifies a stage (selection, postprocessing, fitting, etc.) in the analysis.
-
-The rule execution order is set by string pattern matching the respective per-rule ``input`` and ``output`` directives. You can read more about this design on the Snakemake `\ *Getting Started* <https://snakemake.github.io>`_ page. In the interest of time, let's dive in; certain tools are best learnt by getting your hands dirty.
-
-The tutorial is divided into several sections. First, we'll start with a basic implementation. I'll provide you with commands I typically use to ascertain the correctness of the implementation. We'll cover how to deploy Snakemake pipelines on the SubMIT cluster (on both CPU and GPU machines). Finally, I'll a few snippets that might come in handy in thornier scenarios.
 
 A basic pipeline
 ----------------
