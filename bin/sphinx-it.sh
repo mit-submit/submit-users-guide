@@ -1,4 +1,14 @@
 #!/bin/bash
+WEB_SERVER=submit06.mit.edu
+WEB_LOCATION=/var/www/html/submit-users-guide
+if [ ".$1" != "." ]
+then
+   WEB_SERVER="$1"
+fi
+RSYNC_TARGET=$WEB_SERVER:$WEB_LOCATION
+
+echo " Installing into: $RSYNC_TARGET"
+
 sphinx-build -b html source build
 if [ ".$?" != ".0" ]
 then
@@ -17,4 +27,7 @@ fi
 echo "\
 cp css/pygments.css build/_static/"
 cp css/pygments.css build/_static/
-rsync -avh build/ /home/submit/mamoore/public_html/user_guide/
+
+echo "\
+rsync -Cavz --delete build/* $RSYNC_TARGET"
+rsync -Cavz --delete build/* $RSYNC_TARGET
