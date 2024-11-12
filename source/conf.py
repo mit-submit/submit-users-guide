@@ -85,7 +85,8 @@ exclude_patterns = []
 
 #html_theme = 'alabaster'
 #html_theme = 'sizzle'
-html_theme = 'groundwork'
+#html_theme = 'groundwork'
+html_theme = 'classic'
 
 #Theme options for groundwork: https://github.com/useblocks/groundwork-sphinx-theme
 html_theme_options = {
