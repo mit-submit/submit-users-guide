@@ -17,4 +17,5 @@ fi
 echo "\
 cp css/pygments.css build/_static/"
 cp css/pygments.css build/_static/
+cp _static/custom.css build/_static
 rsync -avh build/ /home/submit/mamoore/public_html/user_guide/

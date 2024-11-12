@@ -1,0 +1,10 @@
+.body, .document, .wy-nav-content-wrap, .wy-nav-content {
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+}
+
+.footer {
+	margin-top:auto;
+}
+
