@@ -1,0 +1,15 @@
+.body, .document, .wy-nav-content-wrap, .wy-nav-content {
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+}
+
+.sphinxsidebar .logo, .sphinxsidebarwrapper .logo {
+	padding-top: 0;
+	margin-top: 0;
+}
+
+.footer {
+	margin-top:auto;
+}
+
