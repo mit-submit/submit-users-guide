@@ -41,7 +41,8 @@ extensions = [
     'sphinx_tabs.tabs',
     'sphinx_togglebutton',
     'sphinx_design',
-    'sphinx_tags'
+    'sphinx_tags',
+    'sphinx.ext.autosectionlabel'
 ]
 
 
@@ -91,7 +92,7 @@ html_theme = 'classic'
 #Theme options for groundwork: https://github.com/useblocks/groundwork-sphinx-theme
 html_theme_options = {
 #    "sidebar_width": '240px',
-    "stickysidebar": True,
+    "stickysidebar": True
 #   "stickysidebarscrollable": True,
 #    "contribute": True,
 #    "github_fork": "useblocks/groundwork",
