@@ -15,7 +15,7 @@ subMIT has several languages available in the native system. For this example, w
 
 Let's run a simple code. Here is an example:
 
-.. code-block:: sh
+.. code-block:: python
 
      x = [1.0,2.0,3.0,4.0,5.0,6.0,7.0,8.0,9.0,10.0]
      y = []
@@ -51,7 +51,7 @@ You should now see numpy installed in your local directory. You can check that w
 
 Now let's do the same code as above but use numpy instead:
 
-.. code-block:: sh
+.. code-block:: python
 
      x = [1.0,2.0,3.0,4.0,5.0,6.0,7.0,8.0,9.0,10.0]
      y = []
@@ -98,7 +98,7 @@ Julia:
 
 Once you have installed Julia (see the `Available software page <https://submit.mit.edu/submit-users-guide/program.html#julia>`_), you can try running a simple Julia example:
 
-.. code-block:: sh
+.. code-block:: julia
 
      function sphere_vol(r)
          # julia allows Unicode names (in UTF-8 encoding)
@@ -144,7 +144,7 @@ MATLAB:
 
 Here we can try running a simple MATLAB example:
 
-.. code-block:: sh
+.. code-block:: matlab
 
      a = 3;
      b = a*a;

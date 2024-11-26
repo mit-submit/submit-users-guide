@@ -7,4 +7,5 @@ All tags: Conda
     :maxdepth: 1
     :caption: Tags in this site
 
+    ../conda.rst
     ../program.rst

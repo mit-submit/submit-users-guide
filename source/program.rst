@@ -8,9 +8,9 @@ This section briefly describes several options in which to set up your environme
 You have several options available for either using installed software, or installing your own:
 
 1. **Native system**: basic sofwtare is installed on SubMIT meachines by default, or easily installable via our suggested methods.
-     - This includes: python, c++, Java, `MATLAB <https://submit.mit.edu/submit-users-guide/tutorials/tutorial_1.html#matlab>`_, `Wolfram Mathematica <https://submit.mit.edu/submit-users-guide/program.html#wolfram-mathematica>`_, XRootD, gfal, gcc, hdf5.
+     - This includes: python, C++, Java, `MATLAB <https://submit.mit.edu/submit-users-guide/tutorials/tutorial_1.html#matlab>`_, `Wolfram Mathematica <https://submit.mit.edu/submit-users-guide/program.html#wolfram-mathematica>`_, XRootD, gfal, gcc, hdf5.
 2. **Package and Environment Managers**: 
-     - **conda** is a package and environment manager through which you can install software (not just python!).
+     - **Conda** is a package and environment manager through which you can install software (not just python!).
      - **spack**
 3. **Containers**:
      - **singularity** is an open source platform to create containers, which can be used to set up more complicated environments.
@@ -29,7 +29,7 @@ All of the subMIT machines come with several tools to help you get started with 
 - gcc
 - XRootD
 - gfal
-- c++
+- C++
 - Java
 
 The following software is also avaiable, but needs particular instructions, which are detailed below:
@@ -179,6 +179,7 @@ Quick commands to know
      conda activate env_name # To activate the environment called env_name
      conda deactivate # To deactivate an environment
      conda info --envs # To list of your environments. You can also use "conda env list"
+     conda install <package name> # To install packages, e.g. numpy, pandas, matplotlib
      conda list # To list the packages of an environment. Use after activating the environment or add "-n env_name"
      conda env export > environment.yml # To export your environment with its packages. Use after activating the environment
      conda remove --name env_name --all # To remove the environment env_name

@@ -9,7 +9,7 @@ User's Guide Tags
     :caption: Click on a word to see the pages referring to this tag. The number in parenthesis is the number of pages with this tag.
     :maxdepth: 1
 
-    Conda (1) <conda.rst>
+    Conda (2) <conda.rst>
     Condor (4) <condor.rst>
     Containers (2) <containers.rst>
     GPU (4) <gpu.rst>

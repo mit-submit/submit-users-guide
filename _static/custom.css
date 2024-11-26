@@ -11,5 +11,34 @@
 
 .footer {
 	margin-top:auto;
+	visibility: hidden;
+}
+
+.bottom-of-page {
+	visibility: hidden;
+  }
+
+/* .related {
+    display: none;
+}*/
+
+footer {
+    display: none; /* Hides the entire footer, including the background or any color bands */
+}
+
+body div.footer {
+    display: none;
+    background: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    border: none !important;
+}
+
+/* Target any remaining footer-like container */
+/*div.related,*/ div.footer, div.docutils-footer {
+    display: none;
+    background: none !important;
+    padding: 0 !important;
+    border: none !important;
 }
 
