@@ -3,7 +3,7 @@ Conda and its benefits beyond python
 
 .. tags:: Conda
 
-Conda is a powerful, open-source package and environment management system that allows you to manage compilers and packages for various programming languages. Although commonly associated with Python, Conda supports many more languages, making it versatile for diverse computational tasks. Here’s a guide to briefly introduce Conda for a few programming languages. Feel free to jump to the section on the language of your interest!
+Conda is a powerful, open-source package and environment management system that allows you to manage compilers and packages for various programming languages. Although commonly associated with Python, Conda supports many more languages, making it versatile for diverse computational tasks. Here’s a guide to briefly introduce Conda for a few programming languages. Feel free to jump to the section on the language of your interest! This guide is meant to quickly give you an idea of the available programming languages/compilers, how to import packages, and how to create environments.
 
 **Summary of programming languages**
 
@@ -35,14 +35,15 @@ If you don’t have Conda installed, please see our `Available software page <ht
 Conda for Python
 ~~~~~~~~~~~~~~~~
 
-Create a Python environment:
+Conda comes with a minimal Python version. You can check the version using ``python --version`` and the location with ``which python``, and can install a specific version, e.g. Python 3.5 with ``conda install python=3.5``.
+
+To create a Python environment called ``python_env``:
 
 .. code-block:: sh
     
     conda create -n python_env python
 
-You can check the version using ``python --version`` and the location with ``which python``.
-
+You can then write your code, let's say in a file called ``example.py``, and run it with the command ``python example.py``.
 
 Beyond Python
 ~~~~~~~~~~~~~
@@ -58,37 +59,42 @@ You can install Julia through Conda, instead of installing directly as presented
 
 You can then check which version is installed with ``julia --version`` and where using ``which julia``.
 
-Create a Julia environment:
+To create a Julia environment called ``julia_env``:
 
 .. code-block:: sh
 
     conda create -n julia_env julia
 
-
+You can then write your code, let's say in a file called ``example.jl``, and run it with the command ``julia example.jl``.
 
 Conda for C++
 =============
 
-While Conda doesn’t directly install C++ as a standalone compiler, it can install related tools (like GCC [GNU Compiler Collection] or Clang) and libraries for building C++ projects, e.g.
+Natively, subMIT currently has a C++ compiler, ``g++``. While Conda doesn’t directly install C++ as a standalone compiler, it can install related tools (like GCC [GNU Compiler Collection] or Clang) and libraries for building C++ projects, e.g.
 
 .. code-block:: sh
 
     conda install -c conda-forge gcc
 
-To check the version you have install, use ``g++ --version`` and to get its location, use ``which g++``.
+To check the version you have installed, use ``gcc --version`` and to get its location, use ``which gcc``. To create an environment called ``cpp_env``:
 
-You can then write your code, let's say in a file called ``example.cpp``, and compile it using ``g++ example.cpp -o example``. Finally, you can run it with the command ``./example``.
+.. code-block:: sh
+
+    conda create -n cpp_env
+
+
+You can then write your code, let's say in a file called ``example.cpp``, and compile it using ``gcc example.cpp -o example``. Finally, you can run it with the command ``./example``.
 
 Conda for FORTRAN
 =================
 
-Similarly to C++, Conda can install FORTRAN compilers, such as ``gfortran``, through the command:
+Natively, subMIT currently has a FORTRAN compiler, ``gfortran``. Similarly to C++, Conda can install FORTRAN compilers, such as a specific version of ``gfortran``, through the command:
 
 .. code-block:: sh
 
     conda install -c conda-forge gfortran
 
-You can check the version of ``gfortran`` through the command ``gfortran --version``, and where it is installed with ``which gfortran``. Install Fortran libraries, e.g.
+You can check the version of ``gfortran`` through the command ``gfortran --version``, and where it is installed with ``which gfortran``. You can install FORTRAN libraries, e.g.
 
 .. code-block:: sh
 
@@ -100,7 +106,7 @@ Create an environment:
 
     conda create -n fortran_env gfortran
 
-Compile your code with ``gfortran example.f90 -o example``, and run with ``./example``.
+You can then write your code, let's say in a file called ``example.f90``. Compile your code with ``gfortran example.f90 -o example``, and run with ``./example``.
 
 
 Conda for R
@@ -126,13 +132,13 @@ To run a script called ``example.R`` in R, use ``Rscript example.R``.
 Conda for Java
 ==============
 
-install using
+Java is also natively installed on subMIT. If you wish a different version, you can for example install it using
 
 .. code-block:: sh
 
     conda install -c conda-forge openjdk
 
-``java --version``, ``which java``
+Use ``java --version`` to determine the version and ``which java`` for its location.
 
 Some, but not all, Java-related libraries are available via Conda, e.g.
 
@@ -143,13 +149,15 @@ Some, but not all, Java-related libraries are available via Conda, e.g.
 Conda for Perl
 ==============
 
+Perl is also natively installed on subMIT. If you wish a different version, you can for example install it using
+
 .. code-block:: sh
 
     conda install -c conda-forge perl
 
 ``perl --version`` will give the version you have installed, and ``which perl``, its location.
 
-Import Perl libraries, such as ``perl-dbi``, with
+To import Perl libraries, such as ``perl-dbi``, run
 
 .. code-block:: sh
 
@@ -158,11 +166,13 @@ Import Perl libraries, such as ``perl-dbi``, with
 Conda for Ruby
 ==============
 
+Ruby is not natively installed on subMIT. You can install it through
+
 .. code-block:: sh
 
     conda install -c conda-forge ruby
 
-``ruby --version``, ``which ruby``
+``ruby --version`` will give you the version you have installed, and ``which ruby`` its location.
 
 Conda's ability to import Ruby packages is limited. You can manage Ruby gems indirectly or use Ruby libraries available through Conda, e.g.
 
@@ -170,7 +180,7 @@ Conda's ability to import Ruby packages is limited. You can manage Ruby gems ind
 
     conda install -c conda-forge ruby-rails
 
-Ruby environments can be created with Conda.
+Ruby environments can also be created with Conda.
 
 How about pip?
 ~~~~~~~~~~~~~~
@@ -189,14 +199,14 @@ pip and Conda are package management tools commonly used for Python. The main fe
 
 * **Exporting environment** with both Conda and pip, we can export an environment to share it with other users. The commands are
 
+.. code-block:: sh
+
+    conda env export > environment.yml
+    pip freeze > requirements.txt
+
+These environments can then be recreated by other users by running
+
     .. code-block:: sh
 
-        conda env export > environment.yml
-        pip freeze > requirements.txt
-
-    These environments can then be recreated by other users by running
-
-    .. code-block:: sh
-
-        conda env create -f environments.yml
-        pip install -r requirements.txt
+    conda env create -f environments.yml
+    pip install -r requirements.txt
