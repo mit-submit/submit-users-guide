@@ -7,7 +7,7 @@ This section briefly describes several options in which to set up your environme
 
 You have several options available for either using installed software, or installing your own:
 
-1. **Native system**: basic sofwtare is installed on SubMIT meachines by default, or easily installable via our suggested methods.
+1. **Native system**: basic software is installed on SubMIT meachines by default, or easily installable via our suggested methods.
      - This includes: python, C++, Java, `MATLAB <https://submit.mit.edu/submit-users-guide/tutorials/tutorial_1.html#matlab>`_, `Wolfram Mathematica <https://submit.mit.edu/submit-users-guide/program.html#wolfram-mathematica>`_, XRootD, gfal, gcc, hdf5.
 2. **Package and Environment Managers**: 
      - **Conda** is a package and environment manager through which you can install software (not just python!).
@@ -40,7 +40,6 @@ The following software is also avaiable, but needs particular instructions, whic
 
 Julia
 .....
-
 
 
 As of right now, Julia is not available to download through dnf. As such, to install Julia, please do the following (instructions from the `Julia language website <https://julialang.org/downloads/platform/#linux_and_freebsd>`_):
