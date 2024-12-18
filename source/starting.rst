@@ -176,6 +176,17 @@ In addition to the areas above, you have the ability to create a personal webpag
 
 Once that is created, you can now access your personal webpage after inserting your username in \http://submit08.mit.edu/~<username>/.
 
+Tips when coming from another cluster
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Each cluster is a bit different and subMIT is no exception.  Here are a few things about subMIT which may be different from a cluster you previously used:
+
+* In addition to the SLURM-managed subMIT nodes, subMIT is a login pool which also connects to other resources
+
+* On subMIT, SLURM is not set to reserve entire nodes by default; SLURM will request the resources (cores & memory) you request for your job.
+
+* On subMIT, it is best to think in units of cores, not nodes when making SLURM requests.  The subMIT SLURM cluster contains several 'standard' nodes as well as high-density nodes with a large number of cores and memory on a single node.  Given this heterogendous nature, it is important to think how many cores your jobs need and request number of cores explicitly in your batch scripts.  One high-density node can do the work of several standard nodes, and you will likely wait a long time (and end up with more cores than you need) if you request a full high-density node.
+
 The rules for an account
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
