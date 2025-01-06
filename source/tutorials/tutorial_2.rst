@@ -86,7 +86,7 @@ now you can submit your job:
 
 If you ran the previous tutorial, you can run the code you created in addition to hostname. 
 In scipt.sh you can add the line to execute the code. In the condor.sub you can add the following line adding in the script Condor will execute.
-This line will transfer the example python script into the condor job so that it can be executed. If your job needs many files, they will all need to be trannsferred in.
+This line will transfer the example python script into the condor job so that it can be executed. If your job needs many files, they will all need to be transferred in.
 
 .. code-block:: sh
 
@@ -290,7 +290,7 @@ Slurm also has the sacct command to help you to look at information from past jo
 Submit:
 .......
 
-The default is to run on submit. If you would like to specifiy, you can add the following to the submit.sh
+The default is to run on submit. If you would like to specify, you can add the following to the submit.sh
 
 .. code-block:: sh
 

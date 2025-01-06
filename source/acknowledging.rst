@@ -9,7 +9,7 @@ that we provide).
 If possible, please send an e-mail letting us know you've published a
 preprint or paper (to submit-help@mit.edu) that made use of our resources.
 
-We would also appreciate it if you could acknolwedge subMIT in your
+We would also appreciate it if you could acknowledge subMIT in your
 publications, where appropriate, with the following language:
 
 *This work made use of resources provided by subMIT at MIT Physics.*

@@ -12,7 +12,7 @@ In December 2020, Red Hat announced that development of CentOS, a free-of-cost d
 How we plan to upgrade submit
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Because it is hard to predict how an operating system upgrade will affect everyone's work, we will upgrade the system in stages and encourage users to test their workflows on AlmaLinux. For now, the submit system uses CentOS 7 with AlmaLinux machines available only through slurm using a test partition. For the future upgrades, the submit machines will get upgraded with anouncements in the submit-users email group. **Update:** the default submit.mit.edu ssh address now points to AlmaLinux 9. A small number of Centos7 nodes are still available at submit-test.mit.edu for the time being.
+Because it is hard to predict how an operating system upgrade will affect everyone's work, we will upgrade the system in stages and encourage users to test their workflows on AlmaLinux. For now, the submit system uses CentOS 7 with AlmaLinux machines available only through slurm using a test partition. For the future upgrades, the submit machines will get upgraded with announcements in the submit-users email group. **Update:** the default submit.mit.edu ssh address now points to AlmaLinux 9. A small number of Centos7 nodes are still available at submit-test.mit.edu for the time being.
 
 Work on CentOS 7
 ~~~~~~~~~~~~~~~~
@@ -66,7 +66,7 @@ If your workflow is constrained to CentOS, submit will provide a centrally avail
 
      singularity shell --bind /cvmfs:/cvmfs --bind /work/submit:/work/submit --bind /data/submit:/data/submit  /cvmfs/singularity.opensciencegrid.org/opensciencegrid/osgvo-el7:latest
 
-You can add any additionaly binding (with whatever you are using). Then use "bash" command to load your personal bash setup. 
+You can add any additionally binding (with whatever you are using). Then use "bash" command to load your personal bash setup. 
 
 If you need something specific besides this singularity, please email us at submit-help@mit.edu
 

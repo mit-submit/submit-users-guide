@@ -36,7 +36,7 @@ You need to have Git installed.  You can `download Git here <https://git-scm.com
 The Scenario
 ~~~~~~~~~~~~
 
-You set up source control to keep track of the current stable version of your code.  Then you start working on a new feature, but are interrupted by someone who wants you to run a calculation using the orignal version of your code.  You switch to that code version to fulfill the request and the switch back to pick up where you left off developing your new feature.  Once you are happy with this new feature, you incorporate it into your main ('stable') version of your code.  Then you publish your code (and history) to GitHub to collaborate with others.
+You set up source control to keep track of the current stable version of your code.  Then you start working on a new feature, but are interrupted by someone who wants you to run a calculation using the original version of your code.  You switch to that code version to fulfill the request and the switch back to pick up where you left off developing your new feature.  Once you are happy with this new feature, you incorporate it into your main ('stable') version of your code.  Then you publish your code (and history) to GitHub to collaborate with others.
 
 Setting up Source Control (with Git)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -353,7 +353,7 @@ Now lets say you have meticulously checked your new code and you are ready to in
 .. admonition:: |ShowMore|
     :class: dropdown
 
-    If you want to view the history of your code, one way is to view the "Timeline" portion of the "Explorer" sidebar ("View"->"Explorer").  By default, this contains both changes recorded in source control ("Git History") and other intermedaite file saves ("Local History").  You can filter (funnel icon) the Timeline window to only show "Git history".  Then you can see that our main branch has aquired the history of our "cubed" branch.
+    If you want to view the history of your code, one way is to view the "Timeline" portion of the "Explorer" sidebar ("View"->"Explorer").  By default, this contains both changes recorded in source control ("Git History") and other intermediate file saves ("Local History").  You can filter (funnel icon) the Timeline window to only show "Git history".  Then you can see that our main branch has acquired the history of our "cubed" branch.
 
     Alternatively, you can always pull up a terminal within VSCode (menu "Terminal" -> "New Terminal") and run ordinary git commands such as ``git log``.
 
@@ -389,7 +389,7 @@ Let's say now that you want to collaborate with others using GitHub, so you want
     .. admonition:: |ShowMore|
         :class: dropdown
 
-        When connected to a GitHub repo like this, after each commit, the Commit button will turn into a "Sync Changes" button to allow you to easily syncronize your changes with the GitHub repository.
+        When connected to a GitHub repo like this, after each commit, the Commit button will turn into a "Sync Changes" button to allow you to easily synchronize your changes with the GitHub repository.
 
 More Resources
 ~~~~~~~~~~~~~~

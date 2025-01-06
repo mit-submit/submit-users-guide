@@ -118,7 +118,7 @@ Condor with GPUs
 
 The MIT T2 and T3 both have access to GPU machines through Condor. An example of how to access these resources through Condor is shown below.
 
-If you wish to submit jobs to GPU machines in T3/T2, you need to add additonal line in the script (only through glidein submission):
+If you wish to submit jobs to GPU machines in T3/T2, you need to add additional line in the script (only through glidein submission):
 
 .. code-block:: sh
 
@@ -182,7 +182,7 @@ We can then make a condor submission file to run this. As usual, name this condo
        +DESIRED_Sites = "mit_tier3,mit_tier2"
        queue 1
 
-You can then submit this test with the followinf similar to what was shown in the Batch tutorial:
+You can then submit this test with the following similar to what was shown in the Batch tutorial:
 
 .. code-block:: sh
 

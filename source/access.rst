@@ -6,7 +6,7 @@ Access to subMIT
 You have several options to connect to subMIT, view and edit your files, and do your work.
 
 1. **ssh** is the simplest way to connect to the login nodes, see `the starting guide <https://submit.mit.edu/submit-users-guide/starting.html>`_.
-2. **`JupyterHub <https://submit.mit.edu/jupyter/hub/spawn>_`**  provides another easy alternative to connect to the cluster. You can log in using your Kerberos ID, and get access to an interative graphical interface, terminal, text editor, and more.
+2. **`JupyterHub <https://submit.mit.edu/jupyter/hub/spawn>_`**  provides another easy alternative to connect to the cluster. You can log in using your Kerberos ID, and get access to an interactive graphical interface, terminal, text editor, and more.
 3. **VS Code** is a powerful code editor that supports remote access through SSH, as well as many languages and extensions. 
 4. **X2GO** is a remote desktop software. 
 
@@ -37,7 +37,7 @@ When you are finished using Jupyter, please select ``File -> Hub Control Panel -
 .. admonition:: If your session repeatedly terminates unexpectedly ... (click here to show/hide)
    :class: dropdown
 
-   A common reason for a session terminating unexpectedly (besides an unstable internet connection) is overruning memory.  If this happens, please apply the following memory best practices first and then if still necessary, use a spawn option with a larger memory allocation.
+   A common reason for a session terminating unexpectedly (besides an unstable internet connection) is overrunning memory.  If this happens, please apply the following memory best practices first and then if still necessary, use a spawn option with a larger memory allocation.
 
    Memory best practices: *all* open notebooks/kernels contribute towards your memory budget.  If you have multiple notebooks open only to read (not to run), please set their kernel to "``No Kernel``".  Please close unused notebooks by selecting ``File --> Close and Shutdown Notebook`` from the top menu.  (When you close a tab, the kernel generally remains open, but closing it this way shuts down the kernel as well, freeing memory).
 
@@ -60,7 +60,6 @@ Here is how jupyter interacts with: conda, singularity, GPUs, Slurm, and ROOT.
             '/data/submit/<username>/anaconda3/', 
             '/data/submit/<username>/miniconda3/',
             '/data/submit/<username>/miniforge3/',
-            ]
               
     * If you have a different version of conda, or it is located in a different place, or some other problem has come up, please contact us for help.
     * Alternatively, a manual installation can be performed:
@@ -188,7 +187,7 @@ Microsoft provides some handy `videos <https://code.visualstudio.com/docs/getsta
 
 #. **Connect to subMIT:** Click the green "Open a Remote Window" button in the lower-left of the VSCode window. Select "submit" from the menu (VSCode automatically reads your ssh config file). Then, simply "open" a folder or workspace. Opening a folder is typically more convenient than opening a single code file.  Remember: VSCode is now connected to subMIT, so you are looking at and navigating your files on the subMIT servers, not on your laptop/desktop.
 
-#. **Note:** Only run *light* calculations in VSCode; VSCode is intended for editing/debugging, not prodcuction runs.  If the execution of your code will consume signficant resources (time, memory, processors, ...) then please run it outside VSCode using `Slurm or HTCondor <https://submit.mit.edu/submit-users-guide/running.html>`_.  For example, you can debug using a smaller subset of data than a production run.
+#. **Note:** Only run *light* calculations in VSCode; VSCode is intended for editing/debugging, not production runs.  If the execution of your code will consume significant resources (time, memory, processors, ...) then please run it outside VSCode using `Slurm or HTCondor <https://submit.mit.edu/submit-users-guide/running.html>`_.  For example, you can debug using a smaller subset of data than a production run.
 
 Handy Resources
 ...............
