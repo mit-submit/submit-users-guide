@@ -8,20 +8,20 @@ User quota and storage at submit
 --------------------------------
 This section describes the quota and storage for a user and where the storage areas are located. For the large storage area, submit also allows user to use xrootd to make the remote transfer.
 
-Due to the recent updates on the xrootd worldwide, the copy will fail if X509_USER_KEY is not set up correctly. In the x509proxy authentication mentioned below, X509_USER_KEY value can be null, it is recommanded to run command "unset X509_USER_KEY" if user encounters the problem about "couldn't find hostkey.pem". 
+Due to the recent updates on the xrootd worldwide, the copy will fail if X509_USER_KEY is not set up correctly. In the x509proxy authentication mentioned below, X509_USER_KEY value can be null, it is recommended to run command "unset X509_USER_KEY" if user encounters the problem about "couldn't find hostkey.pem". 
 
 The quota of home and work area
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 For a typical user, the home directory is located at /home/submit/<USER> with quota 5GB. The work directory is located at /work/submit/<USER> with quota 50 GB. 
 
-It is recommanded to keep larger files or softwares in work directory. If there are special requirements to increase the quota, please send request via email submit-help@mit.edu. 
+It is recommended to keep larger files or softwares in work directory. If there are special requirements to increase the quota, please send request via email submit-help@mit.edu. 
 
 
 The storage filesystem
 ~~~~~~~~~~~~~~~~~~~~~~
 Users also have a larger quota in storage filesystem, under the directory /ceph/submit/data/user/<first letter>/<USER> with quota 1TB.
 
-Submit uses the ceph to form the filesystem. Currently users could use xrootd to transfer the files to/from ceph through the GSI authentication (with x509 proxy). If users have demands to upload/download files to their personal filesystem (/ceph/submit/data/user/<first letter>/<USER>) remotely, you can send request to submit-help@mit.edu togethor with your DN. DN is the subject of your certificate.
+Submit uses the ceph to form the filesystem. Currently users could use xrootd to transfer the files to/from ceph through the GSI authentication (with x509 proxy). If users have demands to upload/download files to their personal filesystem (/ceph/submit/data/user/<first letter>/<USER>) remotely, you can send request to submit-help@mit.edu together with your DN. DN is the subject of your certificate.
 
 :red:`Users need x509 certificate to use xrootd transfer.`
 
@@ -42,7 +42,7 @@ Once the admin add your DN to the xrootd mapping, you could download or upload y
      <PATH-TO-FILE> and <PATH-TO-SAVE> corresponds to the path under /ceph/submit/data/<PATH-TO-SAVE>
      For example: root://submit50.mit.edu//data/user/w/wangzqe/test.txt refers to /ceph/submit/data/user/w/wangzqe/test.txt 
   
-The xrootd request by default trys both IPV6 and IPV4 protocol. It tries IPV6 first, then tries IPV4. If the xrootd server has IPV6 but not enabled, it may affect the transfer speed. To resolve this, users can just enable IPV4 only by typing command:
+The xrootd request by default tries both IPV6 and IPV4 protocol. It tries IPV6 first, then tries IPV4. If the xrootd server has IPV6 but not enabled, it may affect the transfer speed. To resolve this, users can just enable IPV4 only by typing command:
 
 .. code-block:: sh
 
@@ -60,7 +60,7 @@ To just enable IPV6, type:
 
      export XRD_NETWORKSTACK=IPv6
 
-Keep in mind that filesystem is in favor of large files, therefore it is not recommanded to save large numbers of small files in the filesystem, for example, 100k+ small log files. 
+Keep in mind that filesystem is in favor of large files, therefore it is not recommended to save large numbers of small files in the filesystem, for example, 100k+ small log files. 
 
 
 The storage at fast mount space (/scratch/)

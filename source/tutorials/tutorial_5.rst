@@ -89,9 +89,9 @@ Configuring VSCode to debug Fortran
         
         This created a directory (folder) and a file in your subMIT home directory (on the subMIT servers).
 
-6.  In the menu (top of screen), selct "File" -> "Open Folder..."
+6.  In the menu (top of screen), select "File" -> "Open Folder..."
 
-    In the text box that appears at the top of your screen, type (without the quotes) "/home/submit/username/tutorial_vscode_dbgfort/" but replace "username" with your subMIT (kerberose) username.  (It is likely already pre-filled).
+    In the text box that appears at the top of your screen, type (without the quotes) "/home/submit/username/tutorial_vscode_dbgfort/" but replace "username" with your subMIT (kerberos) username.  (It is likely already pre-filled).
 
     Hit OK.
 
@@ -135,15 +135,15 @@ Configuring VSCode to debug Fortran
     .. admonition:: |ShowMore|
         :class: dropdown
 
-        Alternatively, you could use the Command Pallete:
+        Alternatively, you could use the command palette:
        
-        a.  Open the Command Pallete     .. todo: add in how for all OS
+        a.  Open the command palette     .. todo: add in how for all OS
 
         b.  Type "tasks: Configure Task" in the text box that appears at the top of your screen.  Then hit Enter/Return.
 
         c.  Select "Create tasks.json file from template" from the drop-down menu that appears at the top of your screen.
 
-        d.  Select "Others" from the drop-down menue that appears.
+        d.  Select "Others" from the drop-down menu that appears.
 
             This will bring up an editor with a json file pre-filled.
 
@@ -259,7 +259,7 @@ Configuring VSCode to debug Fortran
 
     You are now all set to debug your Fortran application on subMIT!
 
-    (To see an example of stepping throug this program, click the "More Detail" below).
+    (To see an example of stepping through this program, click the "More Detail" below).
 
     .. admonition:: |ShowMore|
             :class: dropdown
@@ -300,7 +300,7 @@ Configuring VSCode to debug Fortran
 
                 Also note that, now that line 6 has been executed, we see "Hello, World!" appear in the Terminal screen at the bottom of the window.
 
-                (Note: "Hi again" does not yet appear because line 7 has not yet been excecuted).
+                (Note: "Hi again" does not yet appear because line 7 has not yet been executed).
                 
                 The variable ``i`` still has the value of ``2``, since line 6 made no modification to ``i``.
 

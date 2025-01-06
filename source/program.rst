@@ -32,7 +32,7 @@ All of the subMIT machines come with several tools to help you get started with 
 - C++
 - Java
 
-The following software is also avaiable, but needs particular instructions, which are detailed below:
+The following software is also available, but needs particular instructions, which are detailed below:
 
 - Julia
 - Mathematica
@@ -293,7 +293,7 @@ There are a couple of options for this.
 
 **If your jobs are running only on subMIT and you have a singularity image built**, your singularity image can be placed on some commonly-readable directory from any of the compute nodes (/ceph), so you can access it directly from any of your jobs.
 
-**If your jobs are running on subMIT, MIT T3, MIT T2, OSG, or anywhere on the grid**, you can mirror your Docker container as a Singularity container to CVMFS. You can upload it to DockerHub with ``podman push`` and then add it to /cvmfs/singularity.opensciencegrid.org/.  This can be done by making a pull request to add the container to the following file which controls the sychrhonization
+**If your jobs are running on subMIT, MIT T3, MIT T2, OSG, or anywhere on the grid**, you can mirror your Docker container as a Singularity container to CVMFS. You can upload it to DockerHub with ``podman push`` and then add it to /cvmfs/singularity.opensciencegrid.org/.  This can be done by making a pull request to add the container to the following file which controls the synchronization
 https://github.com/opensciencegrid/cvmfs-singularity-sync/blob/master/docker_images.txt. Your container will then appear as a singularity image in ``/cvmfs/singularity.opensciencegrid.org/``, which is mounted on all the machines of the aforementioned systems.
 
 **If you need this available on worker nodes on the MIT T3 and T2**, you can add them to a space in your work directory. You will then need to email Max (Kerberos ID: maxi) or submit-help@mit.edu to create this CVMFs area for you.
@@ -397,5 +397,3 @@ If you want to check the OS, you caan do the following.
 .. code-block:: sh
 
      cat /etc/os-release
-
->>>>>>> 129b44ec3365bf355c3aecd44e0dac40ef582c44

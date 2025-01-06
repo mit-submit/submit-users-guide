@@ -86,7 +86,7 @@ While using Condor you should be able to specify where you want your jobs to run
 
 We have two main computing resources on MIT campus: tier2 and tier3 clusters. Users can submit condor jobs through glideinWMS or bosco.
 
-Since condor jobs are running on external computing resouces, your storage area (``/home``, ``/work``, ``/ceph``) is not accessable on the worknodes. You either need to transfer the files through condor script, or use xrootd to transfer the files. 
+Since condor jobs are running on external computing resources, your storage area (``/home``, ``/work``, ``/ceph``) is not accessible on the work nodes. You either need to transfer the files through condor script, or use xrootd to transfer the files. 
 
 The xrootd transfers is enabled for ceph (``/ceph/submit/data``) storage, how to use it, see `details <https://submit.mit.edu/submit-users-guide/storage.html>`_ in "storage" section.
 
@@ -126,7 +126,7 @@ To submit multi-core jobs, you need to add (4-core job for example, maximum 8):
 
      RequestCpus=4
 
-Note: CMS users are recommanded to submit jobs to T2 through CMS global pool, see "global pool section".
+Note: CMS users are recommended to submit jobs to T2 through CMS global pool, see "global pool section".
 
 :red:`The Glidein will set a default X509_USER_KEY, which may affect the xrootd copy, therefore need to add command "unset X509_USER_KEY" before the xrootd copy .`
 
@@ -157,7 +157,7 @@ If you are a CMS member you can also go through the US CMS global pool:
      # you can also control what sites you want to run at. Here is a sample list to use:
      +DESIRED_Sites = "T2_AT_Vienna,T2_BE_IIHE,T2_BE_UCL,T2_BR_SPRACE,T2_BR_UERJ,T2_CH_CERN,T2_CH_CERN_AI,T2_CH_CERN_HLT,T2_CH_CERN_Wigner,T2_CH_CSCS,T2_CH_CSCS_HPC,T2_CN_Beijing,T2_DE_DESY,T2_DE_RWTH,T2_EE_Estonia,T2_ES_CIEMAT,T2_ES_IFCA,T2_FI_HIP,T2_FR_CCIN2P3,T2_FR_GRIF_IRFU,T2_FR_GRIF_LLR,T2_FR_IPHC,T2_GR_Ioannina,T2_HU_Budapest,T2_IN_TIFR,T2_IT_Bari,T2_IT_Legnaro,T2_IT_Pisa,T2_IT_Rome,T2_KR_KISTI,T2_MY_SIFIR,T2_MY_UPM_BIRUNI,T2_PK_NCP,T2_PL_Swierk,T2_PL_Warsaw,T2_PT_NCG_Lisbon,T2_RU_IHEP,T2_RU_INR,T2_RU_ITEP,T2_RU_JINR,T2_RU_PNPI,T2_RU_SINP,T2_TH_CUNSTDA,T2_TR_METU,T2_TW_NCHC,T2_UA_KIPT,T2_UK_London_IC,T2_UK_SGrid_Bristol,T2_UK_SGrid_RALPP,T2_US_Caltech,T2_US_Florida,T2_US_MIT,T2_US_Nebraska,T2_US_Purdue,T2_US_UCSD,T2_US_Vanderbilt,T2_US_Wisconsin,T3_CH_CERN_CAF,T3_CH_CERN_DOMA,T3_CH_CERN_HelixNebula,T3_CH_CERN_HelixNebula_REHA,T3_CH_CMSAtHome,T3_CH_Volunteer,T3_US_HEPCloud,T3_US_NERSC,T3_US_OSG,T3_US_PSC,T3_US_SDSC"
 
-In order to use the CMS global pool, you will need to add a few additional lines to your condor submission. These lines below with the proper id and username (uid and id from submit) are necessary in order to get into the gloabl pool:
+In order to use the CMS global pool, you will need to add a few additional lines to your condor submission. These lines below with the proper id and username (uid and id from submit) are necessary in order to get into the global pool:
 
 .. code-block:: sh
 
@@ -165,7 +165,7 @@ In order to use the CMS global pool, you will need to add a few additional lines
      x509userproxy         = /<path>/x509up_u<uid>
      +AccountingGroup = "analysis.<username>"
 
-If you wish to submit jobs to GPU machines, you need to add additonal line in the script:
+If you wish to submit jobs to GPU machines, you need to add additional line in the script:
 
 .. code-block:: sh
 
@@ -191,14 +191,14 @@ Or depending on your workflow you may need RHEL 6 for OSG
 
 .. code-block:: sh
 
-      Requirements = (OSGVO_OS_STRING == "RHEL 6"      
+      Requirements = (OSGVO_OS_STRING == "RHEL 6")      
       +ProjectName            = "MIT_submit" 
 
 
 HTCondor example 1
 ==================
 
-Lets look at a full example condor submission for downloading some ROOT file and transfering the output. In order to access files you will need to export your x509 proxy. The easiest way to do this on the submit machines is to first make this proxy available in your ``/home`` space and then add export lines in your condor submission. It is often easiest to add an alias commad to your ``.bashrc`` like the following:
+Lets look at a full example condor submission for downloading some ROOT file and transferring the output. In order to access files you will need to export your x509 proxy. The easiest way to do this on the submit machines is to first make this proxy available in your ``/home`` space and then add export lines in your condor submission. It is often easiest to add an alias command to your ``.bashrc`` like the following:
 
 .. code-block:: sh
 
@@ -258,7 +258,7 @@ now you can submit your job:
 HTCondor example 2
 ==================
 
-If you have smaller output and you want to use the workspace rather than hadoop we can do something similar but instead trasnfer the output from the submit machines through remaps. Similar the above we will use a script.sh
+If you have smaller output and you want to use the workspace rather than hadoop we can do something similar but instead transfer the output from the submit machines through remaps. Similar the above we will use a script.sh
 
 .. code-block:: sh
 
@@ -436,7 +436,7 @@ This will list each node on a separate line.  As described in `man sinfo`, the C
 Requesting memory
 =================
 
-On subMIT, Slurm treats both **CPUs** *and* **memory** as consumable resources.  This means that it is important to provide accurate requests of these resources in your slurm job submissions.  If you request more resources than you need (CPUs or memory), then you can unnecessarily block other users as well as your own jobs from running.  For example, a job which requests a single CPU and all the memory of a node will block any other job from running on that node even though the remaining CPUs will be sitting idle.  If, on the other hand, you request too little memory, you job will fail.  This leads to the common question: how do I know how much memory to request?
+On subMIT, Slurm treats both **CPUs** *and* **memory** as consumable resources.  This means that it is important to provide accurate requests of these resources in your slurm job submissions.  If you request more resources than you need (CPUs or memory), then you can unnecessarily block other users as well as your own jobs from running.  For example, a job which requests a single CPU and all the memory of a node will block any other job from running on that node even though the remaining CPUs will be sitting idle.  If, on the other hand, you request too little memory, you job will fail. This leads to the common question: how do I know how much memory to request?
 
 In general it is recommanded to request a bit more memory than you actually need so as to allow a "safety cushion" for variations in your jobs (so a job is not killed if your estimate was a little too low).  
 
