@@ -175,7 +175,7 @@ In addition to the areas above, you have the ability to create a personal webpag
   mkdir $HOME/public_html
 
 Once that is created, you can now access your personal webpage after inserting your username in \http://submit08.mit.edu/~<username>/.
-You can customize the appearance and content of your webpage for example by adding the `index.php<https://github.com/mit-submit/submit-examples/blob/main/php-plots/index.php>`_ file inside the public_html directory or subdirectory to see previews of .png files. 
+You can customize the appearance and content of your webpage for example by adding the `index.php <https://github.com/mit-submit/submit-examples/blob/main/php-plots/index.php>`_ file inside the public_html directory or subdirectory to see previews of .png files. 
 
 Tips when coming from another cluster
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
