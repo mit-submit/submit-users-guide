@@ -348,7 +348,7 @@ Now lets say you have meticulously checked your new code and you are ready to in
     
     Now your code contains your new cubed code and you are still on the main branch.  
     
-    You have sucessfully merged these changes to the main branch!
+    You have successfully merged these changes to the main branch!
 
 .. admonition:: |ShowMore|
     :class: dropdown
@@ -399,7 +399,7 @@ More Resources
 * `more about Git    in VSCode <https://code.visualstudio.com/docs/sourcecontrol/intro-to-git>`_
 * `more about GitHub in VSCode <https://code.visualstudio.com/docs/sourcecontrol/github>`_ 
 * `download Git <https://git-scm.com/downloads>`_ 
-* `tools to help merge conflics in VSCode <https://code.visualstudio.com/docs/sourcecontrol/overview#_3way-merge-editor>`_ (see also `this video <https://code.visualstudio.com/docs/sourcecontrol/overview#_understanding-conflicts>`_)
+* `tools to help merge conflicts in VSCode <https://code.visualstudio.com/docs/sourcecontrol/overview#_3way-merge-editor>`_ (see also `this video <https://code.visualstudio.com/docs/sourcecontrol/overview#_understanding-conflicts>`_)
 
 More source control Extensions
 

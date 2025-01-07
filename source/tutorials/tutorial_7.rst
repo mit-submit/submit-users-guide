@@ -34,7 +34,7 @@ Table of Contents
   * `Dry runs and debugging <#dry-runs--debugging>`_
   * `Logging <#logging>`_
   * `Benchmarking rule performance <#benchmarking>`_
-  * `Additional rule paramters <#additional-rule-paremeters>`_
+  * `Additional rule parameters <#additional-rule-paremeters>`_
   * `Temporary output files <#temporary-output-files>`_
   * `Protected output files <#protected-output-files>`_
 
@@ -161,7 +161,7 @@ Let's start at the beginning: in our ``Snakefile``\ , we start by importing glob
    # ./Snakefile
 
    # global-scope config
-   configfile: "config/main.yml" # NOTE: colon syntax 
+   configfile: "config/main.yml"  # NOTE: colon syntax
    # global-scope variables, fetched from the config file in config/main.yml
    years = config["years"]
 
@@ -183,7 +183,7 @@ Rule definition and workflow assembly
 
 Let's inspect the rest of the Snakefile: 
 
-.. code-block:: python
+.. code-block:: snakemake
 
    """
    Prototypical workflow for the analysis on data split into many files located in the paths
@@ -229,7 +229,7 @@ The rule dependency resolution in Snakemake is done string pattern matching the 
 
 Let's take a closer look. In
 
-.. code-block:: python
+.. code-block:: snakemake
 
    rule all:
        input:
@@ -240,19 +240,19 @@ we avail ourselves of the ``expand`` special function in Snakemake to generate t
 .. code-block:: python
 
    [
-      'scratch/data/2012/post_processed/beauty2darkmatter_0.root',
-      'scratch/data/2012/post_processed/beauty2darkmatter_1.root',
-      'scratch/data/2012/post_processed/beauty2darkmatter_2.root',
-      'scratch/data/2018/post_processed/beauty2darkmatter_0.root',
-      'scratch/data/2018/post_processed/beauty2darkmatter_1.root',
-      'scratch/data/2018/post_processed/beauty2darkmatter_2.root',
-      'scratch/mc/2012/post_processed/beauty2darkmatter_0.root',
-      'scratch/mc/2012/post_processed/beauty2darkmatter_1.root',
-      'scratch/mc/2012/post_processed/beauty2darkmatter_2.root',
-      'scratch/mc/2018/post_processed/beauty2darkmatter_0.root',
-      'scratch/mc/2018/post_processed/beauty2darkmatter_1.root',
-      'scratch/mc/2018/post_processed/beauty2darkmatter_2.root'
-   ] # a simple python list
+       "scratch/data/2012/post_processed/beauty2darkmatter_0.root",
+       "scratch/data/2012/post_processed/beauty2darkmatter_1.root",
+       "scratch/data/2012/post_processed/beauty2darkmatter_2.root",
+       "scratch/data/2018/post_processed/beauty2darkmatter_0.root",
+       "scratch/data/2018/post_processed/beauty2darkmatter_1.root",
+       "scratch/data/2018/post_processed/beauty2darkmatter_2.root",
+       "scratch/mc/2012/post_processed/beauty2darkmatter_0.root",
+       "scratch/mc/2012/post_processed/beauty2darkmatter_1.root",
+       "scratch/mc/2012/post_processed/beauty2darkmatter_2.root",
+       "scratch/mc/2018/post_processed/beauty2darkmatter_0.root",
+       "scratch/mc/2018/post_processed/beauty2darkmatter_1.root",
+       "scratch/mc/2018/post_processed/beauty2darkmatter_2.root",
+   ]  # a simple python list
 
 The rest of the rules define the necessary rules necessary to generate the file paths above. Notice how we added a directory mid-path to specify the *stage* of the analysis, whilst effectively keeping the overall number and kind of dummy files generated at the beginning of this tutorial. We preserve the name of the individual files with each I/O operation, in each stage. The parent path is sufficient to map each file to the rule that generates it. 
 
@@ -280,9 +280,7 @@ where ``{input}`` and ``{output}`` are take on the values setup in the correspon
            required=True,
            nargs="+",
        )
-       parser.add_argument(
-           "-o", "--output", type=str, help="The output file to write.", required=True
-       )
+       parser.add_argument("-o", "--output", type=str, help="The output file to write.", required=True)
        args = parser.parse_args()
 
 This is a nice way to interface Python executables with the wildcard syntax native to Snakemake.
@@ -550,7 +548,7 @@ The message indicates that if a rule requests more threads than are available or
 
 In other words, the command-line argument ``--cores 1`` overrides the per-rule thread allocation specified by the user. So for a rule such as,
 
-.. code-block:: python
+.. code-block:: snakemake
 
    rule select:
        """First step of the analysis: select events"""
@@ -647,7 +645,7 @@ Let's add another layer of difficulty. What if I wanted to pre-process, say, onl
 
 We can prepend a dedicated rule as follows: 
 
-.. code-block:: python
+.. code-block:: snakemake
 
    rule truthmatch_simulation:
        """Simulaion-specific preprocessing step before enacting any selection"""
@@ -667,7 +665,7 @@ By structuring the rule this way, we effectively create a selective preprocessin
 
 We can thereafter apply the same logic to the conditional input of the ``select`` rule, which inherits the raw ``data`` files, and the truth-matched ``mc`` counterparts:
 
-.. code-block:: python
+.. code-block:: snakemake
 
    rule select:
        """First *common* step of the analysis: select events"""
@@ -684,7 +682,7 @@ Notice how the after executing this rule, ``data`` and ``mc`` files are brought 
 
 The full ``Snakefile`` reads
 
-.. code-block:: python
+.. code-block:: snakemake
 
    """
    Prototycal workflow for the analysis on data split into many files located in the paths
@@ -760,7 +758,7 @@ In this case, I won't delve into any real detail. Suffice to note that the DAG p
 
 This is just to give you a feeling of the level of complexity and flexibility afforded by Snakefile. You may perhaps use this ``Snakefile`` as a reference for thornier cases in your analysis (you can find this also on the branch ``quasi-realistic`` of this repo):
 
-.. code-block:: python
+.. code-block:: snakemake
 
    """
    Prototypical workflow for the analysis on data split into many files located in the paths
@@ -1065,7 +1063,7 @@ It may be useful to change the subMIT partition for a subset of jobs.
 
 Here is an example, taken from the pipeline used to train and deploy the neural networks presented in the preprints `arXiv:2306.09873 <https://arxiv.org/abs/2306.09873>`_ and `arXiv:2312.14265 <https://arxiv.org/abs/2312.14265>`_\ :
 
-.. code-block:: python
+.. code-block:: snakemake
 
    rule train:
        """Execute the training and persist the model"""
@@ -1110,9 +1108,7 @@ I don't have experience (yet) with interfacing Snakemake with HTCondor on subMIT
 
    # Get the jobscript, and the properties for this job
    jobscript = sys.argv[1]  # condor submission wrapper
-   job_props = read_job_properties(
-       jobscript
-   )  # extrapolate job submission config for conda from wrapper
+   job_props = read_job_properties(jobscript)  # extrapolate job submission config for conda from wrapper
    jobid = job_props["jobid"]
 
    # Create a directory for condor logs, if this doesn't exist
@@ -1167,7 +1163,7 @@ A few command-line arguments come in handy to diagnose the ``Snakefile`` and the
 
      $ snakemake --cores <number of cores> --dryrun
 
-will simply show you the assembed DAG, with all its rules:
+will simply show you the assembled DAG, with all its rules:
 
 .. code-block:: bash
 
@@ -1220,7 +1216,7 @@ will simply show you the assembed DAG, with all its rules:
         $ snakemake --cores <number of cores> --printshellcmds
 
 
-* Related to this topic is the idea of forcing the pipeline to run until any job that can run successfully is complete, irrespective of the failre of a subset of failing jobs. That is to say, the command
+* Related to this topic is the idea of forcing the pipeline to run until any job that can run successfully is complete, irrespective of the failure of a subset of failing jobs. That is to say, the command
   
     .. code-block:: bash
 
@@ -1262,7 +1258,7 @@ Snakemake `supports logging <https://snakemake.readthedocs.io/en/stable/snakefil
 
 Logging can be implemented as shown in this example used in an LHCb analysis:
 
-.. code-block:: python
+.. code-block:: snakemake
 
    rule aggregate_years_data:
        # merge the data files to generate 9 invfb of data
@@ -1289,7 +1285,7 @@ Benchmarking
 
 Benchmark files can be used to appraise the resource consumption of any give job. Similarly, Snakemake has a dedicated directive for this purpose. To this end, we can modify the `snippet above <#logging>`_ as follows:
 
-.. code-block:: python
+.. code-block:: snakemake
 
    rule aggregate_years_data:
        # merge the data files to generate 9 invfb of data
@@ -1311,12 +1307,12 @@ Benchmark files can be used to appraise the resource consumption of any give job
 
 The benchmark directive is added, specifying a path to save the benchmark file. This file will contain details like runtime, memory usage, and other system resources used during the execution of this rule. The benchmark file will be generated each time this rule is run, allowing us to track and compare the performance of this rule under different conditions or with different datasets.
 
-Additional rule paremeters
+Additional rule parameters
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Snakemake affords the flexibility of a directive for any other path that might share the same wildcards as the input and output files. Here is an example taken from an LHCb measurement: 
 
-.. code-block:: python
+.. code-block:: snakemake
 
    rule truthmatch:
        # impose the correct ID to the candidates, and the correct decay generalogy
@@ -1340,7 +1336,7 @@ Clean up after yourself
 
 Notice the snippet at the beginning of the `quasi-realistic analysis <#a-quasi-relatistic-example>`_ ``Snakefile`` 
 
-.. code-block:: python
+.. code-block:: snakemake
 
    # NOTE: don't forget `import shutil` in the Snakefile header
    onsuccess:
@@ -1351,7 +1347,7 @@ Notice the snippet at the beginning of the `quasi-realistic analysis <#a-quasi-r
        # good practice: clean up the workspace metadata
        shutil.rmtree(".snakemake/metadata")
 
-Upon completing the pipeline successfully, unwanted metadata (which might blow up your local area if left unchecked over LHC-sized datasets and jobs) will be automatically deleted. I suggest you extend this practice to any log files you may not want to inspect after running the worflow successfully. *Note*\ : deletion will occur if and only if the pipeline has run successfully.
+Upon completing the pipeline successfully, unwanted metadata (which might blow up your local area if left unchecked over LHC-sized datasets and jobs) will be automatically deleted. I suggest you extend this practice to any log files you may not want to inspect after running the workflow successfully. *Note*\ : deletion will occur if and only if the pipeline has run successfully.
 
 Temporary output files
 ^^^^^^^^^^^^^^^^^^^^^^
@@ -1361,7 +1357,7 @@ One has the option to enforce two special output-file status conditions:
 
 **Temporary files**\ : will be automatically deleted once the generating rule, and the subsequent rule inheriting this output, have been executed successfully. 
    
-.. code-block:: python
+.. code-block:: snakemake
 
     rule somerule:
         ...
@@ -1373,7 +1369,7 @@ The dummy file is then strictly required as input to the rule ``post_mva_select`
 
 Once the rules have run without error, ``ws_validation.done`` gets deleted; best to keep the directory clean.
 
-.. code-block:: python
+.. code-block:: snakemake
 
    rule post_mva_select:
        # Implement the last selection layer preceding the MVAs and log effs
@@ -1425,14 +1421,14 @@ Once the rules have run without error, ``ws_validation.done`` gets deleted; best
        run:
            shell("python src/validate_ws.py --dcs {input.dzmunu} --ws {input.dpmunu} && touch {output}")
 
-I should note that Snakemake has dedicated syntax to `enforce the rule execution <https://snakemake.readthedocs.io/en/stable/snakefiles/rules.html#handling-ambiguous-rules>`_. I am generally not a fan. Ambiguity in the DAQ can lead to bugs, and an un-deleted ``temp()`` file can signal something gone wrong in the worflow.
+I should note that Snakemake has dedicated syntax to `enforce the rule execution <https://snakemake.readthedocs.io/en/stable/snakefiles/rules.html#handling-ambiguous-rules>`_. I am generally not a fan. Ambiguity in the DAQ can lead to bugs, and an un-deleted ``temp()`` file can signal something gone wrong in the workflow.
 
 Protected output files
 ^^^^^^^^^^^^^^^^^^^^^^
 
-Proctected files, specified by 
+Protected files, specified by 
 
-.. code-block:: python
+.. code-block:: snakemake
 
    rule somerule:
        ...
@@ -1468,7 +1464,7 @@ Suppose you don't know *a priori* what outfiles might be generated by a rule exe
 I address this scenario with `checkpoints` (see https://snakemake.readthedocs.io/en/stable/snakefiles/rules.html#data-dependent-conditional-execution for more information). 
 Let's look at a snippet from the `works introduced above <#rule-specific-submit-partitions>`_\ :
 
-.. code-block:: python
+.. code-block:: snakemake
 
    checkpoint gen_train_execs: # NOTE: checkpoint for unknown number of sh train+eval scripts
        """
@@ -1504,7 +1500,7 @@ Checkpoints address this scenario: after ``gen_train_execs`` is executed, Snakem
 
 The following excerpt illustrates how to use checkpoints:
 
-.. code-block:: python
+.. code-block:: snakemake
 
    # aux functions to collect the past after DAG re-execution post-checkpoint
    # ------------------------------------------------------------------------
@@ -1636,7 +1632,7 @@ Assuming you have your samples stored on the CERN `eos <https://eos-web.web.cern
 
 Here is an example:
 
-.. code-block:: python
+.. code-block:: snakemake
 
    from snakemake.remote.XRootD import RemoteProvider as XRootDRemoteProvider
    XRootD = XRootDRemoteProvider(stay_on_remote=True)
@@ -1679,7 +1675,7 @@ Topics not covered here but likely of interest
 Let me just flag that there are a tonne of useful functionalities that I am yet to experiment with in my research. For instance:
 
 
-* `Multi-extension outout expand <https://snakemake.readthedocs.io/en/stable/snakefiles/rules.html>`_
+* `Multi-extension output expand <https://snakemake.readthedocs.io/en/stable/snakefiles/rules.html>`_
 * `Specifying per-rule threads <https://snakemake.readthedocs.io/en/stable/snakefiles/rules.html>`_
 * `Specifying per-rule memory allocation <https://snakemake.readthedocs.io/en/stable/snakefiles/rules.html#resources>`_
 * `Rule messages <https://snakemake.readthedocs.io/en/stable/snakefiles/rules.html#messages>`_

@@ -186,7 +186,7 @@ Each cluster is a bit different and subMIT is no exception.  Here are a few thin
 
 * On subMIT, SLURM is not set to reserve entire nodes by default; SLURM will request the resources (cores & memory) you request for your job.
 
-* On subMIT, it is best to think in units of cores, not nodes when making SLURM requests.  The subMIT SLURM cluster contains several 'standard' nodes as well as high-density nodes with a large number of cores and memory on a single node.  Given this heterogenous nature, it is important to think how many cores your jobs need and request number of cores explicitly in your batch scripts.  One high-density node can do the work of several standard nodes, and you will likely wait a long time (and end up with more cores than you need) if you request a full high-density node.
+* On subMIT, it is best to think in units of cores, not nodes when making SLURM requests.  The subMIT SLURM cluster contains several 'standard' nodes as well as high-density nodes with a large number of cores and memory on a single node. Given this heterogeneous nature, it is important to think how many cores your jobs need and request number of cores explicitly in your batch scripts.  One high-density node can do the work of several standard nodes, and you will likely wait a long time (and end up with more cores than you need) if you request a full high-density node.
 
 The rules for an account
 ~~~~~~~~~~~~~~~~~~~~~~~~

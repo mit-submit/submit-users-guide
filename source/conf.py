@@ -19,8 +19,17 @@ from sphinx.deprecation import RemovedInSphinx90Warning
 
 warnings.filterwarnings("ignore", category=RemovedInSphinx90Warning)
 
+# add snakemake highlighting as python highlighting
 
+from sphinx.highlighting import lexers
+from pygments.lexers.python import PythonLexer
 
+class SnakemakeLexer(PythonLexer):
+    name = 'Snakemake'
+    aliases = ['snakemake']
+    filenames = ['*.snakefile']
+
+lexers['snakemake'] = SnakemakeLexer()
 
 # -- Project information -----------------------------------------------------
 

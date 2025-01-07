@@ -281,7 +281,7 @@ If you have smaller output and you want to use the workspace rather than hadoop 
       echo "----- transferring output to scratch :"
       echo " ------ THE END (everyone dies !) ----- "
 
-Similar to above, we will also need a ``condor.sub``. However, this time we will transfer the file here rather than in the script. We will do this through a remap. Do not use this method to transer any files through the fuse mount! 
+Similar to above, we will also need a ``condor.sub``. However, this time we will transfer the file here rather than in the script. We will do this through a remap. Do not use this method to transfer any files through the fuse mount! 
 
 .. code-block:: sh
 
@@ -338,7 +338,7 @@ If you made a mistake during submission, you can also cancel your jobs. This sho
        # If you want to remove all of your jobs
        condor_rm <username>
 
-Usefull condor set up
+Useful condor set up
 =====================
 
 In the condor submission script, users are define the requirements of slots from the condor pool (conputing resources). 
@@ -361,7 +361,7 @@ There is a hard limit on the size of input files that you can transfer with `tra
 Slurm
 ~~~~~
 
-Slurm can also be used on the submit machines. There is a main slurm partition on the submit machines as well as GPUs available through ``submit-gpu`` and ``submit-gpu-a30`` partions. Additionally slurm connects the lqcd cluster(TEMPORARILY OUT OF DATE).
+Slurm can also be used on the submit machines. There is a main slurm partition on the submit machines as well as GPUs available through ``submit-gpu`` and ``submit-gpu-a30`` partitions. Additionally slurm connects the lqcd cluster(TEMPORARILY OUT OF DATE).
 The slurm partitions on SubMIT are fairly open but jobs are limited to 6 days of running time. In addition, each slurm node is limited to 80 GB of total memory to use.
 
 Slurm example 1
@@ -438,7 +438,7 @@ Requesting memory
 
 On subMIT, Slurm treats both **CPUs** *and* **memory** as consumable resources.  This means that it is important to provide accurate requests of these resources in your slurm job submissions.  If you request more resources than you need (CPUs or memory), then you can unnecessarily block other users as well as your own jobs from running.  For example, a job which requests a single CPU and all the memory of a node will block any other job from running on that node even though the remaining CPUs will be sitting idle.  If, on the other hand, you request too little memory, you job will fail. This leads to the common question: how do I know how much memory to request?
 
-In general it is recommanded to request a bit more memory than you actually need so as to allow a "safety cushion" for variations in your jobs (so a job is not killed if your estimate was a little too low).  
+In general it is recommended to request a bit more memory than you actually need so as to allow a "safety cushion" for variations in your jobs (so a job is not killed if your estimate was a little too low).  
 
 One way to estimate your actual memory requirement is to run the command `seff <jobnumber>` to see memory usage information for a *completed* slurm job.  This can be either a batch job (e.g. submitted with `sbatch`) or an interactive session started with `salloc`.  
 

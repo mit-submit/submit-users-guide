@@ -22,7 +22,7 @@ Some core benefits of PyTorch Lightning include:
 
 #. **Reproducibility**: By enforcing structuring of the code, it becomes easier to reproduce experiments and results which is crucial for scientific validations.
 
-Example of Buidling a Simple Model in PyTorch Lightning
+Example of Building a Simple Model in PyTorch Lightning
 -------------------------------------------------------
 
 The following example demonstrates how to "learn" a non-linear relationship using PyTorch Lightning.
@@ -53,6 +53,7 @@ Here we generate a dataset with a quadratic relationship between y and x, and de
         def __getitem__(self, idx):
             return self.x[idx], self.y[idx]
 
+
     # Define the model
     class SimpleModel(pl.LightningModule):
         def __init__(self):
@@ -61,7 +62,7 @@ Here we generate a dataset with a quadratic relationship between y and x, and de
             self.layer_2 = nn.Linear(15, 15)
             self.layer_3 = nn.Linear(15, 1)
             self.relu = nn.ReLU()
-    
+
         def forward(self, x):
             x = self.relu(self.layer_1(x))
             x = self.relu(self.layer_2(x))
@@ -72,7 +73,7 @@ Here we generate a dataset with a quadratic relationship between y and x, and de
             x, y = batch
             y_hat = self.forward(x)
             loss = nn.MSELoss()(y_hat, y)
-            self.log('train_loss', loss)
+            self.log("train_loss", loss)
             return loss
 
         def configure_optimizers(self):
@@ -112,9 +113,10 @@ Here we test the model predictions and visualize the results.
 
     # Visualize the results
     plt.figure(figsize=(6, 4))
-    plt.scatter(dataset.x, dataset.y, s=0.5, label='True data')
-    plt.plot(test_x, test_y_pred, color='r', label='Prediction')
-    plt.xlabel('x'); plt.ylabel('y')
+    plt.scatter(dataset.x, dataset.y, s=0.5, label="True data")
+    plt.plot(test_x, test_y_pred, color="r", label="Prediction")
+    plt.xlabel("x")
+    plt.ylabel("y")
     plt.legend()
     plt.show()
 
@@ -139,7 +141,7 @@ Setup the environment to run this example
 
 You can create a ``conda`` environment locally using the ``environment.yaml`` file with the following content:
 
-.. code-block:: python
+.. code-block:: yaml
 
     name: iap-tutorial
     channels:
@@ -152,13 +154,13 @@ You can create a ``conda`` environment locally using the ``environment.yaml`` fi
         - pip
         - python=3.9
         - pip:
-            - https://download.pytorch.org/whl/cu116/torch-1.13.0%2Bcu116-cp39-cp39-linux_x86_64.whl#sha256=129d95249fe20ccd83d156323a5e2a6aba83e18841a00ac724e270ad806dd493
-            - bilby
-            - matplotlib
-            - websockets
-            - pydantic==1.10
-            - lightning==1.8.6
-            - pyro-ppl==1.8.0
+          - https://download.pytorch.org/whl/cu116/torch-1.13.0%2Bcu116-cp39-cp39-linux_x86_64.whl#sha256=129d95249fe20ccd83d156323a5e2a6aba83e18841a00ac724e270ad806dd493
+          - bilby
+          - matplotlib
+          - websockets
+          - pydantic==1.10
+          - lightning==1.8.6
+          - pyro-ppl==1.8.0
 
 And then create the environment using the following command:
 

@@ -85,7 +85,7 @@ now you can submit your job:
       condor_submit condor.sub
 
 If you ran the previous tutorial, you can run the code you created in addition to hostname. 
-In scipt.sh you can add the line to execute the code. In the condor.sub you can add the following line adding in the script Condor will execute.
+In script.sh you can add the line to execute the code. In the condor.sub you can add the following line adding in the script Condor will execute.
 This line will transfer the example python script into the condor job so that it can be executed. If your job needs many files, they will all need to be transferred in.
 
 .. code-block:: sh
