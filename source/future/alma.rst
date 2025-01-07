@@ -60,7 +60,7 @@ If your workflow is constrained to CentOS, submit will provide a centrally avail
 
      singularity shell /cvmfs/cvmfs.cmsaf.mit.edu/submit/work/submit/submit-software/centos/centos7p9
 
-:red:`Here is the recommanded command to use centos 7 singularity`
+:red:`Here is the recommended command to use centos 7 singularity`
 
 .. code-block:: sh
 

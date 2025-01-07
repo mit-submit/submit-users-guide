@@ -14,7 +14,7 @@ The quota of home and work area
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 For a typical user, the home directory is located at /home/submit/<USER> with quota 5GB. The work directory is located at /work/submit/<USER> with quota 50 GB. 
 
-It is recommended to keep larger files or softwares in work directory. If there are special requirements to increase the quota, please send request via email submit-help@mit.edu. 
+It is recommended to keep larger files or software in work directory. If there are special requirements to increase the quota, please send request via email submit-help@mit.edu. 
 
 
 The storage filesystem
@@ -65,9 +65,9 @@ Keep in mind that filesystem is in favor of large files, therefore it is not rec
 
 The storage at fast mount space (/scratch/)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-There is a fast mount space mounted as /scratch/ which provides high speed I/O. This speeds up the physics researches which have large input files and require fast accessing speed. The files under /scrach is for short term analyzing and not meant for long term storage. The data under /scratch should have a backup under the storage system if it is important.
+There is a fast mount space mounted as /scratch/ which provides high speed I/O. This speeds up the physics researches which have large input files and require fast accessing speed. The files under /scratch is for short term analyzing and not meant for long term storage. The data under /scratch should have a backup under the storage system if it is important.
 
-The files under /scrach can be accessed both through the mounting point /scratch and xrootd. To use xrootd, the accessing point is 
+The files under /scratch can be accessed both through the mounting point /scratch and xrootd. To use xrootd, the accessing point is 
 
 .. code-block:: sh
 

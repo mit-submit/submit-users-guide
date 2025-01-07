@@ -17,12 +17,12 @@ Let's run a simple code. Here is an example:
 
 .. code-block:: python
 
-     x = [1.0,2.0,3.0,4.0,5.0,6.0,7.0,8.0,9.0,10.0]
+     x = [1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0]
      y = []
-     
+
      for xval in x:
          y.append(xval**2)
-     
+
      print("The values squared from for loop are:{}".format(y))
 
 
@@ -53,19 +53,19 @@ Now let's do the same code as above but use numpy instead:
 
 .. code-block:: python
 
-     x = [1.0,2.0,3.0,4.0,5.0,6.0,7.0,8.0,9.0,10.0]
+     x = [1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0]
      y = []
-     
+
      for xval in x:
          y.append(xval**2)
-     
+
      print("The values squared from for loop are:{}".format(y))
-     
+
      import numpy as np
-     
-     x_np = np.linspace(1,10,10)
+
+     x_np = np.linspace(1, 10, 10)
      y_np = x_np**2
-     
+
      print("The values squared from numpy are:{}".format(y_np))
 
 Types of Python environments:
