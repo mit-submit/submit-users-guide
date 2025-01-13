@@ -178,21 +178,33 @@ There are resources available through MIT Earth, Atmospheric and Planetary Scien
 
      Requirements =  (BOSCOCluster == "eofe8.mit.edu") 
 
+Jobs Submission to OSG Pool
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 And finally you can also use OSG:
 
 .. code-block:: sh
 
-      Requirements = (OSGVO_OS_STRING == "RHEL 7")
-      +ProjectName            = "MIT_submit" 
+    +ProjectName            = "MIT_submit" 
  
-Or depending on your workflow you may need RHEL 6 for OSG
+You can specify the required OS of the node via the requirements; for example for RHEL 6,
 
 
 .. code-block:: sh
 
       Requirements = (OSGVO_OS_STRING == "RHEL 6")      
-      +ProjectName            = "MIT_submit" 
+
+or to use RHEL 7,
+
+.. code-block:: sh
+
+      Requirements = (OSGVO_OS_STRING == "RHEL 7")
+
+though you can also use the singularity images that they distribute through CVMFS. These are managed `here <https://github.com/opensciencegrid/cvmfs-singularity-sync>`_, and can be found under the following CVMFS path, which is mounted also on subMIT, and the MIT T2 and T3,
+
+.. code-block:: sh
+
+    /cvmfs/singularity.opensciencegrid.org/
 
 
 HTCondor example 1
