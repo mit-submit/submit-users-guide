@@ -69,25 +69,25 @@ Submitting to the different clusters
 
 Here we provide the recipies to run at different clusters. 
 
-Glidein submission for T2/T3.
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Glidein submission to T2/T3
+***************************
 
 :red:`The Glidein supports GPU and multi-CPU jobs.`
 
-Submit jobs to tier2 clusters by adding following to condor script:
+Submit jobs to the T2 cluster by adding following to the HTCondor submission script:
 
 .. code-block:: sh
 
      Requirements = ( BOSCOCluster =!= "t3serv008.mit.edu" && BOSCOCluster =!= "ce03.cmsaf.mit.edu" && BOSCOCluster =!= "eofe8.mit.edu")
      +DESIRED_Sites = "mit_tier2"
 
-If instead you want to run on the T3 machines you can replace the "DESIRED_Sites" to:
+If instead you want to run on the T3 machines you can replace the "+DESIRED_Sites" to:
 
 .. code-block:: sh
 
      +DESIRED_Sites = "mit_tier3"
 
-If you want to submit to both tier2 and tier3, do:
+If you want to submit to both T2 and T3, do:
 
 .. code-block:: sh
 
@@ -110,19 +110,18 @@ Note: CMS users are recommended to submit jobs to T2 through CMS global pool, se
 :red:`The Glidein will set a default X509_USER_KEY, which may affect the xrootd copy, therefore need to add command "unset X509_USER_KEY" before the xrootd copy .`
 
 
-Jobs Submission to CMS global pool.
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Jobs submission to CMS global pool
+**********************************
 
-If you are a CMS member you can also go through the US CMS global pool:
+If you are a CMS member you can also go through the US CMS global pool.
+Here is an example sample list of sites you can use,
 
 .. code-block:: sh
 
-     Requirements = ( BOSCOCluster =!= "t3serv008.mit.edu" && BOSCOCluster =!= "ce03.cmsaf.mit.edu" && BOSCOCluster =!= "eofe8.mit.edu")
-
-     # you can also control what sites you want to run at. Here is a sample list to use:
      +DESIRED_Sites = "T2_AT_Vienna,T2_BE_IIHE,T2_BE_UCL,T2_BR_SPRACE,T2_BR_UERJ,T2_CH_CERN,T2_CH_CERN_AI,T2_CH_CERN_HLT,T2_CH_CERN_Wigner,T2_CH_CSCS,T2_CH_CSCS_HPC,T2_CN_Beijing,T2_DE_DESY,T2_DE_RWTH,T2_EE_Estonia,T2_ES_CIEMAT,T2_ES_IFCA,T2_FI_HIP,T2_FR_CCIN2P3,T2_FR_GRIF_IRFU,T2_FR_GRIF_LLR,T2_FR_IPHC,T2_GR_Ioannina,T2_HU_Budapest,T2_IN_TIFR,T2_IT_Bari,T2_IT_Legnaro,T2_IT_Pisa,T2_IT_Rome,T2_KR_KISTI,T2_MY_SIFIR,T2_MY_UPM_BIRUNI,T2_PK_NCP,T2_PL_Swierk,T2_PL_Warsaw,T2_PT_NCG_Lisbon,T2_RU_IHEP,T2_RU_INR,T2_RU_ITEP,T2_RU_JINR,T2_RU_PNPI,T2_RU_SINP,T2_TH_CUNSTDA,T2_TR_METU,T2_TW_NCHC,T2_UA_KIPT,T2_UK_London_IC,T2_UK_SGrid_Bristol,T2_UK_SGrid_RALPP,T2_US_Caltech,T2_US_Florida,T2_US_MIT,T2_US_Nebraska,T2_US_Purdue,T2_US_UCSD,T2_US_Vanderbilt,T2_US_Wisconsin,T3_CH_CERN_CAF,T3_CH_CERN_DOMA,T3_CH_CERN_HelixNebula,T3_CH_CERN_HelixNebula_REHA,T3_CH_CMSAtHome,T3_CH_Volunteer,T3_US_HEPCloud,T3_US_NERSC,T3_US_OSG,T3_US_PSC,T3_US_SDSC"
 
-In order to use the CMS global pool, you will need to add a few additional lines to your condor submission. These lines below with the proper id and username (uid and id from submit) are necessary in order to get into the global pool:
+In order to use the CMS global pool, you will need to add a few additional lines to your condor submission.
+These lines below with the proper id and username (uid and id from submit) are necessary in order to get into the global pool:
 
 .. code-block:: sh
 
@@ -137,6 +136,9 @@ If you wish to submit jobs to GPU machines, you need to add additional line in t
      RequestGPus=1
      +RequiresGPU=1
 
+Jobs Submission to EAPS
+***********************
+
 There are resources available through MIT Earth, Atmospheric and Planetary Sciences (EAPS). These are accessed by adding the following requirements.
 
 .. code-block:: sh
@@ -144,7 +146,7 @@ There are resources available through MIT Earth, Atmospheric and Planetary Scien
      Requirements =  (BOSCOCluster == "eofe8.mit.edu") 
 
 Jobs Submission to OSG Pool
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
+***************************
 
 And finally you can also use OSG:
 
@@ -164,7 +166,7 @@ or to use RHEL 7,
 
       Requirements = (OSGVO_OS_STRING == "RHEL 7")
 
-though you can also use the singularity images that they distribute through CVMFS.
+You can also use the singularity images that they distribute through CVMFS.
 These are managed `here <https://github.com/opensciencegrid/cvmfs-singularity-sync>`_, and can be found under the following CVMFS path, which is mounted also on subMIT, and the MIT T2 and T3,
 
 .. code-block:: sh
