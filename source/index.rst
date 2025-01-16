@@ -22,8 +22,8 @@ User's Guide - subMIT
 Back to the `main subMIT webpage <https://submit.mit.edu>`_.
 
 
-Tutorials - subMIT
-==================
+Tutorials and Examples
+======================
 
 .. toctree::
    :maxdepth: 1
@@ -37,6 +37,9 @@ Tutorials - subMIT
    tutorials/tutorial_5
    tutorials/tutorial_6
    tutorials/tutorial_7
+
+
+Examples of scripts can be found on our `submit-examples GitHub repository <https://github.com/mit-submit/submit-examples/tree/main>`_.
 
 
 Search tool and tags
@@ -53,6 +56,8 @@ Search tool and tags
 Contributing
 ============
 
+You can participate in the subMIT project by submitting bugs and feature requests to submit-help@mit.edu. If you see anything missing on our User's Guide, you can make pull requests on our `Github <https://github.com/mit-submit/submit-users-guide>`_ for anything from typos to additional documentation!
+
 Archive - subMIT
 ====================
 
@@ -61,5 +66,3 @@ Archive - subMIT
    :caption: Previous Upgrades:
  
    archive/alma
-
-You can participate in the subMIT project by submitting bugs and feature requests to submit-help@mit.edu. If you see anything missing on our User's Guide, you can make pull requests on our `Github <https://github.com/mit-submit/submit-users-guide>`_ for anything from typos to additional documentation!
