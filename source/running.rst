@@ -347,7 +347,7 @@ There are several more examples for different application types at
 - `testing matlab <https://github.com/mit-submit/submit-examples/tree/main/matlab>`_ for use of Matlab on HTCondor
 - `condor_gpu <https://github.com/mit-submit/submit-examples/tree/main/gpu/condor_gpu>`_ for use of GPUs on HTCondor
 
-Some worked-out examples are also provided in `Tutorial 2 <https://submit.mit.edu/submit-users-guide/tutorials/tutorial_2.html>`.
+Some worked-out examples are also provided in `Tutorial 2 <https://submit.mit.edu/submit-users-guide/tutorials/tutorial_2.html>`_.
 
 Slurm
 ~~~~~
