@@ -191,7 +191,7 @@ To transfer input files via the submission script,
 
     transfer_input_files    = <your comma-separated list of files>
 
-N.B.: is a hard limit on the size of input files that you can transfer with `transfer_input_files` at 250MB.
+N.B.: is a hard limit on the size of input files that you can transfer with ``transfer_input_files`` at 250MB.
 In general, you should strive to have as few and small files as possible be transferred this way, in order to avoid overloading the HTCondor scheduler.
 
 via XRootD
@@ -223,8 +223,8 @@ Adding the following to your submission script will copy the outputs of your job
     should_transfer_files   = YES
     when_to_transfer_output = ON_EXIT
 
-You can also control where the output files are transferred to via the `transfer_output_remaps` parameter.
-Here is a simple example that writes the `out.out` file produced in the HTCondor job to your `/work` space.
+You can also control where the output files are transferred to via the ``transfer_output_remaps`` parameter.
+Here is a simple example that writes the ``out.out`` file produced in the HTCondor job to your ``/work`` space.
 
 .. code-block:: sh
 
@@ -251,11 +251,11 @@ via CVMFS
 
 `CVMFS <https://submit.mit.edu/submit-users-guide/program.html#cvmfs>`_ is mounted on subMIT and all clusters connected to subMIT via HTCondor, and supports the distribution of containers.
 
-Several pre-built containers are available already that may meet your needs. Check our the `/cvmfs` space on subMIT.
+Several pre-built containers are available already that may meet your needs. Check our the ``/cvmfs`` space on subMIT.
 
 Please see the relevant `Available Software <https://hep-fcc.github.io/FCCAnalyses/>`_ section of the User's Guide for how to distribute your custom container.
 
-In order to use a container in your jobs, you can specify which image you want via the `+SingularityImage` parameter. For example, 
+In order to use a container in your jobs, you can specify which image you want via the ``+SingularityImage`` parameter. For example, 
 
 .. code-block:: sh
 
@@ -276,7 +276,7 @@ Operating Systems
 
 It may be useful for you to impose on the HTCondor job some specific OS and set of libraries that is compatible with your code, so that each job is operating in an homogenous environment.
 
-For some clusters, you can do this via the `requirements` in the submission script: see sections pertaining to each cluster for more information on this, and check their documentation.
+For some clusters, you can do this via the ``requirements`` in the submission script: see sections pertaining to each cluster for more information on this, and check their documentation.
 
 For all clusters supported by subMIT, as well as subMIT itself, you can also use CVMFS, which has many pre-built images of OSs that can be accessed: see `this section <https://submit.mit.edu/submit-users-guide/program.html#cvmfs>`_ of the guide for more information. See the above section for how to use singularity in your jobs. For example, to use rocky9, you can add the following to your submission script,
 
@@ -421,7 +421,7 @@ An example for how to submit to the lqcd cluster from the submit machines. Here 
 How to see the available resources
 ====================================================
 
-The `sinfo` command can give information about the Slurm partitions and nodes.  For detailed information about this command, view its manual page by typing `man sinfo`.
+The ``sinfo`` command can give information about the Slurm partitions and nodes.  For detailed information about this command, view its manual page by typing ``man sinfo``.
 
 In particular, to view the resources in the subMIT Slurm cluster, the following command can be handy
 
@@ -429,7 +429,7 @@ In particular, to view the resources in the subMIT Slurm cluster, the following 
 
      sinfo -Ne -O "PARTITION:.20,NodeHost:.10,StateLong:.11,NodeAIOT:.15,CPUsState:.15,Memory:.9,AllocMem:.9"
 
-This will list each node on a separate line.  As described in `man sinfo`, the CPUS columns gives the count of the nodes CPUs in each state: "A/I/O/T" ("Allocated/Idle/Other/Total").  The MEMORY column gives the total memory for each node, while the ALLOCMEM gives the amount of memory which is currently allocated on that node.  Thus, with this command, you can see the total inventory of resources on each node, as well as what happens to be available at the moment.
+This will list each node on a separate line.  As described in ``man sinfo``, the CPUS columns gives the count of the nodes CPUs in each state: "A/I/O/T" ("Allocated/Idle/Other/Total").  The MEMORY column gives the total memory for each node, while the ALLOCMEM gives the amount of memory which is currently allocated on that node.  Thus, with this command, you can see the total inventory of resources on each node, as well as what happens to be available at the moment.
 
 Requesting memory
 =================
@@ -438,9 +438,9 @@ On subMIT, Slurm treats both **CPUs** *and* **memory** as consumable resources. 
 
 In general it is recommended to request a bit more memory than you actually need so as to allow a "safety cushion" for variations in your jobs (so a job is not killed if your estimate was a little too low).  
 
-One way to estimate your actual memory requirement is to run the command `seff <jobnumber>` to see memory usage information for a *completed* slurm job.  This can be either a batch job (e.g. submitted with `sbatch`) or an interactive session started with `salloc`.  
+One way to estimate your actual memory requirement is to run the command ``seff <jobnumber>`` to see memory usage information for a *completed* slurm job.  This can be either a batch job (e.g. submitted with ``sbatch``) or an interactive session started with ``salloc``.  
 
-Another method is to use the `time` command.  Running `/usr/bin/time -v <command>` or `\\time -v <command>` will run `<command>` and print corresponding detailed memory and timing information.  Replace `<command>` with whatever you would type into the command prompt to run your calculation; this may be a script execution.  The "Maximum resident set size" output field will give an estimate of the memory to request (remember to add a safety cushion).  *Please note:* if `<command>` will use significant memory, then this should be done within a slurm job (either an interactive session requested with `salloc` or a batch job).
+Another method is to use the ``time`` command.  Running ``/usr/bin/time -v <command>`` or ``\\time -v <command>`` will run ``<command>`` and print corresponding detailed memory and timing information.  Replace ``<command>`` with whatever you would type into the command prompt to run your calculation; this may be a script execution.  The "Maximum resident set size" output field will give an estimate of the memory to request (remember to add a safety cushion).  *Please note:* if ``<command>`` will use significant memory, then this should be done within a slurm job (either an interactive session requested with ``salloc`` or a batch job).
 
 With respect to best-practices, as a general rule of thumb, if you run many or long jobs that request significantly more memory per cpu than the total memory of the node divided by the total number of CPUs on the node, it may be time to reexamine the efficinency of your memory usage or parallelization of your workflow to ensure fair/efficient usage of resources.
 
