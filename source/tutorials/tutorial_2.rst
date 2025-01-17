@@ -44,7 +44,7 @@ and the corresponding condor.sub file to run it on the T3.
       +DESIRED_Sites        = "mit_tier3"
       queue 1
 
-This submission script submit a single (`queue 1`) job, with `$(ProcID)=0` to the MIT T3 that will execute `script.sh`, and will produce log, output, and error files in your local directory.
+This submission script submit a single (``queue 1``) job, with ``$(ProcID)=0`` to the MIT T3 that will execute ``script.sh``, and will produce log, output, and error files in your local directory.
 
 Now you can submit your job:
 
@@ -87,7 +87,7 @@ If you made a mistake during submission, you can also cancel your jobs. This sho
        # If you want to remove all of your jobs
        condor_rm <username>
 
-Once the job runs, you can check the `.out` file for the expected output.
+Once the job runs, you can check the ``.out`` file for the expected output.
 
 Congratulations! You have submitted your first batch computing jobs on HTCondor. Let's complicate this a bit now!
 
@@ -97,7 +97,7 @@ A more complicated example
 We now want to run a simple python script that takes as input, and run it over many inputs.
 
 Here is the python script.
-Save it to a file called `analyze.py`.
+Save it to a file called ``analyze.py``.
 
 .. code-block:: python
 
@@ -118,7 +118,7 @@ Save it to a file called `analyze.py`.
           main()
 
 The shell script that executes this is as follows.
-Save it to a file called `run_analysis.sh`.
+Save it to a file called ``run_analysis.sh``.
 
 .. code-block:: sh
 
@@ -132,7 +132,7 @@ Save it to a file called `run_analysis.sh`.
       echo "That's all!"
 
 We want to run over a whole list of inputs.
-Let's write those to a file, called `inputs.txt`
+Let's write those to a file, called ``inputs.txt``
 
 .. code-block:: sh
 
@@ -245,7 +245,7 @@ We can do this with the following,
 
 However, in order to use XRootD, we need to pass our x509 key to the job.
 (See the `User's Guide <https://submit.mit.edu/submit-users-guide/storage.html#the-storage-filesystem>`_ for how to set up the authentication for the first time.)
-On subMIT, initialize your x509 proxy and put it somewhere accessible. We do this by setting the environment variable `X509_USER_PROXY`,
+On subMIT, initialize your x509 proxy and put it somewhere accessible. We do this by setting the environment variable ``X509_USER_PROXY``,
 
 .. code-block:: sh
       
