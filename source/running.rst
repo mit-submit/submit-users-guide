@@ -223,6 +223,13 @@ Adding the following to your submission script will copy the outputs of your job
     should_transfer_files   = YES
     when_to_transfer_output = ON_EXIT
 
+You can also control where the output files are transferred to via the `transfer_output_remaps` parameter.
+Here is a simple example that writes the `out.out` file produced in the HTCondor job to your `/work` space.
+
+.. code-block:: sh
+
+    transfer_output_remaps = "out.out = /work/submit/$USER/out.out"
+
 via XRootD
 **********
 
