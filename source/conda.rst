@@ -199,14 +199,14 @@ pip and Conda are package management tools commonly used for Python. The main fe
 
 * **Exporting environment** with both Conda and pip, we can export an environment to share it with other users. The commands are
 
-.. code-block:: sh
+    .. code-block:: sh
 
-    conda env export > environment.yml
-    pip freeze > requirements.txt
+        conda env export > environment.yml
+        pip freeze > requirements.txt
 
 These environments can then be recreated by other users by running
 
     .. code-block:: sh
 
-    conda env create -f environments.yml
-    pip install -r requirements.txt
+        conda env create -f environments.yml
+        pip install -r requirements.txt
