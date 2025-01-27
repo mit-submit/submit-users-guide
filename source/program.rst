@@ -190,7 +190,7 @@ Always create a new environment, don't use the ``base`` one:
 
 .. code-block:: sh
 
-      # create new environment with python 3.7, e.g. environment of name "myenv"
+      # create new environment with python 3.12, e.g. environment of name "myenv"
       conda create --name myenv python=3.12
       # activate environment "myenv"
       conda activate myenv
