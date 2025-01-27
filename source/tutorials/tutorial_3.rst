@@ -308,7 +308,7 @@ We can then use the compressed contained to build the singularity image,
 
 .. code-block:: sh
 
-      singularity build <singularity_image_name>.sif docker-arhive://<your_compressed_container>
+      singularity build <singularity_image_name>.sif docker-archive://<your_compressed_container>
 
 The singularity image is now built! It is just a file that will be created in the directory you are working in. We start a shell using the singularity image,
 
