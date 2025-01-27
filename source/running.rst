@@ -53,7 +53,7 @@ OSG
 
 The first external cluster to consider is the one supported by the Open Science Grid (`OSG <https://opensciencegrid.org/>`_).
 The OSG is a consortium of research collaborations, campuses, national laboratories and software providers dedicated to the advancement of all open science via the practice of distributed High Throughput Computing (dHTC).
-For `OSG support <https://support.opensciencegrid.org/support/home>`_ and `OSG requirements <https://support.opensciencegrid.org/support/solutions/articles/5000633467-steer-your-jobs-with-htcondor-job-requirements#requirements>`_ on submitting HTCondor jobs follow the links.
+For `OSG support <https://support.opensciencegrid.org/support/home>`_ and `OSG requirements <https://portal.osg-htc.org/documentation/htc_workloads/workload_planning/htcondor_job_submission/>`_ on submitting HTCondor jobs follow the links.
    
 CMS Global Pool
 ***************
