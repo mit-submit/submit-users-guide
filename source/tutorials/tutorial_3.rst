@@ -15,13 +15,207 @@ This tutorial will guide you through:
 
 Note: unsure whether containers are the right option for you? See other options for how to install software and environments on `our docs <https://submit.mit.edu/submit-users-guide/program.html>`_.
 
-Podman
-~~~~~~
+Podman: a Basic Introduction
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+All the scripts in this tutorial are available in the `submit-examples GitHub <https://github.com/mit-submit/submit-examples/>`_ under the `containers/podman/` folder. You should find,
+
+.. code-block:: bash
+
+    Dockerfile
+    script.py
+    run.sh
+
+Creating a Dockerfile
+.....................
+
+**Dockerfiles** are text documents that provide a set of instructions to Docker/Podman (the terms are used interchangably in this tutorial) to create an **image**.
+This is where you specify the software you want to download, the environment you want to be in, and even the operating system you want to use.
+
+... if you know what you want
+.............................
+
+If you know the software you want, you can set up your Dockerfile to install exactly what you need.
+
+Suppose, for example, you want to install a simple stack consisting of: your favorite version of python with some packages, sitting on an Alma Linux 9 distribution. The Dockerfile might look something like what is provided.
+
+.. code-block:: sh
+
+    # Dockerfile
+
+    # specify the base image that we're building the image on top of
+    # from https://hub.docker.com/_/almalinux
+    FROM almalinux:9
+    
+    # set some variables
+    USER $USER
+    WORKDIR $PWD
+    ENV TERM=xterm-256color
+    
+    # install the software we want
+    RUN yum install -y python3.12 && yum install -y pip && yum install -y ncurses
+    RUN python3 -m pip install --upgrade pip
+    RUN python3 -m pip install \
+        numpy \
+        matplotlib \
+        seaborn \
+        scikit-learn
+    
+    # copy everything in the current directory into /home inside the container
+    COPY . /home
+    
+    # run the command
+    CMD ["/bin/bash"]
+
+Let's break this down.
+
+The ``FROM`` commands specifies that we want to build our image starting from an existing image; in this case, the base is an operating system we like.
+
+.. code-block:: sh
+
+    # specify the base image that we're building the image on top of
+    # from https://hub.docker.com/_/almalinux
+    FROM almalinux:9
+
+The ``ENV``, ``USER``, and ``WORKDIR`` set some environment variables.
+
+.. code-block:: sh
+
+    # set some variables
+    USER $USER
+    WORKDIR $PWD
+    ENV TERM=xterm-256color
+
+The ``RUN`` commands then run certain commands, as you would on a command line, to install desired software.
+In this case, we install python and some basic python packages.
+This is simple stuff, but you have a huge freedom here to set up whatever software you want.
+
+.. code-block:: sh
+
+    # install the software we want
+    RUN yum install -y python3.12 && yum install -y pip && yum install -y ncurses
+    RUN python3 -m pip install --upgrade pip
+    RUN python3 -m pip install \
+        numpy \
+        matplotlib \
+        seaborn \
+        scikit-learn
+
+The copy command will create a copy of local scripts into the container.
+Note that this is not a reference, but a copy, so if you modify things inside the container, they will not affect things outside.
+We will talk later how to get data out of the container.
+
+.. code-block:: sh
+
+    # copy everything in the current directory into /home inside the container
+    COPY . /home
+
+Finally, the ``CMD``.
+This is what is executed by the container when you run it.
+In particular, when our container is created, it will execute ``\bin\bash``, i.e., it will just open up a shell.
+
+.. code-block:: sh
+
+    # run the command
+    CMD ["/bin/bash"]
+
+You could instead have it run some application or script by changing this to,
+
+.. code-block:: sh
+
+    # run the command
+    CMD ["python3", "/home/script.py"]
+
+... if you don't know what you want
+...................................
+
+If you don't know exactly the software you need, want to debug your configuration, or just could use to play around, you can enter a "blank" container, and install whatever you need interactively, to then use as a testbed for writing your Dockerfile.
+
+Suppose, for example, you want AlmaLinux9 as your OS.
+You can then open a "blank" container,
+
+.. code-block:: sh
+
+      podman run -it --rm almalinux:9 /bin/bash
+
+Now, you should be in a command line operating as "root" inside your container.
+You can install things via ``yum install``, and figure out what you software you need to run your code.
+
+Building and Running a Container from a Dockerfile
+..................................................
+
+Once you have a Dockerfile specifying your container’s setup, you can use Podman to build and run the container.
+
+To create a container image from your Dockerfile, the general syntax is,
+
+.. code-block:: bash
+
+    podman build -t <image_name> .
+
+- ``-t <image_name>`` assigns a name to your container image for easier reference.
+- ``.`` specifies the current directory, where Podman expects to find the Dockerfile.
+
+In our example, you can run,
+
+.. code-block:: sh
+
+    podman build -t tutorial .
+
+Once your image is built, you can run a container from it.
+You can spawn multiple containers from a single image, they are just instances of the same image.
+The general syntax is,
+
+.. code-block:: bash
+
+    podman run -it --rm <image_name> /bin/bash
+
+- ``-i`` keeps stdin open, allowing interaction.
+- ``-t`` allocates a terminal.
+- ``--rm`` automatically removes the container after it stops.
+
+In our example, you can run,
+
+.. code-block:: sh
+
+    podman run -it tutorial
+
+We provide a ``run.sh`` you can execute with these two commands, so you can just execute this, and it will build the image and run the container.
+It's good practice to put these commands in an executable script like this,
+
+.. code-block:: sh
+
+    ./run.sh
+
+Once you run the container, because your ``CMD`` opens up a bash shell, your should see something like,
+
+.. code-block:: sh
+
+    [root@9f9ef97b19a9 home]#
+
+We are inside the container!
+
+You can look around, and you should see that in ``/home`` we have the scripts that we copied in,
+
+.. code-block:: sh
+
+    [root@9f9ef97b19a9 /]# ls
+    afs  bin  dev  etc  home  lib  lib64  media  mnt  opt  proc  root  run  sbin  srv  sys  tmp  usr  var
+    [root@9f9ef97b19a9 /]# cd /home
+    [root@9f9ef97b19a9 home]# ls
+    Dockerfile  run.sh  script.py
+
+You can then run the script with the ``python3`` we have installed,
+
+.. code-block:: sh
+
+    python3 script.py
+
+Enjoy the dance!
 
 Basic Podman Commands 
 .....................
 
-This section covers some essential `podman` commands to help you manage and interact with containers on the cluster.
+This section covers some essential Podman commands to help you manage and interact with containers on the cluster.
 
 To view all running containers, use:
 
@@ -34,6 +228,22 @@ This command shows an overview of running containers, displaying useful informat
 .. code-block:: bash
 
     podman ps -a
+
+If you ran your command with ``--rm``, you will not see anything running.
+Else, you can see something like,
+
+.. code-block:: sh
+
+    $ podman ps
+    CONTAINER ID  IMAGE                      COMMAND     CREATED         STATUS         PORTS       NAMES
+    e3f3a82080c0  localhost/tutorial:latest  /bin/bash   16 minutes ago  Up 16 minutes              elegant_nash
+
+Since it's running, we can always get back inside the container using either the name or the container ID,
+
+.. code-block:: sh
+
+    $ docker exec -it e3f3a82080c0 /bin/bash
+    [root@e3f3a82080c0 /]#
 
 To start or stop a container, use:
 
@@ -56,27 +266,6 @@ If you need to forcefully remove a running container, add the `-f` flag:
 
     podman rm -f <container_id_or_name>
 
-To download container images from a registry, use:
-
-.. code-block:: bash
-
-    podman pull <image_name>
-
-For example:
-
-.. code-block:: bash
-
-    podman pull almalinux:9
-
-To start a container interactively, allowing you to run commands directly within it, use:
-
-.. code-block:: bash
-
-    podman run -it --rm <image_name> /bin/bash
-
-- `-i` keeps stdin open, and `-t` allocates a terminal.
-- `--rm` removes the container when it exits.
-
 To check the logs for a specific container:
 
 .. code-block:: bash
@@ -85,10 +274,16 @@ To check the logs for a specific container:
 
 This command helps in troubleshooting or checking the output of a containerized application.
 
+Podman: More Advanced Concepts
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+These are all the basics you need to create and run containers! What follows are more advanced but important concepts that may help going from this simple tutorial to a more realistic use-case.
+
 Accessing Local Data Inside a Container
 .......................................
 
-The `-v` option in Podman allows you to mount a host directory or file inside the container. This is especially useful for sharing data between your host system and the container, or for persisting data generated by the container.
+The `-v` option in Podman allows you to mount a host directory or file inside the container.
+This is especially useful for sharing data between your host system and the container, or for persisting data generated by the container.
 
 Basic syntax:
 
@@ -96,129 +291,79 @@ Basic syntax:
 
     podman run -v /host/path:/container/path <image_name>
 
-- `/host/path` is the directory or file path on your local machine.
-- `/container/path` is where you want it to appear inside the container.
+- ``/host/path`` is the directory or file path on your local machine.
+- ``/container/path`` is where you want it to appear inside the container.
 
 For example:
 
 .. code-block:: bash
 
-    podman run -v /home/user/data:/app/data my_image
+    podman run -v /work/submit/$USER/:/data tutorial
 
-This mounts the `data` folder from your host machine at `/app/data` inside the container, allowing both the container and host to read and write to it.
+This mounts the ``/work/submit/$USER/`` folder from your host machine at `/data` inside the container, allowing both the container and host to read and write to it.
 
-The `-v` option can also include additional flags to control access:
+The ``-v`` option can also include additional flags to control access:
 
-- `:ro` for read-only access.
-- `:rw` (default) for read and write access.
+- ``:ro`` for read-only access.
+- ``:rw`` (default) for read and write access.
 
 Example with read-only:
 
 .. code-block:: bash
 
-    podman run -v /home/user/data:/app/data:ro my_image
+    podman run -v /work/submit/$USER/:/data:ro tutorial
 
-Creating a Dockerfile
-.....................
+Cache
+.....
 
-Dockerfiles are text documents that provide a set of instructions to Docker/Podman to create a container. This is where you specify the software you want to download, the environment you want to be in, and even the operating system you want to use.
+As you may have noticed, building images isn't the fastest thing in the world.
+Podman automatically caches any steps (called 'layers') that are unchanged in the Dockerfile.
 
-... if you know what you want
-.............................
-
-If you know the software you want, you can set up your Dockerfile to install exactly what you need.
-
-Suppose, for example, you want to install a simple stack consisting of: your favorite version of python with some packages, sitting on a Fedora distribution. The Dockerfile might look something like the following.
+You can be explicit about setting your cache when building an image,
 
 .. code-block:: sh
 
-      # Dockerfile
-
-      # Specify the base image that we're building the image on top of
-      FROM fedora:latest
-
-      # need at least 6.32.04
-      # full list of RPMS https://src.fedoraproject.org/rpms/root/
-      RUN dnf install -y python
-
-      RUN dnf install -y pip
-      RUN python -m pip install --upgrade pip
-      RUN python -m pip install <your favorite packages>
-
-      USER $USER
-      WORKDIR $PWD
-      CMD ["/bin/bash"]
-
-
-... if you don't know what you want
-...................................
-
-If you don't know exactly the software you need, want to debug your configuration, or just could use to play around, you can enter a "blank" container, and install whatever you need interactively, to then use as a testbed for writing your Dockerfile.
-
-Suppose, for example, you are happy with AlmaLinux9 as your OS. You can then open a "blank" container,
-
-.. code-block:: sh
-
-      podman run -it --rm almalinux:9 /bin/bash
-
-Now, you should be in a command line operating as "root" inside your container. You can install things 
-via ``dnf install``, and figure out what you software you need.
-
-Building and Running a Container from a Dockerfile
-..................................................
-
-Once you have a `Dockerfile` specifying your container’s setup, you can use Podman to build and run the container.
-
-
-To create a container image from your `Dockerfile`, use the following command from the directory where your `Dockerfile` is located:
-
-.. code-block:: bash
-
-    podman build -t <image_name> .
-
-- `-t <image_name>` assigns a name to your container image for easier reference.
-- `.` specifies the current directory, where Podman expects to find the `Dockerfile`.
-
-Once your image is built, you can run a container from it:
-
-.. code-block:: bash
-
-    podman run -it --rm <image_name> /bin/bash
-
-- `-i` keeps stdin open, allowing interaction.
-- `-t` allocates a terminal.
-- `--rm` automatically removes the container after it stops.
+    podman build --cache-to type=local,dest=/work/submit/$USER/ \
+             --cache-from type=local,src=/work/submit/$USER/ \
+             --layers -t tutorial .
 
 DockerHub
 .........
 
-`DockerHub <https://hub.docker.com/>`_ is an extensive platform that allows you to host or download containers.
+`DockerHub <https://hub.docker.com/>`_ is an extensive platform that allows you to host or download images.
+Think of it as the GitHub for container images.
 
-For this example, we will do a build directly from a a repository on DockerHub.
+Go on their website, create an account, and create a new repository.
+I will be calling mine ``submit-test``.
 
-We can grab the basic python distribution from DockerhHub `dockerhub python <https://hub.docker.com/_/python>`_.
-
-.. code-block:: sh
-
-      podman pull python
-
-After this is done downloading we can then enter into a python environment:
+You can log in from the command line with,
 
 .. code-block:: sh
 
-      podman run --rm -i -t python
+    podman login docker.io
 
-You can run python commands through the container as well. For example you can see the new python version from the container:
+You can then create a tag, and push it to DockerHub,
 
 .. code-block:: sh
 
-      podman run --rm -i -t python python --version
+    podman tag localhost/tutorial docker.io/<DOCKERHUB_USERNAME>/submit-test:latest
+    podman push  docker.io/<DOCKERHUB_USERNAME>/submit-test:latest
 
+You should see on the website that your image appeared.
+Your friends can now pull your image,
+
+.. code-block:: sh 
+
+    podman pull docker.io/llavez99/submit-test:latest
+
+Pretty neat!
 
 Singularity
 ~~~~~~~~~~~
 
-In high-performance computing (HPC) it is often convenient to create singularity images from containers. This section will guide you on how to create a Singularity Image Format (SIF) file to access your container.
+In high-performance computing (HPC) it is often convenient to create **singularity images** from Docker/Podman containers.
+These are better served for executing your scripts on batch computing clusters serviced by Slurm and HTCondor.
+This section will guide you on how to create a Singularity Image Format (SIF) file to access your container.
 
 Basic Singularity Commands
 ..........................
