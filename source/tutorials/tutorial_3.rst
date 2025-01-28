@@ -435,7 +435,7 @@ This is usually how you want to run your code using containers!
 Accessing Mounts Inside Singularity
 ...................................
 
-To mount host files and directories into a Singularity container, you can use the ``--bind``option.
+To mount host files and directories into a Singularity container, you can use the ``--bind`` option.
 This allows you to specify paths on the host that should be accessible within the container, and is similiar to the ``-v`` option in podman.
 
 Basic syntax:
@@ -444,7 +444,7 @@ Basic syntax:
 
     singularity exec --bind /host/path:/container/path <image_name>.sif /bin/bash
 
-In this example, `/host/path` is the directory or file on the host, while `/container/path` is where it will be accessible inside the container. 
+In this example, ``/host/path`` is the directory or file on the host, while ``/container/path`` is where it will be accessible inside the container. 
 
 For example, to mount a data directory:
 
@@ -452,7 +452,7 @@ For example, to mount a data directory:
 
     singularity exec --bind /home/submit/$USER:/home tutorial.sif /bin/bash
 
-This command mounts the ``/home/submit/$USER/` directory from the host into the container at ``/home``, allowing both the host and the container to read and write to it. 
+This command mounts the ``/home/submit/$USER/`` directory from the host into the container at ``/home``, allowing both the host and the container to read and write to it. 
 
 Conclusion
 ~~~~~~~~~~
