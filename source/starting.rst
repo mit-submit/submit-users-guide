@@ -29,12 +29,12 @@ If you are not familiar with ssh keys, generating keys is a straightforward proc
 
 .. tabs::
 
-   .. group-tab:: :gold:`Mac OS`
+   .. group-tab:: `Mac OS`
 
       :black:`Open the Terminal application.`
       :black:`This can be done by clicking on Lanuchpad or hitting F4, and then typing "terminal" followed by the Return key.`
 
-   .. group-tab:: :gold:`Windows`
+   .. group-tab:: `Windows`
 
       :black:`We recommend you install & use Windows Subsystem for Linux.  If you do not wish to at this time, you may follow these directions to generate keys natively in Windows...`
 
