@@ -9,6 +9,7 @@ You have several options to connect to subMIT, view and edit your files, and do 
 2. **`JupyterHub <https://submit.mit.edu/jupyter/hub/spawn>_`**  provides another easy alternative to connect to the cluster. You can log in using your Kerberos ID, and get access to an interactive graphical interface, terminal, text editor, and more.
 3. **VS Code** is a powerful code editor that supports remote access through SSH, as well as many languages and extensions. 
 4. **X2GO** is a remote desktop software. 
+5. **XWin32** is a remote desktop software under Window system. 
 
 You can find details and suggestions for these options below.
 
@@ -208,3 +209,18 @@ X2Go is open source remote desktop software for Linux and is available on submit
 `x2goclient <https://wiki.x2go.org/doku.php/doc:installation:x2goclient>`_
 
 Remember to point to the correct ssh key that you have uploaded to the submit-portal. There is currently a bug in either XFCE or X2Go causing rendering issues with the compositor when using X2Go. To disable the compositor, you can go to Settings > Window Manager Tweaks > Compositor.
+
+XWin32
+~~~~~~
+X-Win32 is an X11 server for Windows that allows remote graphical applications (GUIs) to be displayed from a Linux server.
+
+#. **Install XWin32:** Download and install X-Win32 from googling.
+
+#. **SSH Configuration:** In the X-config (ssh configuration), define connection, host and login accordingly. For the command bracket, set "xterm -ls". 
+
+#. **Login Key Conversion:** In the advance option, you need use your private key to login. The key, unlike the private key you generated, should be in the "putty key" format. 
+
+For this you need to download puttygen: https://www.puttygen.com/#google_vignette 
+Then open puttygen, click "Conversions" in the top tag -> "Import Key" then select your private key
+Then click "Save private key" button, give it a new name.  The new key is in the format of *.ppk, you then select this key in your x-win32 set up to login to SubMIT.
+
