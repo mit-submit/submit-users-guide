@@ -80,6 +80,6 @@ The storage on Tier2
 Upon request, users may also have some storage on MIT Tier2 sites. Note that tier2 is external computing resources and users can only use xrootd to transfer the files. In other words, to use storage in tier2, users must have x509 certificate. The details of how to get such certificates are above. 
 
 Group storage at submit
------------------------
+~~~~~~~~~~~~~~~~~~~~~~~
 
 Upon request, we can create user group storage spaces on /ceph at ``/ceph/submit/data/<group name>`` to easily share files. Unless specified otherwise, this group space has between 1 and 10 TB of storage, although we are flexible to create larger spaces if necessary. By default, all members of the group, and only them, can access, modify, and execute the contents of the group storage space. To create this group space, please email submit-help@mit.edu with the requested amount of storage, group name, and email address or Kerberos ID of the users who should have access to the storage space.
