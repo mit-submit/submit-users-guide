@@ -17,6 +17,7 @@ User's Guide - subMIT
    gpu
    backup
    conda
+   openmpi
    acknowledging
 
 Back to the `main subMIT webpage <https://submit.mit.edu>`_.

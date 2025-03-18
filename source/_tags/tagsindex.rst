@@ -16,5 +16,6 @@ User's Guide Tags
     Julia (2) <julia.rst>
     JupyterHub (3) <jupyterhub.rst>
     Mathematica (1) <mathematica.rst>
+    OpenMPI (1) <openmpi.rst>
     Slurm (6) <slurm.rst>
     VSCode (4) <vscode.rst>
