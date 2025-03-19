@@ -110,7 +110,7 @@ An example submission script to Slurm is:
     #SBATCH --time=00:20:00
     #SBATCH --mem-per-cpu=100
 
-    module load openmpi  
+    module load mpi  
     mpirun -np $SLURM_NTASKS ./my_program
 
 Here we request 3 nodes with 12 tasks in total. Each task has 1 CPU, so we are only doing multi-processing here and no multi-threading.
