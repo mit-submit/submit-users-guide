@@ -26,7 +26,7 @@ Let's call it script.sh.
       #!/bin/bash
 
       echo "I am a HTCondor job!"
-      echo "I have landed in $hostname"
+      echo "I have landed in $(hostname)"
       echo "I have recieved parameter $1"
       echo "That's all!"
 
@@ -125,10 +125,10 @@ Save it to a file called ``run_analysis.sh``.
       #!/bin/bash
 
       echo "I am a HTCondor job!"
-      echo "I have landed in $hostname"
+      echo "I have landed in $(hostname)"
       echo "I have recieved parameter $1"
-      echo "I will now run: python analyze.py $1"
-      python analyze.py $1
+      echo "I will now run: python3 analyze.py $1"
+      python3 analyze.py $1
       echo "That's all!"
 
 We want to run over a whole list of inputs.
@@ -157,7 +157,7 @@ We pass both the python and the shell scripts to the worker-node, so that it can
       universe              = vanilla
       executable            = run_analysis.sh
       arguments             = $(arg)
-      transfer_input_files  = script.py, run_script.sh
+      transfer_input_files  = analyze.py
       output                = output_$(arg).txt
       error                 = error_$(arg).txt
       log                   = log_$(arg).txt
@@ -175,7 +175,7 @@ We have for now neglected the software environment of the job, tacitly assuming 
 More typically, you will want to operate in an homogenous environment that you understand (or even control), and will need some particular software that is not natively installed on the worker-nodes.
 We provide an example for how to do this with singularity, but you can check out the User's Guide section on `containers <https://submit.mit.edu/submit-users-guide/program.html>`_ and `HTCondor <https://submit.mit.edu/submit-users-guide/running.html#id1>`_ for alternatives and more details.
 
-This is the script we want to run now.
+This is the new version of ``analyze.py`` we want to run now.
 
 .. code-block:: python
 
@@ -215,44 +215,46 @@ We can do this by specifying it in our submission script,
 
 .. code-block:: sh
 
-      +SingularityImage     = "/cvmfs/singularity.opensciencegrid.org/htc/rocky\:9"
+      +SingularityImage     = "/cvmfs/singularity.opensciencegrid.org/htc/rocky:9"
 
 We have picked a standard singularity image that provides a rocky9 distribution with some basic software like python already installed.
 You can play around with this singularity on subMIT to make sure our python script works there.
 
 .. code-block:: sh
 
-      singularity shell /cvmfs/singularity.opensciencegrid.org/htc/rocky\:9
-      Apptainer> python3 analyze.py
+      singularity shell /cvmfs/singularity.opensciencegrid.org/htc/rocky:9
+      Apptainer> python3 analyze.py 3
 
 Finally, we want to transfer the output file of the python script using XRootD to our ceph space on subMIT.
-We can do this with the following,
+We can do this with the following new version of ``run_analysis.sh``.
 
 .. code-block:: sh
 
       #!/bin/bash
 
       echo "I am a HTCondor job!"
-      echo "I have landed in $hostname"
+      echo "I have landed in $(hostname)"
       echo "I am supposed to be inside a singularity container: $APPTAINER_NAME"
       echo "I have recieved parameter $1"
-      echo "I will now run: python analyze.py $1"
-      python analyze.py $1
-      echo "Transferring output: xrcdp result_$1.txt root://submit50.mit.edu//data/user/<your path>/"
+      echo "I will now run: python3 analyze.py $1"
+      python3 analyze.py $1
+      echo "Transferring output: xrdcp result_$1.txt root://submit50.mit.edu//data/user/<your path>/"
       export X509_USER_PROXY=x509
-      xrcdp result_$1.txt root://submit50.mit.edu//data/user/<your path>/
+      xrdcp result_$1.txt root://submit50.mit.edu//data/user/<your path>/
       echo "That's all!"
 
 However, in order to use XRootD, we need to pass our x509 key to the job.
-(See the `User's Guide <https://submit.mit.edu/submit-users-guide/storage.html#the-storage-filesystem>`_ for how to set up the authentication for the first time.)
-On subMIT, initialize your x509 proxy and put it somewhere accessible. We do this by setting the environment variable ``X509_USER_PROXY``,
+If you have not yet done so, you must complete the first-time authentication instructions in `User's Guide <https://submit.mit.edu/submit-users-guide/storage.html#the-storage-filesystem>`_ .
+Then, on subMIT, run the following commands
 
 .. code-block:: sh
       
       export X509_USER_PROXY="/home/submit/$USER/x509"
       voms-proxy-init --valid 100:00:00
 
-The final submission script will look like,
+This will initialize your x509 proxy and put it somewhere accessible via setting the environment variable ``X509_USER_PROXY``.
+
+Using the same ``input.txt`` from above, the final submission script will look like,
 
 .. code-block:: sh
 
@@ -263,7 +265,7 @@ The final submission script will look like,
       output                = output_$(arg).txt
       error                 = error_$(arg).txt
       log                   = log_$(arg).txt
-      +SingularityImage     = "/cvmfs/singularity.opensciencegrid.org/htc/rocky\:9"
+      +SingularityImage     = "/cvmfs/singularity.opensciencegrid.org/htc/rocky:9"
       +DESIRED_Sites        = "mit_tier2,mit_tier3"
       queue arg from inputs.txt
 
