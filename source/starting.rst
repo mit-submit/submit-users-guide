@@ -174,7 +174,7 @@ In addition to the areas above, you have the ability to create a personal webpag
 
   mkdir $HOME/public_html
 
-Once that is created, you can now access your personal webpage after inserting your username in \http://submit08.mit.edu/~<username>/.
+Once that is created, you can now access your personal webpage after inserting your username in \http://submit.mit.edu/~<username>/.
 You can customize the appearance and content of your webpage for example by adding the `index.php <https://github.com/mit-submit/submit-examples/blob/main/php-plots/index.php>`_ file inside the public_html directory or subdirectory to see previews of .png files. 
 
 Tips when coming from another cluster
@@ -184,7 +184,7 @@ Each cluster is a bit different and subMIT is no exception.  Here are a few thin
 
 * In addition to the SLURM-managed subMIT nodes, subMIT is a login pool which also connects to other resources
 
-* subMIT does not provide software through ``module avail``. Instead, we prefer users to install the specific toolbox they need for their workflow. We give you examples, for instance on `how to setup conda <https://submit.mit.edu/submit-users-guide/program.html#installing-conda>`_ to manage environments and packages for Python and more, or `Mathematica <https://submit.mit.edu/submit-users-guide/program.html#id1>`_. When you install softwares, make sure they are installed in your ``/work`` directory.
+* subMIT does not provide software through ``module avail``. Instead, we prefer users to install the specific toolbox they need for their workflow. We give you examples, for instance on `how to setup conda <https://submit.mit.edu/submit-users-guide/program.html#installing-conda>`_ to manage environments and packages for Python and more, or `Mathematica <https://submit.mit.edu/submit-users-guide/program.html#id1>`_. When you install software, make sure they are installed in your ``/work`` directory.
 
 * On subMIT, SLURM is not set to reserve entire nodes by default; SLURM will request the resources (cores & memory) you request for your job. On subMIT, it is best to think in units of cores, not nodes when making SLURM requests.  The subMIT SLURM cluster contains several 'standard' nodes as well as high-density nodes with a large number of cores and memory on a single node. Given this heterogeneous nature, it is important to think how many cores your jobs need and request number of cores explicitly in your batch scripts.  One high-density node can do the work of several standard nodes, and you will likely wait a long time (and end up with more cores than you need) if you request a full high-density node.
 
