@@ -15,7 +15,7 @@ You have three options:
 
 1. **Running locally**: limited to the interactive usage of CPUs in the login nodes. Ideal for developing, not for running jobs.
 2. **HTCondor**: large pools of CPUs and some GPUs are available in clusters at MIT and around the world. Ideal for large scale processing. Worker nodes in HTCondor do not have access to your subMIT directories: this means that any input files and software that you need must be passed into the submission, or already be on the worker node. Several tools are available to achieve this, read below.
-3. **Slurm**: medium-sized pool of CPUs and some GPUs available on subMIT worker-nodes. Slurm is set up as a federation with all of the subMIT machines as clusters. This means that Slurm submissions will have access to the home directories.
+3. **Slurm**: medium-sized pool of CPUs and some GPUs available on subMIT worker-nodes. Slurm is set up as a federation with all of the subMIT machines as clusters. This means that Slurm submissions will have access to the /home, /work, and /ceph directories.
 
 Running locally
 ~~~~~~~~~~~~~~~
@@ -68,7 +68,7 @@ Jobs submitted by MIT users can be found in the link: `CMS <https://cms-gwmsmon.
 Submitting to the different clusters
 ====================================
 
-Here we provide the recipies to run at different clusters. 
+Here we provide the recipes to run at different clusters. 
 
 Glidein submission to T2/T3
 ***************************
@@ -165,7 +165,7 @@ These are managed `here <https://github.com/opensciencegrid/cvmfs-singularity-sy
 
 You can also add your container to this list by pushing it DockerHub and making a PR to that repository, and the container will be made available everywhere that this CVMFS is mounted.
 
-In order to land on Singularity-enabled wokrer nodes in the OSG pool, you have to specify,
+In order to land on Singularity-enabled worker nodes in the OSG pool, you have to specify,
 
 .. code-block:: sh
 
@@ -206,7 +206,7 @@ Once that is set up, in your bash script that is executed in the worker-node, yo
 
     xrdcp root://submit50.mit.edu//data/user/w/wangzqe/test.txt .
 
-Transferring Ouptuts
+Transferring Outputs
 ********************
 
 If your code produces an output you want to bring back to subMIT, you have the same two options as for the input files.
@@ -269,12 +269,12 @@ Once the job starts, it will operate entirely inside the singularity container.
 via transfer
 ************
 
-If you don't need a lot of software, and you can package it (perhaps by compiling it in a way that is self-contained), you can transfer it via the methods outlines in the previous section: either thorugh the submission script or HTCondor.
+If you don't need a lot of software, and you can package it (perhaps by compiling it in a way that is self-contained), you can transfer it via the methods outlines in the previous section: either through the submission script or HTCondor.
 
 Operating Systems
 *****************
 
-It may be useful for you to impose on the HTCondor job some specific OS and set of libraries that is compatible with your code, so that each job is operating in an homogenous environment.
+It may be useful for you to impose on the HTCondor job some specific OS and set of libraries that is compatible with your code, so that each job is operating in an homogeneous environment.
 
 For some clusters, you can do this via the ``requirements`` in the submission script: see sections pertaining to each cluster for more information on this, and check their documentation.
 
@@ -359,8 +359,8 @@ Some worked-out examples are also provided in `Tutorial 2 <https://submit.mit.ed
 Slurm
 ~~~~~
 
-Slurm can also be used on the submit machines. There is a main slurm partition on the submit machines as well as GPUs available through ``submit-gpu`` and ``submit-gpu-a30`` partitions. Additionally slurm connects the lqcd cluster(TEMPORARILY OUT OF DATE).
-The slurm partitions on SubMIT are fairly open but jobs are limited to 6 days of running time. In addition, each slurm node is limited to 80 GB of total memory to use.
+Slurm can be used on the submit machines. There is a main slurm partition on the submit machines ``submit`` and a smaller partition for machines that are only connected via 1Gbit/s links ``submit-1gbs`` for jobs that are not I/O limited. GPUs are available through the ``submit-gpu`` and ``submit-gpu-a30`` partitions. Additionally slurm connects the lqcd cluster(TEMPORARILY OUT OF DATE).
+The slurm partitions on SubMIT are fairly open but jobs are limited to 6 days of running time. In addition, each slurm node is limited to 160 GB of total memory to use.
 
 Slurm example 1
 ===============
