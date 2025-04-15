@@ -362,8 +362,8 @@ Slurm
 Slurm can be used on the submit machines. There is a main slurm partition on the submit machines ``submit`` and a smaller partition for machines that are only connected via 1Gbit/s links ``submit-1gbs`` for jobs that are not I/O limited. GPUs are available through the ``submit-gpu`` and ``submit-gpu-a30`` partitions. Additionally slurm connects the lqcd cluster(TEMPORARILY OUT OF DATE).
 The slurm partitions on SubMIT are fairly open but jobs are limited to 6 days of running time. In addition, each slurm node is limited to 160 GB of total memory to use.
 
-Slurm example 1
-===============
+Slurm example
+=============
 
 Below is a sample about how to submit a slurm job to the submit machines. Here we are doing similar to the condor samples above and copying a file with xrootd and then transferring the output to hadoop scratch space. Like Condor, you will need to export your x509 proxy in order to get access to certain files. Additional samples that utilize the GPUs on the submit cluster can be found in the GPU section of the guide: `submit GPU <http://submit.mit.edu/submit-users-guide/gpu.html>`_
 
@@ -389,34 +389,34 @@ Below is a sample about how to submit a slurm job to the submit machines. Here w
       srun hostname
       srun ls -hrlt
 
-Slurm example lqcd
-==================
+.. Slurm example lqcd
+.. ==================
 
-An example for how to submit to the lqcd cluster from the submit machines. Here we need some extra set up and then test some simple srun commands like below (this example runs in the devel partition):
+.. An example for how to submit to the lqcd cluster from the submit machines. Here we need some extra set up and then test some simple srun commands like below (this example runs in the devel partition):
 
-.. code-block:: sh
+.. .. code-block:: sh
 
-     #!/bin/bash
-     #
-     #SBATCH --job-name=test
-     #SBATCH --output=res_%j.txt
-     #SBATCH --error=err_%j.txt
-     #
-     #SBATCH --ntasks=1
-     #SBATCH --time=10:00
-     #SBATCH --mem-per-cpu=100
-     #SBATCH --cluster=lqcd
-     #SBATCH --partition=devel
+..      #!/bin/bash
+..      #
+..      #SBATCH --job-name=test
+..      #SBATCH --output=res_%j.txt
+..      #SBATCH --error=err_%j.txt
+..      #
+..      #SBATCH --ntasks=1
+..      #SBATCH --time=10:00
+..      #SBATCH --mem-per-cpu=100
+..      #SBATCH --cluster=lqcd
+..      #SBATCH --partition=devel
      
-     unset MODULEPATH
-     unset MODULESHOME
-     export SLURM_CONF=/opt/lqcd/etc/slurm.conf
-     . /opt/software/modules-4.4.0/init/bash
-     module add slurm
+..      unset MODULEPATH
+..      unset MODULESHOME
+..      export SLURM_CONF=/opt/lqcd/etc/slurm.conf
+..      . /opt/software/modules-4.4.0/init/bash
+..      module add slurm
      
-     srun hostname
-     srun ls -hrlt
-     srun sleep 60
+..      srun hostname
+..      srun ls -hrlt
+..      srun sleep 60
 
 How to see the available resources
 ====================================================
