@@ -4,44 +4,74 @@
 
 .. role:: red
 
-User quota and storage at submit
+User quota and storage at SubMIT
 --------------------------------
-This section describes the quota and storage for a user and where the storage areas are located. For the large storage area, submit also allows user to use xrootd to make the remote transfer.
+This section describes the quota and storage for a user and where the storage areas are located.
+For the large storage area, SubMIT also allows user to use XRootD to make the remote transfer.
 
 Due to the recent updates on the xrootd worldwide, the copy will fail if X509_USER_KEY is not set up correctly. In the x509proxy authentication mentioned below, X509_USER_KEY value can be null, it is recommended to run command "unset X509_USER_KEY" if user encounters the problem about "couldn't find hostkey.pem". 
 
-The quota of home and work area
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-For a typical user, the home directory is located at /home/submit/<USER> with quota 5GB. The work directory is located at /work/submit/<USER> with quota 50 GB. 
+The home and work areas
+~~~~~~~~~~~~~~~~~~~~~~~
+For a typical user, the home directory is located at ``/home/submit/<USER>`` with quota 5GB. The work directory is located at ``/work/submit/<USER>`` with quota 50 GB. 
 
 It is recommended to keep larger files or software in work directory. If there are special requirements to increase the quota, please send request via email submit-help@mit.edu. 
 
-
 The storage filesystem
 ~~~~~~~~~~~~~~~~~~~~~~
-Users also have a larger quota in storage filesystem, under the directory /ceph/submit/data/user/<first letter>/<USER> with quota 1TB.
 
-Submit uses the ceph to form the filesystem. Currently users could use xrootd to transfer the files to/from ceph through the GSI authentication (with x509 proxy). If users have demands to upload/download files to their personal filesystem (/ceph/submit/data/user/<first letter>/<USER>) remotely, you can send request to submit-help@mit.edu together with your DN. DN is the subject of your certificate.
+Users also have a larger quota in storage filesystem, under the directory ``/ceph/submit/data/user/<first letter>/<USER>`` with quota 1TB.
+SubMIT uses ceph to form the filesystem.
+The filesystem is accessible from all subMIT nodes (e.g. any node you can log in to, and any node connected via Slurm) directly via the ``/ceph`` mount.
 
-:red:`Users need x509 certificate to use xrootd transfer.`
+:red: Keep in mind that filesystem is optimized for large files, therefore it is not recommended to save large numbers of small files in the filesystem, for example, 100k+ small log files. This will seriously hinder the performance of the filesystem for all users.
 
-For CERN users, they can use their CERN Grid Certificates. For non-CERN users, they can request user certificates from OSG, see `link <https://osg-htc.org/docs/security/certificate-management/>`_.
+Remote reading via XRootD
+~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The way to extract your DN from your certificate usercert.pem: 
+Users can use XRootD to transfer the files *remotely* to/from ceph through the GSI authentication with a x509 proxy.
+This is useful, for example, if you are running jobs using HTCondor on other clusters, and want to copy data from or to SubMIT.
+
+1. **Users need x509 certificates to use XRootD transfer:** for CERN users, they can use their CERN Grid Certificates. For non-CERN users, they can request user certificates from CILogon, see `link <https://cilogon.org/>`_.
+
+2. **Install your certificates:** with the .p12 you have downloaded, you need to install the certificates. On the SubMIT command line, exectute,
+
+.. code-block:: sh
+
+    openssl pkcs12 -in [your-cert-file] -clcerts -nokeys -out ~/.globus/usercert.pem
+    openssl pkcs12 -in [your-cert-file] -nocerts -out ~/.globus/userkey.pem
+    chmod 0444 ~/.globus/usercert.pem
+    chmod 0400 ~/.globus/userkey.pem
+
+3. **Extract DN from your certificate and send it to the admin team**: Run the following, and send it via email to submit-help@mit.edu, asking the team to add you to the list of allowed users,
 
 .. code-block:: sh
 
      openssl x509 -in usercert.pem -noout -subject
 
-Once the admin add your DN to the xrootd mapping, you could download or upload your file remotely using xrootd command:
+Once the admin team adds your DN to the XRootD mapping, you're good to go.
+The redirector is,
 
 .. code-block:: sh
 
-     Download: xrdcp root://submit50.mit.edu//data/<PATH-TO-FILE> .
-     Upload: xrdcp <FILE> root://submit50.mit.edu//data/<PATH-TO-SAVE> 
-     <PATH-TO-FILE> and <PATH-TO-SAVE> corresponds to the path under /ceph/submit/data/<PATH-TO-SAVE>
-     For example: root://submit50.mit.edu//data/user/w/wangzqe/test.txt refers to /ceph/submit/data/user/w/wangzqe/test.txt 
-  
+    root://submit50.mit.edu/
+
+For example, to download a file form SubMIT,
+
+.. code-block:: sh
+
+     xrdcp root://submit50.mit.edu//data/user/a/attila/file.txt .
+
+And to upload a file to SubMIT,
+
+..code-block:: sh
+
+     xrdcp file.txt root://submit50.mit.edu//data/user/a/attila/
+
+Note that the path on XRootD omits the ``/ceph/submit``, starting only with ``/data``; i.e., the local path ``/ceph/submit/data/user/a/attila`` is accessed via XRootD as ``/data/user/a/attila``.
+
+**IP v4 vs v6**
+
 The xrootd request by default tries both IPV6 and IPV4 protocol. It tries IPV6 first, then tries IPV4. If the xrootd server has IPV6 but not enabled, it may affect the transfer speed. To resolve this, users can just enable IPV4 only by typing command:
 
 .. code-block:: sh
@@ -59,8 +89,6 @@ To just enable IPV6, type:
 .. code-block:: sh
 
      export XRD_NETWORKSTACK=IPv6
-
-Keep in mind that filesystem is in favor of large files, therefore it is not recommended to save large numbers of small files in the filesystem, for example, 100k+ small log files. 
 
 
 The storage at fast mount space (/scratch/)
