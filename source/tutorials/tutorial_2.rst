@@ -30,7 +30,7 @@ Let's call it script.sh.
       echo "I have recieved parameter $1"
       echo "That's all!"
 
-and the corresponding condor.sub file to run it on the T3. 
+and the corresponding submission script, `condor.sub` text file, to run it on the T3:
 
 .. code-block:: sh
 
@@ -44,7 +44,7 @@ and the corresponding condor.sub file to run it on the T3.
       +DESIRED_Sites        = "mit_tier3"
       queue 1
 
-This submission script submit a single (``queue 1``) job, with ``$(ProcID)=0`` to the MIT T3 that will execute ``script.sh``, and will produce log, output, and error files in your local directory.
+This submission script submits a single (``queue 1``) job, with ``$(ProcID)=0`` to the MIT T3 that will execute ``script.sh``, and will produce log, output, and error files in your local directory.
 
 Now you can submit your job:
 
@@ -254,17 +254,18 @@ Then, on subMIT, run the following commands
 
 This will initialize your x509 proxy and put it somewhere accessible via setting the environment variable ``X509_USER_PROXY``.
 
-Using the same ``input.txt`` from above, the final submission script will look like,
+Using the same ``inputs.txt`` from above, the final submission script, ``condor.sub``, will look like the following except replace `<username>` with your SubMIT username:
 
 .. code-block:: sh
 
       universe              = vanilla
       executable            = run_analysis.sh
       arguments             = $(arg)
-      transfer_input_files  = script.py, run_script.sh,/home/submit/$USER/x509
+      transfer_input_files  = analyze.py,run_analysis.sh,/home/submit/<username>/x509
       output                = output_$(arg).txt
       error                 = error_$(arg).txt
       log                   = log_$(arg).txt
+      Requirements          = HAS_SINGULARITY == TRUE
       +SingularityImage     = "/cvmfs/singularity.opensciencegrid.org/htc/rocky:9"
       +DESIRED_Sites        = "mit_tier2,mit_tier3"
       queue arg from inputs.txt
