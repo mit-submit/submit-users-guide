@@ -30,7 +30,7 @@ Let's call it script.sh.
       echo "I have recieved parameter $1"
       echo "That's all!"
 
-and the corresponding condor.sub file to run it on the T3. 
+and the corresponding submission script, `condor.sub` text file, to run it on the T3:
 
 .. code-block:: sh
 
@@ -44,7 +44,7 @@ and the corresponding condor.sub file to run it on the T3.
       +DESIRED_Sites        = "mit_tier3"
       queue 1
 
-This submission script submit a single (``queue 1``) job, with ``$(ProcID)=0`` to the MIT T3 that will execute ``script.sh``, and will produce log, output, and error files in your local directory.
+This submission script submits a single (``queue 1``) job, with ``$(ProcID)=0`` to the MIT T3 that will execute ``script.sh``, and will produce log, output, and error files in your local directory.
 
 Now you can submit your job:
 
@@ -215,18 +215,18 @@ We can do this by specifying it in our submission script,
 
 .. code-block:: sh
 
-      +SingularityImage     = "/cvmfs/singularity.opensciencegrid.org/htc/rocky:9"
+      +SingularityImage     = "/cvmfs/singularity.opensciencegrid.org/htc/rocky:8"
 
 We have picked a standard singularity image that provides a rocky9 distribution with some basic software like python already installed.
 You can play around with this singularity on subMIT to make sure our python script works there.
 
 .. code-block:: sh
 
-      singularity shell /cvmfs/singularity.opensciencegrid.org/htc/rocky:9
+      singularity shell /cvmfs/singularity.opensciencegrid.org/htc/rocky:8
       Apptainer> python3 analyze.py 3
 
 Finally, we want to transfer the output file of the python script using XRootD to our ceph space on subMIT.
-We can do this with the following new version of ``run_analysis.sh``.
+We can do this with the following new version of ``run_analysis.sh``. Replace `<your path>` with your desired location; see the `ceph storage space documentation <https://submit.mit.edu/submit-users-guide/storage.html#the-storage-filesystem>`_ for more information. 
 
 .. code-block:: sh
 
@@ -254,20 +254,41 @@ Then, on subMIT, run the following commands
 
 This will initialize your x509 proxy and put it somewhere accessible via setting the environment variable ``X509_USER_PROXY``.
 
-Using the same ``input.txt`` from above, the final submission script will look like,
+Using the same ``inputs.txt`` from above, the final submission script, ``condor.sub``, will look like the following except replace `<username>` with your SubMIT username:
 
 .. code-block:: sh
 
       universe              = vanilla
       executable            = run_analysis.sh
       arguments             = $(arg)
-      transfer_input_files  = script.py, run_script.sh,/home/submit/$USER/x509
+      transfer_input_files  = analyze.py,run_analysis.sh,/home/submit/<username>/x509
       output                = output_$(arg).txt
       error                 = error_$(arg).txt
       log                   = log_$(arg).txt
-      +SingularityImage     = "/cvmfs/singularity.opensciencegrid.org/htc/rocky:9"
+      +SingularityImage     = "/cvmfs/singularity.opensciencegrid.org/htc/rocky:8"
       +DESIRED_Sites        = "mit_tier2,mit_tier3"
       queue arg from inputs.txt
+
+
+.. Running this same example on the Open Science Grid
+.. ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. To run instead on the Open Science Grid (OSG), use the following `condor.sub` submission script
+
+.. .. code-block:: sh
+
+..       universe              = vanilla
+..       executable            = run_analysis.sh
+..       arguments             = $(arg)
+..       transfer_input_files  = analyze.py,run_analysis.sh,/home/submit/<username>/x509
+..       output                = output_$(arg).txt
+..       error                 = error_$(arg).txt
+..       log                   = log_$(arg).txt
+..       Requirements          = (HAS_SINGULARITY == TRUE) && (HAS_CVMFS_singularity_opensciencegrid_org == True) && (OSDF_VERIFIED == True) && (OUTBOUND_FIREWALL == False)
+..       +SingularityImage     = "/cvmfs/singularity.opensciencegrid.org/htc/rocky:9"
+..       +ProjectName          = "MIT_submit"
+..       queue arg from inputs.txt
+
 
 Congratulations! You are ready to submit real HTCondor jobs now!
 
@@ -343,7 +364,7 @@ Slurm also has the sacct command to help you to look at information from past jo
 
 .. code-block:: sh
 
-       # Look at information from your hobs after they have finished running. You can use the --long to get the non-abbreviated version
+       # Look at information from your jobs after they have finished running. You can use the --long to get the non-abbreviated version
        sacct --jobs=<jobid> --long
 
        # Look at all of your recent jobs
