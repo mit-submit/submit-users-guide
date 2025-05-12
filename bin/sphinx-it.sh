@@ -31,6 +31,6 @@ echo "\
 cp _static/custom.css build/_static"
 cp _static/custom.css build/_static
 
-echo "\
-rsync -Cavz --delete build/* $RSYNC_TARGET"
-rsync -Cavz --delete build/* $RSYNC_TARGET
+#echo "\
+#rsync -Cavz --delete build/* $RSYNC_TARGET"
+#rsync -Cavz --delete build/* $RSYNC_TARGET

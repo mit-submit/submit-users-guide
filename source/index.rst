@@ -18,6 +18,7 @@ User's Guide - subMIT
    backup
    conda
    openmpi
+   globus
    acknowledging
 
 Back to the `main subMIT webpage <https://submit.mit.edu>`_.
