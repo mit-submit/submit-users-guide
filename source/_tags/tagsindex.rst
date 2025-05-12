@@ -13,6 +13,7 @@ User's Guide Tags
     Condor (4) <condor.rst>
     Containers (2) <containers.rst>
     GPU (4) <gpu.rst>
+    Globus (1) <globus.rst>
     Julia (2) <julia.rst>
     JupyterHub (3) <jupyterhub.rst>
     Mathematica (1) <mathematica.rst>
