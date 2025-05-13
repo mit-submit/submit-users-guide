@@ -9,10 +9,6 @@ Globus is a powerful platform for **fast, secure, and reliable data transfer** b
 
    You will need a Globus account to get started. You can register and log in using your MIT credential.
 
-.. contents::
-   :local:
-   :depth: 2
-
 What is Globus?
 ~~~~~~~~~~~~~~~
 
