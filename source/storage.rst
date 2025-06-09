@@ -13,7 +13,7 @@ Due to the recent updates on the xrootd worldwide, the copy will fail if X509_US
 
 The home and work areas
 ~~~~~~~~~~~~~~~~~~~~~~~
-For a typical user, the home directory is located at ``/home/submit/<USER>`` with quota 5GB. The work directory is located at ``/work/submit/<USER>`` with quota 50 GB. 
+For a typical user, the home directory is located at ``/home/submit/<USER>`` with quota 10GB. The work directory is located at ``/work/submit/<USER>`` with quota 100GB. 
 
 It is recommended to keep larger files or software in work directory. If there are special requirements to increase the quota, please send request via email submit-help@mit.edu. 
 
@@ -34,7 +34,7 @@ This is useful, for example, if you are running jobs using HTCondor on other clu
 
 1. **Users need x509 certificates to use XRootD transfer:** for CERN users, they can use their CERN Grid Certificates. For non-CERN users, they can request user certificates from CILogon, see `link <https://cilogon.org/>`_.
 
-2. **Install your certificates:** with the .p12 you have downloaded, you need to install the certificates. On the SubMIT command line, exectute,
+2. **Install your certificates:** with the .p12 you have downloaded, you need to install the certificates. On the SubMIT command line, execute,
 
 .. code-block:: sh
 
@@ -110,4 +110,4 @@ Upon request, users may also have some storage on MIT Tier2 sites. Note that tie
 Group storage at submit
 ~~~~~~~~~~~~~~~~~~~~~~~
 
-Upon request, we can create user group storage spaces on /ceph at ``/ceph/submit/data/<group name>`` to easily share files. Unless specified otherwise, this group space has between 1 and 10 TB of storage, although we are flexible to create larger spaces if necessary. Upon request we can also create backed up group storage space in ``/home/submit/<group name>`` with a 5GB quota that can be extended if needed. By default, all members of the group, and only them, can access, modify, and execute the contents of the group storage space. A ``public_html`` can be added in ``/home/submit/<group name>`` to create a group webpage in order to view or share your files in the same way as possible for users (see `<https://submit.mit.edu/submit-users-guide/starting.html#creating-a-personal-webpage>`_). To create this group space, please email submit-help@mit.edu with the requested group name, amount of storage, if a ``/home/submit`` space is needed, and email address or Kerberos ID of the users who should have access to the resources.
+Upon request, we can create user group storage spaces on /ceph at ``/ceph/submit/data/<group name>`` to easily share files. Unless specified otherwise, this group space has between 1 and 10 TB of storage, although we are flexible to create larger spaces if necessary. Upon request we can also create backed up group storage space in ``/home/submit/<group name>`` with a 10GB quota that can be extended if needed. By default, all members of the group, and only them, can access, modify, and execute the contents of the group storage space. A ``public_html`` can be added in ``/home/submit/<group name>`` to create a group webpage in order to view or share your files in the same way as possible for users (see `<https://submit.mit.edu/submit-users-guide/starting.html#creating-a-personal-webpage>`_). To create this group space, please email submit-help@mit.edu with the requested group name, amount of storage, if a ``/home/submit`` space is needed, and email address or Kerberos ID of the users who should have access to the resources.
