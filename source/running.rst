@@ -27,7 +27,7 @@ When you are ready to scale up your framework, you can study the guide below to 
 Slurm
 ~~~~~
 
-Slurm manages batch computing on the SubMIT machines. There is a main slurm partition on the submit machines ``submit``. GPUs are available through the ``submit-gpu`` partition. The slurm partitions on SubMIT are fairly open but jobs are limited to 6 days of running time. In addition, each slurm node is limited to 160 GB of total memory to use.
+Slurm manages batch computing on the SubMIT machines. The a main Slurm partition on the SubMIT machines is called ``submit``, and hosts a pool of over 1000 CPUs availale for compute. GPUs are available through the ``submit-gpu`` partition. The Slurm partitions on SubMIT are open for both quick and longer jobs, but we place an upper limit to 6 days of running time. In addition, each Slurm node is limited to 160 GB of total memory to use. We implement a fair-sharing system, where users that request more resources have a smaller priority than those that request less.
 
 Available features
 ==================
@@ -127,10 +127,10 @@ Another method is to use the ``time`` command.  Running ``/usr/bin/time -v <comm
 
 With respect to best-practices, as a general rule of thumb, if you run many or long jobs that request significantly more memory per cpu than the total memory of the node divided by the total number of CPUs on the node, it may be time to reexamine the efficinency of your memory usage or parallelization of your workflow to ensure fair/efficient usage of resources.
 
-How to monitor and control your submitted slurm jobs
+How to monitor and control your submitted Slurm jobs
 ====================================================
 
-Similar to HTCondor, Slurm has command line options to monitor and control your jobs. This section gives a couple of simple examples on how to monitor your slurm jobs on submit.
+Slurm has command line options to monitor and control your jobs. This section gives a couple of simple examples on how to monitor your Slurm jobs on SubMIT.
 
 The first step in monitoring jobs is to check which jobs are running. This can be done with the command below:
 
@@ -142,7 +142,7 @@ The first step in monitoring jobs is to check which jobs are running. This can b
        # You can also ask for the jobs on the different clusters with the -M option. You can also use a specific cluster (e.g. submit, lqcd).
        squeue -M all -u <username>
 
-In order to analyze your jobs you can use the scontrol feature of slurm.
+In order to analyze your jobs you can use the scontrol feature of Slurm.
 
 .. code-block:: sh
 
