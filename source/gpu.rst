@@ -3,12 +3,7 @@ GPU resources
 
 .. tags:: Slurm, Condor, JupyterHub, GPU
 
-SubMIT provides access to several GPUs. This section outlines how to utilize these GPUs in your workflow. Access to GPUs is available via the ``submit-gpu`` and ``submit-gpu-a30`` partitions through **slurm, Jupyterhub, and HTCondor**. **Direct SSH access is not permitted** to ``submit-gpu`` or ``submit-gpu-a30``. This ensures a controlled and secure environment for utilizing GPU capabilities. Keep in mind that these are shared resources so use these machines responsibly.
-
-There are two server pools available:
-
-#. **submit-gpu server pool:** machines submit60 through submit 74, each with 4 NVIDIA GeForce GTX 1080 GPUs.
-#. **submit-gpu-a30 server pool:** machines submit20 through submit 23, each equipped with 2 NVIDIA A30 GPUs.
+SubMIT provides access to several GPUs. This section outlines how to utilize these GPUs in your workflow. Access to GPUs is available via Slurm on the ``submit-gpu`` partition through **slurm and Jupyterhub**. **Direct SSH access is not permitted** to ``submit-gpu``. This ensures a controlled and secure environment for utilizing GPU capabilities. Keep in mind that these are shared resources so use these machines responsibly.
 
 Slurm with GPUs
 ~~~~~~~~~~~~~~~
@@ -16,19 +11,13 @@ Slurm with GPUs
 Interactive access (salloc)
 ...........................
 
-Submit allows interactive login access to GPUs through the ``salloc`` command. This allows users to interactively test their GPU applications. 
+SubMIT allows interactive login access to GPUs through the ``salloc`` command. This allows users to interactively test their GPU applications. 
 
 Accessing the ``submit-gpu`` partition:
 
 .. code-block:: sh
 
       salloc --partition=submit-gpu --cpus-per-gpu=1 --gres=gpu:1
-
-Accessing the ``submit-gpu-a30`` partition:
-
-.. code-block:: sh
-
-      salloc --partition=submit-gpu-a30 --cpus-per-gpu=1 --gres=gpu:1
 
 To request more than one GPU, adjust the ``--gres=gpu:<number>`` option.
 
@@ -54,34 +43,29 @@ Example with the ``submit-gpu`` partition, using GTX 1080 GPUs:
       #SBATCH --time=10:00
       #SBATCH --mem-per-cpu=100
       #SBATCH --partition=submit-gpu
+      #SBATCH --constraint=nvidia_gtx1080
       #SBATCH --gres=gpu:2  
       #SBATCH --cpus-per-gpu=4
       
       srun hostname
       nvidia-smi
 
-More info is available in the `slurm 1080 <https://github.com/mit-submit/submit-examples/tree/main/gpu/slurm_gpu1080>`_ Github repository.
+Some more examples are available in the `SubMIT examples <https://github.com/mit-submit/submit-examples/tree/main/gpu>`_ Github repository.
 
-Example with the ``submit-gpu-a30`` partition, using NVIDIA A30 GPUs:
+Selecting GPU type
+..................
 
+To specify a particular GPU type from Slurm, you can use the ``--constraint`` option, selecting one of the following:
+
+- ``nvidia_a30``: NVIDIA A30 GPUs
+- ``Tesla_v100``: Tesla V100 GPUs
+- ``nvidia_gtx1080``: NVIDIA GTX1080 GPUs
+
+For example, to select the NVIDIA A30s GPUs only,
 
 .. code-block:: sh
 
-      #!/bin/bash
-      #
-      #SBATCH --job-name=test_gpu_a30
-      #SBATCH --output=res_%j-%a.txt
-      #SBATCH --error=err_%j-%a.txt
-      #
-      #SBATCH --ntasks=1
-      #SBATCH --time=06:50:00
-      #SBATCH --mem-per-cpu=2GB
-      #SBATCH --partition=submit-gpu-a30
-      #SBATCH --gres=gpu:1
-      #SBATCH --cpus-per-gpu=1
-
-For a CUDA example with Slurm, visit `slurm cuda <https://github.com/mit-submit/submit-examples/tree/main/gpu/slurm_gpu>`_.
-
+    sbatch job.sh --constraint=nvidia_a30 --partition=submit
 
 CUDA
 ~~~~
