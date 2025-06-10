@@ -27,24 +27,11 @@ When you are ready to scale up your framework, you can study the guide below to 
 Slurm
 ~~~~~
 
-Slurm manages batch computing on the SubMIT machines. The a main Slurm partition on the SubMIT machines is called ``submit``, and hosts a pool of over 1000 CPUs availale for compute. GPUs are available through the ``submit-gpu`` partition. The Slurm partitions on SubMIT are open for both quick and longer jobs, but we place an upper limit to 6 days of running time. In addition, each Slurm node is limited to 160 GB of total memory to use. We implement a fair-sharing system, where users that request more resources have a smaller priority than those that request less.
+Slurm manages batch computing resources on the SubMIT machines.
 
-Available features
-==================
+The main Slurm partition on the SubMIT machines is called ``submit``, and hosts a pool of over 1000 CPUs available for compute. GPUs are available through the ``submit-gpu`` partition.
 
-The following features are available, which you can use to select the type of GPUs or network speed you want. You can get a detailed breakdown of which nodes have what features via the ``scontrol show nodes`` command.
-
-- ``nvidia_a30``: NVIDIA A30 GPUs
-- ``Tesla_v100``: Tesla V100 GPUs
-- ``nvidia_gtx1080``: NVIDIA GTX1080 GPUs
-- ``100gbs``: all nodes with 100Gbs network connection
-- ``1gbs``: all nodes with 1gbs network connection
-
-You can select features when submitting a job; for example,
-
-.. code-block:: sh
-
-    sbatch job.sh --constraint=100gbs --partition=submit
+If this if your first time using Slurm, you may want to check out our `Tutorial <https://submit.mit.edu/submit-users-guide/tutorials/tutorial_2.html#id3>`_ to get you started. Information about available resources, features, and an example script are provided below.
 
 Slurm example
 =============
@@ -70,49 +57,40 @@ Below is a schema that outlines how to submit a Slurm job to the SubMIT machines
     mv output.out /ceph/submit/user/...
 
     echo "All done!"
-    
 
-.. Slurm example lqcd
-.. ==================
+Available resources
+===================
 
-.. An example for how to submit to the lqcd cluster from the submit machines. Here we need some extra set up and then test some simple srun commands like below (this example runs in the devel partition):
+We currently have around 1000 CPUs on the ``submit`` partition, and 30 GPUs on the ``submit-gpu`` partition.
 
-.. .. code-block:: sh
+The Slurm partitions on SubMIT are open for both quick and longer jobs, but we place an upper limit to 6 days of running time. In addition, each Slurm node is limited to 160 GB of total memory to use.
 
-..      #!/bin/bash
-..      #
-..      #SBATCH --job-name=test
-..      #SBATCH --output=res_%j.txt
-..      #SBATCH --error=err_%j.txt
-..      #
-..      #SBATCH --ntasks=1
-..      #SBATCH --time=10:00
-..      #SBATCH --mem-per-cpu=100
-..      #SBATCH --cluster=lqcd
-..      #SBATCH --partition=devel
-     
-..      unset MODULEPATH
-..      unset MODULESHOME
-..      export SLURM_CONF=/opt/lqcd/etc/slurm.conf
-..      . /opt/software/modules-4.4.0/init/bash
-..      module add slurm
-     
-..      srun hostname
-..      srun ls -hrlt
-..      srun sleep 60
+We implement a fair-sharing system, where users that request more resources have a smaller priority than those that request less.
 
-How to see the available resources
-====================================================
-
-The ``sinfo`` command can give information about the Slurm partitions and nodes.  For detailed information about this command, view its manual page by typing ``man sinfo``.
-
-In particular, to view the resources in the subMIT Slurm cluster, the following command can be handy
+The ``sinfo`` command can give information about the Slurm partitions and nodes.  For detailed information about this command, view its manual page by typing ``man sinfo``. In particular, to view the resources in the SubMIT Slurm cluster, the following command can be handy
 
 .. code-block:: sh
 
      sinfo -Ne -O "PARTITION:.20,NodeHost:.10,StateLong:.11,NodeAIOT:.15,CPUsState:.15,Memory:.9,AllocMem:.9"
 
 This will list each node on a separate line.  As described in ``man sinfo``, the CPUS columns gives the count of the nodes CPUs in each state: "A/I/O/T" ("Allocated/Idle/Other/Total").  The MEMORY column gives the total memory for each node, while the ALLOCMEM gives the amount of memory which is currently allocated on that node.  Thus, with this command, you can see the total inventory of resources on each node, as well as what happens to be available at the moment.
+
+Available features
+==================
+
+The following features are available, which you can use to select the type of GPUs or network speed you want. You can get a detailed breakdown of which nodes have what features via the ``scontrol show nodes`` command.
+
+- ``nvidia_a30``: NVIDIA A30 GPUs
+- ``Tesla_v100``: Tesla V100 GPUs
+- ``nvidia_gtx1080``: NVIDIA GTX1080 GPUs
+- ``100gbs``: all nodes with 100Gbs network connection
+- ``1gbs``: all nodes with 1gbs network connection
+
+You can select features when submitting a job; for example,
+
+.. code-block:: sh
+
+    sbatch job.sh --constraint=100gbs --partition=submit
 
 Requesting memory
 =================
