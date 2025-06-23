@@ -27,9 +27,9 @@ You have access to a few job profiles. Make sure to use the one that fits your n
 
 * **Slurm - Submit - 1/2/4 CPU(s), 2 GB/4 GB/8 GB:** spawns a server on the submit slurm partition, requesting 1, 2, or 4 CPU(s) with 2, 4, or 8 GB of memory.
 
-* **Slurm - Submit-GPU - 1 GPU:** spawns a server on a submit-gpu1080 submit slurm partition, requesting 1 GPU.
+* **Slurm - Submit-GPU - 1 GPU:** spawns a server on a submit-gpu slurm partition, requesting 1 GPU.
 
-* **Slurm - Submit-GPU-A30 - 1 GPU:** spawns a server on a submit-gpu-a30 submit slurm partition, requesting 1 GPU.
+* **Slurm - Submit-GPU-A30 - 1 GPU:** spawns a server on a submit-gpu slurm partition, requesting 1 GPU and specifically, a NVIDIA A30 GPU.
 
 By default, Jupyterhub shows the files located in ``/home/submit/<username>``. If you store jupyter notebooks in ``/work`` and they are small, consider moving them to your ``/home`` directory. Otherwise, you should be able to access a notebook in ``/work`` by selecting "``File > Open from Path...``" in the top menu of Jupyter, then type the full path to your notebook. You can also set up a symlink in your ``/home`` to your ``/work`` space.
 
@@ -111,7 +111,7 @@ Here is how jupyter interacts with: conda, singularity, GPUs, Slurm, and ROOT.
           
 #. GPUs
 
-    GPUs are available on submit-gpu machines. The GPUs are not used or  reserved by jupyterhub by itself. Rather, just like when you log in those machines through ssh, the GPUs can be used by a notebook or the jupyterhub terminal only if they are available (you can check this with ``nvidia-smi``).
+    GPUs are available on submit-gpu machines. The GPUs are not used or reserved by jupyterhub by itself. Rather, just like when you log in those machines through ssh, the GPUs can be used by a notebook or the jupyterhub terminal only if they are available (you can check this with ``nvidia-smi``).
      
 #. SlurmSpawner
 

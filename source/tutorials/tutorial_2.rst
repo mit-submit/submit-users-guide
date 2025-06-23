@@ -388,17 +388,11 @@ The default is to run on submit. If you would like to specify, you can add the f
 submit-gpu:
 ...........
 
-Some 1080 GPUs are available. The advantage of this partition is that there are approximately 50 GPUs available. In order to use the submit-gpu partition, add the following to the submission script:
+Some GTX10801080 and A30 GPUs are available. The advantage of this partition is that there are approximately 20 GPUs available. In order to use the submit-gpu partition, add the following to the submission script:
 
 .. code-block:: sh
 
      #SBATCH --partition=submit-gpu
-
-If 1080s are not sufficient for your workflow, you can use the a30 partition. If you would like to use these GPUs, you should instead add to your submission script:
-
-.. code-block:: sh
-
-     #SBATCH --partition=submit-gpu-a30
 
 
 
