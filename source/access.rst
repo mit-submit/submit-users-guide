@@ -222,5 +222,5 @@ X-Win32 is an X11 server for Windows that allows remote graphical applications (
 
 For this you need to download puttygen: https://www.puttygen.com/#google_vignette 
 Then open puttygen, click "Conversions" in the top tag -> "Import Key" then select your private key
-Then click "Save private key" button, give it a new name.  The new key is in the format of *.ppk, you then select this key in your x-win32 set up to login to SubMIT.
+Then click "Save private key" button, give it a new name.  The new key is in the format of `*`.ppk, you then select this key in your x-win32 set up to login to SubMIT.
 
