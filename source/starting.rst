@@ -90,14 +90,14 @@ Now that you can login you can simply ssh into the submit machines like below:
 
 You should now be logged into one of our main submit server machines. By default you will get several areas (directories) automatically created for you which are public, which means other users can see your files. For more information regarding file permissions, please see `Tutorial 0 <https://submit.mit.edu/submit-users-guide/tutorials/tutorial_0.html#understanding-file-permissions>`_.
 
-The starting quotas are 5 GB for the home directory and 50 GB for the work directory. If you need more space than the foreseen, please make your case to the help desk at <submit-help@mit.edu>.
+The starting quotas are 10 GB for the home directory and 100 GB for the work directory. If you need more space than the foreseen, please make your case to the help desk at <submit-help@mit.edu>.
 
 .. code-block:: sh
 
-   # You will start from home which has a quota of 5 GB of space
+   # You will start from home which has a quota of 10 GB of space
    /home/submit/<username>
 
-   # You will also get a workspace in which has a quota of 50 GB of space
+   # You will also get a workspace in which has a quota of 100 GB of space
    /work/submit/<username>
 
    # For larger files, you will get a data storage space with a quota of 1 TB of space
