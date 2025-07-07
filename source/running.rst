@@ -63,7 +63,9 @@ Available resources
 
 We currently have around 1000 CPUs on the ``submit`` partition, and 30 GPUs on the ``submit-gpu`` partition.
 
-The Slurm partitions on SubMIT are open for both quick and longer jobs, but we place an upper limit to 6 days of running time. In addition, each Slurm node is limited to 160 GB of total memory to use.
+The Slurm partitions on SubMIT are open for both quick and longer jobs, but we place an upper limit to 6 days of running time on the CPU partition, and of 2 days on the GPU partition.
+
+Most nodes have between 64 and 128 GB of memory, with a handful of machines capable of holding up to 1.5TB. Please see the below section on memory usage for more information.
 
 We implement a fair-sharing system, where users that request more resources have a smaller priority than those that request less.
 
@@ -95,7 +97,7 @@ You can select features when submitting a job; for example,
 Requesting memory
 =================
 
-On SubMIT, Slurm treats both **CPUs** *and* **memory** as consumable resources.  This means that it is important to provide accurate requests of these resources in your slurm job submissions.  If you request more resources than you need (CPUs or memory), then you can unnecessarily block other users as well as your own jobs from running.  For example, a job which requests a single CPU and all the memory of a node will block any other job from running on that node even though the remaining CPUs will be sitting idle.  If, on the other hand, you request too little memory, you job will fail. This leads to the common question: how do I know how much memory to request?
+On SubMIT, Slurm treats both **CPUs** *and* **memory** as consumable resources.  This means that it is important to provide accurate requests of these resources in your Slurm job submissions.  If you request more resources than you need (CPUs or memory), then you can unnecessarily block other users as well as your own jobs from running.  For example, a job which requests a single CPU and all the memory of a node will block any other job from running on that node even though the remaining CPUs will be sitting idle.  If, on the other hand, you request too little memory, you job will fail. This leads to the common question: how do I know how much memory to request?
 
 In general it is recommended to request a bit more memory than you actually need so as to allow a "safety cushion" for variations in your jobs (so a job is not killed if your estimate was a little too low).  
 
