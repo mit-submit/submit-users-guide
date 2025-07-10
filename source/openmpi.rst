@@ -123,3 +123,103 @@ More testing scripts for OpenMPI can be found at:
 https://github.com/mit-submit/submit-examples/blob/main/openmpi/
 
 To use them, load the OpenMPI module on SubMIT and run the make file to compile the codes.
+
+OpenMPI in containers when using HTCondor
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+This part walks you through running OpenMPI applications on an HTCondor-managed external cluster. 
+Unfortunately, in this case, we cannot use the centralized OpenMPI installation, since that is only available on SubMIT clusters. We will here show how to run some testing scripts as an example.
+We need to first create a container image that includes OpenMPI and the necessary libraries. Our ``mpi.def`` contains:
+
+.. code-block:: none
+
+    Bootstrap: docker
+    From: centos:7
+
+    %post
+        # Redirect repos to vault.centos.org
+        sed -i 's|^mirrorlist=|#mirrorlist=|g' /etc/yum.repos.d/CentOS-Base.repo
+        sed -i 's|^#baseurl=http://mirror.centos.org|baseurl=http://vault.centos.org|g' /etc/yum.repos.d/CentOS-Base.repo
+        yum clean all
+
+        yum install -y openmpi openmpi-devel hwloc numactl
+
+        export CFLAGS="-march=core2 -mtune=generic -mno-avx -mno-avx2 -mno-sse4"
+        /usr/lib64/openmpi/bin/mpicc $CFLAGS -o /usr/local/bin/hello_c /hello_c.c
+        /usr/lib64/openmpi/bin/mpicc $CFLAGS -o /usr/local/bin/ring_c  /ring_c.c
+
+    %files
+        hello_c.c /hello_c.c
+        ring_c.c  /ring_c.c
+
+    %environment
+        export PATH=/usr/lib64/openmpi/bin:$PATH
+        export LD_LIBRARY_PATH=/usr/lib64/openmpi/lib:$LD_LIBRARY_PATH
+
+where you can find the `hello_c.c` and `ring_c.c` files in the "More Testing Scripts" section above and copy them to your current directory. Here we use the `centos:7` to ensure compatibility with the HTCondor-managed external cluster. 
+We then build the container image via:
+
+.. code-block:: bash
+
+    singularity build mpi.sif mpi.def
+
+Then we create a sample HTCondor submit file (``condor.sub``):
+
+.. code-block:: bash
+
+    universe              = vanilla
+    request_disk          = 1024
+    executable            = job.sh
+    transfer_input_files  = mpi.sif, job.sh
+    should_transfer_files = YES
+    when_to_transfer_output = ON_EXIT
+    request_cpus = 2
+    output                = test.out
+    error                 = test.err
+    log                   = test.log
+    +DESIRED_Sites        = "mit_tier3"
+    queue 1
+
+And a corresponding ``job.sh``:
+
+.. code-block:: bash
+
+    # Create a per-job temporary directory
+    export TMPDIR=$(mktemp -d /tmp/openmpi.XXXXXX)
+
+    # use container
+    singularity exec mpi.sif /usr/lib64/openmpi/bin/mpirun -n 2 /usr/local/bin/hello_c
+    singularity exec mpi.sif /usr/lib64/openmpi/bin/mpirun -n 2 /usr/local/bin/ring_c
+
+    rm -rf "$TMPDIR"
+
+We can then submit the job via:
+
+.. code-block:: bash
+
+    condor_submit condor.sub
+
+The output in ``test.out`` should look like:
+
+.. code-block:: none
+
+    Hello, world, I am 0 of 2, (Open MPI v1.10.7, package: Open MPI mockbuild@x86-02.bsys.centos.org Distribution, ident: 1.10.7, repo rev: v1.10.6-48-g5e373bf, May 16, 2017, 142)
+    Hello, world, I am 1 of 2, (Open MPI v1.10.7, package: Open MPI mockbuild@x86-02.bsys.centos.org Distribution, ident: 1.10.7, repo rev: v1.10.6-48-g5e373bf, May 16, 2017, 142)
+
+    Process 0 sending 10 to 1, tag 201 (2 processes in ring)
+    Process 0 sent to 1
+    Process 0 decremented value: 9
+    Process 0 decremented value: 8
+    Process 0 decremented value: 7
+    Process 0 decremented value: 6
+    Process 0 decremented value: 5
+    Process 0 decremented value: 4
+    Process 0 decremented value: 3
+    Process 0 decremented value: 2
+    Process 0 decremented value: 1
+    Process 0 decremented value: 0
+    Process 0 exiting
+    Process 1 exiting
+
+Note that warnings are expected in general as the OpenMPI installed in the container is usually not optimized for the hardware of the external cluster. The most common one is complaining about the lack of OpenFabrics support.
+You can try suppress that by adding ``--mca btl ^openib,ofi`` to the ``mpirun`` command in the ``job.sh`` file, but it is not absolutely necessary.
