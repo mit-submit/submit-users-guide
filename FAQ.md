@@ -41,15 +41,9 @@ MIT has both the global CVMFS servers are all available and we also maintain a l
 
 One node can have multiple jobs run on it.  Each job runs in its own area so they don’t interfere
 
-### Can we freely access the large hadoop storage space?
+### Can we freely access the large storage space?
 
-We are working on making a certain amount of disk space available to all users who want to use the site. A standard enterprise quality 10 TB disk costs about $300 so this should not be a big deal.
-
-The space /mnt/T2_US_MIT/hadoop (HDFS) mounted on subMIT looks like a directory, but is actually distributed over the network -- You cannot write directly write root files into this directory and reading directly from it is usually not recommended either. Best is to make a copy of the input to the local drive on the worker node and proceed with local reads and writes. The output file can after completion be copied to the mass storage file system (HDFS).
-
-### If one submits a job, by default, does it go to MIT T2 or potentially other centers such as OSG?
-
-By default the job is like to end up on the Tier-2 but it could be going to the engaging cluster at Holyoke as well. For CMS users a job will more likely going to the CMS global queue because there are so much more resources available. To access the OSG resources users have to get a 
+We currently support each user to have 1TB of free space on our disks. Groups can request more space to be made available in a shared area. If more storage is needed, please reach out to the SubMIT team; depending on the quantity, some contribution to the project's funds to purchase new disks for storage may be arranged.
 
 ### Independently, when a job is submitted to OSG, does it have any higher priority compared to directly accessing OSG resource by their login nodes?
 

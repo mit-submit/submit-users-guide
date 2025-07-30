@@ -105,7 +105,7 @@ One way to estimate your actual memory requirement is to run the command ``seff 
 
 Another method is to use the ``time`` command.  Running ``/usr/bin/time -v <command>`` or ``\\time -v <command>`` will run ``<command>`` and print corresponding detailed memory and timing information.  Replace ``<command>`` with whatever you would type into the command prompt to run your calculation; this may be a script execution.  The "Maximum resident set size" output field will give an estimate of the memory to request (remember to add a safety cushion).  *Please note:* if ``<command>`` will use significant memory, then this should be done within a slurm job (either an interactive session requested with ``salloc`` or a batch job).
 
-With respect to best-practices, as a general rule of thumb, if you run many or long jobs that request significantly more memory per cpu than the total memory of the node divided by the total number of CPUs on the node, it may be time to reexamine the efficinency of your memory usage or parallelization of your workflow to ensure fair/efficient usage of resources.
+With respect to best-practices, as a general rule of thumb, if you run many or long jobs that request significantly more memory per CPU than the total memory of the node divided by the total number of CPUs on the node, it may be time to reexamine the efficiency of your memory usage or parallelization of your workflow to ensure fair/efficient usage of resources.
 
 How to monitor and control your submitted Slurm jobs
 ====================================================
@@ -169,25 +169,20 @@ HTCondor
 ~~~~~~~~
 
 The subMIT machines have access to several clusters with thousands of available cores via HTCondor.
-This  following sections describe which clusters are available to run on, a brief description of what is available on each sltuer, and what is needed in your submission script in order to send your HTCondor jobs to each cluster. 
+These following sections describe which clusters are available to run on, a brief description of what is available on each cluster, and what is needed in your submission script in order to send your HTCondor jobs to each cluster. 
 
 Available clusters
 ==================
 
-MIT Tier-2 Computing Cluster
-****************************
+A brief description of available computing clusters available to SubMIT users.
 
-The `MIT Tier-2 <http://www.cmsaf.mit.edu/>`_ computing cluster is hosted at Bates. 
-This is part of the Worldwide LHC Computing Grid, and processes jobs for the CMS experiment.
-Depending on the traffic, several hundred to a couple of thousand cores are available to subMIT users.
 
 MIT Tier-3 Computing Cluster
 ****************************
 
-The `MIT Tier-3 <http://t3serv001.mit.edu/>`_ computing cluster is hosted at MIT in building 24.
+The `MIT Tier-3 <http://t3serv001.mit.edu/>`_ computing cluster is hosted at MIT in Building 24.
 This is part of the Worldwide LHC Computing Grid, and processes jobs for the CMS experiment.
-Depending on the traffic, a couple of hundred cores are available to subMIT users.
-The T3 tends to have much less traffic from CMS than the T2.
+Depending on the traffic, a couple of hundred cores are available to SubMIT users.
 
 OSG
 ***
@@ -195,13 +190,16 @@ OSG
 The first external cluster to consider is the one supported by the Open Science Grid (`OSG <https://opensciencegrid.org/>`_).
 The OSG is a consortium of research collaborations, campuses, national laboratories and software providers dedicated to the advancement of all open science via the practice of distributed High Throughput Computing (dHTC).
 For `OSG support <https://support.opensciencegrid.org/support/home>`_ and `OSG requirements <https://portal.osg-htc.org/documentation/htc_workloads/workload_planning/htcondor_job_submission/>`_ on submitting HTCondor jobs follow the links.
+Several thousand cores are readily available per user, depending on traffic.
    
 CMS Global Pool
 ***************
 
-MIT has both a Tier-2 and Tier-3 computing cluster as discussed above which will support CERN users.
+:red:`CMS users only!`
+
+MIT has both a Tier-2 and a Tier-3 computing clusters which support CERN users.
 In addition to this, CMS users have access to the global pool, allowing them to submit their jobs on clusters around the world.
-Links connecting you to these resources are shown in the following with a brief desctription of the `CERN Tier system <https://home.cern/science/computing/grid-system-tiers#:~:text=The%20Worldwide%20LHC%20Computing%20Grid,Large%20Hadron%20Collider%20(LHC).>`_.
+Links connecting you to these resources are shown in the following with a brief description of the `CERN Tier system <https://home.cern/science/computing/grid-system-tiers#:~:text=The%20Worldwide%20LHC%20Computing%20Grid,Large%20Hadron%20Collider%20(LHC).>`_.
 
 The CMS global pool is hosted by various Tiers of computing clusters around the world.
 Jobs submitted by MIT users can be found in the link: `CMS <https://cms-gwmsmon.cern.ch/institutionalview>`_.
@@ -211,32 +209,15 @@ Submitting to the different clusters
 
 Here we provide the recipes to run at different clusters. 
 
-Glidein submission to T2/T3
-***************************
+Glidein submission to T3
+*************************
 
-Submit jobs to the T2 cluster by adding following to the HTCondor submission script:
-
-.. code-block:: sh
-
-     +DESIRED_Sites = "mit_tier2"
-
-If instead you want to run on the T3 machines you can replace the "+DESIRED_Sites" to:
+Submit jobs to the T3 cluster by adding following to the HTCondor submission script:
 
 .. code-block:: sh
 
      +DESIRED_Sites = "mit_tier3"
 
-If you want to submit to both T2 and T3, do:
-
-.. code-block:: sh
-
-     +DESIRED_Sites = "mit_tier2,mit_tier3"
-
-To submit GPU jobs, you need to add:
-
-.. code-block:: sh
-
-     RequestGPus=1
 
 To submit multi-core jobs, you need to add (4-core job for example, maximum 8):
 
@@ -244,42 +225,16 @@ To submit multi-core jobs, you need to add (4-core job for example, maximum 8):
 
      RequestCpus=4
 
-Note: CMS users are recommended to submit jobs to T2 through CMS global pool, see the relevant section of this guide.
+Note: CMS users are recommended to submit jobs to T3 and 2 through CMS global pool, see the relevant section of this Guide.
 
 :red:`The Glidein supports GPU and multi-CPU jobs.`
 
-:red:`The Glidein will set a default X509_USER_KEY, which may affect the xrootd copy, therefore need to add command "unset X509_USER_KEY" before the xrootd copy .`
-
-Jobs submission to CMS global pool
-**********************************
-
-If you are a CMS member you can also go through the US CMS global pool.
-Here is an example sample list of sites you can use,
-
-.. code-block:: sh
-
-     +DESIRED_Sites = "T2_AT_Vienna,T2_BE_IIHE,T2_BE_UCL,T2_BR_SPRACE,T2_BR_UERJ,T2_CH_CERN,T2_CH_CERN_AI,T2_CH_CERN_HLT,T2_CH_CERN_Wigner,T2_CH_CSCS,T2_CH_CSCS_HPC,T2_CN_Beijing,T2_DE_DESY,T2_DE_RWTH,T2_EE_Estonia,T2_ES_CIEMAT,T2_ES_IFCA,T2_FI_HIP,T2_FR_CCIN2P3,T2_FR_GRIF_IRFU,T2_FR_GRIF_LLR,T2_FR_IPHC,T2_GR_Ioannina,T2_HU_Budapest,T2_IN_TIFR,T2_IT_Bari,T2_IT_Legnaro,T2_IT_Pisa,T2_IT_Rome,T2_KR_KISTI,T2_MY_SIFIR,T2_MY_UPM_BIRUNI,T2_PK_NCP,T2_PL_Swierk,T2_PL_Warsaw,T2_PT_NCG_Lisbon,T2_RU_IHEP,T2_RU_INR,T2_RU_ITEP,T2_RU_JINR,T2_RU_PNPI,T2_RU_SINP,T2_TH_CUNSTDA,T2_TR_METU,T2_TW_NCHC,T2_UA_KIPT,T2_UK_London_IC,T2_UK_SGrid_Bristol,T2_UK_SGrid_RALPP,T2_US_Caltech,T2_US_Florida,T2_US_MIT,T2_US_Nebraska,T2_US_Purdue,T2_US_UCSD,T2_US_Vanderbilt,T2_US_Wisconsin,T3_CH_CERN_CAF,T3_CH_CERN_DOMA,T3_CH_CERN_HelixNebula,T3_CH_CERN_HelixNebula_REHA,T3_CH_CMSAtHome,T3_CH_Volunteer,T3_US_HEPCloud,T3_US_NERSC,T3_US_OSG,T3_US_PSC,T3_US_SDSC"
-
-In order to use the CMS global pool, you will need to add a few additional lines to your submission script.
-The lines below with the proper ID and username (uid and id from subMIT) are necessary in order to get into the global pool:
-
-.. code-block:: sh
-
-     use_x509userproxy     = True
-     x509userproxy         = /<path>/x509up_u<uid>
-     +AccountingGroup      = "analysis.<username>"
-
-If you wish to submit jobs to GPU machines, you need to add additional lines in the script:
-
-.. code-block:: sh
-
-     RequestGPus=1
-     +RequiresGPU=1
+:red:`The Glidein will set a default X509_USER_KEY, which may affect the XRootD copy, therefore need to add command "unset X509_USER_KEY" before the XRootD copy .
 
 Jobs submission to OSG pool
 ***************************
 
-Finally, you can also use OSG,
+In order to submit to the OSG, add the following to your script,
 
 .. code-block:: sh
 
@@ -297,14 +252,14 @@ or to use RHEL 7,
 
       Requirements = (OSGVO_OS_STRING == "RHEL 7")
 
-You can also use the singularity images that they distribute through CVMFS.
-These are managed `here <https://github.com/opensciencegrid/cvmfs-singularity-sync>`_, and can be found under the following CVMFS path, which is mounted also on subMIT, and the MIT T2 and T3,
+You can also use the singularity images that OSG distributes through CVMFS.
+These are managed `here <https://github.com/opensciencegrid/cvmfs-singularity-sync>`_, and can be found under the following CVMFS path, which is mounted also on SubMIT, and the MIT T2 and T3,
 
 .. code-block:: sh
 
     /cvmfs/singularity.opensciencegrid.org/
 
-You can also add your container to this list by pushing it DockerHub and making a PR to that repository, and the container will be made available everywhere that this CVMFS is mounted.
+You can also add your container to this list by pushing it DockerHub and making a PR to that repository; the container will be made available everywhere that this CVMFS is mounted.
 
 In order to land on Singularity-enabled worker nodes in the OSG pool, you have to specify,
 
@@ -312,7 +267,64 @@ In order to land on Singularity-enabled worker nodes in the OSG pool, you have t
 
       Requirements = HAS_SINGULARITY == TRUE
 
-You can find some examples of submission scripts for OSG on `our submit-examples GitHub repo <https://github.com/mit-submit/submit-examples/tree/main/htcondor>`_. 
+In particular, if you want to land on a node which has ``/cvmfs/singularity.opensciencegrid.org`` enabled, you need to specify,
+
+.. code-block:: sh
+
+    +SingularityBindCVMFS   = True
+    Requirements            = (HAS_CVMFS_singularity_opensciencegrid_org == True && HAS_SINGULARITY == TRUE)
+
+You can then specify which singularity image you want your job to run with via the ``+SingularityImage`` parameters, for example,
+
+.. code-block:: sh
+
+    +SingularityImage       = "/cvmfs/singularity.opensciencegrid.org/opensciencegrid/osgvo-el9:latest"
+
+As a simple example, if you want to land in a node running a container with Alma9, your submission script would include,
+
+.. code-block:: sh
+
+    +SingularityImage       = "/cvmfs/singularity.opensciencegrid.org/opensciencegrid/osgvo-el9:latest"
+    +SingularityBindCVMFS   = True
+    +ProjectName            = "MIT_submit"
+    Requirements            = (OSGVO_OS_STRING == "RHEL 9" && HAS_CVMFS_singularity_opensciencegrid_org == True && HAS_SINGULARITY == TRUE)
+
+You can find some examples of submission scripts for OSG on `our submit-examples GitHub repo <https://github.com/mit-submit/submit-examples/tree/main/htcondor>`_. `
+
+Jobs submission to CMS global pool
+**********************************
+
+:red:`CMS users only!`
+
+If you are a CMS member you can also submit the US CMS global pool.
+Here is an example sample list of sites you can use,
+
+.. code-block:: sh
+
+     +DESIRED_Sites = "T2_AT_Vienna,T2_BE_IIHE,T2_BE_UCL,T2_BR_SPRACE,T2_BR_UERJ,T2_CH_CERN,T2_CH_CERN_AI,T2_CH_CERN_HLT,T2_CH_CERN_Wigner,T2_CH_CSCS,T2_CH_CSCS_HPC,T2_CN_Beijing,T2_DE_DESY,T2_DE_RWTH,T2_EE_Estonia,T2_ES_CIEMAT,T2_ES_IFCA,T2_FI_HIP,T2_FR_CCIN2P3,T2_FR_GRIF_IRFU,T2_FR_GRIF_LLR,T2_FR_IPHC,T2_GR_Ioannina,T2_HU_Budapest,T2_IN_TIFR,T2_IT_Bari,T2_IT_Legnaro,T2_IT_Pisa,T2_IT_Rome,T2_KR_KISTI,T2_MY_SIFIR,T2_MY_UPM_BIRUNI,T2_PK_NCP,T2_PL_Swierk,T2_PL_Warsaw,T2_PT_NCG_Lisbon,T2_RU_IHEP,T2_RU_INR,T2_RU_ITEP,T2_RU_JINR,T2_RU_PNPI,T2_RU_SINP,T2_TH_CUNSTDA,T2_TR_METU,T2_TW_NCHC,T2_UA_KIPT,T2_UK_London_IC,T2_UK_SGrid_Bristol,T2_UK_SGrid_RALPP,T2_US_Caltech,T2_US_Florida,T2_US_MIT,T2_US_Nebraska,T2_US_Purdue,T2_US_UCSD,T2_US_Vanderbilt,T2_US_Wisconsin,T3_CH_CERN_CAF,T3_CH_CERN_DOMA,T3_CH_CERN_HelixNebula,T3_CH_CERN_HelixNebula_REHA,T3_CH_CMSAtHome,T3_CH_Volunteer,T3_US_HEPCloud,T3_US_NERSC,T3_US_OSG,T3_US_PSC,T3_US_SDSC"
+
+In order to use the CMS global pool, you will need to add a few additional lines to your submission script.
+The lines below, with the proper ID and username (uid and id from subMIT), are necessary in order to get into the global pool:
+
+.. code-block:: sh
+
+     use_x509userproxy     = True
+     x509userproxy         = /<path>/x509up_u<uid>
+     +AccountingGroup      = "analysis.<username>"
+
+If you wish to submit jobs to GPU machines, you need to add additional lines in the script:
+
+.. code-block:: sh
+
+     RequestGPus=1
+     +RequiresGPU=1
+
+To submit to the MIT T3 or T2 directly, you can just include,
+
+.. code-block:: sh
+
+     +DESIRED_Sites = "T2_US_MIT,T3_US_MIT"
+
 
 General Tips for HTCondor Jobs
 ==============================
@@ -492,7 +504,7 @@ There are several more examples for different application types at
 
 - `submit-examples <https://github.com/mit-submit/submit-examples/blob/main/htcondor/>`_ for a collection HTCondor examples
 - `testing julia <https://github.com/mit-submit/submit-examples/tree/main/julia>`_ for use of Julia on HTCondor
-- `testing matlab <https://github.com/mit-submit/submit-examples/tree/main/matlab>`_ for use of Matlab on HTCondor
+- `testing matlab <https://github.com/mit-submit/submit-examples/tree/main/matlab>`_ for use of MATLAB on HTCondor
 - `condor_gpu <https://github.com/mit-submit/submit-examples/tree/main/gpu/condor_gpu>`_ for use of GPUs on HTCondor
 
 Some worked-out examples are also provided in `Tutorial 2 <https://submit.mit.edu/submit-users-guide/tutorials/tutorial_2.html>`_.

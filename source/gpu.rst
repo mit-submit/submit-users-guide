@@ -100,14 +100,6 @@ You can also get to the submit-gpu machines through Jupyterhub. On the main `Jup
 Condor with GPUs
 ~~~~~~~~~~~~~~~~
 
-The MIT T2 and T3 both have access to GPU machines through Condor. An example of how to access these resources through Condor is shown below.
-
-If you wish to submit jobs to GPU machines in T3/T2, you need to add additional line in the script (only through glidein submission):
-
-.. code-block:: sh
-
-       RequestGPus=1
-
 If you wish to submit jobs to GPU machines in CMS global pool, you need to add additional line in the script:
 
 .. code-block:: sh
