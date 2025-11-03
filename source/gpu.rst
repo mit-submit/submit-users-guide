@@ -67,6 +67,31 @@ For example, to select the NVIDIA A30s GPUs only,
 
     sbatch job.sh --constraint=nvidia_a30 --partition=submit
 
+You can check the current available resources on each node via the command:
+
+.. code-block:: sh
+
+    sinfo -N -o "%N %G %f"
+
+Which produces an output like,
+
+.. code-block:: sh
+
+    NODELIST GRES AVAIL_FEATURES
+    submit60 gpu:4 nvidia_gtx1080,100gbs
+    submit62 gpu:4 nvidia_gtx1080,100gbs
+    submit63 gpu:4 nvidia_gtx1080,100gbs
+    submit63 gpu:4 nvidia_gtx1080,100gbs
+    [...]
+    submit20-1 gpu:2 nvidia_a30,100gbs
+    submit20-1 gpu:2 nvidia_a30,100gbs
+    submit21-1 gpu:2 nvidia_a30,100gbs
+    submit21-1 gpu:2 nvidia_a30,100gbs
+    [...]
+    submit77-1 gpu:4 Tesla_v100,100gbs
+    submit77-1 gpu:4 Tesla_v100,100gbs
+    [...]
+
 CUDA
 ~~~~
 
