@@ -125,6 +125,8 @@ There are a few ways to handle this issue. If you prefer, you can simply upload 
 
 One thing to note, is that if you have already tried this ssh command once and it broke, you will need to modify your known_hosts file in the .ssh directory. In order to fix this you will need to remove lines with ``submit`` in them from the known_hosts. Please note that it is safe to remove the lines from this file. 
 
+Tip: Mac users may find it convenient to add the line ``UseKeychain yes`` to the above submit entry in your ``.ssh/config`` file to allow Keychain to enter your ssh key password automatically.
+
 Connecting directly to a specific node
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
