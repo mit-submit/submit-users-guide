@@ -44,6 +44,14 @@ Tutorials and Examples
 Examples of scripts can be found on our `submit-examples GitHub repository <https://github.com/mit-submit/submit-examples/tree/main>`_.
 
 
+Videos
+======
+
+* `Fast Code / File Navigation in VSCode <https://www.youtube.com/watch?v=TZzmyvkX8A0>`_
+
+*  `Debugging on SubMIT with VSCode <https://www.youtube.com/watch?v=BDKmU57jDbo>`_
+
+
 Search tool and tags
 ====================
 
