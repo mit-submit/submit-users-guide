@@ -190,6 +190,33 @@ Microsoft provides some handy `videos <https://code.visualstudio.com/docs/getsta
 
 #. **Note:** Only run *light* calculations in VSCode; VSCode is intended for editing/debugging, not production runs.  If the execution of your code will consume significant resources (time, memory, processors, ...) then please run it outside VSCode using `Slurm or HTCondor <https://submit.mit.edu/submit-users-guide/running.html>`_.  For example, you can debug using a smaller subset of data than a production run.
 
+
+SubMIT VSCode Videos
+....................
+
+View our demos of ways VSCode or another Integrated Development Environment can save you time
+
+Fast Code / File Navigation (or view on MIT Physics YouTube `here <https://www.youtube.com/watch?v=TZzmyvkX8A0>`_):
+
+.. raw:: html
+
+   <iframe width="560" height="315" src="https://www.youtube.com/embed/TZzmyvkX8A0?cc_load_policy=1" 
+      title="YouTube video player" frameborder="0" 
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+   </iframe>
+
+
+Debugging on SubMIT with VSCode (or view on MIT Physics YouTube `here <https://www.youtube.com/watch?v=BDKmU57jDbo>`_):
+
+.. raw:: html
+
+   <iframe width="560" height="315" src="https://www.youtube.com/embed/BDKmU57jDbo?cc_load_policy=1" 
+      title="YouTube video player" frameborder="0" 
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+   </iframe>
+
+
+
 Handy Resources
 ...............
 
