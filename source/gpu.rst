@@ -60,6 +60,7 @@ To specify a particular GPU type from Slurm, you can use the ``--constraint`` op
 - ``nvidia_a30``: NVIDIA A30 GPUs
 - ``Tesla_v100``: Tesla V100 GPUs
 - ``nvidia_gtx1080``: NVIDIA GTX1080 GPUs
+- ``nvidia_rtx6000``: NVIDIA RTX6000 GPUs
 
 For example, to select the NVIDIA A30s GPUs only,
 
@@ -91,6 +92,15 @@ Which produces an output like,
     submit77-1 gpu:4 Tesla_v100,100gbs
     submit77-1 gpu:4 Tesla_v100,100gbs
     [...]
+
+Express queue
+.............
+
+For short GPU jobs (up to 1 hour), users can use the ``submit-gpu-express`` partition. This partition has higher scheduling priority as well as some dedicated hardware. Select it in your batch script by specifying the partition:
+
+.. code-block:: sh
+
+    #SBATCH --partition=submit-gpu-express
 
 CUDA
 ~~~~
