@@ -9,18 +9,18 @@ Batch computing
 
 .. tags:: Slurm, Condor, GPU
 
-This section will give you a quick guide on how to submit batch jobs at subMIT.
+This section will give you a quick guide on how to submit batch jobs at SubMIT.
 There will be a couple of simple examples to help get you started.
 You have three options:
 
 1. **Running locally**: limited to the interactive usage of CPUs in the login nodes. Ideal for developing, not for running jobs.
-2. **Slurm**: medium-sized pool of CPUs and some GPUs available on subMIT worker-nodes. Slurm is set up as a federation with all of the subMIT machines as clusters. This means that Slurm submissions will have access to the /home, /work, and /ceph directories.
-3. **HTCondor**: large pools of CPUs and some GPUs are available in clusters at MIT and around the world. Ideal for large scale processing. Worker nodes in HTCondor do not have access to your subMIT directories: this means that any input files and software that you need must be passed into the submission, or already be on the worker node. Several tools are available to achieve this, read below.
+2. **Slurm**: medium-sized pool of CPUs and some GPUs available on SubMIT worker-nodes. Slurm is set up as a federation with all of the SubMIT machines as clusters. This means that Slurm submissions will have access to the /home, /work, and /ceph directories.
+3. **HTCondor**: large pools of CPUs and some GPUs are available in clusters at MIT and around the world. Ideal for large scale processing. Worker nodes in HTCondor do not have access to your SubMIT directories: this means that any input files and software that you need must be passed into the submission, or already be on the worker node. Several tools are available to achieve this, read below.
 
 Running locally
 ~~~~~~~~~~~~~~~
 
-The subMIT login machines are powerful servers which can be used for local testing.
+The SubMIT login machines are powerful servers which can be used for local testing.
 This allows users to thoroughly test their code before expanding to batch submission.
 When you are ready to scale up your framework, you can study the guide below to start submitting to HTCondor or Slurm.
 
@@ -168,7 +168,7 @@ Slurm also has the sacct command to help you to look at information from past jo
 HTCondor
 ~~~~~~~~
 
-The subMIT machines have access to several clusters with thousands of available cores via HTCondor.
+The SubMIT machines have access to several clusters with thousands of available cores via HTCondor.
 These following sections describe which clusters are available to run on, a brief description of what is available on each cluster, and what is needed in your submission script in order to send your HTCondor jobs to each cluster. 
 
 Available clusters
@@ -304,7 +304,7 @@ Here is an example sample list of sites you can use,
      +DESIRED_Sites = "T2_AT_Vienna,T2_BE_IIHE,T2_BE_UCL,T2_BR_SPRACE,T2_BR_UERJ,T2_CH_CERN,T2_CH_CERN_AI,T2_CH_CERN_HLT,T2_CH_CERN_Wigner,T2_CH_CSCS,T2_CH_CSCS_HPC,T2_CN_Beijing,T2_DE_DESY,T2_DE_RWTH,T2_EE_Estonia,T2_ES_CIEMAT,T2_ES_IFCA,T2_FI_HIP,T2_FR_CCIN2P3,T2_FR_GRIF_IRFU,T2_FR_GRIF_LLR,T2_FR_IPHC,T2_GR_Ioannina,T2_HU_Budapest,T2_IN_TIFR,T2_IT_Bari,T2_IT_Legnaro,T2_IT_Pisa,T2_IT_Rome,T2_KR_KISTI,T2_MY_SIFIR,T2_MY_UPM_BIRUNI,T2_PK_NCP,T2_PL_Swierk,T2_PL_Warsaw,T2_PT_NCG_Lisbon,T2_RU_IHEP,T2_RU_INR,T2_RU_ITEP,T2_RU_JINR,T2_RU_PNPI,T2_RU_SINP,T2_TH_CUNSTDA,T2_TR_METU,T2_TW_NCHC,T2_UA_KIPT,T2_UK_London_IC,T2_UK_SGrid_Bristol,T2_UK_SGrid_RALPP,T2_US_Caltech,T2_US_Florida,T2_US_MIT,T2_US_Nebraska,T2_US_Purdue,T2_US_UCSD,T2_US_Vanderbilt,T2_US_Wisconsin,T3_CH_CERN_CAF,T3_CH_CERN_DOMA,T3_CH_CERN_HelixNebula,T3_CH_CERN_HelixNebula_REHA,T3_CH_CMSAtHome,T3_CH_Volunteer,T3_US_HEPCloud,T3_US_NERSC,T3_US_OSG,T3_US_PSC,T3_US_SDSC"
 
 In order to use the CMS global pool, you will need to add a few additional lines to your submission script.
-The lines below, with the proper ID and username (uid and id from subMIT), are necessary in order to get into the global pool:
+The lines below, with the proper ID and username (uid and id from SubMIT), are necessary in order to get into the global pool:
 
 .. code-block:: sh
 
@@ -332,7 +332,7 @@ General Tips for HTCondor Jobs
 Transferring Input Scripts and Data
 ***********************************
 
-Since HTCondor jobs are running on external computing resources, your subMIT storage areas (``/home``, ``/work``, ``/ceph``) are not accessible on the worker nodes.
+Since HTCondor jobs are running on external computing resources, your SubMIT storage areas (``/home``, ``/work``, ``/ceph``) are not accessible on the worker nodes.
 Thus, you either need to transfer your input and output files through your submission script, or use XRootD to transfer files via the network. 
 
 via the submission script
@@ -362,14 +362,14 @@ Once that is set up, in your bash script that is executed in the worker-node, yo
 Transferring Outputs
 ********************
 
-If your code produces an output you want to bring back to subMIT, you have the same two options as for the input files.
+If your code produces an output you want to bring back to SubMIT, you have the same two options as for the input files.
 You can either let the job copy it back, or transfer the output via XRootD.
 The same considerations apply here: for larger files and more control, use XRootD.
 
 via the submission script
 *************************
 
-Adding the following to your submission script will copy the outputs of your job back to subMIT automatically.
+Adding the following to your submission script will copy the outputs of your job back to SubMIT automatically.
 
 .. code-block:: sh
 
@@ -386,7 +386,7 @@ Here is a simple example that writes the ``out.out`` file produced in the HTCond
 via XRootD
 **********
 
-You can add something like the following in your script that gets executed on the worker-node to copy your output back to the subMIT ceph space,
+You can add something like the following in your script that gets executed on the worker-node to copy your output back to the SubMIT ceph space,
 
 .. code-block:: sh
 
@@ -395,16 +395,16 @@ You can add something like the following in your script that gets executed on th
 Distributing Software to Worker Nodes
 *************************************
 
-Again since the HTCondor nodes don't have access to the subMIT storage areas, you need to distribute your software to the worker-node.
+Again since the HTCondor nodes don't have access to the SubMIT storage areas, you need to distribute your software to the worker-node.
 This is further complicated that the OS on each worker-node or cluster may be different.
 Your best options are either to make your software available as a singularity image on CVMFS, or transfer it by hand.
 
 via CVMFS
 *********
 
-`CVMFS <https://submit.mit.edu/submit-users-guide/program.html#cvmfs>`_ is mounted on subMIT and all clusters connected to subMIT via HTCondor, and supports the distribution of containers.
+`CVMFS <https://submit.mit.edu/submit-users-guide/program.html#cvmfs>`_ is mounted on SubMIT and all clusters connected to SubMIT via HTCondor, and supports the distribution of containers.
 
-Several pre-built containers are available already that may meet your needs. Check our the ``/cvmfs`` space on subMIT.
+Several pre-built containers are available already that may meet your needs. Check our the ``/cvmfs`` space on SubMIT.
 
 Please see the relevant `Available Software <https://hep-fcc.github.io/FCCAnalyses/>`_ section of the User's Guide for how to distribute your custom container.
 
@@ -431,7 +431,7 @@ It may be useful for you to impose on the HTCondor job some specific OS and set 
 
 For some clusters, you can do this via the ``requirements`` in the submission script: see sections pertaining to each cluster for more information on this, and check their documentation.
 
-For all clusters supported by subMIT, as well as subMIT itself, you can also use CVMFS, which has many pre-built images of OSs that can be accessed: see `this section <https://submit.mit.edu/submit-users-guide/program.html#cvmfs>`_ of the guide for more information. See the above section for how to use singularity in your jobs. For example, to use rocky9, you can add the following to your submission script,
+For all clusters supported by SubMIT, as well as SubMIT itself, you can also use CVMFS, which has many pre-built images of OSs that can be accessed: see `this section <https://submit.mit.edu/submit-users-guide/program.html#cvmfs>`_ of the guide for more information. See the above section for how to use singularity in your jobs. For example, to use rocky9, you can add the following to your submission script,
 
 .. code-block:: sh
 
