@@ -1,19 +1,19 @@
-Monitoring at submit
+Monitoring at SubMIT
 --------------------
 
 .. tags:: Slurm, Condor
 
-This section will detail the monitoring available at submit. Here we will detail how you can keep track of the submit machines as you work as well as monitor your condor jobs.
+This section will detail the monitoring available at SubMIT. Here we will detail how you can keep track of the submit machines as you work as well as monitor your condor jobs.
 
-The main submit page
+The main SubMITt page
 ~~~~~~~~~~~~~~~~~~~~
 
-On the main `submit page <http://submit.mit.edu/>`_ you can find interesting links useful for monitoring. Most of these links are explained in more detail below.
+On the main `SubMIT page <http://submit.mit.edu/>`_ you can find interesting links useful for monitoring. Most of these links are explained in more detail below.
 
-Ganglia Monitoring for submit
+Ganglia Monitoring for SubMIT
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Ganglia is a distributed monitoring system for high-performance computing systems such as submit. The Ganglia monitoring can be found through a link on the main submit page or can be found directly `here <http://submit08.mit.edu/ganglia/>`_. Information on the individual servers can be found at the bottom of the page or through the following `link to servers <http://submit08.mit.edu/ganglia/?c=Submits>`_.
+Ganglia is a distributed monitoring system for high-performance computing systems such as SubMIT. The Ganglia monitoring can be found through a link on the main SubMIT page or can be found directly `here <http://submit08.mit.edu/ganglia/>`_. Information on the individual servers can be found at the bottom of the page or through the following `link to servers <http://submit08.mit.edu/ganglia/?c=Submits>`_.
 
 CondorMon
 ~~~~~~~~~
@@ -30,7 +30,7 @@ To monitor your slurm jobs you can use the slurm monitoring `SlurmMon <https://s
 Summary Plots for SubMIT
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-There are additional summary plots to help keep track of the growth and health of the SubMIT system `Submit Monitoring Tools <http://submit.mit.edu/home_monitor/index.php>`_. 
+There are additional summary plots to help keep track of the growth and health of the SubMIT system `SubMIT Monitoring Tools <http://submit.mit.edu/home_monitor/index.php>`_. 
 
 Monitoring for the T3
 ~~~~~~~~~~~~~~~~~~~~~
