@@ -3,12 +3,12 @@ Best practices
 
 .. tags:: Slurm
 
-Submit is a shared tool. As such, you are responsible for setting up your work to properly use the resources available to you through submit. This section covers a few examples of avoidable problems. 
+SubMIT is a shared tool. As such, you are responsible for setting up your work to properly use the resources available to you through SubMIT. This section covers a few examples of avoidable problems. 
 
 Use batch submission systems to scale up your workflow
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The submit machines are powerful servers. However, if your jobs will take longer than approximately 15 minutes, then it is better to submit them through a batch system. Additionally, if you want to analyze many files, batch systems should be used. On submit, we provide use for both `HTCondor <https://research.cs.wisc.edu/htcondor/>`_ and `Slurm <https://slurm.schedmd.com/documentation.html>`_. Setting up these tools will allow you to scale out your tools and will also prevent clutter on the submit machines. There are simple examples on how to use these batch submission systems later in this guide.
+The submit machines are powerful servers. However, if your jobs will take longer than approximately 15 minutes, then it is better to submit them through a batch system. Additionally, if you want to analyze many files, batch systems should be used. On SubMIT, we provide use for both `HTCondor <https://research.cs.wisc.edu/htcondor/>`_ and `Slurm <https://slurm.schedmd.com/documentation.html>`_. Setting up these tools will allow you to scale out your tools and will also prevent clutter on the submit machines. There are simple examples on how to use these batch submission systems later in this guide.
 
 Avoid massive parallel access of a single file
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -35,9 +35,9 @@ If you are using xrootd for the first time, you will need to be added to the map
 Be aware of your own data
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
-You are given storage spaces on submit that you are in charge of. Make sure to keep these areas clean and remove data that is no longer needed. Keep in mind that the hadoop storage is scratch for submit users.
+You are given storage spaces on SubMIT that you are in charge of. Make sure to keep these areas clean and remove data that is no longer needed. Keep in mind that the hadoop storage is scratch for SubMIT users.
 
 Software environments
 ~~~~~~~~~~~~~~~~~~~~~
 
-Submit provides several tools in order to help you set up and configure your software environments to suit your needs. If possible, it is better to set up your environments through these tools rather than installing things on your own. There is a section later in this guide describing some of these tools.
+SubMIT provides several tools in order to help you set up and configure your software environments to suit your needs. If possible, it is better to set up your environments through these tools rather than installing things on your own. There is a section later in this guide describing some of these tools.
