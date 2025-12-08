@@ -22,7 +22,7 @@ The storage filesystem
 
 Users also have a larger quota in storage filesystem, under the directory ``/ceph/submit/data/user/<first letter>/<USER>`` with quota 1TB.
 SubMIT uses ceph to form the filesystem.
-The filesystem is accessible from all subMIT nodes (e.g. any node you can log in to, and any node connected via Slurm) directly via the ``/ceph`` mount.
+The filesystem is accessible from all SubMIT nodes (e.g. any node you can log in to, and any node connected via Slurm) directly via the ``/ceph`` mount.
 
 :red: Keep in mind that filesystem is optimized for large files, therefore it is not recommended to save large numbers of small files in the filesystem, for example, 100k+ small log files. This will seriously hinder the performance of the filesystem for all users.
 
@@ -107,7 +107,7 @@ The storage on Tier2
 ~~~~~~~~~~~~~~~~~~~~
 Upon request, users may also have some storage on MIT Tier2 sites. Note that tier2 is external computing resources and users can only use xrootd to transfer the files. In other words, to use storage in tier2, users must have x509 certificate. The details of how to get such certificates are above. 
 
-Group storage at submit
+Group storage at SubMIT
 ~~~~~~~~~~~~~~~~~~~~~~~
 
 Upon request, we can create user group storage spaces on /ceph at ``/ceph/submit/data/<group name>`` to easily share files. Unless specified otherwise, this group space has between 1 and 10 TB of storage, although we are flexible to create larger spaces if necessary. Upon request we can also create backed up group storage space in ``/home/submit/<group name>`` with a 10GB quota that can be extended if needed. By default, all members of the group, and only them, can access, modify, and execute the contents of the group storage space. A ``public_html`` can be added in ``/home/submit/<group name>`` to create a group webpage in order to view or share your files in the same way as possible for users (see `<https://submit.mit.edu/submit-users-guide/starting.html#creating-a-personal-webpage>`_). To create this group space, please email submit-help@mit.edu with the requested group name, amount of storage, if a ``/home/submit`` space is needed, and email address or Kerberos ID of the users who should have access to the resources.
