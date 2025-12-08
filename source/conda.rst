@@ -70,7 +70,7 @@ You can then write your code, let's say in a file called ``example.jl``, and run
 Conda for C++
 =============
 
-Natively, subMIT currently has a C++ compiler, ``g++``. While Conda doesn’t directly install C++ as a standalone compiler, it can install related tools (like GCC [GNU Compiler Collection] or Clang) and libraries for building C++ projects, e.g.
+Natively, SubMIT currently has a C++ compiler, ``g++``. While Conda doesn’t directly install C++ as a standalone compiler, it can install related tools (like GCC [GNU Compiler Collection] or Clang) and libraries for building C++ projects, e.g.
 
 .. code-block:: sh
 
@@ -88,7 +88,7 @@ You can then write your code, let's say in a file called ``example.cpp``, and co
 Conda for FORTRAN
 =================
 
-Natively, subMIT currently has a FORTRAN compiler, ``gfortran``. Similarly to C++, Conda can install FORTRAN compilers, such as a specific version of ``gfortran``, through the command:
+Natively, SubMIT currently has a FORTRAN compiler, ``gfortran``. Similarly to C++, Conda can install FORTRAN compilers, such as a specific version of ``gfortran``, through the command:
 
 .. code-block:: sh
 
@@ -132,7 +132,7 @@ To run a script called ``example.R`` in R, use ``Rscript example.R``.
 Conda for Java
 ==============
 
-Java is also natively installed on subMIT. If you wish a different version, you can for example install it using
+Java is also natively installed on SubMIT. If you wish a different version, you can for example install it using
 
 .. code-block:: sh
 
@@ -149,7 +149,7 @@ Some, but not all, Java-related libraries are available via Conda, e.g.
 Conda for Perl
 ==============
 
-Perl is also natively installed on subMIT. If you wish a different version, you can for example install it using
+Perl is also natively installed on SubMIT. If you wish a different version, you can for example install it using
 
 .. code-block:: sh
 
@@ -166,7 +166,7 @@ To import Perl libraries, such as ``perl-dbi``, run
 Conda for Ruby
 ==============
 
-Ruby is not natively installed on subMIT. You can install it through
+Ruby is not natively installed on SubMIT. You can install it through
 
 .. code-block:: sh
 
