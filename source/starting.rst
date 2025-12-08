@@ -15,12 +15,12 @@
 Getting started
 ---------------
 
-We allow login to the subMIT pool using ssh keys with authentication done through LDAP. Once, you have uploaded your ssh keys, you will also be given a home and work directory in which you can directly start working. This section will guide you on how to set up your ssh keys and upload them to the submit portal to allow login as well as describe the initial resources available to you.
+We allow login to the SubMIT pool using ssh keys with authentication done through LDAP. Once, you have uploaded your ssh keys, you will also be given a home and work directory in which you can directly start working. This section will guide you on how to set up your ssh keys and upload them to the submit portal to allow login as well as describe the initial resources available to you.
 
 How to get an account
 ~~~~~~~~~~~~~~~~~~~~~
 
-If you already have a general MIT account then getting access to subMIT is easy. You only need to upload your ssh key to the `submit portal <https://submit-portal.mit.edu/>`_.
+If you already have a general MIT account then getting access to SubMIT is easy. You only need to upload your ssh key to the `submit portal <https://submit-portal.mit.edu/>`_.
 
 You might be prompted for not being authorized to access the portal. Please, follow the instructions on the screen.
 
@@ -75,7 +75,7 @@ This should create both a private and a public key (``id_ed25519``, the private 
       :black:`Or simply open the public key file in your favorite text editor and highlight & copy the text.`
 
 
-Simply paste the contents of the public key (``id_ed25519.pub``) into the submit portal link above and you are ready. The private key is like your password and should never be exposed to anybody. Please do not paste this into the subMIT website; if you do you should re-create your keys by running the ``ssh-keygen`` command again.
+Simply paste the contents of the public key (``id_ed25519.pub``) into the submit portal link above and you are ready. The private key is like your password and should never be exposed to anybody. Please do not paste this into the SubMIT website; if you do you should re-create your keys by running the ``ssh-keygen`` command again.
 
 We recommend that you use the standard name (as prompted by ``ssh-keygen``) for the keys, as this will make the process easier. Some advanced users may want to create differently named keys within their ``.ssh`` directory, as they may wish to keep separate keys for separate machines. If you do this, please remember to either create the appropriate configuration within ``.ssh/config``, or log in with ``ssh -i /path/to/identity/file``.
 
@@ -182,13 +182,13 @@ You can customize the appearance and content of your webpage for example by addi
 Tips when coming from another cluster
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Each cluster is a bit different and subMIT is no exception.  Here are a few things about subMIT which may be different from a cluster you previously used:
+Each cluster is a bit different and SubMIT is no exception.  Here are a few things about SubMIT which may be different from a cluster you previously used:
 
-* In addition to the SLURM-managed subMIT nodes, subMIT is a login pool which also connects to other resources
+* In addition to the SLURM-managed SubMIT nodes, SubMIT is a login pool which also connects to other resources
 
-* subMIT does not provide software through ``module avail``. Instead, we prefer users to install the specific toolbox they need for their workflow. We give you examples, for instance on `how to setup conda <https://submit.mit.edu/submit-users-guide/program.html#installing-conda>`_ to manage environments and packages for Python and more, or `Mathematica <https://submit.mit.edu/submit-users-guide/program.html#id1>`_. When you install software, make sure they are installed in your ``/work`` directory.
+* SubMIT does not provide software through ``module avail``. Instead, we prefer users to install the specific toolbox they need for their workflow. We give you examples, for instance on `how to setup conda <https://submit.mit.edu/submit-users-guide/program.html#installing-conda>`_ to manage environments and packages for Python and more, or `Mathematica <https://submit.mit.edu/submit-users-guide/program.html#id1>`_. When you install software, make sure they are installed in your ``/work`` directory.
 
-* On subMIT, SLURM is not set to reserve entire nodes by default; SLURM will request the resources (cores & memory) you request for your job. On subMIT, it is best to think in units of cores, not nodes when making SLURM requests.  The subMIT SLURM cluster contains several 'standard' nodes as well as high-density nodes with a large number of cores and memory on a single node. Given this heterogeneous nature, it is important to think how many cores your jobs need and request number of cores explicitly in your batch scripts.  One high-density node can do the work of several standard nodes, and you will likely wait a long time (and end up with more cores than you need) if you request a full high-density node.
+* On SubMIT, SLURM is not set to reserve entire nodes by default; SLURM will request the resources (cores & memory) you request for your job. On SubMIT, it is best to think in units of cores, not nodes when making SLURM requests.  The SubMIT SLURM cluster contains several 'standard' nodes as well as high-density nodes with a large number of cores and memory on a single node. Given this heterogeneous nature, it is important to think how many cores your jobs need and request number of cores explicitly in your batch scripts.  One high-density node can do the work of several standard nodes, and you will likely wait a long time (and end up with more cores than you need) if you request a full high-density node.
 
 The rules for an account
 ~~~~~~~~~~~~~~~~~~~~~~~~
