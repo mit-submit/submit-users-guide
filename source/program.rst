@@ -3,7 +3,7 @@ Available software
 
 .. tags:: Julia, Mathematica, Conda, Slurm, VSCode, Containers, JupyterHub
 
-This section briefly describes several options in which to set up your environment for working on subMIT. This section is not exhaustive but introduces several tools which can help you set up your code. 
+This section briefly describes several options in which to set up your environment for working on SubMIT. This section is not exhaustive but introduces several tools which can help you set up your code. 
 
 You have several options available for either using installed software, or installing your own:
 
@@ -18,12 +18,12 @@ You have several options available for either using installed software, or insta
 4. **CVFMS** is provided by CERN, and has many environments.
 
 Find below more details about each of your choices.
-Feel free to reach out to us for how to best set up your software or environments on subMIT!
+Feel free to reach out to us for how to best set up your software or environments on SubMIT!
 
 Native system
 ~~~~~~~~~~~~~
 
-All of the subMIT machines come with several tools to help you get started with your work. Under `/usr/bin` you will find:
+All of the SubMIT machines come with several tools to help you get started with your work. Under `/usr/bin` you will find:
 
 - python
 - gcc
@@ -119,7 +119,7 @@ If you wish to get an interface similar to a Mathematica notebook (.nb file), yo
 
 Now that the kernel is installed, you want to use jupyterhub on ``submit00``. Here's how to do this:
 
-Go to the submit website and open jupyterhub. Choose the job profile to "Slurm for Wolfram Mathematica - submit00 - 1 CPU, 500 MB". The server should start. If you get the error message "Spawn failed: Timeout", it means the CPUs are already busy with other jobs and cannot be used at the moment. You can still use the method below.
+Go to the SubMIT website and open jupyterhub. Choose the job profile to "Slurm for Wolfram Mathematica - submit00 - 1 CPU, 500 MB". The server should start. If you get the error message "Spawn failed: Timeout", it means the CPUs are already busy with other jobs and cannot be used at the moment. You can still use the method below.
 
 You can make sure that you are on submit00 by opening a terminal within the webpage, which should show ``username@submit00.mit.edu``. You can now open a jupyter notebook (.ipynb file), make sure you are using the Wolfram kernel (choose the kernel in the top right of the screen), and use Wolfram syntax as you would in a Wolfram notebook. The outputs will even have the Wolfram fonts!
 
@@ -150,7 +150,7 @@ Conda
 
 Conda is an open source package management system and environment management system. We can use this to set up consistent environments and manage the package dependencies for various applications. Below is an example to set up a python environment as well as a different gcc compiler.
 
-Important Notes for Using Conda on submit
+Important Notes for Using Conda on SubMIT
 .........................................
 
 Please note that downloading many conda packages takes a large amount of space which can very quickly use up the quota in your home. If you plan to use conda heavily **it is suggested to download and configure it in your work directory** where there is much more space. 
@@ -291,9 +291,9 @@ How to use your container in your jobs
 
 There are a couple of options for this.
 
-**If your jobs are running only on subMIT and you have a singularity image built**, your singularity image can be placed on some commonly-readable directory from any of the compute nodes (/ceph), so you can access it directly from any of your jobs.
+**If your jobs are running only on SubMIT and you have a singularity image built**, your singularity image can be placed on some commonly-readable directory from any of the compute nodes (/ceph), so you can access it directly from any of your jobs.
 
-**If your jobs are running on subMIT, MIT T3, MIT T2, OSG, or anywhere on the grid**, you can mirror your Docker container as a Singularity container to CVMFS. You can upload it to DockerHub with ``podman push`` and then add it to ``/cvmfs/singularity.opensciencegrid.org/``.  This can be done by making a pull request to add the container to the `master list of docker images <https://github.com/opensciencegrid/cvmfs-singularity-sync/blob/master/docker_images.txt>`_, which is a simple .txt file which controls the synchronization of images on the CVMFS. Your container will then appear as a singularity image in ``/cvmfs/singularity.opensciencegrid.org/``, which is mounted on all the machines of the aforementioned systems.
+**If your jobs are running on SubMIT, MIT T3, MIT T2, OSG, or anywhere on the grid**, you can mirror your Docker container as a Singularity container to CVMFS. You can upload it to DockerHub with ``podman push`` and then add it to ``/cvmfs/singularity.opensciencegrid.org/``.  This can be done by making a pull request to add the container to the `master list of docker images <https://github.com/opensciencegrid/cvmfs-singularity-sync/blob/master/docker_images.txt>`_, which is a simple .txt file which controls the synchronization of images on the CVMFS. Your container will then appear as a singularity image in ``/cvmfs/singularity.opensciencegrid.org/``, which is mounted on all the machines of the aforementioned systems.
 
 **If you need this available on worker nodes on the MIT T3 and T2**, you can add them to a space in your work directory. You will then need to email Max (Kerberos ID: maxi) or submit-help@mit.edu to create this CVMFs area for you.
 
