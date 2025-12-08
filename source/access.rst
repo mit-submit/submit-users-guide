@@ -1,9 +1,9 @@
-Access to subMIT
+Access to SubMIT
 ----------------
 
 .. tags:: JupyterHub, VSCode, GPU
 
-You have several options to connect to subMIT, view and edit your files, and do your work.
+You have several options to connect to SubMIT, view and edit your files, and do your work.
 
 1. **ssh** is the simplest way to connect to the login nodes, see `the starting guide <https://submit.mit.edu/submit-users-guide/starting.html>`_.
 2. **`JupyterHub <https://submit.mit.edu/jupyter/hub/spawn>_`**  provides another easy alternative to connect to the cluster. You can log in using your Kerberos ID, and get access to an interactive graphical interface, terminal, text editor, and more.
@@ -18,7 +18,7 @@ Jupyterhub
 
 SubMIT has a `custom installation of JupyterHub <http://submit.mit.edu/jupyter>`_.
 
-This is set up through the subMIT machines meaning that you have access to all of your files and data. You will have access to basic python3 configurations. In addition, if you need a more complex environment, you can run your notebooks in any conda environment that you have set up. You can check the name and location of your environments using the command ``jupyter kernelspec list``. This allows you to create the exact environment you need for your projects. An example on how to set up a conda environment is shown above, and how it is implemented in jupyter is described below.
+This is set up through the SubMIT machines meaning that you have access to all of your files and data. You will have access to basic python3 configurations. In addition, if you need a more complex environment, you can run your notebooks in any conda environment that you have set up. You can check the name and location of your environments using the command ``jupyter kernelspec list``. This allows you to create the exact environment you need for your projects. An example on how to set up a conda environment is shown above, and how it is implemented in jupyter is described below.
 
 A few examples of simple Jupyter notebooks can be found in the `Github jupyter examples <https://github.com/mit-submit/submit-examples/tree/main/jupyter>`_. Several other intro notebooks can be found in the link below:
 `JupyterHub_examples <https://github.com/CpResearch/PythonDataAnalysisTutorial/tree/main/jupyter>`_
@@ -160,7 +160,7 @@ Visual Studio Code (VSCode) is a free, versatile source-code editor that support
 
 * **Integrated file browser:** easily navigate and manage your files within the editor.
 
-One of the capabilities of VSCode is its client-server mode for `remote development <https://code.visualstudio.com/docs/remote/ssh>`_ on subMIT. This functionality allows you to edit, run, and debug code on the subMIT servers directly from your personal computer. This setup provides the ease of a GUI-based development environment on your local machine while executing the code on subMIT's infrastructure.
+One of the capabilities of VSCode is its client-server mode for `remote development <https://code.visualstudio.com/docs/remote/ssh>`_ on SubMIT. This functionality allows you to edit, run, and debug code on the SubMIT servers directly from your personal computer. This setup provides the ease of a GUI-based development environment on your local machine while executing the code on SubMIT's infrastructure.
 
 For `most languages <https://code.visualstudio.com/docs/languages/overview>`_, VScode enhances your coding experience with features like:
 
@@ -175,18 +175,18 @@ For `most languages <https://code.visualstudio.com/docs/languages/overview>`_, V
 * **Accessibility features:** `learn about accessibility in VSCode <https://code.visualstudio.com/docs/editor/accessibility>`_.
 
 
-Getting Started with VSCode on subMIT
+Getting Started with VSCode on SubMIT
 .....................................
 
 Microsoft provides some handy `videos <https://code.visualstudio.com/docs/getstarted/introvideos>`_ for getting started with VSCode, as well as detailed information on `remote connection <https://code.visualstudio.com/docs/remote/ssh>`_.
 
 #. **Install VSCode:** `download and install instructions <https://code.visualstudio.com/docs/setup/setup-overview>`_
 
-#. **SSH Configuration:** Follow the `general configuration guide <https://submit.mit.edu/submit-users-guide/starting.html#common-issues-with-keys>`_ in the subMIT User's Guide. Also have a look at the `VSCode configuration guide <https://submit.mit.edu/submit-users-guide/starting.html#connecting-to-submit-through-VSCode>`_ due to a recent VSCode upgrade which removed the compatibility with CentOS 7.
+#. **SSH Configuration:** Follow the `general configuration guide <https://submit.mit.edu/submit-users-guide/starting.html#common-issues-with-keys>`_ in the SubMIT User's Guide. Also have a look at the `VSCode configuration guide <https://submit.mit.edu/submit-users-guide/starting.html#connecting-to-submit-through-VSCode>`_ due to a recent VSCode upgrade which removed the compatibility with CentOS 7.
 
 #. **Remote-SSH Extension:** Available in the VSCode Extensions tab or on the `VSCode website <https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-ssh>`_.
 
-#. **Connect to subMIT:** Click the green "Open a Remote Window" button in the lower-left of the VSCode window. Select "submit" from the menu (VSCode automatically reads your ssh config file). Then, simply "open" a folder or workspace. Opening a folder is typically more convenient than opening a single code file.  Remember: VSCode is now connected to subMIT, so you are looking at and navigating your files on the subMIT servers, not on your laptop/desktop.
+#. **Connect to SubMIT:** Click the green "Open a Remote Window" button in the lower-left of the VSCode window. Select "submit" from the menu (VSCode automatically reads your ssh config file). Then, simply "open" a folder or workspace. Opening a folder is typically more convenient than opening a single code file.  Remember: VSCode is now connected to SubMIT, so you are looking at and navigating your files on the SubMIT servers, not on your laptop/desktop.
 
 #. **Note:** Only run *light* calculations in VSCode; VSCode is intended for editing/debugging, not production runs.  If the execution of your code will consume significant resources (time, memory, processors, ...) then please run it outside VSCode using `Slurm or HTCondor <https://submit.mit.edu/submit-users-guide/running.html>`_.  For example, you can debug using a smaller subset of data than a production run.
 
