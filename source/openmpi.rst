@@ -9,7 +9,7 @@ OpenMPI is a popular open-source implementation of the MPI standard, offering hi
 Developed collaboratively by the HPC community, OpenMPI supports multiple network interfaces and integrates seamlessly with modern supercomputing environments. 
 Its modular architecture allows users to tailor configurations for specific hardware, making it a preferred choice for researchers and engineers running large-scale simulations, numerical computations, and machine learning workloads.
 
-Here we briefly introduce the OpenMPI installation on SubMIT and provide some examples of running your program with it. 
+Here we briefly introduce the OpenMPI installation on SubMIT and provide some examples of running your program with it. You can also watch a `video presentation <https://indico.mit.edu/event/1880/contributions/5349/attachments/1691/2780/Custom_software_on_SubMIT_OpenMPI_and_Globus.mp4>`_ on OpenMPI by a member of the SubMIT team.
 
 Centralized installation of OpenMPI on SubMIT
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

@@ -250,7 +250,7 @@ Containers
 
 Containers are becoming commonplace in scientific workflows. SubMIT offers access to containers through Singularity and Podman (an alternative to Docker). This section will give a short example on how to enter into a singularity container to run your framework. For more information on dockers see the `docker engine site <https://docs.docker.com/engine/reference/commandline/build/>`_.
 
-A comprehensive tutorial on how to set up containers and singularity images is presented `here <https://submit.mit.edu/submit-users-guide/tutorials/tutorial_3.html>`_. Here, only general information and an overview are presented.
+We have a `comprehensive tutorial <https://submit.mit.edu/submit-users-guide/tutorials/tutorial_3.html>`_ on how to set up containers and singularity images. Here, only general information and an overview are presented. You can also watch a `video presentation <https://indico.mit.edu/event/1880/contributions/5335/attachments/1683/2783/Tutorial_Containers_for_Portable_Software_Environments.mp4>`_ on containers by a member of the SubMIT team.
 
 
 Podman
