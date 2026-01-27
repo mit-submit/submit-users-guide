@@ -51,6 +51,7 @@ Videos
 
 *  `Debugging on SubMIT with VSCode <https://www.youtube.com/watch?v=BDKmU57jDbo>`_
 
+* We have recorded sessions from our `2026 workshop <https://indico.mit.edu/event/1880/>`_ on the different methods to access and interact with SubMIT, as well as how to use containers (Docker and Podman), OpenMPI, Globus, Conda, Snakemake, Slurm, and HTCondor with SubMIT.
 
 Search tool and tags
 ====================
