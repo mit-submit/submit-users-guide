@@ -1,18 +1,18 @@
-Acknowledging subMIT
+Acknowledging SubMIT
 --------------------
 
 
 It is very helpful for us to have a record of publications that made use
-of subMIT resources (be those the physical hardware, or the human support
+of SubMIT resources (be those the physical hardware, or the human support
 that we provide).
 
 If possible, please send an e-mail letting us know you've published a
 preprint or paper (to submit-help@mit.edu) that made use of our resources.
 
-We would also appreciate it if you could acknowledge subMIT in your
+We would also appreciate it if you could acknowledge SubMIT in your
 publications, where appropriate, with the following language:
 
-*This work made use of resources provided by subMIT at MIT Physics.*
+*This work made use of resources provided by SubMIT at MIT Physics.*
 
 In addition, you can cite the following preprint::
 
