@@ -8,22 +8,22 @@ SubMIT provides access to several GPUs. This section outlines how to utilize the
 Slurm with GPUs
 ~~~~~~~~~~~~~~~
 
-Interactive access (salloc)
+Interactive access
 ...........................
 
-SubMIT allows interactive login access to GPUs through the ``salloc`` command. This allows users to interactively test their GPU applications. 
+SubMIT allows interactive login access to GPUs through the ``srun`` command. This allows users to interactively test their GPU applications. 
 
 Accessing the ``submit-gpu`` partition:
 
 .. code-block:: sh
 
-      salloc --partition=submit-gpu --cpus-per-gpu=1 --gres=gpu:1
+      srun --partition=submit-gpu --cpus-per-gpu=1 --gres=gpu:1 --pty bash
 
 To request more than one GPU, adjust the ``--gres=gpu:<number>`` option.
 
 .. code-block:: sh
 
-      salloc --partition=submit-gpu --cpus-per-gpu=1 --gres=gpu:4
+      srun --partition=submit-gpu --cpus-per-gpu=1 --gres=gpu:4 --pty bash
 
 Batch jobs and script execution
 ...............................
@@ -119,7 +119,7 @@ Once you source your bashrc file, you should be able to use CUDA.
 
       source ~/.bashrc
 
-In order to check which CUDA version is installed you can use the command below; note that this command will not work if you are not on a GPU (e.g. access a GPU through `salloc <https://submit.mit.edu/submit-users-guide/gpu.html#interactive-access-salloc>`_). Make sure this version fits your workflow.
+In order to check which CUDA version is installed you can use the command below; note that this command will not work if you are not on a GPU (e.g. access a GPU through `srun <https://submit.mit.edu/submit-users-guide/gpu.html#interactive-access>`_). Make sure this version fits your workflow.
 
 .. code-block:: sh
 
