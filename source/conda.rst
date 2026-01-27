@@ -3,7 +3,7 @@ Conda and its benefits beyond python
 
 .. tags:: Conda
 
-Conda is a powerful, open-source package and environment management system that allows you to manage compilers and packages for various programming languages. Although commonly associated with Python, Conda supports many more languages, making it versatile for diverse computational tasks. Here’s a guide to briefly introduce Conda for a few programming languages. Feel free to jump to the section on the language of your interest! This guide is meant to quickly give you an idea of the available programming languages/compilers, how to import packages, and how to create environments.
+Conda is a powerful, open-source package and environment management system that allows you to manage compilers and packages for various programming languages. Although commonly associated with Python, Conda supports many more languages, making it versatile for diverse computational tasks. Here’s a guide to briefly introduce Conda for a few programming languages. Feel free to jump to the section on the language of your interest! This guide is meant to quickly give you an idea of the available programming languages/compilers, how to import packages, and how to create environments. You can also watch a `video presentation <https://indico.mit.edu/event/1880/contributions/5342/attachments/1689/2786/Virtual_environment_conda_and_best_practices.mp4>`_ on Conda by a member of the SubMIT team.
 
 **Summary of programming languages**
 

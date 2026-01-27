@@ -14,8 +14,8 @@ There will be a couple of simple examples to help get you started.
 You have three options:
 
 1. **Running locally**: limited to the interactive usage of CPUs in the login nodes. Ideal for developing, not for running jobs.
-2. **Slurm**: medium-sized pool of CPUs and some GPUs available on SubMIT worker-nodes. Slurm is set up as a federation with all of the SubMIT machines as clusters. This means that Slurm submissions will have access to the /home, /work, and /ceph directories.
-3. **HTCondor**: large pools of CPUs and some GPUs are available in clusters at MIT and around the world. Ideal for large scale processing. Worker nodes in HTCondor do not have access to your SubMIT directories: this means that any input files and software that you need must be passed into the submission, or already be on the worker node. Several tools are available to achieve this, read below.
+2. **Slurm**: medium-sized pool of CPUs and some GPUs available on SubMIT worker-nodes. Slurm is set up as a federation with all of the SubMIT machines as clusters. This means that Slurm submissions will have access to the /home, /work, and /ceph directories. You can also watch a `video presentation <https://indico.mit.edu/event/1880/contributions/5348/attachments/1692/2784/Tutorial_Batch_Job_Workflow%2BManagement_SLURM_Snakemake.mp4>`_ on Slurm by a member of the SubMIT team.
+3. **HTCondor**: large pools of CPUs and some GPUs are available in clusters at MIT and around the world. Ideal for large scale processing. Worker nodes in HTCondor do not have access to your SubMIT directories: this means that any input files and software that you need must be passed into the submission, or already be on the worker node. Several tools are available to achieve this, read below. You can also watch a `video presentation <https://indico.mit.edu/event/1880/contributions/5345/attachments/1696/2785/Tutorial_Batch_Job_Workflow_Management_HTCondor.mp4>`_ on HTCondor by a member of the SubMIT team.
 
 Running locally
 ~~~~~~~~~~~~~~~

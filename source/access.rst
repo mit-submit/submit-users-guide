@@ -3,7 +3,7 @@ Access to SubMIT
 
 .. tags:: JupyterHub, VSCode, GPU
 
-You have several options to connect to SubMIT, view and edit your files, and do your work.
+You have several options to connect to SubMIT, view and edit your files, and do your work. You can watch a `video presentation <https://indico.mit.edu/event/1880/contributions/5340/attachments/1684/2781/Getting_started_on_subMIT_How_to_Interact_with_subMIT.mp4>`_ on these options by a member of the SubMIT team.
 
 1. **ssh** is the simplest way to connect to the login nodes, see `the starting guide <https://submit.mit.edu/submit-users-guide/starting.html>`_.
 2. **`JupyterHub <https://submit.mit.edu/jupyter/hub/spawn>_`**  provides another easy alternative to connect to the cluster. You can log in using your Kerberos ID, and get access to an interactive graphical interface, terminal, text editor, and more.

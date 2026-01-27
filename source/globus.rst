@@ -9,6 +9,8 @@ Globus is a powerful platform for **fast, secure, and reliable data transfer** b
 
    You will need a Globus account to get started. You can register and log in using your MIT credential.
 
+You can watch a `video presentation <https://indico.mit.edu/event/1880/contributions/5349/attachments/1691/2780/Custom_software_on_SubMIT_OpenMPI_and_Globus.mp4>`_ on Globus by a member of the SubMIT team.
+
 What is Globus?
 ~~~~~~~~~~~~~~~
 
