@@ -20,6 +20,12 @@ What do I need for an account if I don't have an MIT kerberos?
 
 You will need to obtain an MIT guest account. A sponsor -- usually a faculty you are working with -- can request a guest account for you. The information needed for this sponsoring request is the guest first and last name, birthday, institution, an email, and a phone number. See the `sponsoring web page <https://ist.mit.edu/guest-accounts>`_. The sponsor will also have to provide an account number, which is only used for reference but not for any charges. The response by MIT IS&T has been very quick in the past, we have so far received all account requests in less than 4 hours.
 
+Access request procedure for SubMIT machines
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Once you get the account, please contact submit-help@mit.edu to get final access to submit machines.
+Please indicate which group you are working with, so that you get all the necessary rights to access the group's storage space.
+
 How to get help?
 ~~~~~~~~~~~~~~~~
 
