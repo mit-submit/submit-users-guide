@@ -67,13 +67,29 @@ Wolfram Mathematica
 
 
 
-Mathematica is easily accessible on ``submit00``. In order to use it for the first time, follow these simple steps:
+Mathematica is easily accessible on **all SubMIT login nodes**, and **no activation key or licensing
+setup is needed** — SubMIT licenses it from MIT's central license server on your behalf. To use it:
 
-#. ssh into submit00: ``ssh username@submit00.mit.edu``
+#. ssh into SubMIT as usual: ``ssh username@submit.mit.edu``
 
-#. type ``wolfram``. You should be prompted to enter an activation key, which you can get by requesting one from MIT, following the instructions on the MIT website here: `MIT_Wolfram <https://ist.mit.edu/wolfram/mathematica>`_. Once you have entered the activation key, after a few seconds you should see ``In[1]:=`` and be able to use Mathematica.
+#. type ``wolfram``. After a few seconds you should see ``In[1]:=`` and be able to use Mathematica.
 
-Then, anytime you want to use Mathematica, make sure to ssh into submit00 and type ``wolfram`` on the command prompt. When you are done, type ``Quit``, ``Quit[]``, ``Exit``, or ``Exit[]``.
+The license covers current MIT faculty, staff and students, which every SubMIT account holder is.
+Because the license is served over the network, Mathematica needs to reach MIT's license server; if
+you ever see a message about not finding a valid password or license, please email
+<submit-help@mit.edu> rather than entering an activation key. General information about MIT's
+Mathematica licensing is on the IS&T page, `MIT Wolfram Mathematica
+<https://ist.mit.edu/wolfram/mathematica>`_.
+
+.. note::
+
+   If you activated Mathematica on SubMIT in the past with a personal activation key, that key is
+   still stored in ``~/.Mathematica/Licensing/mathpass`` and takes precedence over the central
+   license. It will keep working until it expires (MIT keys expire on 30 June each year). If it
+   expires and you would rather not renew it, simply delete that file and Mathematica will fall back
+   to the central license server automatically.
+
+Then, anytime you want to use Mathematica, just type ``wolfram`` on the command prompt of any login node. When you are done, type ``Quit``, ``Quit[]``, ``Exit``, or ``Exit[]``.
 
 You can easily run scripts (files with extension ``.wls`` and ``.m``) by using one of the following commands, directly into the terminal:
 
@@ -91,7 +107,16 @@ Slurm for Mathematica
 
 
 
-You can also submit batch jobs via slurm. In your batch file, make sure to include the line ``#SBATCH --nodelist=submit00``.
+You can also submit batch jobs via slurm. Note that Mathematica is installed on the login nodes only,
+not on every node of the ``submit`` partition, so you must pin your job to a login node — otherwise
+it may land on a node where ``wolfram`` is not available. In your batch file, include a line naming a
+login node::
+
+     #SBATCH --nodelist=submit00
+
+Any of the login nodes ``submit00``–``submit08`` will work, so if the one you picked is busy you can
+name a different one instead. Name a *single* node: ``--nodelist`` requests every host you list, so
+giving it several nodes would make Slurm allocate all of them rather than choose between them.
 
 
 JupyterHub for Mathematica
@@ -101,7 +126,7 @@ If you wish to get an interface similar to a Mathematica notebook (.nb file), yo
 
 #. Download the most recent paclet available from `WolframLanguageForJupyter <https://github.com/WolframResearch/WolframLanguageForJupyter/releases>`_ in your home directory.
 
-#. Make sure you are on submit00 and type ``wolfram`` on the command prompt, then
+#. On any login node, type ``wolfram`` on the command prompt, then
 
 .. code-block:: mathematica
 
