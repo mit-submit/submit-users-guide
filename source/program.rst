@@ -394,8 +394,14 @@ Once the CMS environment is set up, the CMS software version specific ROOT relea
 In addition to the typical CMVFS environments, MIT hosts its own version of CVMFS where additional software is placed. One such example is Matlab which is given through MIT. This can be accessed like below:
 
 .. code-block:: sh
-       
+
       /cvmfs/cvmfs.cmsaf.mit.edu/submit/work/submit/submit-software/matlab/Matlab_install/bin/matlab
+
+.. note::
+
+   This CVMFS copy is still MATLAB **R2021b**. On the login nodes, plain ``matlab`` is now
+   **R2026a**, so the two paths give you different releases. Prefer ``matlab`` on the login nodes
+   unless you specifically need the older release, or need MATLAB from a batch node via CVMFS.
 
 
 Additional Operating Systems (CMS specific)

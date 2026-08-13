@@ -142,6 +142,16 @@ Save this into a file named julia_test.jl and this can be run with the following
 MATLAB:
 ~~~~~~~
 
+MATLAB is available on all SubMIT login nodes as ``matlab``, and needs no licensing setup — SubMIT
+licenses it from MIT's central MathWorks license server. The current release is **R2026a**, which
+includes the Parallel Computing, Statistics and Machine Learning, Optimization, Signal Processing,
+Image Processing, Curve Fitting and Symbolic Math toolboxes.
+
+.. note::
+
+   If you have older scripts that depend on the previous release, MATLAB **R2021b** is still
+   available at ``/work/submit/submit-software/matlab/Matlab_install/bin/matlab``.
+
 Here we can try running a simple MATLAB example:
 
 .. code-block:: matlab
