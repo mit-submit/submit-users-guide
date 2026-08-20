@@ -26,6 +26,17 @@ The filesystem is accessible from all SubMIT nodes (e.g. any node you can log in
 
 :red: Keep in mind that filesystem is optimized for large files, therefore it is not recommended to save large numbers of small files in the filesystem, for example, 100k+ small log files. This will seriously hinder the performance of the filesystem for all users.
 
+Checking User Disk Quotas
+~~~~~~~~~~~~~~~~~~~~~~
+
+The command ``quota -s`` displays the disk and file quotas for the current user in a human-readable format.
+
+The NFS filesystems correspond to the following local mount points:
+submit-filer-02-clus1.mit.edu:/submit_filer_2	to  ``/work`` and submit-filer-02-clus1.mit.edu:/submit_filer	``/ceph``
+
+For each filesystem, ``space`` shows current disk usage, ``quota`` the soft limit, and ``limit`` the hard limit. The files columns show the number of files used and the corresponding limits.
+A ``*`` indicates that a quota has been exceeded.
+
 Remote reading via XRootD
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
