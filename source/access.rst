@@ -235,7 +235,7 @@ X2Go is open source remote desktop software for Linux and is available on submit
 
 `x2goclient <https://wiki.x2go.org/doku.php/doc:installation:x2goclient>`_
 
-Remember to point to the correct ssh key that you have uploaded to the submit-portal. There is currently a bug in either XFCE or X2Go causing rendering issues with the compositor when using X2Go. To disable the compositor, you can go to Settings > Window Manager Tweaks > Compositor.
+You need to use the XFCE gui (KDE or GNOME is not supported). Remember to point to the correct ssh key that you have uploaded to the submit-portal. There is currently a bug in either XFCE or X2Go causing rendering issues with the compositor when using X2Go. To disable the compositor, you can go to Settings > Window Manager Tweaks > Compositor.
 
 XWin32
 ~~~~~~
