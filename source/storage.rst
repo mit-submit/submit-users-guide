@@ -112,6 +112,8 @@ The files under /scratch can be accessed both through the mounting point /scratc
 
      root://submit30.mit.edu//scratch/
 
+Note that the path on XRootD omits the ``/scratch/submit``, starting only with ``/cms``; i.e., the local path ``/scratch/submit/cms/user/a/attila`` is accessed via XRootD as ``/cms/user/a/attila``.
+
 It shares the same x509 authentication as the xrootd for the main storage space. We will soon add kerberos authentication (in progress).
 
 The storage on Tier2
