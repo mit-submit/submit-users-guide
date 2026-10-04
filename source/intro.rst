@@ -20,6 +20,11 @@ What do I need for an account if I don't have an MIT kerberos?
 
 You will need to obtain an MIT guest account. A sponsor -- usually a faculty you are working with -- can request a guest account for you. The information needed for this sponsoring request is the guest first and last name, birthday, institution, an email, and a phone number. See the `sponsoring web page <https://ist.mit.edu/guest-accounts>`_. The sponsor will also have to provide an account number, which is only used for reference but not for any charges. The response by MIT IS&T has been very quick in the past, we have so far received all account requests in less than 4 hours.
 
+What do I need to restore an old account?
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+If you return to MIT or resume a collaboration after a period away, you may already have an existing MIT account or may need to obtain a new guest account. SubMIT user directories are retained for at least six months after an account becomes inactive. If your previous SubMIT account and directory are still available, the SubMIT administrators can restore access to the account. Please contact the SubMIT support team if you need to restore an old account.
+
 Access request procedure for SubMIT machines
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
