@@ -79,6 +79,19 @@ Simply paste the contents of the public key (``id_ed25519.pub``) into the submit
 
 We recommend that you use the standard name (as prompted by ``ssh-keygen``) for the keys, as this will make the process easier. Some advanced users may want to create differently named keys within their ``.ssh`` directory, as they may wish to keep separate keys for separate machines. If you do this, please remember to either create the appropriate configuration within ``.ssh/config``, or log in with ``ssh -i /path/to/identity/file``.
 
+SSH key permissions
+~~~~~~~~~~~~~~~~~~~~~
+
+The private key (``id_rsa``) must not be readable by other users. The public key (``id_rsa.pub``) can be readable by others.
+
+Keep your SSH keys private and make sure that the ``.ssh`` directory and private key have restrictive permissions:
+
+.. code-block:: bash
+
+   chmod 700 ~/.ssh/
+   chmod 600 ~/.ssh/id_rsa
+   chmod 644 ~/.ssh/id_rsa.pub
+
 Login and basic areas
 ~~~~~~~~~~~~~~~~~~~~~
 
