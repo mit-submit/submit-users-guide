@@ -109,14 +109,14 @@ Slurm for Mathematica
 
 You can also submit batch jobs via slurm. Note that Mathematica is installed on the login nodes only,
 not on every node of the ``submit`` partition, so you must pin your job to a login node — otherwise
-it may land on a node where ``wolfram`` is not available. In your batch file, include a line naming a
+it may land on a node where ``wolfram`` is not available. In your batch file, include the following to request a
 login node::
 
-     #SBATCH --nodelist=submit00
+     #SBATCH --nodelist submit[00-08]
+     #SBATCH --nodes=1
+     #SBATCH --ntasks=1
 
-Any of the login nodes ``submit00``–``submit08`` will work, so if the one you picked is busy you can
-name a different one instead. Name a *single* node: ``--nodelist`` requests every host you list, so
-giving it several nodes would make Slurm allocate all of them rather than choose between them.
+This is for a common minimal job; if you require more resources (nodes, tasks, cpus), feel free to modify these lines accordingly.
 
 
 JupyterHub for Mathematica
