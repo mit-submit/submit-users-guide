@@ -29,7 +29,7 @@ Slurm
 
 Slurm manages batch computing resources on the SubMIT machines.
 
-The main Slurm partition on the SubMIT machines is called ``submit``, and hosts a pool of over 1000 CPUs available for compute. GPUs are available through the ``submit-gpu`` partition.
+The main Slurm partition on the SubMIT machines is called ``submit``, and hosts a pool of over 1000 CPUs available for compute. GPUs are available through the ``submit-gpu`` partition. About 520 additional, older CPUs from the MIT Tier3 are available through the ``tier3`` partition (see `The tier3 partition`_ below for its limitations).
 
 If this if your first time using Slurm, you may want to check out our `Tutorial <https://submit.mit.edu/submit-users-guide/tutorials/tutorial_2.html#id3>`_ to get you started. Information about available resources, features, and an example script are provided below.
 
@@ -77,6 +77,57 @@ The ``sinfo`` command can give information about the Slurm partitions and nodes.
 
 This will list each node on a separate line.  As described in ``man sinfo``, the CPUS columns gives the count of the nodes CPUs in each state: "A/I/O/T" ("Allocated/Idle/Other/Total").  The MEMORY column gives the total memory for each node, while the ALLOCMEM gives the amount of memory which is currently allocated on that node.  Thus, with this command, you can see the total inventory of resources on each node, as well as what happens to be available at the moment.
 
+The tier3 partition
+===================
+
+The batch machines of the former MIT Tier3 (T3_US_MIT) are now part of the SubMIT Slurm cluster,
+in the ``tier3`` partition: about 520 CPUs on 30 nodes, open to all users. The time limits are the
+same as for ``submit``: at most 6 days, and 12 hours if you do not request a time with
+``--time``. Jobs there see the same environment as on the rest of SubMIT: AlmaLinux 9, your
+``/home/submit`` and ``/work/submit`` directories, ``/ceph/submit``, ``/scratch`` and CVMFS.
+
+.. code-block:: sh
+
+    sbatch --partition=tier3 job.sh
+
+    # or let Slurm start the job in whichever of the two partitions has free CPUs first
+    sbatch --partition=submit,tier3 job.sh
+
+These machines are much older than the rest of SubMIT. They are best suited to many independent,
+CPU-bound jobs that read and write little data. Please keep these limitations in mind:
+
+- **Old CPUs.** Most nodes have Intel Xeon CPUs from 2010-2013 (Westmere / Ivy Bridge
+  generation). Each core is noticeably slower than on the ``submit`` nodes, so expect longer
+  run times and set ``--time`` accordingly.
+- **No AVX2, and mostly no AVX.** The nodes lack AVX2, and most of them lack AVX as well
+  (they only support the ``x86-64-v2`` instruction set). Programs built for newer CPUs stop
+  immediately with ``Illegal instruction`` (signal ``SIGILL``). This happens, for example, with
+  code compiled with ``-march=native`` or ``-mavx2`` on a login node, and with binary packages
+  that require AVX (such as standard TensorFlow builds and some optimized Python wheels). If your
+  jobs fail like this only on ``tier3``, rebuild your code with ``-march=x86-64-v2``, or keep
+  those jobs on ``submit``.
+- **1 Gbit/s network.** Each tier3 node has a single 1 Gbit/s link (about 100 MB/s, shared by
+  all jobs on the node). Most ``submit`` nodes have 100 Gbit/s. Jobs that read or write a lot of
+  data on ``/ceph``, ``/scratch`` or ``/work``, or through XRootD, are limited by the network and
+  slow down the other jobs on the same node. Keep such I/O-heavy work on ``submit`` (for example
+  with ``--constraint=100gbs``). Copying your input once to the node's local disk (``$TMPDIR``,
+  which is ``/tmp``, with 150-780 GB per node) at the start of the job can also help.
+- **Less memory per CPU.** Most nodes have 16 CPUs and about 21 GB of memory (about 1.3 GB per
+  CPU). A few have 32 CPUs and 61 GB, or 24 CPUs and 20 GB. Always request memory explicitly
+  with ``--mem-per-cpu``. Jobs that need more than about 20 GB on one node fit on only a few
+  tier3 nodes.
+- **Not for GPU jobs.** For GPU work, use the GPU partitions described in the `GPU section <http://submit.mit.edu/submit-users-guide/gpu.html>`_.
+
+To get a shell on the node where one of your jobs is running, for example to look at its
+progress, use ``srun --jobid=<jobid> --overlap --pty bash``.
+
+All tier3 nodes carry the features ``tier3`` and ``1gbs``. To list them with their CPUs, memory
+and features:
+
+.. code-block:: sh
+
+    sinfo -p tier3 -N -o "%N %c %m %f"
+
 Available features
 ==================
 
@@ -87,6 +138,7 @@ The following features are available, which you can use to select the type of GP
 - ``nvidia_gtx1080``: NVIDIA GTX1080 GPUs
 - ``100gbs``: all nodes with 100Gbs network connection
 - ``1gbs``: all nodes with 1gbs network connection
+- ``tier3``: the nodes of the ``tier3`` partition (older CPUs, 1 Gbit/s network; see `The tier3 partition`_)
 
 You can select features when submitting a job; for example,
 

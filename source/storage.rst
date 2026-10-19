@@ -95,11 +95,22 @@ The storage at fast mount space (/scratch/)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 There is a fast mount space mounted as /scratch/ which provides high speed I/O. This speeds up the physics researches which have large input files and require fast accessing speed. The files under /scratch is for short term analyzing and not meant for long term storage. The data under /scratch should have a backup under the storage system if it is important.
 
-The files under /scratch can be accessed both through the mounting point /scratch and xrootd. To use xrootd, the accessing point is 
+The files under /scratch can be accessed both through the mounting point /scratch and xrootd. The xrootd server for /scratch is
 
 .. code-block:: sh
 
-     root://submit30.mit.edu//scratch/
+     root://submit30.mit.edu/
+
+As for the main storage space, the path on XRootD omits the mount prefix. Here the prefix that
+is dropped is ``/scratch/submit``, so the local path ``/scratch/submit/cms/<user>/file.root`` is
+accessed via XRootD as ``/cms/<user>/file.root``:
+
+.. code-block:: sh
+
+     xrdcp root://submit30.mit.edu//cms/<user>/file.root .
+
+Do **not** include ``/scratch`` or ``/scratch/submit`` in the XRootD path -- doing so gives
+``[3011] Unable to open ...; no such file or directory``.
 
 It shares the same x509 authentication as the xrootd for the main storage space. We will soon add kerberos authentication (in progress).
 
