@@ -131,6 +131,11 @@ The storage on Tier2
 ~~~~~~~~~~~~~~~~~~~~
 Upon request, users may also have some storage on MIT Tier2 sites. Note that tier2 is external computing resources and users can only use xrootd to transfer the files. In other words, to use storage in tier2, users must have x509 certificate. The details of how to get such certificates are above. 
 
+.. code-block:: sh
+
+     xrdfs root://t2dsk0011.cmsaf.mit.edu ls /store/user/ ....
+
+
 Group storage at SubMIT
 ~~~~~~~~~~~~~~~~~~~~~~~
 
