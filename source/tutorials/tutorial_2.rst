@@ -226,7 +226,7 @@ You can play around with this singularity on subMIT to make sure our python scri
       Apptainer> python3 analyze.py 3
 
 Finally, we want to transfer the output file of the python script using XRootD to our ceph space on subMIT.
-We can do this with the following new version of ``run_analysis.sh``. Replace `<your path>` with your desired location; see the `ceph storage space documentation <https://submit.mit.edu/submit-users-guide/storage.html#the-storage-filesystem>`_ for more information. 
+We can do this with the following new version of ``run_analysis.sh``. Replace ``a/attila`` with the first letter of your SubMIT username and your username. See the `XRootD instructions <https://submit.mit.edu/submit-users-guide/storage.html#remote-reading-via-xrootd>`_ for more information.
 
 .. code-block:: sh
 
@@ -238,9 +238,9 @@ We can do this with the following new version of ``run_analysis.sh``. Replace `<
       echo "I have recieved parameter $1"
       echo "I will now run: python3 analyze.py $1"
       python3 analyze.py $1
-      echo "Transferring output: xrdcp result_$1.txt root://submit50.mit.edu//data/user/<your path>/"
+      echo "Transferring output: xrdcp result_$1.txt root://submit-xrootd.mit.edu:1094//data/user/a/attila/"
       export X509_USER_PROXY=x509
-      xrdcp result_$1.txt root://submit50.mit.edu//data/user/<your path>/
+      xrdcp result_$1.txt root://submit-xrootd.mit.edu:1094//data/user/a/attila/
       echo "That's all!"
 
 However, in order to use XRootD, we need to pass our x509 key to the job.

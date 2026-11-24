@@ -43,6 +43,13 @@ Remote reading via XRootD
 Users can use XRootD to transfer the files *remotely* to/from ceph through the GSI authentication with a x509 proxy.
 This is useful, for example, if you are running jobs using HTCondor on other clusters, and want to copy data from or to SubMIT.
 
+Use the shared hostname ``submit-xrootd.mit.edu`` for SubMIT Ceph transfers.
+It distributes new connections across the ten storage servers. If a script or
+file list names an individual server (``submit50`` through ``submit59``), replace
+the hostname in its Ceph URLs and keep the existing port, path and credentials.
+User and group files use ``//data/...`` and CMS files on SubMIT use ``//store/...``.
+For scratch transfers, use ``submit30.mit.edu`` as described below.
+
 1. **Users need x509 certificates to use XRootD transfer:** for CERN users, they can use their CERN Grid Certificates. For non-CERN users, they can request user certificates from CILogon, see `link <https://cilogon.org/>`_.
 
 2. **Install your certificates:** with the .p12 you have downloaded, you need to install the certificates. On the SubMIT command line, execute,
@@ -61,25 +68,22 @@ This is useful, for example, if you are running jobs using HTCondor on other clu
      openssl x509 -in usercert.pem -noout -subject
 
 Once the admin team adds your DN to the XRootD mapping, you're good to go.
-The redirector is,
+The examples below use the default XRootD port (``1094``) and the absolute path to a file.
+
+Download a file from SubMIT with ``xrdcp``.
 
 .. code-block:: sh
 
-    root://submit50.mit.edu/
+     xrdcp root://submit-xrootd.mit.edu:1094//data/user/a/attila/file.txt .
 
-For example, to download a file form SubMIT,
+Upload a file to the same directory with ``xrdcp``.
 
 .. code-block:: sh
 
-     xrdcp root://submit50.mit.edu//data/user/a/attila/file.txt .
+     xrdcp file.txt root://submit-xrootd.mit.edu:1094//data/user/a/attila/
 
-And to upload a file to SubMIT,
-
-..code-block:: sh
-
-     xrdcp file.txt root://submit50.mit.edu//data/user/a/attila/
-
-Note that the path on XRootD omits the ``/ceph/submit``, starting only with ``/data``; i.e., the local path ``/ceph/submit/data/user/a/attila`` is accessed via XRootD as ``/data/user/a/attila``.
+For files under ``/ceph/submit/data``, drop the local mount prefix ``/ceph/submit``.
+For example, the directory ``/ceph/submit/data/user/a/attila`` has the XRootD path ``/data/user/a/attila``.
 
 **IP v4 vs v6**
 
