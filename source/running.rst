@@ -409,7 +409,7 @@ Once that is set up, in your bash script that is executed in the worker-node, yo
 
 .. code-block:: sh
 
-    xrdcp root://submit50.mit.edu//data/user/w/wangzqe/test.txt .
+    xrdcp root://submit-xrootd.mit.edu:1094//data/user/w/wangzqe/test.txt .
 
 Transferring Outputs
 ********************
@@ -442,7 +442,7 @@ You can add something like the following in your script that gets executed on th
 
 .. code-block:: sh
 
-    xrdcp <your output> root://submit50.mit.edu//data/user/w/wangzqe/
+    xrdcp result.root root://submit-xrootd.mit.edu:1094//data/user/w/wangzqe/
 
 Distributing Software to Worker Nodes
 *************************************

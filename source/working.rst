@@ -20,15 +20,16 @@ To increase the possible bandwidth to a single file use the mass storage (hadoop
 Do not directly write to hadoop spaces
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Users will have a significant amount of scratch space available to them through hadoop. Users should store large files here rather than in the /home or /work spaces. However, users need to be careful how to transfer files to this space as they should be transferred through gfal or xrootd rather than being transferred directly using the standard linux *cp* command at */ceph/submit/data/*. Good use examples are shown below.
+For remote transfers to SubMIT Ceph storage (``/ceph/submit/data``), use ``xrdcp`` or ``gfal-copy`` with the shared hostname.
+In these examples, replace ``a/attila`` with the first letter of your SubMIT username and your username.
 
 .. code-block:: sh
 
      # Use xrootd directly for fast IO
-     xrdcp out.root root://submit50.mit.edu://username/out.root
+     xrdcp out.root root://submit-xrootd.mit.edu:1094//data/user/a/attila/out.root
 
      # Or through gfal
-     gfal-copy file://`pwd`/out.root root://submit50.mit.edu:1094/username/out.root
+     gfal-copy "file://$PWD/out.root" root://submit-xrootd.mit.edu:1094//data/user/a/attila/out.root
 
 If you are using xrootd for the first time, you will need to be added to the mapping. Please, contact submit-help via email (submit-help@mit.edu) to be added.
 
